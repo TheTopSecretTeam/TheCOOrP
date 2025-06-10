@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://m7cn06cjrrns"]
+
+[ext_resource type="Script" uid="uid://cshrk6u5vp67c" path="res://obj/map/map.gd" id="1_idcj7"]
+[ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="2_kw5mi"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_idcj7")
+
+[node name="room1" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(211, 64)
+scale = Vector2(0.5, 0.5)
+
+[node name="room2" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(722, 190)
+
+[node name="room3" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(390, 487)
+
+[node name="room4" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(660, 608)
+scale = Vector2(0.5, 0.5)
+
+[node name="room5" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(887, 325)
+scale = Vector2(0.6, 0.6)
+
+[node name="room6" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(324, 319)
+scale = Vector2(0.8, 0.8)

@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd3ao6a116j77"]
+
+[ext_resource type="Script" uid="uid://bm2wwp3fs8gk4" path="res://net/scripts/multiplayer.gd" id="1_o4y1c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4y1c"]
+font_size = 32
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o4y1c")
+
+[node name="Host" type="Button" parent="."]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 199.0
+offset_right = 342.0
+offset_bottom = 271.0
+text = "Host"
+
+[node name="Connect" type="Button" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 200.0
+offset_right = 651.0
+offset_bottom = 272.0
+text = "Connect"
+
+[node name="name" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 117.0
+offset_right = 650.0
+offset_bottom = 169.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 115.0
+offset_right = 208.0
+offset_bottom = 167.0
+text = "name:"
+label_settings = SubResource("LabelSettings_o4y1c")
+
+[connection signal="button_down" from="Host" to="." method="_on_host_button_down"]
+[connection signal="button_down" from="Connect" to="." method="_on_connect_button_down"]

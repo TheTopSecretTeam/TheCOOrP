@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://b85wfl7wt2xqw"]
+
+[ext_resource type="Script" uid="uid://cuc8mtkusmoxx" path="res://obj/entities/agent.gd" id="1_l35n4"]
+[ext_resource type="Texture2D" uid="uid://dpd6sceqpsfv8" path="res://img/Player.png" id="2_3oxyy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oiqx7"]
+atlas = ExtResource("2_3oxyy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs204"]
+atlas = ExtResource("2_3oxyy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odjie"]
+atlas = ExtResource("2_3oxyy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3b03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oiqx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs204")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odjie")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Agent" type="PathFollow2D"]
+rotates = false
+script = ExtResource("1_l35n4")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g3b03")
+autoplay = "default"
+frame_progress = 0.965885
+
+[node name="Name" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -43.0
+offset_right = 21.0
+offset_bottom = -20.0
+text = "Brad"

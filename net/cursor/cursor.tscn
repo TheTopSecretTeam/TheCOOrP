@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6gosbgvxxwxq"]
+
+[ext_resource type="Script" uid="uid://dhwwu5x211imr" path="res://net/cursor/cursor.gd" id="1_isnha"]
+
+[node name="cursor" type="Node2D"]
+script = ExtResource("1_isnha")

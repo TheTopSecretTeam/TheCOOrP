@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dui8l2o3osfd5"]
+
+[sub_resource type="GDScript" id="GDScript_r14vu"]
+script/source = "extends Path2D
+
+class_name Waypoint
+
+@export var leading_rooms : Node2D	
+@export var self_room : Node2D
+"
+
+[node name="waypoint" type="PathFollow2D"]
+script = SubResource("GDScript_r14vu")
