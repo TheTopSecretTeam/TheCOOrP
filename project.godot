@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Lobotomy Corp"
-run/main_scene="uid://b6gosbgvxxwxq"
+run/main_scene="uid://bukf2fyclw72j"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
