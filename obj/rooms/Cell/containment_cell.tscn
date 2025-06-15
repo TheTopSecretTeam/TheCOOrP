@@ -238,6 +238,7 @@ offset_bottom = 323.0
 icon = ExtResource("10_nr55g")
 
 [connection signal="work_completed" from="Progress_Bar" to="." method="_on_progress_bar_work_completed"]
+[connection signal="work_completed" from="Progress_Bar" to="CameraArea" method="_on_progress_bar_work_completed"]
 [connection signal="button_down" from="AbnoName" to="AbnoName" method="_on_button_down"]
 [connection signal="button_down" from="AbnoName/ResearchWindow/Exit" to="AbnoName" method="_on_exit_button_down"]
 [connection signal="mouse_entered" from="CameraArea" to="CameraArea" method="_on_mouse_entered"]

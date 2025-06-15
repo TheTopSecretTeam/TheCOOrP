@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0wjiax1bpkgl"]
+
+[ext_resource type="PackedScene" uid="uid://cmrwqamv8yqdd" path="res://obj/rooms/Cell/containment_cell.tscn" id="1_j4b34"]
+[ext_resource type="Script" uid="uid://dtiava5gjprk2" path="res://obj/camera/camera.gd" id="2_xtq67"]
+
+[node name="MVP_V0" type="Node2D"]
+
+[node name="ContainmentCell" parent="." instance=ExtResource("1_j4b34")]
+position = Vector2(64, 33)
+scale = Vector2(0.300884, 0.312137)
+
+[node name="ContainmentCell2" parent="." instance=ExtResource("1_j4b34")]
+position = Vector2(461, 33)
+scale = Vector2(0.300884, 0.312137)
+
+[node name="ContainmentCell3" parent="." instance=ExtResource("1_j4b34")]
+position = Vector2(64, 323)
+scale = Vector2(0.300884, 0.312137)
+
+[node name="ContainmentCell4" parent="." instance=ExtResource("1_j4b34")]
+position = Vector2(461, 323)
+scale = Vector2(0.300884, 0.312137)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_xtq67")
