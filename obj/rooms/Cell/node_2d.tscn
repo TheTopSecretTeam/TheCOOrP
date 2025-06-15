@@ -1,0 +1,218 @@
+[gd_scene load_steps=7 format=3 uid="uid://1bpsf3bwxhox"]
+
+[ext_resource type="Texture2D" uid="uid://chng3andowbph" path="res://img/Cell/Room.png" id="1_es5fo"]
+[ext_resource type="Script" uid="uid://4tc7rpb3ca3w" path="res://obj/rooms/Cell/Whole_work_bar.gd" id="1_kdubu"]
+[ext_resource type="Texture2D" uid="uid://biin46ukkh2vx" path="res://img/Cell/bar.png" id="2_3foyg"]
+[ext_resource type="Script" uid="uid://do3c1prgbpocf" path="res://obj/rooms/Cell/bar.gd" id="3_uhgf6"]
+[ext_resource type="Texture2D" uid="uid://c23srtrginir7" path="res://img/Cell/PE.png" id="4_cjv1o"]
+[ext_resource type="Texture2D" uid="uid://7r8thl1a66as" path="res://img/Cell/NE.png" id="4_hieqq"]
+
+[node name="Progress_Bar" type="Node2D"]
+script = ExtResource("1_kdubu")
+
+[node name="Container" type="Sprite2D" parent="."]
+position = Vector2(5, -4)
+texture = ExtResource("1_es5fo")
+centered = false
+
+[node name="Bar" type="Sprite2D" parent="Container"]
+position = Vector2(168, 498)
+texture = ExtResource("2_3foyg")
+script = ExtResource("3_uhgf6")
+
+[node name="Progress" type="Sprite2D" parent="Container/Bar"]
+
+[node name="NE_list" type="VBoxContainer" parent="Container/Bar"]
+offset_left = -41.0
+offset_top = -280.0
+offset_right = 42.0
+offset_bottom = 272.0
+
+[node name="NE" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="NE2" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE2"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="NE3" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE3"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="NE4" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE4"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="NE5" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE5"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="NE6" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE6"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="NE7" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE7"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="NE8" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE8"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="NE9" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE9"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="NE10" type="TextureRect" parent="Container/Bar/NE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container/Bar/NE_list/NE10"]
+position = Vector2(41, 30)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_hieqq")
+
+[node name="PE_list" type="VBoxContainer" parent="Container/Bar"]
+offset_left = -41.0
+offset_top = -280.0
+offset_right = 45.0
+offset_bottom = 262.0
+alignment = 2
+
+[node name="PE" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[node name="PE2" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE2"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[node name="PE3" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE3"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[node name="PE4" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE4"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[node name="PE5" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE5"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[node name="PE6" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE6"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[node name="PE7" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE7"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[node name="PE8" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE8"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[node name="PE9" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE9"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[node name="PE10" type="TextureRect" parent="Container/Bar/PE_list"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Container/Bar/PE_list/PE10"]
+position = Vector2(43, 31)
+scale = Vector2(1, 0.96)
+texture = ExtResource("4_cjv1o")
+
+[connection signal="work_completed" from="Container/Bar" to="." method="_on_bar_work_completed"]

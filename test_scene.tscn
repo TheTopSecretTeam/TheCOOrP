@@ -9,16 +9,8 @@ script = ExtResource("1_uhqqe")
 [node name="corridor" parent="." instance=ExtResource("2_ia1lp")]
 position = Vector2(521, 495)
 
-[node name="waypoint" parent="corridor/room_path" index="0" node_paths=PackedStringArray("leading_room")]
-leading_room = NodePath("../../../corridor2")
-
 [node name="corridor2" parent="." instance=ExtResource("2_ia1lp")]
 position = Vector2(1292, 497)
-
-[node name="waypoint" parent="corridor2/room_path" index="0" node_paths=PackedStringArray("leading_room")]
-position = Vector2(-300, 0)
-progress = 600.0
-leading_room = NodePath("../../../corridor")
 
 [editable path="corridor"]
 [editable path="corridor2"]
