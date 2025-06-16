@@ -1,7 +1,5 @@
-extends Control
-class_name Room
+extends Room
 
-var waypoints : Dictionary = {}
 
 func _ready() -> void:
 	for child in $room_path.get_children():
@@ -10,10 +8,8 @@ func _ready() -> void:
 				waypoints[child.leading_room.get_index()] = child
 				#if self.get_index() == 0: print(child.leading_room.get_index())
 
-func get_waypoint(index : int) -> Node2D:
-	return waypoints[index]
-
 func transfer(agent: Agent, previous_room):
-	agent.reparent($room_path)
-	agent.progress = waypoints[previous_room].progress
+	agent.reparent($CharacterMarker)
+	agent.position = Vector2.ZERO
 	agent._on_travel()
+	agent.state = 2

@@ -1,10 +1,11 @@
 extends Node
 
 var graph = {
-	0: [2],
+	0: [2,4],
 	1: [3],
 	2: [0,3],
-	3: [1,2]
+	3: [1,2],
+	4: [0]
 }
 
 func get_agent_path(ind_A: int, ind_B: int) -> Array[int]:
