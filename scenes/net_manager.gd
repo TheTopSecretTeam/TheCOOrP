@@ -11,7 +11,7 @@ func _ready() -> void:
 	for player_id in Global.Players:
 		create_cursor(player_id)
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Add new cursors
 	for player_id in Global.Players:
 		if not cursors.has(player_id):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd3ao6a116j77"]
 
-[ext_resource type="Script" uid="uid://bm2wwp3fs8gk4" path="res://net/scripts/multiplayer.gd" id="1_o4y1c"]
+[ext_resource type="Script" uid="uid://bm2wwp3fs8gk4" path="res://net/scripts/multiplayer.gd" id="1_b0l6s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o4y1c"]
 font_size = 32
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_o4y1c")
+script = ExtResource("1_b0l6s")
 
 [node name="Host" type="Button" parent="."]
 layout_mode = 0

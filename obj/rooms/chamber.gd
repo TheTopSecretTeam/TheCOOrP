@@ -8,7 +8,7 @@ func _ready() -> void:
 				waypoints[child.leading_room.get_index()] = child
 				#if self.get_index() == 0: print(child.leading_room.get_index())
 
-func transfer(agent: Agent, previous_room):
+func transfer(agent: Agent, _previous_room):
 	agent.reparent($CharacterMarker)
 	agent.position = Vector2.ZERO
 	agent._on_travel()

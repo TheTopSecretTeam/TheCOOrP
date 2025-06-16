@@ -1,5 +1,7 @@
 extends Node
 
+#im too lazy to make autogenerator for this graph so 
+#you should manually create this graph and make every waypoint follow it
 var graph = {
 	0: [2,4],
 	1: [3],

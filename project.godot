@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
-GameManager="*res://net/scripts/GameManager.gd"
+Global="*res://others/Global.gd"
 
 [global_group]
 
