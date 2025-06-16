@@ -1,26 +1,31 @@
-extends Node2D
+extends Control
 class_name Room
 
-var neighbors : Array = []
+var waypoints : Dictionary = {}
 var agents : Dictionary = {
 }
 var lenght = 1
 
 func _ready() -> void:
-	pass
-	#for child in $room_path.get_children():
-		##if child is Waypoint:
-			##if child.leading_room:
-				##neighbors.append(child.leading_room)
-		#if child is Agent:
-			#agents[child.agent_name] = child
-		
+	for child in $room_path.get_children():
+		if child is Waypoint:
+			if child.leading_room:
+				waypoints[child.leading_room.get_index()] = child
+				#if self.get_index() == 0: print(child.leading_room.get_index())
+		if child is Agent:
+			agents[child.agent_name] = child
+
+
 func _add_agent(agent: Agent) -> void:
 	agents[agent.agent_name] = agent
-		
-		
-func _add_neighbor(room:Room) -> void:
-	# add in both directions
-	neighbors.append(room)
-	if not self in room.neighbors:
-		room.neighbors.append(self)
+	get_child(1).add_child(agent)
+
+func _size() -> Vector2:
+	return Vector2(759, 118) * self.global_transform.get_scale()
+
+func get_waypoint(index : int) -> Node2D:
+	return waypoints[index]
+
+func transfer(agent: Agent):
+	agent.reparent($room_path)
+	agent._on_travel()

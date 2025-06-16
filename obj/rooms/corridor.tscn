@@ -1,33 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbpr2hgq0qrbw"]
+[gd_scene load_steps=3 format=3 uid="uid://bbpr2hgq0qrbw"]
 
 [ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/corridor.gd" id="1_uovvg"]
 
 [sub_resource type="Curve2D" id="Curve2D_ueh1s"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 300, 0, 0, 0, 0, 0, -300, 0, 0, 0, 0, 0, 300, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 300, 0, 0, 0, 0, 0, -300, 0)
 }
-point_count = 3
+point_count = 2
 
-[sub_resource type="GDScript" id="GDScript_r14vu"]
-script/source = "extends Path2D
-
-class_name Waypoint
-
-@export var leading_rooms : Node2D	
-@export var self_room : Node2D
-"
-
-[node name="corridor" type="Node2D"]
+[node name="corridor" type="CenterContainer" groups=["Room"]]
+anchors_preset = -1
+anchor_right = 0.608
+anchor_bottom = 0.201
+offset_right = -0.416016
+offset_bottom = -0.248001
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_uovvg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -354.0
-offset_top = -99.0
-offset_right = 405.0
-offset_bottom = 19.0
+custom_minimum_size = Vector2(700, 130)
+layout_mode = 2
 color = Color(0.377919, 0.377919, 0.377919, 1)
 
-[node name="room_path" type="Path2D" parent="ColorRect"]
-position = Vector2(354, 99)
+[node name="room_path" type="Path2D" parent="."]
+position = Vector2(355, 93)
 curve = SubResource("Curve2D_ueh1s")
-script = SubResource("GDScript_r14vu")

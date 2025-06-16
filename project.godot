@@ -18,6 +18,11 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 GameManager="*res://net/scripts/GameManager.gd"
 
+[global_group]
+
+Agent=""
+Room=""
+
 [input]
 
 clickMouse={
