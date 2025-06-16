@@ -57,12 +57,13 @@ func _on_travel():
 func _process(delta: float) -> void:
 	match state:
 		WANDER:
+			var prev_prog = progress
 			progress += speed * delta
-			if progress_ratio == 1.0 or progress_ratio == 0.0:
+			if progress == prev_prog:
 				flip()
 		GOTO:
 			progress = move_toward(progress, waypoint.progress, abs(speed) * delta)
 			if progress == waypoint.progress:
 				#print(true)
-				waypoint.leading_room.transfer(self)
+				waypoint.leading_room.transfer(self, current_room)
 				self.global_position = waypoint.leading_room.global_position

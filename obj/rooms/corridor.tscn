@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/corridor.gd" id="1_uovvg"]
 
-[sub_resource type="Curve2D" id="Curve2D_ueh1s"]
+[sub_resource type="Curve2D" id="Curve2D_r14vu"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 300, 0, 0, 0, 0, 0, -300, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 300, 5, 0, 0, 0, 0, -300, 5)
 }
 point_count = 2
 
@@ -25,4 +25,4 @@ color = Color(0.377919, 0.377919, 0.377919, 1)
 
 [node name="room_path" type="Path2D" parent="."]
 position = Vector2(355, 93)
-curve = SubResource("Curve2D_ueh1s")
+curve = SubResource("Curve2D_r14vu")

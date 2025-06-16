@@ -26,6 +26,7 @@ func _size() -> Vector2:
 func get_waypoint(index : int) -> Node2D:
 	return waypoints[index]
 
-func transfer(agent: Agent):
+func transfer(agent: Agent, previous_room):
 	agent.reparent($room_path)
+	agent.progress = waypoints[previous_room].progress
 	agent._on_travel()
