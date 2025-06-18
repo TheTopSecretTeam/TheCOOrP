@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="TheCOOrP"
-config/version="0.0.1s"
-run/main_scene="uid://b6gosbgvxxwxq"
+config/version="0.0.1"
+run/main_scene="uid://b42xk6gfhn38y"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
