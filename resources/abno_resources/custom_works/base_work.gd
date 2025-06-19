@@ -3,6 +3,7 @@ extends Resource
 
 @export var button_text : String
 @export var icon : Texture2D
+@export var probability : int
 @export var scripts: Array[GDScript] = [] #For generic additional effects
 
 var _ready_to_use : bool = true
