@@ -13,3 +13,4 @@ func transfer(agent: Agent, _previous_room):
 	agent.position = Vector2.ZERO
 	agent._on_travel()
 	agent.state = 2
+#gg
