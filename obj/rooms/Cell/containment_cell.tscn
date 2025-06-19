@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://1bpsf3bwxhox" path="res://obj/rooms/Cell/node_2d.tscn" id="2_sv1wc"]
 [ext_resource type="Texture2D" uid="uid://ccxxg7u3mia6w" path="res://img/Cell/cog.png" id="2_yby8p"]
 [ext_resource type="Texture2D" uid="uid://cwqjvhp6iq4vj" path="res://img/Cell/FirstAnim.png" id="3_lekry"]
-[ext_resource type="FontFile" uid="uid://d28nsu3jcup13" path="res://others/style/fonts/norwester.otf" id="6_jbm6o"]
+[ext_resource type="FontFile" uid="uid://d28nsu3jcup13" path="res://resources/style/fonts/norwester.otf" id="6_jbm6o"]
 [ext_resource type="Script" uid="uid://br7vv88hosypw" path="res://obj/rooms/Cell/camera_area.gd" id="6_lekry"]
 [ext_resource type="Script" uid="uid://v1627lsrgjfi" path="res://obj/rooms/Cell/Research_Popupp.gd" id="7_nr55g"]
 [ext_resource type="Texture2D" uid="uid://c63uj1n3ykiv4" path="res://img/Cell/UP_Place.jpg" id="7_vadps"]
@@ -91,9 +91,7 @@ size = Vector2(945, 73)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yby8p"]
 size = Vector2(905, 559)
 
-[node name="ContainmentCell" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="ContainmentCell" type="Node2D"]
 script = ExtResource("1_y4nra")
 
 [node name="Unique_PE_Counter" type="Label" parent="."]
@@ -239,17 +237,17 @@ offset_right = 284.0
 offset_bottom = 323.0
 icon = ExtResource("10_nr55g")
 
-[connection signal="work_completed" from="Progress_Bar" to="CameraArea" method="_on_progress_bar_work_completed"]
 [connection signal="work_completed" from="Progress_Bar" to="." method="_on_progress_bar_work_completed"]
+[connection signal="work_completed" from="Progress_Bar" to="CameraArea" method="_on_progress_bar_work_completed"]
 [connection signal="button_down" from="AbnoName" to="AbnoName" method="_on_button_down"]
 [connection signal="button_down" from="AbnoName/ResearchWindow/Exit" to="AbnoName" method="_on_exit_button_down"]
 [connection signal="mouse_entered" from="CameraArea" to="CameraArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CameraArea" to="CameraArea" method="_on_mouse_exited"]
-[connection signal="button_down" from="CameraArea/WorkPopup/Instinct" to="CameraArea" method="_on_instinct_button_down"]
 [connection signal="button_down" from="CameraArea/WorkPopup/Instinct" to="." method="_on_instinct_button_down"]
-[connection signal="button_down" from="CameraArea/WorkPopup/Insight" to="CameraArea" method="_on_insight_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Instinct" to="CameraArea" method="_on_instinct_button_down"]
 [connection signal="button_down" from="CameraArea/WorkPopup/Insight" to="." method="_on_insight_button_down"]
-[connection signal="button_down" from="CameraArea/WorkPopup/Attachment" to="CameraArea" method="_on_attachment_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Insight" to="CameraArea" method="_on_insight_button_down"]
 [connection signal="button_down" from="CameraArea/WorkPopup/Attachment" to="." method="_on_attachment_button_down"]
-[connection signal="button_down" from="CameraArea/WorkPopup/Repression" to="CameraArea" method="_on_repression_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Attachment" to="CameraArea" method="_on_attachment_button_down"]
 [connection signal="button_down" from="CameraArea/WorkPopup/Repression" to="." method="_on_repression_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Repression" to="CameraArea" method="_on_repression_button_down"]

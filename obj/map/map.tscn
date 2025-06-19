@@ -1,0 +1,128 @@
+[gd_scene load_steps=4 format=3 uid="uid://m7cn06cjrrns"]
+
+[ext_resource type="Script" uid="uid://cshrk6u5vp67c" path="res://obj/map/map.gd" id="1_idcj7"]
+[ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="2_kw5mi"]
+[ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="3_kw5mi"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_idcj7")
+
+[node name="room1" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(24, 27)
+scale = Vector2(0.5, 0.5)
+
+[node name="waypoint" parent="room1/room_path" index="0" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(300, 0)
+rotation = 3.14159
+leading_room = NodePath("../../../room2")
+self_room = NodePath("../..")
+
+[node name="room2" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(381, 110)
+
+[node name="waypoint1" parent="room2/room_path" index="0" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(-36.6006, 0)
+progress = 863.4
+leading_room = NodePath("../../../room5")
+self_room = NodePath("../..")
+
+[node name="waypoint2" parent="room2/room_path" index="1" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(-294.327, 0)
+progress = 605.76
+leading_room = NodePath("../../../room1")
+self_room = NodePath("../..")
+
+[node name="waypoint3" parent="room2/room_path" index="2" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(-191.403, 0)
+rotation = 3.14159
+progress = 491.4
+leading_room = NodePath("../../../room6")
+self_room = NodePath("../..")
+
+[node name="room3" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(51, 421)
+
+[node name="waypoint" parent="room3/room_path" index="0" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(299.115, 0)
+rotation = 3.14159
+progress = 1.0
+leading_room = NodePath("../../../room4")
+self_room = NodePath("../..")
+
+[node name="waypoint2" parent="room3/room_path" index="1" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(300, 0)
+progress = 1200.0
+leading_room = NodePath("../../../room5")
+self_room = NodePath("../..")
+
+[node name="waypoint3" parent="room3/room_path" index="2" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(151.441, 0)
+rotation = 3.14159
+progress = 148.56
+leading_room = NodePath("../../../room6")
+self_room = NodePath("../..")
+
+[node name="room4" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(473, 571)
+scale = Vector2(0.5, 0.5)
+
+[node name="waypoint" parent="room4/room_path" index="0" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(140.042, 0)
+rotation = 3.14159
+progress = 159.96
+leading_room = NodePath("../../../room3")
+self_room = NodePath("../..")
+
+[node name="room5" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(677, 281)
+scale = Vector2(0.6, 0.6)
+
+[node name="waypoint" parent="room5/room_path" index="0" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(-282.369, 0)
+rotation = 3.14159
+progress = 582.36
+leading_room = NodePath("../../../room2")
+self_room = NodePath("../..")
+
+[node name="waypoint2" parent="room5/room_path" index="1" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(-284.263, 0)
+progress = 615.6
+leading_room = NodePath("../../../room6")
+self_room = NodePath("../..")
+
+[node name="waypoint3" parent="room5/room_path" index="2" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(-282.841, 0)
+progress = 617.16
+leading_room = NodePath("../../../room3")
+self_room = NodePath("../..")
+
+[node name="room6" parent="." instance=ExtResource("2_kw5mi")]
+position = Vector2(25, 269)
+scale = Vector2(0.8, 0.8)
+
+[node name="waypoint1" parent="room6/room_path" index="0" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(298.359, 0)
+rotation = 3.14159
+progress = 1.65
+leading_room = NodePath("../../../room2")
+self_room = NodePath("../..")
+
+[node name="waypoint2" parent="room6/room_path" index="1" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(300, 0)
+rotation = 3.14159
+leading_room = NodePath("../../../room5")
+self_room = NodePath("../..")
+
+[node name="waypoint" parent="room6/room_path" index="2" node_paths=PackedStringArray("leading_room", "self_room") instance=ExtResource("3_kw5mi")]
+position = Vector2(128.522, 0)
+rotation = 3.14159
+progress = 171.48
+leading_room = NodePath("../../../room3")
+self_room = NodePath("../..")
+
+[editable path="room1"]
+[editable path="room2"]
+[editable path="room3"]
+[editable path="room4"]
+[editable path="room5"]
+[editable path="room6"]

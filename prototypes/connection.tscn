@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqxc7crfhqcnl"]
+
+[ext_resource type="Script" uid="uid://dicw1ca2reibu" path="res://prototypes/connection.gd" id="1_10hxd"]
+
+[node name="Connection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_10hxd")
+
+[node name="host" type="Button" parent="."]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 99.0
+offset_right = 102.0
+offset_bottom = 107.0
+text = "Host"
+
+[node name="join" type="Button" parent="."]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 99.0
+offset_right = 202.0
+offset_bottom = 130.0
+text = "Join"
+
+[node name="start_game" type="Button" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 97.0
+offset_right = 336.0
+offset_bottom = 128.0
+text = "Start Game"
+
+[node name="name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 36.0
+offset_right = 79.0
+offset_bottom = 59.0
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 37.0
+offset_right = 337.0
+offset_bottom = 68.0
+
+[connection signal="pressed" from="host" to="." method="_on_host_button_down"]
+[connection signal="pressed" from="join" to="." method="_on_join_button_down"]
+[connection signal="pressed" from="start_game" to="." method="_on_start_game_button_down"]

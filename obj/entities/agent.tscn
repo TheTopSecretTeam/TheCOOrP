@@ -32,9 +32,8 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="Agent" type="PathFollow2D" groups=["Agent"]]
+[node name="Agent" type="PathFollow2D"]
 rotates = false
-loop = false
 script = ExtResource("1_l35n4")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -48,11 +47,3 @@ offset_top = -43.0
 offset_right = 21.0
 offset_bottom = -20.0
 text = "Brad"
-
-[node name="ClickRect" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0

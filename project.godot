@@ -10,25 +10,13 @@ config_version=5
 
 [application]
 
-config/name="TheCOOrP"
-config/version="0.0.1"
-run/main_scene="uid://b42xk6gfhn38y"
+config/name="Lobotomy Corp"
+run/main_scene="uid://d0wjiax1bpkgl"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
-Global="*res://others/Global.gd"
-
-[display]
-
-window/size/viewport_width=1280
-window/size/viewport_height=720
-display_server/driver.linuxbsd="wayland"
-
-[global_group]
-
-Agent=""
-Room=""
+GameManager="*res://net/scripts/GameManager.gd"
 
 [input]
 
@@ -43,4 +31,4 @@ clickMouse={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.215686, 0, 0, 1)

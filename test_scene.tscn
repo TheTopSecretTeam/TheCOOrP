@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6xuunabq8wv"]
+
+[ext_resource type="Script" uid="uid://jig2ssojib1i" path="res://net/scripts/test_scene.gd" id="1_uhqqe"]
+[ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="2_ia1lp"]
+
+[node name="testScene" type="Node2D"]
+script = ExtResource("1_uhqqe")
+
+[node name="corridor" parent="." instance=ExtResource("2_ia1lp")]
+position = Vector2(521, 495)
+
+[node name="corridor2" parent="." instance=ExtResource("2_ia1lp")]
+position = Vector2(1292, 497)
+
+[editable path="corridor"]
+[editable path="corridor2"]
