@@ -47,6 +47,9 @@ func _on_timer_timeout():
 		timer.stop()
 		work_completed.emit(pe)
 
+func _on_bar_work_completed(pe_box: Variant) -> void:
+	work_completed.emit(pe_box)
+
 func generate_cell(prob: float) -> void:
 	var success = [true, false]
 	var weights = PackedFloat32Array([prob, 1-prob])

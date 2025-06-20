@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cmrwqamv8yqdd"]
+[gd_scene load_steps=21 format=3 uid="uid://cmrwqamv8yqdd"]
 
 [ext_resource type="Texture2D" uid="uid://dk3oyyt6aqsys" path="res://img/Cell/isolate_2-resources.assets-4752.png" id="1_tahq2"]
 [ext_resource type="Script" uid="uid://dqljhjxdxrynr" path="res://obj/rooms/Cell/containment_cell.gd" id="1_y4nra"]
@@ -9,10 +9,8 @@
 [ext_resource type="Script" uid="uid://br7vv88hosypw" path="res://obj/rooms/Cell/camera_area.gd" id="6_lekry"]
 [ext_resource type="Script" uid="uid://v1627lsrgjfi" path="res://obj/rooms/Cell/Research_Popupp.gd" id="7_nr55g"]
 [ext_resource type="Texture2D" uid="uid://c63uj1n3ykiv4" path="res://img/Cell/UP_Place.jpg" id="7_vadps"]
-[ext_resource type="Resource" uid="uid://d1fm37sjoma5s" path="res://obj/rooms/Cell/AnomalyWorkRes/Instinct/instinct.tres" id="8_agu1s"]
-[ext_resource type="Resource" uid="uid://bbrxwkmp6epwf" path="res://obj/rooms/Cell/AnomalyWorkRes/Insight/insight.tres" id="9_a62uv"]
-[ext_resource type="Resource" uid="uid://dbmaf0gaf1dj" path="res://obj/rooms/Cell/AnomalyWorkRes/Attachment/attachment.tres" id="10_iu6of"]
-[ext_resource type="Resource" uid="uid://wh0xhhr57vhu" path="res://obj/rooms/Cell/AnomalyWorkRes/Repression/repression.tres" id="11_u260m"]
+[ext_resource type="Resource" uid="uid://ct7k62mgk1xq3" path="res://obj/rooms/Cell/AnomalyWorkRes/anomaly_work.tres" id="8_yi4f0"]
+[ext_resource type="Texture2D" uid="uid://68otr26nr88y" path="res://img/Cell/Instict_PH_DownScale.png" id="10_nr55g"]
 [ext_resource type="Texture2D" uid="uid://chng3andowbph" path="res://img/Cell/Room.png" id="11_yi4f0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y4nra"]
@@ -186,7 +184,7 @@ shape = SubResource("RectangleShape2D_pswui")
 [node name="CameraArea" type="Area2D" parent="."]
 position = Vector2(124, 172.001)
 script = ExtResource("6_lekry")
-stats = Array[Resource]([ExtResource("8_agu1s"), ExtResource("9_a62uv"), ExtResource("10_iu6of"), ExtResource("11_u260m")])
+stats = Array[Resource]([ExtResource("8_yi4f0"), ExtResource("8_yi4f0")])
 
 [node name="Sprite2D" type="Sprite2D" parent="CameraArea"]
 position = Vector2(404, 213.999)
@@ -212,11 +210,46 @@ position = Vector2(466.5, 291.5)
 shape = SubResource("RectangleShape2D_yby8p")
 debug_color = Color(7.70092e-07, 0.648282, 0.185883, 0.42)
 
+[node name="WorkPopup" type="Window" parent="CameraArea"]
+initial_position = 2
+size = Vector2i(288, 326)
+visible = false
+borderless = true
+popup_window = true
+content_scale_mode = 1
+
+[node name="Instinct" type="Button" parent="CameraArea/WorkPopup"]
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 143.0
+offset_bottom = 162.0
+icon = ExtResource("10_nr55g")
+
+[node name="Insight" type="Button" parent="CameraArea/WorkPopup"]
+offset_left = 145.0
+offset_top = 2.0
+offset_right = 284.0
+offset_bottom = 162.0
+size_flags_horizontal = 8
+icon = ExtResource("10_nr55g")
+
+[node name="Attachment" type="Button" parent="CameraArea/WorkPopup"]
+offset_left = 4.0
+offset_top = 163.0
+offset_right = 143.0
+offset_bottom = 323.0
+icon = ExtResource("10_nr55g")
+
+[node name="Repression" type="Button" parent="CameraArea/WorkPopup"]
+offset_left = 145.0
+offset_top = 163.0
+offset_right = 284.0
+offset_bottom = 323.0
+icon = ExtResource("10_nr55g")
+
 [node name="WorkContainer" type="BoxContainer" parent="CameraArea"]
-offset_left = -124.0
-offset_top = -172.001
-offset_right = -124.0
-offset_bottom = -172.001
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="button_down" from="AbnoName" to="AbnoName" method="_on_button_down"]
 [connection signal="button_down" from="AbnoName/ResearchWindow/Exit" to="AbnoName" method="_on_exit_button_down"]
@@ -224,3 +257,11 @@ offset_bottom = -172.001
 [connection signal="mouse_exited" from="CameraArea" to="CameraArea" method="_on_mouse_exited"]
 [connection signal="work_completed" from="CameraArea/Sprite2D/Bar" to="." method="_on_progress_bar_work_completed"]
 [connection signal="work_completed" from="CameraArea/Sprite2D/Bar" to="CameraArea" method="_on_progress_bar_work_completed"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Instinct" to="." method="_on_instinct_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Instinct" to="CameraArea" method="_on_instinct_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Insight" to="." method="_on_insight_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Insight" to="CameraArea" method="_on_insight_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Attachment" to="." method="_on_attachment_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Attachment" to="CameraArea" method="_on_attachment_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Repression" to="." method="_on_repression_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Repression" to="CameraArea" method="_on_repression_button_down"]
