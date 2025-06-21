@@ -69,6 +69,9 @@ rotation = 3.14159
 progress = 600.0
 leading_room = NodePath("../../../elevator2")
 
+[node name="Agent2" parent="rooms/corridor2/room_path" index="1" instance=ExtResource("5_ogelb")]
+position = Vector2(300, 5)
+
 [node name="elevator" parent="rooms" instance=ExtResource("7_e3tq1")]
 layout_mode = 1
 offset_left = 48.0

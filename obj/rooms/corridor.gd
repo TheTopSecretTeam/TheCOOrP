@@ -9,6 +9,7 @@ func _ready() -> void:
 			if child.leading_room:
 				waypoints[child.leading_room.get_index()] = child
 				#if self.get_index() == 0: print(child.leading_room.get_index())
+	print(waypoints)
 
 func get_waypoint(index : int) -> Node2D:
 	return waypoints[index]

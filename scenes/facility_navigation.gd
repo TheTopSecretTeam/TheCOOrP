@@ -13,7 +13,7 @@ var graph = {
 func get_agent_path(ind_A: int, ind_B: int) -> Array[int]:
 	# If start and end are the same, return immediately
 	if ind_A == ind_B:
-		return [ind_A]
+		return []
 	
 	# Queue for BFS: each element is a node to process
 	var queue = []

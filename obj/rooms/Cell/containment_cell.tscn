@@ -98,6 +98,7 @@ script = ExtResource("1_y4nra")
 
 [node name="Unique_PE_Counter" type="Label" parent="."]
 z_index = 8
+layout_mode = 0
 offset_left = 1020.18
 offset_top = 51.8692
 offset_right = 1124.18
@@ -147,6 +148,7 @@ libraries = {
 
 [node name="AbnoName" type="Button" parent="."]
 z_index = 10
+layout_mode = 0
 offset_left = 147.447
 offset_top = 87.0115
 offset_right = 821.447
@@ -239,17 +241,17 @@ offset_right = 284.0
 offset_bottom = 323.0
 icon = ExtResource("10_nr55g")
 
-[connection signal="work_completed" from="Progress_Bar" to="CameraArea" method="_on_progress_bar_work_completed"]
 [connection signal="work_completed" from="Progress_Bar" to="." method="_on_progress_bar_work_completed"]
+[connection signal="work_completed" from="Progress_Bar" to="CameraArea" method="_on_progress_bar_work_completed"]
 [connection signal="button_down" from="AbnoName" to="AbnoName" method="_on_button_down"]
 [connection signal="button_down" from="AbnoName/ResearchWindow/Exit" to="AbnoName" method="_on_exit_button_down"]
 [connection signal="mouse_entered" from="CameraArea" to="CameraArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CameraArea" to="CameraArea" method="_on_mouse_exited"]
-[connection signal="button_down" from="CameraArea/WorkPopup/Instinct" to="CameraArea" method="_on_instinct_button_down"]
 [connection signal="button_down" from="CameraArea/WorkPopup/Instinct" to="." method="_on_instinct_button_down"]
-[connection signal="button_down" from="CameraArea/WorkPopup/Insight" to="CameraArea" method="_on_insight_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Instinct" to="CameraArea" method="_on_instinct_button_down"]
 [connection signal="button_down" from="CameraArea/WorkPopup/Insight" to="." method="_on_insight_button_down"]
-[connection signal="button_down" from="CameraArea/WorkPopup/Attachment" to="CameraArea" method="_on_attachment_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Insight" to="CameraArea" method="_on_insight_button_down"]
 [connection signal="button_down" from="CameraArea/WorkPopup/Attachment" to="." method="_on_attachment_button_down"]
-[connection signal="button_down" from="CameraArea/WorkPopup/Repression" to="CameraArea" method="_on_repression_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Attachment" to="CameraArea" method="_on_attachment_button_down"]
 [connection signal="button_down" from="CameraArea/WorkPopup/Repression" to="." method="_on_repression_button_down"]
+[connection signal="button_down" from="CameraArea/WorkPopup/Repression" to="CameraArea" method="_on_repression_button_down"]
