@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export var step: int = 10
-# анимация
+# animation
 @export var anim_time: float = 0.3
 
 @onready var energy_bar := $TextureProgressBar
@@ -12,5 +12,5 @@ func _ready() -> void:
 
 func _on_fill_button_pressed() -> void:
 	var target = energy_bar.value + step
-	# анимация заполнения
+	# filling animation
 	energy_bar.animate_to(target, anim_time)

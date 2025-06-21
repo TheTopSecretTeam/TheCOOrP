@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g3r2y5n1ueml"
-path="res://.godot/imported/zapolnenie.png-9d47eda39081ec761449b0a3b49a011e.ctex"
+uid="uid://d3tgjch0h4kmc"
+path="res://.godot/imported/background.png-98289422cd7d93003950872a7b97021f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://zapolnenie.png"
-dest_files=["res://.godot/imported/zapolnenie.png-9d47eda39081ec761449b0a3b49a011e.ctex"]
+source_file="res://background.png"
+dest_files=["res://.godot/imported/background.png-98289422cd7d93003950872a7b97021f.ctex"]
 
 [params]
 
