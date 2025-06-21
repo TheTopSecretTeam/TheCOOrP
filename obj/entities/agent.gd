@@ -30,7 +30,6 @@ var flipped : bool = false:
 @export var speed : float = 100.0
 
 func _ready() -> void:
-	current_room = get_parent().get_parent().get_index()
 	$Name.text = agent_name # change for $Name.text = agent_res.name
 
 func flip():
