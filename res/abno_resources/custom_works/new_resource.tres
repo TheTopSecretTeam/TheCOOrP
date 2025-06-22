@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Work" load_steps=4 format=3 uid="uid://bj2yh43oax8q6"]
+
+[ext_resource type="Texture2D" uid="uid://68otr26nr88y" path="res://img/Cell/Instict_PH_DownScale.png" id="1_6lppq"]
+[ext_resource type="Script" uid="uid://cy2if0c6k4k5x" path="res://res/abno_resources/custom_works/base_work.gd" id="1_w1hme"]
+[ext_resource type="Script" uid="uid://bcx3t4ka88iku" path="res://obj/rooms/Cell/AnomalyWorkRes/Attachment/attachment.gd" id="2_hhmep"]
+
+[resource]
+script = ExtResource("1_w1hme")
+button_text = "A"
+icon = ExtResource("1_6lppq")
+scripts = Array[GDScript]([ExtResource("2_hhmep")])
+probabilty = 0.0
+metadata/_custom_type_script = "uid://cy2if0c6k4k5x"
