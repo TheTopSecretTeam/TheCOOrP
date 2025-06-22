@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx0u5ty4gc1o5"]
+
+[ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj — копия/rooms/corridor.tscn" id="1_q6bq8"]
+[ext_resource type="Script" uid="uid://baw122ep6yknj" path="res://obj — копия/map/chamber.gd" id="2_y0fo7"]
+[ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj — копия/rooms/waypoint.tscn" id="3_ckaer"]
+
+[sub_resource type="Curve2D" id="Curve2D_y0fo7"]
+
+[node name="chamber" instance=ExtResource("1_q6bq8")]
+script = ExtResource("2_y0fo7")
+
+[node name="ColorRect" parent="." index="0"]
+custom_minimum_size = Vector2(200, 130)
+
+[node name="room_path" parent="." index="1"]
+position = Vector2(138, 94)
+curve = SubResource("Curve2D_y0fo7")
+
+[node name="waypoint" parent="room_path" index="0" instance=ExtResource("3_ckaer")]
+
+[node name="CharacterMarker" type="Marker2D" parent="." index="2"]
+position = Vector2(139, 96)

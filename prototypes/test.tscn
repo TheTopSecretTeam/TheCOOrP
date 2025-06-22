@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dupt1l2sne43a"]
+
+[ext_resource type="PackedScene" uid="uid://dykb6ha8tuqnc" path="res://obj/rooms/Cell/containment_cell.tscn" id="1_6q10t"]
+
+[node name="Test" type="Node2D"]
+
+[node name="ContainmentCell" parent="." instance=ExtResource("1_6q10t")]
+position = Vector2(76, 54)
+scale = Vector2(0.302388, 0.30963)
+
+[node name="ContainmentCell2" parent="." instance=ExtResource("1_6q10t")]
+position = Vector2(370, 373)
+scale = Vector2(0.302388, 0.30963)
+
+[node name="ContainmentCell3" parent="." instance=ExtResource("1_6q10t")]
+position = Vector2(596, 54)
+scale = Vector2(0.302388, 0.30963)

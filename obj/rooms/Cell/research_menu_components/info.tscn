@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvslytbvvtxfx"]
+
+[ext_resource type="StyleBox" uid="uid://dbiynfhcrgonq" path="res://obj/rooms/Cell/research_menu_components/research_menu.tres" id="1_ddhn0"]
+
+[node name="Label" type="Label"]
+custom_minimum_size = Vector2(0, 34)
+theme_override_styles/normal = ExtResource("1_ddhn0")
+text = "zdgnfgnfngxfnfgn"
+autowrap_mode = 3
+clip_text = true
