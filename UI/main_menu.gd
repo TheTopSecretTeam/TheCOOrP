@@ -1,10 +1,14 @@
 extends Control
 
 func _on_Main_NewGame_pressed():
+	_mok_jmp_to_map()
+	return
 	$Main.hide()
 	$NewGameMenu.show()
 
 func _on_Main_Load_pressed():
+	_mok_jmp_to_map()
+	return
 	$Main.hide()
 	$LoadMenu.show()
 
@@ -12,6 +16,8 @@ func _on_Main_Settings_pressed():
 	print("Settings are not implemented")
 
 func _on_Main_Join_pressed():
+	_mok_jmp_to_map()
+	return
 	print("Join is not implemented")
 
 func _on_Main_Exit_pressed():
@@ -33,3 +39,6 @@ func _on_NG_Back_pressed():
 
 func _on_NG_Start_pressed():
 	pass
+
+func _mok_jmp_to_map():
+	get_tree().change_scene_to_file("res://scenes/map.tscn")
