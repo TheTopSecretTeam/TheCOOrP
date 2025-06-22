@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dui8l2o3osfd5"]
+[gd_scene load_steps=3 format=3 uid="uid://dui8l2o3osfd5"]
 
 [ext_resource type="Script" uid="uid://2te20d3bmqlm" path="res://obj/rooms/waypoint.gd" id="1_4rmwy"]
+[ext_resource type="Texture2D" uid="uid://mg1rl15neu2y" path="res://img/layout/door.png" id="2_3bfle"]
 
 [node name="waypoint" type="PathFollow2D"]
+rotates = false
 script = ExtResource("1_4rmwy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, -155)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_3bfle")
+hframes = 2

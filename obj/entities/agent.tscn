@@ -1,52 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://b85wfl7wt2xqw"]
+[gd_scene load_steps=10 format=3 uid="uid://b85wfl7wt2xqw"]
 
 [ext_resource type="Script" uid="uid://cuc8mtkusmoxx" path="res://obj/entities/agent.gd" id="1_l35n4"]
-[ext_resource type="Texture2D" uid="uid://dpd6sceqpsfv8" path="res://img/Player.png" id="2_3oxyy"]
+[ext_resource type="Texture2D" uid="uid://cq8aac2qq5cln" path="res://img/gibs/agent/agent_body.png" id="2_g3b03"]
+[ext_resource type="Texture2D" uid="uid://coam33sdg05rd" path="res://img/gibs/agent/agent_thigh.png" id="3_13mac"]
+[ext_resource type="Texture2D" uid="uid://bwkrd8igdcqwj" path="res://img/gibs/agent/agent_leg.png" id="4_6a263"]
+[ext_resource type="Texture2D" uid="uid://bvasvrv1m3okg" path="res://img/gibs/agent/agent_forearm.png" id="5_t74kt"]
+[ext_resource type="Texture2D" uid="uid://3fm05ki83g5g" path="res://img/gibs/agent/agent_arm.png" id="6_73koy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oiqx7"]
-atlas = ExtResource("2_3oxyy")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="Animation" id="Animation_g3b03"]
+resource_name = "walk"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gs204"]
-atlas = ExtResource("2_3oxyy")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="Animation" id="Animation_13mac"]
+resource_name = "idle"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_odjie"]
-atlas = ExtResource("2_3oxyy")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g3b03"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oiqx7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gs204")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_odjie")
-}],
-"loop": true,
-"name": &"default",
-"speed": 7.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6a263"]
+_data = {
+&"idle": SubResource("Animation_13mac"),
+&"walk": SubResource("Animation_g3b03")
+}
 
 [node name="Agent" type="PathFollow2D" groups=["Agent"]]
 rotates = false
 loop = false
 script = ExtResource("1_l35n4")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_g3b03")
-autoplay = "default"
-frame_progress = 0.965885
-
 [node name="Name" type="Label" parent="."]
-offset_left = -19.0
-offset_top = -43.0
-offset_right = 21.0
-offset_bottom = -20.0
+offset_left = -17.0
+offset_top = -167.0
+offset_right = 23.0
+offset_bottom = -144.0
 text = "Brad"
 
 [node name="ClickRect" type="Control" parent="."]
@@ -56,3 +38,50 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
+
+[node name="Skeleton" type="Node2D" parent="."]
+position = Vector2(6, -76)
+scale = Vector2(0.5, 0.5)
+
+[node name="AgentBody" type="Sprite2D" parent="Skeleton"]
+position = Vector2(-2, -48)
+texture = ExtResource("2_g3b03")
+
+[node name="AgentThigh" type="Sprite2D" parent="Skeleton/AgentBody"]
+position = Vector2(-1, 92)
+texture = ExtResource("3_13mac")
+
+[node name="AgentLeg" type="Sprite2D" parent="Skeleton/AgentBody/AgentThigh"]
+position = Vector2(-2, 74)
+texture = ExtResource("4_6a263")
+
+[node name="AgentForearm" type="Sprite2D" parent="Skeleton/AgentBody"]
+position = Vector2(22, -1)
+texture = ExtResource("5_t74kt")
+
+[node name="AgentArm" type="Sprite2D" parent="Skeleton/AgentBody/AgentForearm"]
+position = Vector2(-5, 59)
+texture = ExtResource("6_73koy")
+
+[node name="AgentForearmback" type="Sprite2D" parent="Skeleton/AgentBody"]
+show_behind_parent = true
+position = Vector2(-6, -4)
+texture = ExtResource("5_t74kt")
+
+[node name="AgentArm" type="Sprite2D" parent="Skeleton/AgentBody/AgentForearmback"]
+position = Vector2(-5, 59)
+texture = ExtResource("6_73koy")
+
+[node name="AgentThighback" type="Sprite2D" parent="Skeleton/AgentBody"]
+show_behind_parent = true
+position = Vector2(-8, 86)
+texture = ExtResource("3_13mac")
+
+[node name="AgentLeg" type="Sprite2D" parent="Skeleton/AgentBody/AgentThighback"]
+position = Vector2(-2, 74)
+texture = ExtResource("4_6a263")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6a263")
+}

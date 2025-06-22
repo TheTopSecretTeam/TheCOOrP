@@ -9,7 +9,7 @@ var _dragging := false
 var _drag_start_position := Vector2.ZERO
 var _camera_start_position := Vector2.ZERO
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_MIDDLE or event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed:

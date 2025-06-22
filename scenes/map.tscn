@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=11 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://clqiyga4o851i" path="res://scenes/facility_navigation.gd" id="2_0dq08"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="6_hns3r"]
 [ext_resource type="PackedScene" uid="uid://ch7tbtciyxmbe" path="res://obj/rooms/elevator.tscn" id="7_e3tq1"]
 [ext_resource type="PackedScene" uid="uid://bx0u5ty4gc1o5" path="res://obj/rooms/chamber.tscn" id="8_fy0fe"]
+[ext_resource type="PackedScene" uid="uid://m7nkloxdq8qb" path="res://obj/modules/camera/camera.tscn" id="9_be0no"]
 
 [sub_resource type="Curve2D" id="Curve2D_ueh1s"]
 _data = {
@@ -36,97 +37,96 @@ grow_vertical = 2
 
 [node name="corridor" parent="rooms" instance=ExtResource("4_rclfu")]
 layout_mode = 1
-offset_left = 206.0
-offset_top = 228.0
-offset_right = 906.0
-offset_bottom = 358.0
+offset_left = -126.0
+offset_top = -396.0
+offset_right = 2035.0
+offset_bottom = -6.0
 
 [node name="Agent" parent="rooms/corridor/room_path" index="0" instance=ExtResource("5_ogelb")]
-position = Vector2(300, 5)
+position = Vector2(1714.59, 6)
 
 [node name="waypoint" parent="rooms/corridor/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
 position = Vector2(-300, 5)
-rotation = 3.14159
-progress = 600.0
+progress = 2014.59
 leading_room = NodePath("../../../elevator")
 
 [node name="waypoint2" parent="rooms/corridor/room_path" index="2" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
-position = Vector2(3.05193e-05, 5)
-rotation = 3.14159
-progress = 300.0
+position = Vector2(1292.53, 5.7905)
+progress = 422.057
 leading_room = NodePath("../../../chamber")
 
 [node name="corridor2" parent="rooms" instance=ExtResource("4_rclfu")]
 layout_mode = 1
-offset_left = 202.0
-offset_top = 390.0
-offset_right = 902.0
-offset_bottom = 520.0
+offset_left = -108.0
+offset_top = 276.0
+offset_right = 2053.0
+offset_bottom = 666.0
 
 [node name="waypoint2" parent="rooms/corridor2/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
-position = Vector2(-300, 5)
-rotation = 3.14159
+position = Vector2(1114.59, 5.70217)
 progress = 600.0
 leading_room = NodePath("../../../elevator2")
 
 [node name="Agent2" parent="rooms/corridor2/room_path" index="1" instance=ExtResource("5_ogelb")]
-position = Vector2(300, 5)
+position = Vector2(1714.59, 6)
 
 [node name="elevator" parent="rooms" instance=ExtResource("7_e3tq1")]
 layout_mode = 1
-offset_left = 48.0
-offset_top = 229.0
-offset_right = 178.0
-offset_bottom = 359.0
+offset_left = -579.0
+offset_top = 153.0
+offset_right = -130.0
+offset_bottom = 792.0
 grow_horizontal = 1
 grow_vertical = 1
 
 [node name="room_path" parent="rooms/elevator" index="1"]
+visible = false
 curve = SubResource("Curve2D_ueh1s")
 
 [node name="waypoint" parent="rooms/elevator/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
 position = Vector2(-41, 0)
-rotation = 3.14159
 progress = 84.0
 leading_room = NodePath("../../../elevator2")
 
 [node name="waypoint2" parent="rooms/elevator/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
 position = Vector2(43, 0)
-rotation = 3.14159
 leading_room = NodePath("../../../corridor")
 
 [node name="elevator2" parent="rooms" instance=ExtResource("7_e3tq1")]
 layout_mode = 1
-offset_left = 48.0
-offset_top = 391.0
-offset_right = 178.0
-offset_bottom = 521.0
+offset_left = -480.0
+offset_top = -402.0
+offset_right = -213.0
+offset_bottom = -22.0
 grow_horizontal = 1
 grow_vertical = 1
 
 [node name="room_path" parent="rooms/elevator2" index="1"]
+visible = false
+position = Vector2(128, 352)
 curve = SubResource("Curve2D_ueh1s")
 
 [node name="waypoint" parent="rooms/elevator2/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
 position = Vector2(-41, 0)
-rotation = 3.14159
 progress = 84.0
 leading_room = NodePath("../../../elevator")
 
 [node name="waypoint2" parent="rooms/elevator2/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
 position = Vector2(43, 0)
-rotation = 3.14159
 leading_room = NodePath("../../../corridor2")
 
 [node name="chamber" parent="rooms" instance=ExtResource("8_fy0fe")]
 layout_mode = 0
-offset_left = 413.0
-offset_top = 85.0
-offset_right = 613.0
-offset_bottom = 215.0
+offset_left = 955.0
+offset_top = -1151.0
+offset_right = 1813.0
+offset_bottom = -504.0
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(220, 254.236)
 leading_room = NodePath("../../../corridor")
+
+[node name="Camera" parent="." instance=ExtResource("9_be0no")]
 
 [editable path="rooms/corridor"]
 [editable path="rooms/corridor2"]

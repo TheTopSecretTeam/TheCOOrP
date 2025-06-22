@@ -1,20 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch7tbtciyxmbe"]
+[gd_scene load_steps=4 format=3 uid="uid://ch7tbtciyxmbe"]
 
 [ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="1_mvprs"]
+[ext_resource type="Texture2D" uid="uid://bxyefd85ebue1" path="res://img/layout/elevator.png" id="2_tcxg3"]
 
 [sub_resource type="Curve2D" id="Curve2D_mvprs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -50, 0, 0, 0, 0, 0, 50, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -99, 0, 0, 0, 0, 0, 97, 0)
 }
 point_count = 2
 
 [node name="elevator" instance=ExtResource("1_mvprs")]
 anchor_right = 0.113
-offset_right = -0.17601
+offset_left = -152.0
+offset_top = -247.0
+offset_right = 152.36
+offset_bottom = 247.28
 
-[node name="ColorRect" parent="." index="0"]
-custom_minimum_size = Vector2(130, 130)
+[node name="TextureRect" parent="HBoxContainer" index="0"]
+visible = false
+
+[node name="ColorRect" parent="HBoxContainer" index="1"]
+custom_minimum_size = Vector2(260, 380)
+texture = ExtResource("2_tcxg3")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect2" parent="HBoxContainer" index="2"]
+visible = false
 
 [node name="room_path" parent="." index="1"]
-position = Vector2(63, 101)
+position = Vector2(222, 473)
 curve = SubResource("Curve2D_mvprs")

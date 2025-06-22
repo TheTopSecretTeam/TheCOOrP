@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbpr2hgq0qrbw"]
+[gd_scene load_steps=6 format=3 uid="uid://bbpr2hgq0qrbw"]
 
 [ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/corridor.gd" id="1_uovvg"]
+[ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="2_nwxuc"]
+[ext_resource type="Texture2D" uid="uid://bcaff3cr2ogf2" path="res://img/layout/hall1.png" id="2_uovvg"]
+[ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="4_mxo8b"]
 
 [sub_resource type="Curve2D" id="Curve2D_r14vu"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 300, 5, 0, 0, 0, 0, -300, 5)
+"points": PackedVector2Array(0, 0, 0, 0, 1714.59, 6, 0, 0, 0, 0, -300, 5)
 }
 point_count = 2
 
@@ -18,11 +21,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uovvg")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(700, 130)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-color = Color(0.377919, 0.377919, 0.377919, 1)
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_nwxuc")
+
+[node name="ColorRect" type="TextureRect" parent="HBoxContainer"]
+texture_repeat = 2
+custom_minimum_size = Vector2(2000, 130)
+layout_mode = 2
+texture = ExtResource("2_uovvg")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_mxo8b")
 
 [node name="room_path" type="Path2D" parent="."]
-position = Vector2(355, 93)
+position = Vector2(392, 310.764)
 curve = SubResource("Curve2D_r14vu")
