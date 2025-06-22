@@ -2,20 +2,27 @@
 
 [ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/corridor.gd" id="1_uovvg"]
 
-[sub_resource type="Curve2D" id="Curve2D_ueh1s"]
+[sub_resource type="Curve2D" id="Curve2D_r14vu"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -159.2, -5.34058e-05, 0, 0, 0, 0, 300, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 300, 5, 0, 0, 0, 0, -300, 5)
 }
 point_count = 2
 
-[node name="corridor" type="Node2D"]
+[node name="corridor" type="CenterContainer" groups=["Room"]]
+anchors_preset = -1
+anchor_right = 0.608
+anchor_bottom = 0.201
+offset_right = -0.416016
+offset_bottom = -0.248001
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_uovvg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 759.0
-offset_bottom = 118.0
+custom_minimum_size = Vector2(700, 130)
+layout_mode = 2
 color = Color(0.377919, 0.377919, 0.377919, 1)
 
 [node name="room_path" type="Path2D" parent="."]
-position = Vector2(380, 70)
-curve = SubResource("Curve2D_ueh1s")
+position = Vector2(355, 93)
+curve = SubResource("Curve2D_r14vu")

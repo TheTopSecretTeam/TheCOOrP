@@ -1,2 +1,2 @@
-# swp-capstone2025
-Lobotomy Corporation Online project
+# TheCOOrP
+Lobotomy Corporation COOP project
