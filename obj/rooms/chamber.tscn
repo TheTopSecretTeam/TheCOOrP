@@ -1,40 +1,91 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx0u5ty4gc1o5"]
+[gd_scene load_steps=11 format=3 uid="uid://bx0u5ty4gc1o5"]
 
-[ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="1_q6bq8"]
+[ext_resource type="Resource" uid="uid://b4uc1785bd3wc" path="res://res/abno_resources/Abnormalities/test_abno.tres" id="2_xsyyv"]
 [ext_resource type="Script" uid="uid://bmr10cm8vqb8o" path="res://obj/rooms/chamber.gd" id="2_y0fo7"]
 [ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="3_ckaer"]
+[ext_resource type="PackedScene" uid="uid://dblm4m3puom7t" path="res://obj/rooms/Cell/ProgressBar.tscn" id="3_k2ix4"]
 [ext_resource type="Texture2D" uid="uid://dsf87roce13ta" path="res://img/layout/chamber.png" id="3_mr62c"]
+[ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="3_ulrp8"]
+[ext_resource type="FontFile" uid="uid://d28nsu3jcup13" path="res://res/style/fonts/norwester.otf" id="5_h1o0o"]
+[ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="5_i8y48"]
+[ext_resource type="PackedScene" uid="uid://gnrfrvcmqj0r" path="res://UI/research_menu_components/research_menu.tscn" id="7_i8y48"]
 
 [sub_resource type="Curve2D" id="Curve2D_y0fo7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 407, 663, 0, 0, 0, 0, 777, 660)
+}
+point_count = 2
 
-[node name="chamber" instance=ExtResource("1_q6bq8")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="chamber" type="CenterContainer" groups=["Room"]]
 offset_right = 200.0
 offset_bottom = 130.0
-grow_horizontal = 1
-grow_vertical = 1
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("2_y0fo7")
+anomaly = ExtResource("2_xsyyv")
 
-[node name="TextureRect" parent="HBoxContainer" index="0"]
+[node name="Bar" parent="." instance=ExtResource("3_k2ix4")]
+position = Vector2(-85, 363)
+scale = Vector2(1.4901, 1.21379)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_h1o0o")
+theme_override_font_sizes/font_size = 60
+text = "ANOMALY NAME (0)"
+underline = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 visible = false
+layout_mode = 2
+texture = ExtResource("3_ulrp8")
 
-[node name="ColorRect" parent="HBoxContainer" index="1"]
+[node name="ColorRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+texture_repeat = 2
 custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
 texture = ExtResource("3_mr62c")
 stretch_mode = 2
 
-[node name="TextureRect2" parent="HBoxContainer" index="2"]
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 visible = false
+layout_mode = 2
+texture = ExtResource("5_i8y48")
 
-[node name="room_path" parent="." index="1"]
+[node name="CharacterMarker" type="Marker2D" parent="."]
+position = Vector2(664, 570)
+
+[node name="room_path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_y0fo7")
 
-[node name="waypoint" parent="room_path" index="0" instance=ExtResource("3_ckaer")]
-position = Vector2(202, 200.236)
+[node name="waypoint" parent="room_path" instance=ExtResource("3_ckaer")]
+position = Vector2(613.682, 661.324)
+progress = 206.689
 
-[node name="CharacterMarker" type="Marker2D" parent="." index="2"]
-position = Vector2(664, 570)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ResearchMenu" parent="CanvasLayer" instance=ExtResource("7_i8y48")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="WorkContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="." method="_on_abno_name_button_down"]

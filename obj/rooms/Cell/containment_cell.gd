@@ -2,6 +2,7 @@ extends Room
 
 @export var anomaly : AbnormalityResource 
 @onready var unique_pe_counter = $Unique_PE_Counter
+var agents = []
 
 func _ready() -> void:
 	if anomaly: load_anomaly()
@@ -34,8 +35,8 @@ func _on_bar_work_completed(pe_box: Variant) -> void:
 	anomaly.unique_pe += pe_box
 	unique_pe_counter.text = str(anomaly.unique_pe)
 
-func _on_abno_name_button_down() -> void:
-	var research_window_resource = preload("res://port/Cell/research_menu_components/research_menu.tscn")
-	var research_window_instance = research_window_resource.instantiate()
-	$WindowLayer.add_child(research_window_instance)
-	research_window_instance.window_call(anomaly)
+#func _on_abno_name_button_down() -> void:
+	#var research_window_resource = preload("res://port/Cell/research_menu_components/research_menu.tscn")
+	#var research_window_instance = research_window_resource.instantiate()
+	#$WindowLayer.add_child(research_window_instance)
+	#research_window_instance.window_call(anomaly)

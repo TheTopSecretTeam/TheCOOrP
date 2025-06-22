@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dykb6ha8tuqnc"]
+[gd_scene load_steps=21 format=3 uid="uid://dykb6ha8tuqnc"]
 
 [ext_resource type="Script" uid="uid://dqljhjxdxrynr" path="res://obj/rooms/Cell/containment_cell.gd" id="1_nr55g"]
 [ext_resource type="Texture2D" uid="uid://dk3oyyt6aqsys" path="res://img/Cell/isolate_2-resources.assets-4752.png" id="1_tahq2"]
@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/abno_resources/Abnormalities/base_abno_res.gd" id="2_yi4f0"]
 [ext_resource type="Texture2D" uid="uid://cwqjvhp6iq4vj" path="res://img/Cell/FirstAnim.png" id="3_lekry"]
 [ext_resource type="Script" uid="uid://cy2if0c6k4k5x" path="res://res/abno_resources/custom_works/base_work.gd" id="3_yi4f0"]
-[ext_resource type="FontFile" uid="uid://d28nsu3jcup13" path="res://res/style/fonts/norwester.otf" id="6_jbm6o"]
 [ext_resource type="Script" uid="uid://br7vv88hosypw" path="res://obj/rooms/Cell/camera_area.gd" id="6_lekry"]
+[ext_resource type="FontFile" uid="uid://d28nsu3jcup13" path="res://res/style/fonts/norwester.otf" id="7_l37jk"]
 [ext_resource type="Resource" uid="uid://bj2yh43oax8q6" path="res://res/abno_resources/custom_works/new_resource.tres" id="7_yi4f0"]
 [ext_resource type="Texture2D" uid="uid://chng3andowbph" path="res://img/Cell/Room.png" id="11_yi4f0"]
 [ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="13_l37jk"]
@@ -41,12 +41,9 @@ font_size = 72
 font_color = Color(1, 1, 0.596078, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vadps"]
-font = ExtResource("6_jbm6o")
+font = ExtResource("7_l37jk")
 font_size = 60
 font_color = Color(1, 1, 0.596078, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pswui"]
-size = Vector2(945, 73)
 
 [sub_resource type="Animation" id="Animation_526i6"]
 length = 0.001
@@ -119,7 +116,9 @@ _data = {
 }
 point_count = 2
 
-[node name="ContainmentCell" type="Node2D"]
+[node name="ContainmentCell" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_nr55g")
 anomaly = SubResource("Resource_l37jk")
 
@@ -142,7 +141,7 @@ offset_left = 147.447
 offset_top = 87.0115
 offset_right = 821.447
 offset_bottom = 165.011
-theme_override_fonts/font = ExtResource("6_jbm6o")
+theme_override_fonts/font = ExtResource("7_l37jk")
 theme_override_font_sizes/font_size = 60
 metadata/_edit_use_anchors_ = true
 
@@ -156,13 +155,6 @@ offset_bottom = 77.2788
 text = "Abnormality Name"
 label_settings = SubResource("LabelSettings_vadps")
 metadata/_edit_use_anchors_ = true
-
-[node name="Floor" type="Area2D" parent="."]
-position = Vector2(546, 750)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(57, 3)
-shape = SubResource("RectangleShape2D_pswui")
 
 [node name="CameraArea" type="Area2D" parent="."]
 position = Vector2(124, 172.001)
@@ -205,16 +197,14 @@ position = Vector2(591, 644)
 scale = Vector2(0.391349, -0.00155521)
 curve = SubResource("Curve2D_yi4f0")
 
-[node name="waypoint" parent="room_path" node_paths=PackedStringArray("self_room") instance=ExtResource("13_l37jk")]
+[node name="waypoint" parent="room_path" instance=ExtResource("13_l37jk")]
 position = Vector2(971, 643)
 rotation = 3.14159
-self_room = NodePath("../..")
 
 [node name="WindowLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[connection signal="button_down" from="AbnoName" to="." method="_on_abno_name_button_down"]
 [connection signal="mouse_entered" from="CameraArea" to="CameraArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CameraArea" to="CameraArea" method="_on_mouse_exited"]
-[connection signal="work_completed" from="CameraArea/Sprite2D/Bar" to="." method="_on_bar_work_completed"]
 [connection signal="work_completed" from="CameraArea/Sprite2D/Bar" to="CameraArea" method="_on_progress_bar_work_completed"]
+[connection signal="work_completed" from="CameraArea/Sprite2D/Bar" to="." method="_on_bar_work_completed"]

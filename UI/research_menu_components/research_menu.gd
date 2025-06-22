@@ -1,5 +1,4 @@
 extends TabContainer
-
 var anomaly : AbnormalityResource
 
 func _on_open_weapon_button_down() -> void:
@@ -21,9 +20,7 @@ func _on_open_armor_button_down() -> void:
 
 
 func _on_exit_button_down() -> void:
-	self.hide()
-	$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.queue_free()
-
+	hide()
 
 func window_call(res: AbnormalityResource) -> void:
 	anomaly = res
@@ -47,7 +44,7 @@ func window_call(res: AbnormalityResource) -> void:
 	$HBoxContainer/VBoxContainer2/GridContainer/work3/VBoxContainer/Label.text = anomaly.works[2].button_text
 	$HBoxContainer/VBoxContainer2/GridContainer/work4/VBoxContainer/Label.text = anomaly.works[3].button_text
 	
-	var info_scene = preload("res://port/Cell/research_menu_components/info.tscn")
+	var info_scene = preload("res://UI/research_menu_components/info.tscn")
 	for info in anomaly.mechanics_info:
 		var info_instance = info_scene.instantiate()
 		info_instance.text = info

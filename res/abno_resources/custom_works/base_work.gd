@@ -14,5 +14,5 @@ func execute(caller : Node) -> void:
 	_run_behavior(caller)
 
 #Override this in subclasses
-func _run_behavior(caller : Node) -> void:
+func _run_behavior(_caller : Node) -> void:
 	printerr("Behavior not implemented")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/abno_resources/Abnormalities/base_abno_res.gd" id="1_3gtmr"]
 [ext_resource type="Script" uid="uid://cy2if0c6k4k5x" path="res://res/abno_resources/custom_works/base_work.gd" id="2_h0afb"]
-[ext_resource type="Texture2D" uid="uid://bcih7dqgynq6g" path="res://obj/rooms/Cell/research_menu_components/placeholderart.jpg" id="2_k120n"]
+[ext_resource type="Texture2D" uid="uid://bcih7dqgynq6g" path="res://UI/research_menu_components/placeholderart.jpg" id="2_k120n"]
 
 [resource]
 script = ExtResource("1_3gtmr")

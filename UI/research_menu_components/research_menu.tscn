@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://gnrfrvcmqj0r"]
 
-[ext_resource type="Script" uid="uid://6kufsop5afjp" path="res://obj/rooms/Cell/research_menu_components/research_menu.gd" id="1_6a0ui"]
-[ext_resource type="Texture2D" uid="uid://bcih7dqgynq6g" path="res://obj/rooms/Cell/research_menu_components/placeholderart.jpg" id="1_448q0"]
-[ext_resource type="StyleBox" uid="uid://dbiynfhcrgonq" path="res://obj/rooms/Cell/research_menu_components/research_menu.tres" id="3_sj57j"]
+[ext_resource type="Script" uid="uid://6kufsop5afjp" path="res://UI/research_menu_components/research_menu.gd" id="1_6a0ui"]
+[ext_resource type="Texture2D" uid="uid://bcih7dqgynq6g" path="res://UI/research_menu_components/placeholderart.jpg" id="1_448q0"]
+[ext_resource type="StyleBox" uid="uid://dbiynfhcrgonq" path="res://UI/research_menu_components/research_menu.tres" id="3_sj57j"]
 [ext_resource type="Texture2D" uid="uid://cpkrafp0qk8lx" path="res://img/Cell/Instict_PH.jpg" id="4_6a0ui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g6qr"]
@@ -14,6 +14,7 @@ border_width_bottom = 2
 border_color = Color(0.294118, 0.407843, 0.764706, 0.67451)
 
 [node name="ResearchMenu" type="TabContainer"]
+custom_minimum_size = Vector2(1280, 720)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

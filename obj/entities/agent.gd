@@ -19,10 +19,10 @@ var waypoint : Node2D
 var flipped : bool = false:
 	set(value):
 		if value:
-			$Sprite2D.scale.x = -1
+			$Skeleton.scale.x = -0.5
 			speed = -1 * abs(speed)
 		else:
-			$Sprite2D.scale.x = 1
+			$Skeleton.scale.x = 0.5
 			speed = abs(speed)
 		flipped = value
 

@@ -31,6 +31,6 @@ extends Resource
 var armor_open = false
 var weapon_open = false
 
-@export var profile : Texture2D = load("res://obj/rooms/Cell/research_menu_components/placeholderart.jpg")
+@export var profile : Texture2D = load("res://UI/research_menu_components/placeholderart.jpg")
 @export var mechanics_info : Array[String] = ["WOOOOOOOOOOOOOO", "WEEEEEEEEEEEEE", "WAAAAAAAAAAAAAAAAAaaa"]
 @export var lore: String = "Just nothing"
