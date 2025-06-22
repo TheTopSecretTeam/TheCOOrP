@@ -29,6 +29,7 @@ display_server/driver.linuxbsd="wayland"
 
 Agent=""
 Room=""
+Sync="Nodes that need to be synchronized"
 
 [input]
 

@@ -19,7 +19,7 @@ _data = {
 &"walk": SubResource("Animation_g3b03")
 }
 
-[node name="Agent" type="PathFollow2D" groups=["Agent"]]
+[node name="Agent" type="PathFollow2D" groups=["Agent", "Sync"]]
 rotates = false
 loop = false
 script = ExtResource("1_l35n4")

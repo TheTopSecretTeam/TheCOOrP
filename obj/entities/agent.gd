@@ -29,8 +29,10 @@ var flipped : bool = false:
 @export var agent_name : String = "Brad" #delete after agent resource
 @export var speed : float = 100.0
 
+
 func _ready() -> void:
 	$Name.text = agent_name # change for $Name.text = agent_res.name
+
 
 func flip():
 	flipped = !flipped
@@ -62,6 +64,8 @@ func _on_chamber_arrival():
 	state = CHAMBER
 	flipped = false
 
+
+
 func _process(delta: float) -> void:
 	match state:
 		WANDER:
@@ -74,3 +78,38 @@ func _process(delta: float) -> void:
 			if progress == waypoint.progress:
 				#print(true)
 				waypoint.leading_room.transfer(self, current_room)
+
+# NET
+func get_sync_data() -> Dictionary:
+	print("Recieved data from server.")
+	return {
+		"progress": progress,
+		"flipped": flipped,
+		"room": get_parent().get_path(),
+		"path": path.duplicate(),
+		"state": state,
+		"current_room": current_room
+	}
+
+func apply_sync_data(data: Dictionary) -> void:
+	print("Applying synchronization...")
+	
+	var new_parent = get_node_or_null(data["room"])
+	if new_parent and new_parent != get_parent():
+		# Save global position
+		var global_pos = global_position
+		var global_rot = global_rotation
+			
+		# Reparent
+		get_parent().remove_child(self)
+		new_parent.add_child(self)
+		
+		# Restore position
+		global_position = global_pos
+		global_rotation = global_rot
+		
+	progress = data["progress"]
+	flipped = data["flipped"]
+	path = data["path"]
+	state = data["state"]
+	current_room = data["current_room"]

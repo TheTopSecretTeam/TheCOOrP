@@ -1,8 +1,22 @@
 extends Control
 
-var selected_agents = []
+@onready var net_manager = preload("res://net/scripts/net_manager.gd").new()
+@onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
+var net_manager_instance: Node
 
-#This implementation is meant to be changed
+var selected_agents: Array = []  # Явное указание типа
+
+func _ready():
+	add_child(net_manager)
+	add_child(sync_manager)
+	
+	if not is_instance_valid(net_manager):
+		push_error("Failed to initialize net manager!")
+		return
+	
+	if not is_instance_valid(sync_manager):
+		push_error("Failed to initialize sync manager!")
+		return
 
 func _physics_process(_delta):
 	var cursor_pos = get_global_mouse_position()
@@ -15,10 +29,19 @@ func _physics_process(_delta):
 		if selected_thing is Room:
 			#print("room_selected")
 			if selected_agents.size() != 0:
-				send_agent(selected_agents[0], selected_thing.get_index())
+				send_agent.rpc(selected_agents[0].name, selected_thing.get_index())
 				print("Trying to redirect an Agent")
 
-func send_agent(agent, room_index: int):
+@rpc("any_peer", "call_local")
+func send_agent(agent_name, room_index: int):
+	var agent: Agent
+	for node in get_tree().get_nodes_in_group("Agent"):
+		if node.name == agent_name:
+			agent = node
+
+	print(multiplayer.get_unique_id(), agent.current_room)
+	sync_manager._on_timer_timeout()
+	while (agent.current_room == null): await get_tree().get_frame()
 	var path = $facility_navigation.get_agent_path(agent.current_room, room_index)
 	agent.path = path
 	agent._on_travel()
