@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AnomalyWork" load_steps=3 format=3 uid="uid://dbmaf0gaf1dj"]
+
+[ext_resource type="Script" uid="uid://hucsrhwem0j4" path="res://obj/rooms/Cell/anomaly_work.gd" id="1_jod4u"]
+[ext_resource type="Script" uid="uid://bcx3t4ka88iku" path="res://obj/rooms/Cell/AnomalyWorkRes/Attachment/attachment.gd" id="2_fh355"]
+
+[resource]
+script = ExtResource("1_jod4u")
+name = "attachment"
+work = ExtResource("2_fh355")

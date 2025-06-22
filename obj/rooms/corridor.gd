@@ -15,7 +15,7 @@ func _ready() -> void:
 				if self.get_index() == 0: print(child.leading_room.get_index())
 		if child is Agent:
 			agents[child.agent_name] = child
-		
+
 func _add_agent(agent: Agent) -> void:
 	agents[agent.agent_name] = agent
 	get_child(1).add_child(agent)
