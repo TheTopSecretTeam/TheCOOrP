@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bx0u5ty4gc1o5"]
+[gd_scene load_steps=16 format=3 uid="uid://bx0u5ty4gc1o5"]
 
 [ext_resource type="Resource" uid="uid://b4uc1785bd3wc" path="res://res/scripts/Abnormalities/test_abno.tres" id="2_xsyyv"]
 [ext_resource type="Script" uid="uid://bmr10cm8vqb8o" path="res://obj/rooms/chamber.gd" id="2_y0fo7"]
@@ -13,10 +13,11 @@
 [ext_resource type="Script" uid="uid://bn28xqoyvk4nn" path="res://obj/rooms/working.gd" id="5_50w6m"]
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="5_i8y48"]
 [ext_resource type="PackedScene" uid="uid://gnrfrvcmqj0r" path="res://UI/research_menu_components/research_menu.tscn" id="7_i8y48"]
+[ext_resource type="PackedScene" uid="uid://3hysti02x5o6" path="res://obj/entities/anomaly_entities/wirebird.tscn" id="13_wjttg"]
 
 [sub_resource type="Curve2D" id="Curve2D_y0fo7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 407, 663, 0, 0, 0, 0, 777, 660)
+"points": PackedVector2Array(0, 0, 0, 0, 58, 660, 0, 0, 0, 0, 777, 660)
 }
 point_count = 2
 
@@ -81,16 +82,13 @@ texture = ExtResource("5_i8y48")
 curve = SubResource("Curve2D_y0fo7")
 
 [node name="waypoint" parent="room_path" instance=ExtResource("3_ckaer")]
-position = Vector2(613.682, 661.324)
-progress = 206.689
+position = Vector2(607.606, 660)
+progress = 549.604
 
-[node name="WorkContainer" type="HBoxContainer" parent="."]
-visible = false
-layout_mode = 2
-
-[node name="AgentContainer" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 2
+[node name="Anomaly" parent="room_path" instance=ExtResource("13_wjttg")]
+position = Vector2(164.124, 660)
+scale = Vector2(-1, 1)
+progress = 106.124
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -103,6 +101,21 @@ offset_right = 1280.0
 offset_bottom = 720.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorkContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="AgentContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
 
 [connection signal="work_completed" from="Bar" to="." method="_on_bar_work_completed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="." method="_on_abno_name_button_down"]

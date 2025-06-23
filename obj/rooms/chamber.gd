@@ -9,7 +9,7 @@ var wc_buttons : Array[Button]
 var working : bool = false
 var work_probability : float
 var working_agent : Agent
-@onready var work_container = $WorkContainer
+@onready var work_container = $CanvasLayer/CenterContainer/WorkContainer
 @export var agent_option : PackedScene
 
 func _ready() -> void:
@@ -25,7 +25,7 @@ func transfer(agent: Agent, _previous_room):
 	agent.reparent($room_path)
 	agent.progress_ratio = 1.0
 	agent._on_travel()
-	agent.state = 2
+	agent._on_chamber_arrival()
 	working_agent = agent
 	begin_work(work_probability, agent.agent_res)
 
@@ -55,18 +55,18 @@ func show_work():
 
 func agent_selected(agent_name : String):
 	Global.send_agent.emit(agent_name, get_index())
-	$AgentContainer.hide()
+	$CanvasLayer/CenterContainer/AgentContainer.hide()
 
 func show_agents():
-	for option in $AgentContainer.get_children():
+	for option in $CanvasLayer/CenterContainer/AgentContainer.get_children():
 		option.queue_free()
 	for agent in Global.agents:
 		var option_inst = agent_option.instantiate()
 		option_inst.agent = agent.agent_res
 		option_inst.agent_selected.connect(agent_selected)
-		$AgentContainer.add_child(option_inst)
-	$AgentContainer.show()
-	$AgentContainer.global_position = get_global_mouse_position()
+		$CanvasLayer/CenterContainer/AgentContainer.add_child(option_inst)
+	$CanvasLayer/CenterContainer/AgentContainer.show()
+	#$AgentContainer.global_position = get_global_mouse_position()
 	
 
 func _on_abno_name_button_down() -> void:

@@ -1,4 +1,4 @@
-extends PathFollow2D
+extends Entity
 
 class_name Agent
 
@@ -6,7 +6,6 @@ class_name Agent
 
 # stack of rooms left to visit in a trace
 var path : Array = []
-
 @export var current_room: int
 var state : int = WANDER
 enum {
@@ -14,33 +13,27 @@ enum {
 	GOTO,
 	CHAMBER,
 }
-
 var waypoint : Node2D
 var flipped : bool = false:
 	set(value):
 		if value:
 			$Skeleton.scale.x = -0.5
-			speed = -1 * abs(speed)
+			agent_res.current_sp = -1 * abs(agent_res.current_sp)
 		else:
 			$Skeleton.scale.x = 0.5
-			speed = abs(speed)
+			agent_res.current_sp = abs(agent_res.current_sp)
 		flipped = value
-
-@export var speed : float = 100.0
-
 
 func _ready() -> void:
 	$Name.text = agent_res.agent_name # change for $Name.text = agent_res.name
-
-
 func flip():
 	flipped = !flipped
-
 #for clicking on agents and selecting them
 func get_global_rect():
 	return $ClickRect.get_global_rect()
-
 func _on_travel():
+	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.play("walk")
 	if path.is_empty(): 
 		state = WANDER 
 		return
@@ -56,24 +49,22 @@ func _on_travel():
 		return
 	state = GOTO
 	flipped = (waypoint.progress - progress) < 0
-
 func _on_chamber_arrival():
-	current_room = path.pop_front()
-	path = []
+	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.play("idle")
 	state = CHAMBER
 	flipped = false
-
-
-
 func _process(delta: float) -> void:
 	match state:
 		WANDER:
 			var prev_prog = progress
-			progress += speed * delta
+			progress += agent_res.current_sp * delta
 			if progress == prev_prog:
 				flip()
 		GOTO:
-			progress = move_toward(progress, waypoint.progress, abs(speed) * delta)
+			progress = move_toward(
+				progress, waypoint.progress, abs(agent_res.current_sp) * delta
+				)
 			if progress == waypoint.progress:
 				#print(true)
 				waypoint.leading_room.transfer(self, current_room)

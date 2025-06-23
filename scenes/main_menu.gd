@@ -41,4 +41,4 @@ func _on_NG_Start_pressed():
 	pass
 
 func _mok_jmp_to_map():
-	get_tree().change_scene_to_file("res://scenes/map.tscn")
+	get_tree().change_scene_to_file("res://scenes/multiplayer.tscn")

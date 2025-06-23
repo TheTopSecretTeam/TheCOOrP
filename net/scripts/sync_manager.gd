@@ -5,11 +5,11 @@ var timer: Timer
 
 func _ready():
 	pass
-	#print("Sync manager initialized for peer: ", multiplayer.get_unique_id())
-	#
-	#if multiplayer.is_server():
-		#setup_timer()
-		#print("Server sync started with interval: ", sync_interval, "s")
+	print("Sync manager initialized for peer: ", multiplayer.get_unique_id())
+	
+	if multiplayer.is_server():
+		setup_timer()
+		print("Server sync started with interval: ", sync_interval, "s")
 
 func setup_timer():
 	timer = Timer.new()

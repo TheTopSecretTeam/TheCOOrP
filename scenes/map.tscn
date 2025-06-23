@@ -16,8 +16,8 @@ script = ExtResource("6_blm8a")
 agent_name = "Brad"
 max_hp = 100
 current_hp = 100
-max_sp = 50
-current_sp = 50
+max_sp = 200
+current_sp = 200
 current_room = NodePath("")
 path2d_progress = 0.0
 metadata/_custom_type_script = "uid://ucjxb53spu5r"
@@ -27,8 +27,8 @@ script = ExtResource("6_blm8a")
 agent_name = "Anna"
 max_hp = 100
 current_hp = 100
-max_sp = 50
-current_sp = 50
+max_sp = 200
+current_sp = 200
 current_room = NodePath("")
 path2d_progress = 0.0
 metadata/_custom_type_script = "uid://ucjxb53spu5r"
@@ -73,19 +73,19 @@ offset_top = -396.0
 offset_right = 2035.0
 offset_bottom = -6.0
 
-[node name="Agent" parent="rooms/corridor/room_path" index="0" instance=ExtResource("5_ogelb")]
-position = Vector2(1714.59, 6)
-agent_res = SubResource("Resource_mlgqr")
-
-[node name="waypoint" parent="rooms/corridor/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+[node name="waypoint" parent="rooms/corridor/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
 position = Vector2(-299.998, 5)
 progress = 2014.59
 leading_room = NodePath("../../../elevator")
 
-[node name="waypoint2" parent="rooms/corridor/room_path" index="2" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+[node name="waypoint2" parent="rooms/corridor/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
 position = Vector2(1292.53, 5.7905)
 progress = 422.057
 leading_room = NodePath("../../../chamber")
+
+[node name="Agent" parent="rooms/corridor/room_path" index="3" instance=ExtResource("5_ogelb")]
+position = Vector2(1714.59, 6)
+agent_res = SubResource("Resource_mlgqr")
 
 [node name="corridor2" parent="rooms" instance=ExtResource("4_rclfu")]
 layout_mode = 1
@@ -126,6 +126,9 @@ visible = false
 position = Vector2(43, 0)
 leading_room = NodePath("../../../corridor")
 
+[node name="Anomaly" parent="rooms/elevator/room_path" index="2"]
+position = Vector2(43, 0)
+
 [node name="elevator2" parent="rooms" instance=ExtResource("7_e3tq1")]
 layout_mode = 1
 offset_left = -480.0
@@ -149,6 +152,9 @@ leading_room = NodePath("../../../elevator")
 visible = false
 position = Vector2(43, 0)
 leading_room = NodePath("../../../corridor2")
+
+[node name="Anomaly" parent="rooms/elevator2/room_path" index="2"]
+position = Vector2(43, 0)
 
 [node name="chamber" parent="rooms" instance=ExtResource("8_fy0fe")]
 layout_mode = 0

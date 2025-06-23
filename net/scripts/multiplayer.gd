@@ -79,6 +79,6 @@ func _on_host_button_down() -> void:
 
 func _on_connect_button_down() -> void:
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client(ipaddr, port)
+	peer.create_client($name2.text, port)
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)

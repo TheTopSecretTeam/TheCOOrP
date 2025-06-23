@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b85wfl7wt2xqw"]
+[gd_scene load_steps=11 format=3 uid="uid://b85wfl7wt2xqw"]
 
 [ext_resource type="Script" uid="uid://cuc8mtkusmoxx" path="res://obj/entities/agent.gd" id="1_l35n4"]
 [ext_resource type="Texture2D" uid="uid://cq8aac2qq5cln" path="res://img/gibs/agent/agent_body.png" id="2_g3b03"]
@@ -7,16 +7,287 @@
 [ext_resource type="Texture2D" uid="uid://bvasvrv1m3okg" path="res://img/gibs/agent/agent_forearm.png" id="5_t74kt"]
 [ext_resource type="Texture2D" uid="uid://3fm05ki83g5g" path="res://img/gibs/agent/agent_arm.png" id="6_73koy"]
 
-[sub_resource type="Animation" id="Animation_13mac"]
-resource_name = "idle"
-
 [sub_resource type="Animation" id="Animation_g3b03"]
-resource_name = "walk"
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.39)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4.99999, -82), Vector2(5, -80)]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6a263"]
+[sub_resource type="Animation" id="Animation_13mac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4.99999, -82)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton/AgentBody/AgentThigh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton/AgentBody/AgentForearm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton/AgentBody/AgentForearm2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton/AgentBody/AgentThigh2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton/AgentBody/AgentThigh/AgentLeg:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton/AgentBody/AgentForearm/AgentArm:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton/AgentBody/AgentForearm2/AgentArm:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Skeleton/AgentBody/AgentThigh2/AgentLeg:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Skeleton/AgentBody:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_6a263"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/AgentBody/AgentThigh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.523599, 0.0, -0.537561]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/AgentBody/AgentForearm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, -0.427606, 0.0, 0.499164]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton/AgentBody/AgentForearm2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.427606, 0.0, -0.71384]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton/AgentBody/AgentThigh2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, -0.785398, 0.0, 0.642281]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton/AgentBody/AgentThigh/AgentLeg:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, -0.214676, 0.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton/AgentBody/AgentForearm/AgentArm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton/AgentBody/AgentForearm2/AgentArm:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton/AgentBody/AgentThigh2/AgentLeg:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, -0.345575]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton/AgentBody:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-2, -48), Vector2(-2, -46), Vector2(-2, -48), Vector2(-2, -46)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_13mac"]
 _data = {
-&"idle": SubResource("Animation_13mac"),
-&"walk": SubResource("Animation_g3b03")
+&"RESET": SubResource("Animation_13mac"),
+&"idle": SubResource("Animation_g3b03"),
+&"walk": SubResource("Animation_6a263")
 }
 
 [node name="Agent" type="PathFollow2D" groups=["Agent", "Sync"]]
@@ -24,7 +295,6 @@ z_index = 1
 rotates = false
 loop = false
 script = ExtResource("1_l35n4")
-speed = 200.0
 
 [node name="Name" type="Label" parent="."]
 offset_left = -17.0
@@ -42,48 +312,58 @@ offset_right = 51.0
 offset_bottom = 20.0
 
 [node name="Skeleton" type="Node2D" parent="."]
-position = Vector2(6, -76)
-scale = Vector2(0.5, 0.5)
+position = Vector2(4.99999, -82)
+scale = Vector2(0.4, 0.4)
 
 [node name="AgentBody" type="Sprite2D" parent="Skeleton"]
 position = Vector2(-2, -48)
 texture = ExtResource("2_g3b03")
 
 [node name="AgentThigh" type="Sprite2D" parent="Skeleton/AgentBody"]
-position = Vector2(-1, 92)
+position = Vector2(-2.99998, 75.5)
 texture = ExtResource("3_13mac")
+offset = Vector2(0, 24.49)
 
 [node name="AgentLeg" type="Sprite2D" parent="Skeleton/AgentBody/AgentThigh"]
-position = Vector2(-2, 74)
+position = Vector2(-2.5, 55)
 texture = ExtResource("4_6a263")
+offset = Vector2(0, 38.775)
 
 [node name="AgentForearm" type="Sprite2D" parent="Skeleton/AgentBody"]
-position = Vector2(22, -1)
+position = Vector2(14.5, -17)
 texture = ExtResource("5_t74kt")
+offset = Vector2(2.78, 14.29)
 
 [node name="AgentArm" type="Sprite2D" parent="Skeleton/AgentBody/AgentForearm"]
-position = Vector2(-5, 59)
+position = Vector2(5, 37.5)
 texture = ExtResource("6_73koy")
+offset = Vector2(-5.495, 39.77)
 
-[node name="AgentForearmback" type="Sprite2D" parent="Skeleton/AgentBody"]
+[node name="AgentForearm2" type="Sprite2D" parent="Skeleton/AgentBody"]
 show_behind_parent = true
-position = Vector2(-6, -4)
+position = Vector2(-5.49998, -17)
 texture = ExtResource("5_t74kt")
+offset = Vector2(2.78, 14.29)
 
-[node name="AgentArm" type="Sprite2D" parent="Skeleton/AgentBody/AgentForearmback"]
-position = Vector2(-5, 59)
+[node name="AgentArm" type="Sprite2D" parent="Skeleton/AgentBody/AgentForearm2"]
+position = Vector2(5, 37.5)
 texture = ExtResource("6_73koy")
+offset = Vector2(-5.495, 39.77)
 
-[node name="AgentThighback" type="Sprite2D" parent="Skeleton/AgentBody"]
+[node name="AgentThigh2" type="Sprite2D" parent="Skeleton/AgentBody"]
 show_behind_parent = true
-position = Vector2(-8, 86)
+position = Vector2(-2.99998, 75.5)
+scale = Vector2(1, 1)
 texture = ExtResource("3_13mac")
+offset = Vector2(0, 24.49)
 
-[node name="AgentLeg" type="Sprite2D" parent="Skeleton/AgentBody/AgentThighback"]
-position = Vector2(-2, 74)
+[node name="AgentLeg" type="Sprite2D" parent="Skeleton/AgentBody/AgentThigh2"]
+position = Vector2(-2.5, 55)
 texture = ExtResource("4_6a263")
+offset = Vector2(0, 38.775)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_6a263")
+&"": SubResource("AnimationLibrary_13mac")
 }
+autoplay = "walk"
