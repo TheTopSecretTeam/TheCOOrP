@@ -10,6 +10,7 @@ var _ready_to_use : bool = true
 
 #WARNING: DO NOT OVERWRITE
 func execute(caller : Node) -> void:
+	print("huh")
 	if !_ready_to_use: return
 	_run_behavior(caller)
 

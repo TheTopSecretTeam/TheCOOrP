@@ -1,14 +1,37 @@
-[gd_scene load_steps=11 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=14 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://clqiyga4o851i" path="res://scenes/facility_navigation.gd" id="2_0dq08"]
 [ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://scenes/net_manager.gd" id="3_f22gk"]
 [ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="4_rclfu"]
 [ext_resource type="PackedScene" uid="uid://b85wfl7wt2xqw" path="res://obj/entities/agent.tscn" id="5_ogelb"]
+[ext_resource type="Script" uid="uid://ucjxb53spu5r" path="res://res/scripts/agent/agent_res.gd" id="6_blm8a"]
 [ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="6_hns3r"]
 [ext_resource type="PackedScene" uid="uid://ch7tbtciyxmbe" path="res://obj/rooms/elevator.tscn" id="7_e3tq1"]
 [ext_resource type="PackedScene" uid="uid://bx0u5ty4gc1o5" path="res://obj/rooms/chamber.tscn" id="8_fy0fe"]
 [ext_resource type="PackedScene" uid="uid://m7nkloxdq8qb" path="res://obj/modules/camera/camera.tscn" id="9_be0no"]
+
+[sub_resource type="Resource" id="Resource_mlgqr"]
+script = ExtResource("6_blm8a")
+agent_name = "Brad"
+max_hp = 100
+current_hp = 100
+max_sp = 50
+current_sp = 50
+current_room = NodePath("")
+path2d_progress = 0.0
+metadata/_custom_type_script = "uid://ucjxb53spu5r"
+
+[sub_resource type="Resource" id="Resource_blm8a"]
+script = ExtResource("6_blm8a")
+agent_name = "Anna"
+max_hp = 100
+current_hp = 100
+max_sp = 50
+current_sp = 50
+current_room = NodePath("")
+path2d_progress = 0.0
+metadata/_custom_type_script = "uid://ucjxb53spu5r"
 
 [sub_resource type="Curve2D" id="Curve2D_ueh1s"]
 _data = {
@@ -52,6 +75,7 @@ offset_bottom = -6.0
 
 [node name="Agent" parent="rooms/corridor/room_path" index="0" instance=ExtResource("5_ogelb")]
 position = Vector2(1714.59, 6)
+agent_res = SubResource("Resource_mlgqr")
 
 [node name="waypoint" parent="rooms/corridor/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
 position = Vector2(-299.998, 5)
@@ -77,6 +101,7 @@ leading_room = NodePath("../../../elevator2")
 
 [node name="Agent2" parent="rooms/corridor2/room_path" index="1" instance=ExtResource("5_ogelb")]
 position = Vector2(1714.59, 6)
+agent_res = SubResource("Resource_blm8a")
 
 [node name="elevator" parent="rooms" instance=ExtResource("7_e3tq1")]
 layout_mode = 1

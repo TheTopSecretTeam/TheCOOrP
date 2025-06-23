@@ -1,7 +1,7 @@
 extends Resource
 class_name AgentStats
 
-@export var name: String = "Bong Bong"
+@export var agent_name: String = "Bong Bong"
 @export var max_hp: int = 100
 @export var current_hp: int = 100
 @export var max_sp: int = 50

@@ -8,7 +8,7 @@ func _ready():
 	if multiplayer.has_multiplayer_peer():
 		print("Multiplayer ready!")
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Add new cursors
 	for player_id in Global.Players:
 		if not cursors.has(player_id):

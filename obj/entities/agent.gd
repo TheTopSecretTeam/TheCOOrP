@@ -2,7 +2,7 @@ extends PathFollow2D
 
 class_name Agent
 
-@export var agent_res : Resource
+@export var agent_res : AgentStats
 
 # stack of rooms left to visit in a trace
 var path : Array = []
@@ -26,12 +26,11 @@ var flipped : bool = false:
 			speed = abs(speed)
 		flipped = value
 
-@export var agent_name : String = "Brad" #delete after agent resource
 @export var speed : float = 100.0
 
 
 func _ready() -> void:
-	$Name.text = agent_name # change for $Name.text = agent_res.name
+	$Name.text = agent_res.agent_name # change for $Name.text = agent_res.name
 
 
 func flip():

@@ -17,7 +17,7 @@ extends Resource
 @export var damage_res_phys : float = 1
 @export var damage_res_ment : float = 2
 
-@export var works : Array[Work] = []
+@export var actions : Array[AnomalyAction] = []
 
 @export var behaviour: GDScript
 

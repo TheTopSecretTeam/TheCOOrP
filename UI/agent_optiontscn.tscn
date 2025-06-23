@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://7xcia31pkmay"]
+
+[ext_resource type="Script" uid="uid://c626rgsnkan0i" path="res://UI/agent_optiontscn.gd" id="1_iqyrw"]
+
+[node name="AgentOption" type="MarginContainer"]
+offset_right = 52.0
+offset_bottom = 40.0
+script = ExtResource("1_iqyrw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.194776, 0.185775, 0.17538, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Brad"
+underline = 2
+
+[connection signal="pressed" from="HBoxContainer/LinkButton" to="." method="_on_link_button_pressed"]

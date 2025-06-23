@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AnomalyAction" load_steps=2 format=3 uid="uid://cxofh1d14d58r"]
+
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_jl4ue"]
+
+[resource]
+script = ExtResource("1_jl4ue")
+action_name = "Insight"
+probability = 0.7
+metadata/_custom_type_script = "uid://bur3tdfovrpyd"

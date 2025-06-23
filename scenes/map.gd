@@ -10,6 +10,9 @@ func _ready():
 	add_child(net_manager)
 	add_child(sync_manager)
 	
+	Global.load_agents() #do this after adding agents!
+	Global.send_agent.connect(send_agent.rpc)
+	
 	if not is_instance_valid(net_manager):
 		push_error("Failed to initialize net manager!")
 		return
@@ -22,23 +25,26 @@ func _physics_process(_delta):
 	var cursor_pos = get_global_mouse_position()
 	if Input.is_action_just_pressed("clickMouse"):
 		var selected_thing = get_thing_under_cursor(cursor_pos)
+		if !selected_thing: return
 		if selected_thing is Agent:
 			selected_agents = []
 			selected_agents.append(selected_thing)
 			#print("agent_selected")
-		if selected_thing is Room:
+		elif selected_thing is Room and selected_thing is not AnomalyChamber:
 			#print("room_selected")
 			if selected_agents.size() != 0:
 				send_agent.rpc(selected_agents[0].name, selected_thing.get_index())
 				print("Trying to redirect an Agent")
+		elif !selected_thing.working:
+			selected_thing.show_work()
 
 @rpc("any_peer", "call_local")
 func send_agent(agent_name, room_index: int):
 	var agent: Agent
 	for node in get_tree().get_nodes_in_group("Agent"):
-		if node.name == agent_name:
+		if node.agent_res.agent_name == agent_name:
 			agent = node
-
+	if !agent: print("agent_not_found"); return
 	print(multiplayer.get_unique_id(), agent.current_room)
 	sync_manager._on_timer_timeout()
 	while (agent.current_room == null): await get_tree().get_frame()
