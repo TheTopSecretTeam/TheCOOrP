@@ -50,8 +50,11 @@ func _on_bar_work_completed(pe_box: Variant) -> void:
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
 
 func show_work():
-	work_container.show()
-	work_container.global_position = get_global_mouse_position()
+	if !work_container.visible:
+		work_container.show()
+	else:
+		work_container.hide()
+	#work_container.global_position = get_global_mouse_position()
 
 func agent_selected(agent_name : String):
 	Global.send_agent.emit(agent_name, get_index())
@@ -80,7 +83,6 @@ func _on_work_button_down(action_res) -> void:
 	show_agents()
 
 func work_ready():
-	work_container.hide()
 	for action in actions:
 		var work = Button.new()
 		work.set_text(action.action_name)
@@ -89,3 +91,6 @@ func work_ready():
 			work.set_script(script)
 		work.button_down.connect(_on_work_button_down.bind(action))
 		work_container.add_child(work)
+
+func _on_color_rect_pressed() -> void:
+	show_work()

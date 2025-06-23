@@ -51,6 +51,7 @@ func generate_cell(prob: float) -> void:
 	var success = [true, false]
 	var weights = PackedFloat32Array([prob, 1-prob])
 	if success[rng.rand_weighted(weights)]:
+		Global.current_energy += 1
 		pe += 1
 		pe_list[MAX - pe].visible = true
 	else:

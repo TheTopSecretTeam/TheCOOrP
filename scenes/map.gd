@@ -35,8 +35,8 @@ func _physics_process(_delta):
 			if selected_agents.size() != 0:
 				send_agent.rpc(selected_agents[0].agent_res.agent_name, selected_thing.get_index())
 				print("Trying to redirect an Agent")
-		elif !selected_thing.working:
-			selected_thing.show_work()
+		#elif !selected_thing.working:
+			#selected_thing.show_work()
 
 @rpc("any_peer", "call_local")
 func send_agent(agent_name, room_index: int):

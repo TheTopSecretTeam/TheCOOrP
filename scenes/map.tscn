@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=17 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://clqiyga4o851i" path="res://scenes/facility_navigation.gd" id="2_0dq08"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://ch7tbtciyxmbe" path="res://obj/rooms/elevator.tscn" id="7_e3tq1"]
 [ext_resource type="PackedScene" uid="uid://bx0u5ty4gc1o5" path="res://obj/rooms/chamber.tscn" id="8_fy0fe"]
 [ext_resource type="PackedScene" uid="uid://m7nkloxdq8qb" path="res://obj/modules/camera/camera.tscn" id="9_be0no"]
+[ext_resource type="PackedScene" uid="uid://ck758bnk61jcp" path="res://UI/energy-bar/energy-bar.tscn" id="11_mlgqr"]
+[ext_resource type="Script" uid="uid://dc46wrfcoudhl" path="res://scenes/win_screen.gd" id="12_gw3fx"]
+[ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
 
 [sub_resource type="Resource" id="Resource_mlgqr"]
 script = ExtResource("6_blm8a")
@@ -46,6 +49,8 @@ script = ExtResource("1_i0xy1")
 
 [node name="facility_navigation" type="Node" parent="."]
 script = ExtResource("2_0dq08")
+
+[node name="EnergyBar" parent="." instance=ExtResource("11_mlgqr")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -167,6 +172,41 @@ offset_bottom = -504.0
 leading_room = NodePath("../../../corridor")
 
 [node name="Camera" parent="." instance=ExtResource("9_be0no")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="win_screen" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.5
+offset_top = -181.0
+offset_right = 281.5
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.306639, 0.319979, 0.369546, 1)
+script = ExtResource("12_gw3fx")
+
+[node name="Label" type="Label" parent="CanvasLayer/win_screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -36.0
+offset_right = 107.5
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_wslke")
+theme_override_font_sizes/font_size = 60
+text = "You Won"
 
 [editable path="rooms/corridor"]
 [editable path="rooms/corridor2"]

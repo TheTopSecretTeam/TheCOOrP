@@ -66,12 +66,11 @@ visible = false
 layout_mode = 2
 texture = ExtResource("3_ulrp8")
 
-[node name="ColorRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="ColorRect" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 texture_repeat = 2
 custom_minimum_size = Vector2(130, 130)
 layout_mode = 2
-texture = ExtResource("3_mr62c")
-stretch_mode = 2
+texture_normal = ExtResource("3_mr62c")
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 visible = false
@@ -108,6 +107,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="WorkContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
 visible = false
@@ -119,3 +119,5 @@ layout_mode = 2
 
 [connection signal="work_completed" from="Bar" to="." method="_on_bar_work_completed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="." method="_on_abno_name_button_down"]
+[connection signal="gui_input" from="HBoxContainer/VBoxContainer/HBoxContainer" to="." method="_on_h_box_container_gui_input"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/ColorRect" to="." method="_on_color_rect_pressed"]
