@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://gnrfrvcmqj0r"]
+[gd_scene load_steps=7 format=3 uid="uid://gnrfrvcmqj0r"]
 
 [ext_resource type="Script" uid="uid://6kufsop5afjp" path="res://UI/research_menu_components/research_menu.gd" id="1_6a0ui"]
 [ext_resource type="Texture2D" uid="uid://bcih7dqgynq6g" path="res://UI/research_menu_components/placeholderart.jpg" id="1_448q0"]
+[ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="3_8rl70"]
 [ext_resource type="StyleBox" uid="uid://dbiynfhcrgonq" path="res://UI/research_menu_components/research_menu.tres" id="3_sj57j"]
 [ext_resource type="Texture2D" uid="uid://cpkrafp0qk8lx" path="res://img/Cell/Instict_PH.jpg" id="4_6a0ui"]
 
@@ -42,6 +43,7 @@ expand_mode = 4
 [node name="Name" type="Label" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8rl70")
 theme_override_styles/normal = ExtResource("3_sj57j")
 text = "zdgnfgnfngxfnfgn"
 autowrap_mode = 3
@@ -50,22 +52,30 @@ clip_text = true
 [node name="Unique_PE" type="Label" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 10
+size_flags_stretch_ratio = 6.81
+theme_override_fonts/font = ExtResource("3_8rl70")
 theme_override_styles/normal = ExtResource("3_sj57j")
 text = "PE: 0
 "
 autowrap_mode = 3
 clip_text = true
 
-[node name="Resources" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="Resources" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 size_flags_vertical = 10
-size_flags_stretch_ratio = 1.6
+theme_override_fonts/font = ExtResource("3_8rl70")
+theme_override_styles/normal = ExtResource("3_sj57j")
+text = "Res1: Res2: Res3: Res4:
+"
+autowrap_mode = 3
+clip_text = true
 
 [node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_8rl70")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7g6qr")
 text = "Exit
 "
@@ -92,7 +102,6 @@ size_flags_vertical = 3
 columns = 2
 
 [node name="work1" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -128,15 +137,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
 
-[node name="OpenWork1" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/normal = ExtResource("3_sj57j")
-text = "Open: "
-
 [node name="work2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -171,15 +172,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
 
-[node name="OpenWork2" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/normal = ExtResource("3_sj57j")
-text = "Open: "
-
 [node name="work3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -214,15 +207,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
 
-[node name="OpenWork3" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/normal = ExtResource("3_sj57j")
-text = "Open: "
-
 [node name="work4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -256,13 +241,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
-
-[node name="OpenWork4" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/normal = ExtResource("3_sj57j")
-text = "Open: "
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -464,10 +442,6 @@ autowrap_mode = 3
 clip_text = true
 
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_down"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork1" to="." method="_on_open_work_1_button_down"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork2" to="." method="_on_open_work_2_button_down"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork3" to="." method="_on_open_work_3_button_down"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork4" to="." method="_on_open_work_4_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/Shop/OpenWeapon" to="." method="_on_open_weapon_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/Shop/OpenArmor" to="." method="_on_open_armor_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/BuyButtons/BuyWeapon" to="." method="_on_buy_weapon_button_down"]

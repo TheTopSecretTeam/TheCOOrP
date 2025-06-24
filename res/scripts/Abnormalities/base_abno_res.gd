@@ -28,8 +28,8 @@ extends Resource
 
 @export var sold_weapon: WeaponStats
 @export var sold_armor: ArmorStats
-@export var weapon_cost: int = 1
-@export var armor_cost: int = 1
+@export var weapon_cost: Array[int] = [0,0,0,0]
+@export var armor_cost: Array[int] = [0,0,0,0]
 var armor_open = false
 var weapon_open = false
 
