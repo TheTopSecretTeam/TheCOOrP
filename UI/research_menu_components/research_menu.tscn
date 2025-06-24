@@ -86,6 +86,7 @@ size_flags_vertical = 3
 columns = 2
 
 [node name="work1" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -121,7 +122,15 @@ vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
 
+[node name="OpenWork1" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("3_sj57j")
+text = "Open: "
+
 [node name="work2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -156,7 +165,15 @@ vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
 
+[node name="OpenWork2" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("3_sj57j")
+text = "Open: "
+
 [node name="work3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -191,7 +208,15 @@ vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
 
+[node name="OpenWork3" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("3_sj57j")
+text = "Open: "
+
 [node name="work4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -225,6 +250,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
+
+[node name="OpenWork4" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("3_sj57j")
+text = "Open: "
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -426,5 +458,9 @@ autowrap_mode = 3
 clip_text = true
 
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork1" to="." method="_on_open_work_1_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork2" to="." method="_on_open_work_2_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork3" to="." method="_on_open_work_3_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork4" to="." method="_on_open_work_4_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/Shop/OpenWeapon" to="." method="_on_open_weapon_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/Shop/OpenArmor" to="." method="_on_open_armor_button_down"]

@@ -18,6 +18,8 @@ extends Resource
 @export var damage_res_ment : float = 2
 
 @export var actions : Array[AnomalyAction] = []
+@export var actions_open : Array[bool] = []
+@export var actions_cost : Array[int] = []
 
 @export var behaviour: GDScript
 
