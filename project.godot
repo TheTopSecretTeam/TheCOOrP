@@ -31,6 +31,10 @@ Agent=""
 Room=""
 Sync="Nodes that need to be synchronized"
 
+[gui]
+
+theme/custom_font="uid://gwqdy37jl0s"
+
 [input]
 
 clickMouse={

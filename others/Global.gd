@@ -4,6 +4,8 @@ var Players = {}
 var color
 var agents : Array[Node] = []
 
+var resources : Dictionary[String, int] = {"res1" : 12, "res2" : 12, "res3" : 12, "res4" : 12,}
+
 var energy_quota : int = 10
 var current_energy : int = 0:
 	set(value):

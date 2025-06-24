@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="AbnormalityResource" load_steps=5 format=3 uid="uid://bdoglf8dgwrlw"]
+
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_epotb"]
+[ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/base_abno_res.gd" id="2_onv81"]
+[ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/anomaly_actions/WireBird/Instinct.tres" id="2_pvhib"]
+[ext_resource type="Resource" uid="uid://cxofh1d14d58r" path="res://res/anomaly_actions/WireBird/Insight.tres" id="3_pvhib"]
+
+[resource]
+script = ExtResource("2_onv81")
+code = "O-00-00"
+monster_name = "Nothing Here"
+threat_level = 0
+hp = 200
+max_hp = 200
+damage_type = "physical"
+damage_output = 5
+attack_speed = 3
+travel_speed = 5
+unique_pe = 0
+damage_res_phys = 1.0
+damage_res_ment = 2.0
+actions = Array[ExtResource("1_epotb")]([ExtResource("2_pvhib"), ExtResource("3_pvhib"), null, null])
+current_room = NodePath("")
+path2d_progress = 0.0
+weapon_cost = Array[int]([0, 0, 0, 0])
+armor_cost = Array[int]([0, 0, 0, 0])
+mechanics_info = Array[String](["WOOOOOOOOOOOOOO", "WEEEEEEEEEEEEE", "WAAAAAAAAAAAAAAAAAaaa"])
+lore = "Just nothing"
+metadata/_custom_type_script = "uid://bpdqcempefb6o"

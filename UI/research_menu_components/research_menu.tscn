@@ -50,16 +50,22 @@ clip_text = true
 [node name="Unique_PE" type="Label" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 8
 theme_override_styles/normal = ExtResource("3_sj57j")
 text = "PE: 0
 "
 autowrap_mode = 3
 clip_text = true
 
+[node name="Resources" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 1.6
+
 [node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_7g6qr")
 text = "Exit
 "
@@ -464,3 +470,5 @@ clip_text = true
 [connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork4" to="." method="_on_open_work_4_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/Shop/OpenWeapon" to="." method="_on_open_weapon_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/Shop/OpenArmor" to="." method="_on_open_armor_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer3/BuyButtons/BuyWeapon" to="." method="_on_buy_weapon_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer3/BuyButtons/BuyArmor" to="." method="_on_buy_armor_button_down"]
