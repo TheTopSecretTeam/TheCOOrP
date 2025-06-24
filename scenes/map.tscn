@@ -169,7 +169,11 @@ offset_right = 1813.0
 offset_bottom = -504.0
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(607.606, 660)
 leading_room = NodePath("../../../corridor")
+
+[node name="Anomaly" parent="rooms/chamber/room_path" index="1"]
+position = Vector2(164.124, 660)
 
 [node name="Camera" parent="." instance=ExtResource("9_be0no")]
 

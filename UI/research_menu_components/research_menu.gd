@@ -19,6 +19,34 @@ func _on_open_armor_button_down() -> void:
 	$HBoxContainer/VBoxContainer3/BuyButtons/BuyArmor.show()
 
 
+func _on_open_work_1_button_down() -> void:
+	if anomaly.unique_pe < anomaly.actions_cost[0]: return
+	anomaly.unique_pe -= anomaly.actions_cost[0]
+	anomaly.actions_open[0] = true
+	$HBoxContainer/VBoxContainer2/GridContainer/OpenWork1.hide()
+	$HBoxContainer/VBoxContainer2/GridContainer/work1.show()
+
+func _on_open_work_2_button_down() -> void:
+	if anomaly.unique_pe < anomaly.actions_cost[1]: return
+	anomaly.unique_pe -= anomaly.actions_cost[1]
+	anomaly.actions_open[1] = true
+	$HBoxContainer/VBoxContainer2/GridContainer/OpenWork2.hide()
+	$HBoxContainer/VBoxContainer2/GridContainer/work2.show()
+
+func _on_open_work_3_button_down() -> void:
+	if anomaly.unique_pe < anomaly.actions_cost[2]: return
+	anomaly.unique_pe -= anomaly.actions_cost[2]
+	anomaly.actions_open[2] = true
+	$HBoxContainer/VBoxContainer2/GridContainer/OpenWork3.hide()
+	$HBoxContainer/VBoxContainer2/GridContainer/work3.show()
+
+func _on_open_work_4_button_down() -> void:
+	if anomaly.unique_pe < anomaly.actions_cost[3]: return
+	anomaly.unique_pe -= anomaly.actions_cost[3]
+	anomaly.actions_open[3] = true
+	$HBoxContainer/VBoxContainer2/GridContainer/OpenWork4.hide()
+	$HBoxContainer/VBoxContainer2/GridContainer/work4.show()
+
 func _on_exit_button_down() -> void:
 	hide()
 
@@ -43,6 +71,38 @@ func window_call(res: AbnormalityResource) -> void:
 	$HBoxContainer/VBoxContainer2/GridContainer/work2/VBoxContainer/Label.text = anomaly.works[1].button_text
 	$HBoxContainer/VBoxContainer2/GridContainer/work3/VBoxContainer/Label.text = anomaly.works[2].button_text
 	$HBoxContainer/VBoxContainer2/GridContainer/work4/VBoxContainer/Label.text = anomaly.works[3].button_text
+
+	if anomaly.actions_open[0]:
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork1.hide()
+		$HBoxContainer/VBoxContainer2/GridContainer/work1.show()
+	else:
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork1.text = "Purchase: " + str(anomaly.actions_cost[0])
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork1.show()
+		$HBoxContainer/VBoxContainer2/GridContainer/work1.hide()
+	
+	if anomaly.actions_open[1]:
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork2.hide()
+		$HBoxContainer/VBoxContainer2/GridContainer/work2.show()
+	else:
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork2.text = "Purchase: " + str(anomaly.actions_cost[1])
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork2.show()
+		$HBoxContainer/VBoxContainer2/GridContainer/work2.hide()
+	
+	if anomaly.actions_open[2]:
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork3.hide()
+		$HBoxContainer/VBoxContainer2/GridContainer/work3.show()
+	else:
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork3.text = "Purchase: " + str(anomaly.actions_cost[2])
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork3.show()
+		$HBoxContainer/VBoxContainer2/GridContainer/work3.hide()
+	
+	if anomaly.actions_open[3]:
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork4.hide()
+		$HBoxContainer/VBoxContainer2/GridContainer/work4.show()
+	else:
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork4.text = "Purchase: " + str(anomaly.actions_cost[3])
+		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork4.show()
+		$HBoxContainer/VBoxContainer2/GridContainer/work4.hide()
 	
 	var info_scene = preload("res://UI/research_menu_components/info.tscn")
 	for info in anomaly.mechanics_info:
