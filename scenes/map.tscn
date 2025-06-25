@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://m7nkloxdq8qb" path="res://obj/modules/camera/camera.tscn" id="9_be0no"]
 [ext_resource type="PackedScene" uid="uid://dtn3am85byhpe" path="res://UI/resource-display/resourse_box.tscn" id="11_c00ee"]
 [ext_resource type="PackedScene" uid="uid://ck758bnk61jcp" path="res://UI/energy-bar/energy-bar.tscn" id="11_mlgqr"]
+[ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="11_n1psn"]
 [ext_resource type="Script" uid="uid://dc46wrfcoudhl" path="res://scenes/win_screen.gd" id="12_gw3fx"]
 [ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
 [ext_resource type="PackedScene" uid="uid://dxcj8bws0tbwt" path="res://UI/gafur_stuff/day_scene.tscn" id="14_n1psn"]
@@ -163,6 +164,7 @@ offset_left = 955.0
 offset_top = -1151.0
 offset_right = 1813.0
 offset_bottom = -504.0
+anomaly = ExtResource("11_n1psn")
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
 leading_room = NodePath("../../../corridor")

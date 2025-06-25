@@ -15,8 +15,8 @@ extends Resource
 
 @export var unique_pe : int = 0
 
-@export var damage_res_phys : float = 1
-@export var damage_res_ment : float = 2
+@export var damage_res_phys : float
+@export var damage_res_ment : float
 
 @export var actions : Array[AnomalyAction] = []
 @export var actions_open : Array[bool] = []
@@ -31,6 +31,7 @@ extends Resource
 @export var sold_armor: ArmorStats
 @export var weapon_cost: Array[int] = [0,0,0,0]
 @export var armor_cost: Array[int] = [0,0,0,0]
+
 var armor_open = false
 var weapon_open = false
 

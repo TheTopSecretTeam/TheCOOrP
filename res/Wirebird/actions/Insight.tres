@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="AnomalyAction" load_steps=2 format=3 uid="uid://cxofh1d14d58r"]
+[gd_resource type="Resource" script_class="AnomalyAction" load_steps=3 format=3 uid="uid://cxofh1d14d58r"]
 
-[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_jl4ue"]
+[ext_resource type="Texture2D" uid="uid://b6iwtgvcj7pik" path="res://img/gibs/icebox/frontal-lobe.png" id="1_antsy"]
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_jl4ue"]
 
 [resource]
 script = ExtResource("1_jl4ue")
 action_name = "Insight"
-probability = 0.7
+action_icon = ExtResource("1_antsy")
+probability = 0.5
+scripts = []
 metadata/_custom_type_script = "uid://bur3tdfovrpyd"
