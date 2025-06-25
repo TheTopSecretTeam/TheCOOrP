@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://gnrfrvcmqj0r"]
+[gd_scene load_steps=7 format=3 uid="uid://gnrfrvcmqj0r"]
 
 [ext_resource type="Script" uid="uid://6kufsop5afjp" path="res://UI/research_menu_components/research_menu.gd" id="1_6a0ui"]
 [ext_resource type="Texture2D" uid="uid://bcih7dqgynq6g" path="res://UI/research_menu_components/placeholderart.jpg" id="1_448q0"]
+[ext_resource type="Texture2D" uid="uid://ckmns84yska28" path="res://img/portraits/server_room.jpg" id="2_8rl70"]
 [ext_resource type="StyleBox" uid="uid://dbiynfhcrgonq" path="res://UI/research_menu_components/research_menu.tres" id="3_sj57j"]
 [ext_resource type="Texture2D" uid="uid://cpkrafp0qk8lx" path="res://img/Cell/Instict_PH.jpg" id="4_6a0ui"]
 
@@ -36,7 +37,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_stretch_ratio = 1.1
-texture = ExtResource("1_448q0")
+texture = ExtResource("2_8rl70")
 expand_mode = 4
 
 [node name="Name" type="Label" parent="HBoxContainer/VBoxContainer"]

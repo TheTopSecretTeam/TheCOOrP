@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="AnomalyWork" load_steps=3 format=3 uid="uid://d1fm37sjoma5s"]
-
-[ext_resource type="Script" uid="uid://hucsrhwem0j4" path="res://obj/rooms/Cell/anomaly_work.gd" id="1_mt4hj"]
-[ext_resource type="Script" uid="uid://drguyv2ptb6f8" path="res://obj/rooms/Cell/AnomalyWorkRes/Instinct/instinct.gd" id="2_0k8dt"]
-
-[resource]
-script = ExtResource("1_mt4hj")
-name = "instinct"
-work = ExtResource("2_0k8dt")

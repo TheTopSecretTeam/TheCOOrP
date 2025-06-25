@@ -28,6 +28,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
 z_index = 5
+layout_mode = 0
 offset_left = 193.925
 offset_top = 67.025
 offset_right = 503.925
