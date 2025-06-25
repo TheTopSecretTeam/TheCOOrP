@@ -73,7 +73,7 @@ func show_agents():
 	
 
 func _on_abno_name_button_down() -> void:
-	$CanvasLayer/ResearchMenu.show()
+	$CanvasLayer/ResearchMenu.window_call(anomaly)
 	#research_window_instance.window_call(anomaly)
 
 func _on_work_button_down(action_res) -> void:

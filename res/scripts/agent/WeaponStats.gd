@@ -7,5 +7,6 @@ class_name WeaponStats
 @export var attack_speed: int = 10
 @export var weapon_range: int = 10
 @export var sprite: Texture2D = null
+@export var special_effects_text: String
 
 @export var effects: Array[GDScript] = []
