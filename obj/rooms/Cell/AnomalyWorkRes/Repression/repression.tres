@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="AnomalyWork" load_steps=3 format=3 uid="uid://wh0xhhr57vhu"]
-
-[ext_resource type="Script" uid="uid://hucsrhwem0j4" path="res://obj/rooms/Cell/anomaly_work.gd" id="1_dpbua"]
-[ext_resource type="Script" uid="uid://t11j8p08mr3b" path="res://obj/rooms/Cell/AnomalyWorkRes/Repression/repression.gd" id="2_wc7kn"]
-
-[resource]
-script = ExtResource("1_dpbua")
-name = "repression"
-work = ExtResource("2_wc7kn")

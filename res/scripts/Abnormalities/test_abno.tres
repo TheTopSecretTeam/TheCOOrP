@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/base_abno_res.gd" id="1_3gtmr"]
 [ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_t3s2q"]
 [ext_resource type="Texture2D" uid="uid://bcih7dqgynq6g" path="res://UI/research_menu_components/placeholderart.jpg" id="2_k120n"]
-[ext_resource type="Resource" uid="uid://d162lu5dg3bhk" path="res://res/anomaly_actions/WireBird/Attachment.tres" id="2_mxbx8"]
-[ext_resource type="Resource" uid="uid://cxofh1d14d58r" path="res://res/anomaly_actions/WireBird/Insight.tres" id="3_kh5fe"]
-[ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/anomaly_actions/WireBird/Instinct.tres" id="4_3bsvi"]
-[ext_resource type="Resource" uid="uid://vy75qjymj4o2" path="res://res/anomaly_actions/WireBird/Repression.tres" id="5_bgs1t"]
+[ext_resource type="Resource" uid="uid://d162lu5dg3bhk" path="res://res/Wirebird/actions/Attachment.tres" id="2_mxbx8"]
+[ext_resource type="Resource" uid="uid://cxofh1d14d58r" path="res://res/Wirebird/actions/Insight.tres" id="3_kh5fe"]
+[ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/Wirebird/actions/Instinct.tres" id="4_3bsvi"]
+[ext_resource type="Resource" uid="uid://vy75qjymj4o2" path="res://res/Wirebird/actions/Repression.tres" id="5_bgs1t"]
 
 [resource]
 script = ExtResource("1_3gtmr")
