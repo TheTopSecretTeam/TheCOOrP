@@ -1,29 +1,105 @@
-[gd_resource type="Resource" script_class="AbnormalityResource" load_steps=5 format=3 uid="uid://bdoglf8dgwrlw"]
+[gd_resource type="Resource" script_class="AbnormalityResource" load_steps=11 format=3 uid="uid://bdoglf8dgwrlw"]
 
 [ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_epotb"]
 [ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/base_abno_res.gd" id="2_onv81"]
 [ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/anomaly_actions/WireBird/Instinct.tres" id="2_pvhib"]
 [ext_resource type="Resource" uid="uid://cxofh1d14d58r" path="res://res/anomaly_actions/WireBird/Insight.tres" id="3_pvhib"]
+[ext_resource type="Resource" uid="uid://dkbabudvihart" path="res://res/anomaly_actions/IceBox/WarmUp.tres" id="4_drq3t"]
+[ext_resource type="Resource" uid="uid://c0cd373dyw6pj" path="res://res/anomaly_actions/IceBox/Freeze.tres" id="5_uqxp2"]
+[ext_resource type="Texture2D" uid="uid://cq64quvrnj6tt" path="res://img/gibs/icebox/icebox_profile.png" id="6_uqxp2"]
+[ext_resource type="Script" uid="uid://dj6vym7wwqet2" path="res://res/scripts/agent/ArmorStats.gd" id="8_mtkaj"]
+[ext_resource type="Texture2D" uid="uid://h0lyid1x3q7d" path="res://img/gibs/icebox/icebox_armor.png" id="9_251ki"]
+
+[sub_resource type="Resource" id="Resource_pq6pj"]
+script = ExtResource("8_mtkaj")
+name = "Basic Armor"
+physical_resistance = 0.8
+mental_resistance = 0.8
+sprite = ExtResource("9_251ki")
+special_effects_text = "Wearer does not suffer from Freeze effect"
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://dj6vym7wwqet2"
 
 [resource]
 script = ExtResource("2_onv81")
-code = "O-00-00"
-monster_name = "Nothing Here"
-threat_level = 0
+code = "O-00-01"
+monster_name = "Ice Box"
+threat_level = 1
 hp = 200
 max_hp = 200
-damage_type = "physical"
+damage_type = "mental"
 damage_output = 5
 attack_speed = 3
 travel_speed = 5
-unique_pe = 0
-damage_res_phys = 1.0
-damage_res_ment = 2.0
-actions = Array[ExtResource("1_epotb")]([ExtResource("2_pvhib"), ExtResource("3_pvhib"), null, null])
+unique_pe = 5
+damage_res_phys = 0.0
+damage_res_ment = 0.0
+actions = Array[ExtResource("1_epotb")]([ExtResource("2_pvhib"), ExtResource("3_pvhib"), ExtResource("4_drq3t"), ExtResource("5_uqxp2")])
+actions_open = Array[bool]([false, false, false, false])
+actions_cost = Array[int]([1, 1, 1, 1])
 current_room = NodePath("")
 path2d_progress = 0.0
+sold_armor = SubResource("Resource_pq6pj")
 weapon_cost = Array[int]([0, 0, 0, 0])
-armor_cost = Array[int]([0, 0, 0, 0])
-mechanics_info = Array[String](["WOOOOOOOOOOOOOO", "WEEEEEEEEEEEEE", "WAAAAAAAAAAAAAAAAAaaa"])
-lore = "Just nothing"
+armor_cost = Array[int]([7, 3, 0, 0])
+profile = ExtResource("6_uqxp2")
+mechanics_info = Array[String](["Upon Freeze work completion agent's SP is fixed at 1% and cannot be changed. Effect lasts until next work", "Anomaly creates a freezing effect that has 3 stages. For every stage: -20% speed to enybody in a certain radius around the chamber", "Performing \"Warm Up\" work reduces the freezing stage by 1 stage. Performing \"Freeze\" work increases freezing stage by 1"])
+lore = "**Instruction Manual for the Model X Sealed Refrigeration Unit**
+
+  
+**Introduction**
+  
+Congratulations on your acquisition of the Model X Sealed Refrigeration Unit. This advanced appliance is designed for permanent storage, offering optimal cooling performance without the need for access. Please read this manual carefully before installation and use.
+
+  
+**1. Specifications**
+  
+- **Dimensions:** ###
+  
+- **Weight:** ###
+  
+- **Power Supply:** ###
+  
+- **Temperature Range:** ###
+  
+- **Capacity:** ###
+
+  
+**2. Installation**
+  
+2.1 **Location:** Place the unit in a well-ventilated area with sufficient clearance on all sides (minimum 10 cm).
+  
+2.2 **Power Connection:** Plug the unit into a grounded outlet matching the specified voltage.
+  
+2.3 **Initial Activation:** Once powered, the unit will automatically begin cooling. No further adjustments are necessary.
+
+  
+**3. Operation**
+  
+3.1 **Permanent Sealing:** The Model X is designed without an opening mechanism to ensure maximum thermal efficiency and hygiene.
+  
+3.2 **Temperature Monitoring:** An external display (if equipped) will show internal temperature. No user intervention is required.
+  
+3.3 **Maintenance:** None. The sealed design eliminates the need for cleaning or defrosting.
+
+  
+**4. Safety Precautions**
+  
+- Do not attempt to modify or force open the unit.
+  
+- Ensure proper ventilation to prevent overheating.
+  
+- Disconnect power before any servicing (conducted only by authorized personnel).
+
+  
+**5. Warranty & Support**
+  
+This unit is covered under a [X]-year warranty against manufacturing defects. For assistance, contact [Customer Support Information].
+
+  
+**Disclaimer:** The manufacturer is not liable for improper use or attempts to breach the sealed structure.
+
+  
+**End of Manual**
+  "
 metadata/_custom_type_script = "uid://bpdqcempefb6o"

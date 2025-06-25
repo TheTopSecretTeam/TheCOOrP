@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AnomalyAction" load_steps=3 format=3 uid="uid://c0cd373dyw6pj"]
+
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_3kuq2"]
+[ext_resource type="Texture2D" uid="uid://uab4j2vrb33" path="res://img/gibs/icebox/frozen-body.png" id="1_xw4af"]
+
+[resource]
+script = ExtResource("1_3kuq2")
+action_name = "Freeze"
+action_icon = ExtResource("1_xw4af")
+probability = 0.0
+scripts = []
+metadata/_custom_type_script = "uid://bur3tdfovrpyd"

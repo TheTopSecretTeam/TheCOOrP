@@ -5,6 +5,7 @@
 [node name="Label" type="Label"]
 custom_minimum_size = Vector2(0, 34)
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/normal = ExtResource("1_ddhn0")
 text = "zdgnfgnfngxfnfgn"
 autowrap_mode = 3
