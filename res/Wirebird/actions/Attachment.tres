@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_pogki")
-action_name = "Insight"
+action_name = "Attachment"
 probability = 0.3
+scripts = []
 metadata/_custom_type_script = "uid://bur3tdfovrpyd"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://7xcia31pkmay"]
+[gd_scene load_steps=3 format=3 uid="uid://7xcia31pkmay"]
 
 [ext_resource type="Script" uid="uid://c626rgsnkan0i" path="res://UI/agent_optiontscn.gd" id="1_iqyrw"]
+[ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="2_rsuxi"]
 
 [node name="AgentOption" type="MarginContainer"]
 offset_right = 52.0
@@ -21,6 +22,8 @@ layout_mode = 2
 [node name="LinkButton" type="LinkButton" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_rsuxi")
+theme_override_font_sizes/font_size = 60
 text = "Brad"
 underline = 2
 

@@ -16,9 +16,7 @@ func _on_Main_Settings_pressed():
 	print("Settings are not implemented")
 
 func _on_Main_Join_pressed():
-	_mok_jmp_to_map()
-	return
-	print("Join is not implemented")
+	get_tree().change_scene_to_file("res://scenes/map.tscn")
 
 func _on_Main_Exit_pressed():
 	$ExitDialog.popup_centered()

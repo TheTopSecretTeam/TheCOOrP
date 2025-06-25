@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_snv3n")
-action_name = "Repression"
+action_name = "Instinct"
 probability = 0.9
+scripts = []
 metadata/_custom_type_script = "uid://bur3tdfovrpyd"
