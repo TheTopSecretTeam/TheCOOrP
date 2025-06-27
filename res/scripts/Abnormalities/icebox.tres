@@ -44,6 +44,7 @@ weapon_cost = Array[int]([0, 0, 0, 0])
 armor_cost = Array[int]([7, 3, 0, 0])
 profile = ExtResource("6_uqxp2")
 mechanics_info = Array[String](["Upon Freeze work completion agent's SP is fixed at 1% and cannot be changed. Effect lasts until next work", "Anomaly creates a freezing effect that has 3 stages. For every stage: -20% speed to enybody in a certain radius around the chamber", "Performing \"Warm Up\" work reduces the freezing stage by 1 stage. Performing \"Freeze\" work increases freezing stage by 1"])
+mechanics_open = Array[bool]([false, false, false])
 lore = "**Instruction Manual for the Model X Sealed Refrigeration Unit**
 
   
