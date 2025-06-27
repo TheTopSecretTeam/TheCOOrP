@@ -35,18 +35,28 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_stretch_ratio = 1.1
 texture = ExtResource("1_448q0")
 expand_mode = 4
 
 [node name="Name" type="Label" parent="HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_styles/normal = ExtResource("3_sj57j")
 text = "Just Nothing"
 autowrap_mode = 3
 clip_text = true
+
+[node name="OpenMain" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("3_sj57j")
+text = "Open: "
 
 [node name="Unique_PE" type="Label" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 34)
@@ -269,16 +279,8 @@ text = "Open: "
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BuyEscapeStats" type="Button" parent="HBoxContainer/VBoxContainer3"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.64
-theme_override_styles/normal = SubResource("StyleBoxFlat_7g6qr")
-text = "Open: "
-
 [node name="EscapeStats" type="Label" parent="HBoxContainer/VBoxContainer3"]
+visible = false
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -290,6 +292,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
+
+[node name="OpenEscapeStats" type="Button" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.64
+theme_override_styles/normal = SubResource("StyleBoxFlat_7g6qr")
+text = "Open: "
 
 [node name="Shop" type="HBoxContainer" parent="HBoxContainer/VBoxContainer3"]
 layout_mode = 2
@@ -397,6 +407,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="BuyWeapon" type="Button" parent="HBoxContainer/VBoxContainer3/BuyButtons/WeaponButtCont"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_7g6qr")
@@ -407,6 +418,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="BuyArmor" type="Button" parent="HBoxContainer/VBoxContainer3/BuyButtons/ArmorButtCont"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_7g6qr")
@@ -450,11 +462,13 @@ theme_override_styles/normal = ExtResource("3_sj57j")
 text = "Nothing"
 autowrap_mode = 3
 
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/OpenMain" to="." method="_on_open_main_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork1" to="." method="_on_open_work_1_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork2" to="." method="_on_open_work_2_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork3" to="." method="_on_open_work_3_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer2/GridContainer/OpenWork4" to="." method="_on_open_work_4_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer3/OpenEscapeStats" to="." method="_on_open_escape_stats_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/Shop/OpenWeapon" to="." method="_on_open_weapon_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/Shop/OpenArmor" to="." method="_on_open_armor_button_down"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer3/BuyButtons/WeaponButtCont/BuyWeapon" to="." method="_on_buy_weapon_button_down"]
