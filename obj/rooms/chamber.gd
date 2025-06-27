@@ -11,7 +11,7 @@ var work_probability : float
 var working_agent : Agent
 @onready var work_container = $CanvasLayer/CenterContainer/WorkContainer
 @export var agent_option : PackedScene
-@onready var btn = preload("res://UI/styled_button.tscn")
+@onready var btn = preload("res://ui/styled_button.tscn")
 
 func _ready() -> void:
 	if anomaly: load_anomaly()
