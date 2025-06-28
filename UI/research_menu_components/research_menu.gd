@@ -97,7 +97,8 @@ func window_call(res: AbnormalityResource) -> void:
 	
 	$HBoxContainer/VBoxContainer/Unique_PE.text = "PE: " + str(anomaly.unique_pe)
 	$HBoxContainer/VBoxContainer/Name.text = anomaly.monster_name
-	$HBoxContainer/VBoxContainer/TextureRect.texture = anomaly.profile
+	$HBoxContainer/VBoxContainer/TextureRect.texture = anomaly.texture
+	$HBoxContainer/VBoxContainer/Description.text = anomaly.description
 
 	if anomaly.actions_open[0]:
 		$HBoxContainer/VBoxContainer2/GridContainer/OpenWork1.hide()

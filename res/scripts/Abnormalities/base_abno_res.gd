@@ -3,6 +3,7 @@ extends Resource
 
 @export var code: String = "O-00-00"
 @export var monster_name: String = "Nothing Here"
+@export_multiline var description: String = ""
 @export var threat_level: int = 1
 @export var hp : int = 200
 @export var max_hp : int = 200
@@ -32,7 +33,5 @@ extends Resource
 @export var armor_cost: Array[int] = [0,0,0,0]
 var armor_open = false
 var weapon_open = false
-
-@export var profile : Texture2D = load("res://UI/research_menu_components/placeholderart.jpg")
-@export var mechanics_info : Array[String] = ["WOOOOOOOOOOOOOO", "WEEEEEEEEEEEEE", "WAAAAAAAAAAAAAAAAAaaa"]
-@export var lore: String = "Just nothing"
+@export_multiline var mechanics_info : Array[String] = ["WOOOOOOOOOOOOOO", "WEEEEEEEEEEEEE", "WAAAAAAAAAAAAAAAAAaaa"]
+@export_multiline var lore: String = "Just nothing"

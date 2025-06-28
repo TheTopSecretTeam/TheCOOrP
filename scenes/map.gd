@@ -21,6 +21,9 @@ func _ready():
 		push_error("Failed to initialize sync manager!")
 		return
 
+func get_cursor_node():
+	return $CanvasLayer
+
 func _physics_process(_delta):
 	var cursor_pos = get_global_mouse_position()
 	if Input.is_action_just_pressed("clickMouse"):

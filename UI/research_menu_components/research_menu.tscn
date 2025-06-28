@@ -58,6 +58,16 @@ text = "PE: 0
 autowrap_mode = 3
 clip_text = true
 
+[node name="Description" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_styles/normal = ExtResource("3_sj57j")
+text = "Wirebirds are common anomalies that usually spawn in unkept server rooms. They are growing by consuming nearby electronic devices and can grow up to 3 meters in height.
+At the first sight it may look that they are some kind of robot or artificial intelligence but they actually made out of flesh. Thats evident because they can bleed and lay flesh eggs, hence the name Wirebird.
+They are passive but can become dangerous during mating season if they grow too big.
+Due to their ability to convert matter via Radiance and their behaivior they are perfect for collecting samples."
+
 [node name="Resources" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10

@@ -5,10 +5,10 @@ var color
 var agents : Array[Node] = []
 
 var resources : Dictionary[String, int] = {
-	"res1" : 12,
-	"res2" : 12, 
-	"res3" : 12, 
-	"res4" : 12,
+	"Materials" : 12,
+	"Funds" : 12, 
+	"Radiance" : 12, 
+	"Blight" : 12,
 	}:
 		set(value):
 			resources = value

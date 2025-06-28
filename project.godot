@@ -12,7 +12,7 @@ config_version=5
 
 config/name="TheCOOrP"
 config/version="0.0.2"
-run/main_scene="uid://b42xk6gfhn38y"
+run/main_scene="uid://b5ecpebjg8xfe"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
@@ -23,6 +23,7 @@ Global="*res://others/Global.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="viewport"
 display_server/driver.linuxbsd="wayland"
 
 [global_group]
