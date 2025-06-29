@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AnomalyAction" load_steps=2 format=3 uid="uid://vy75qjymj4o2"]
 
-[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_fusv2"]
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_fusv2"]
 
 [resource]
 script = ExtResource("1_fusv2")
