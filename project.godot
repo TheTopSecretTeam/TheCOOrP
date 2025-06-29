@@ -26,6 +26,10 @@ window/size/viewport_height=720
 window/stretch/mode="viewport"
 display_server/driver.linuxbsd="wayland"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+
 [global_group]
 
 Agent=""

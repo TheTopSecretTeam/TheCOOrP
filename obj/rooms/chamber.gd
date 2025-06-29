@@ -50,12 +50,19 @@ func _on_bar_work_completed(pe_box: Variant) -> void:
 	working_agent = null
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
 
-func show_work():
-	if !work_container.visible:
-		work_container.show()
+func _on_color_rect_pressed() -> void:
+	show_work()
+	
+func show_work() -> bool:
+	if working:
+		return false
 	else:
-		work_container.hide()
-	#work_container.global_position = get_global_mouse_position()
+		if !work_container.visible:
+			work_container.show()
+		else:
+			work_container.hide()
+		#work_container.global_position = get_global_mouse_position()
+		return true
 
 func agent_selected(agent_name : String):
 	Global.send_agent.emit(agent_name, get_index())
@@ -78,10 +85,16 @@ func _on_abno_name_button_down() -> void:
 	#research_window_instance.window_call(anomaly)
 
 func _on_work_button_down(action_res) -> void:
-	working = true
-	work_probability = action_res.probability
-	work_container.hide()
-	show_agents()
+	action(action_res)
+
+func action(action_res) -> bool:
+	if !working:
+		working = true
+		work_probability = action_res.probability
+		work_container.hide()
+		show_agents()
+		return true
+	return false
 
 func work_ready():
 	for action in actions:
@@ -92,6 +105,3 @@ func work_ready():
 			work.set_script(script)
 		work.button_down.connect(_on_work_button_down.bind(action))
 		work_container.add_child(work)
-
-func _on_color_rect_pressed() -> void:
-	show_work()

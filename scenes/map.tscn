@@ -132,6 +132,7 @@ position = Vector2(43, 0)
 leading_room = NodePath("../../../corridor")
 
 [node name="Anomaly" parent="rooms/elevator/room_path" index="2"]
+visible = false
 position = Vector2(43, 0)
 
 [node name="elevator2" parent="rooms" instance=ExtResource("7_e3tq1")]
@@ -159,6 +160,7 @@ position = Vector2(43, 0)
 leading_room = NodePath("../../../corridor2")
 
 [node name="Anomaly" parent="rooms/elevator2/room_path" index="2"]
+visible = false
 position = Vector2(43, 0)
 
 [node name="chamber" parent="rooms" instance=ExtResource("8_fy0fe")]
