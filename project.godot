@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="LobotomyOnline"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/name="Transition to the next day"
+run/main_scene="res://pre_day_menu.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[autoload]
+[rendering]
 
-Main="*res://others/main.gd"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
