@@ -42,18 +42,20 @@ func _physics_process(_delta):
 			#selected_thing.show_work()
 
 @rpc("any_peer", "call_local")
-func send_agent(agent_name, room_index: int):
+func send_agent(agent_name, room_index: int) -> String :
 	var agent: Agent
 	for node in get_tree().get_nodes_in_group("Agent"):
 		if node.agent_res.agent_name == agent_name:
 			agent = node
-	if !agent: print("agent_not_found"); return
+	if !agent: print("agent_not_found"); return "agent_not_found"
 	print(multiplayer.get_unique_id(), agent.current_room)
 	sync_manager._on_timer_timeout()
 	while (agent.current_room == null): await get_tree().get_frame()
 	var path = $facility_navigation.get_agent_path(agent.current_room, room_index)
+	if path == []: return 'success stand'
 	agent.path = path
 	agent._on_travel()
+	return "success move"
 
 func get_thing_under_cursor(cursor_pos):
 	var containers = get_tree().get_nodes_in_group("Agent")
