@@ -1,0 +1,17 @@
+# This linter sucks, and will be removed in the next sprint.
+name: Linting
+
+on:
+  push:
+  pull_request:
+    branches: ["main", "dev"]
+
+jobs:
+  static-checks:
+    name: "Static checks"
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Scony/godot-gdscript-toolkit@master
+      - run: gdlint ./
