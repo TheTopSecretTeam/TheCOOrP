@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://ng7rda5ua20q"]
+
+[ext_resource type="Script" uid="uid://kqpiktle7w25" path="res://UI/gafur_stuff/pre_day_menu.gd" id="1_hvl4m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvl4m"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.10748, 0.10748, 0.10748, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3htk"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="PreDayMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hvl4m")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 17.0
+offset_right = 285.0
+offset_bottom = 241.0
+scale = Vector2(1.19901, 1.23614)
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="BeginDayButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Begin day"
+
+[node name="DayLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_hvl4m")
+text = "Day 1"
+horizontal_alignment = 1
+
+[node name="ResourcesLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_k3htk")
+text = "Resources"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResourcesBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 90
+
+[node name="Res1Label" type="Label" parent="MarginContainer/VBoxContainer/ResourcesBox"]
+layout_mode = 2
+text = "X"
+
+[node name="Res2Label" type="Label" parent="MarginContainer/VBoxContainer/ResourcesBox"]
+layout_mode = 2
+text = "X"
+
+[node name="Res3Label" type="Label" parent="MarginContainer/VBoxContainer/ResourcesBox"]
+layout_mode = 2
+text = "X"
+
+[node name="Res4Label" type="Label" parent="MarginContainer/VBoxContainer/ResourcesBox"]
+layout_mode = 2
+text = "X"
+
+[node name="BottomButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="EquipmentButton" type="Button" parent="MarginContainer/VBoxContainer/BottomButtons"]
+layout_mode = 2
+text = "Equipment"
+
+[node name="HireButton" type="Button" parent="MarginContainer/VBoxContainer/BottomButtons"]
+layout_mode = 2
+text = "Hire"

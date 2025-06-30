@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=18 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://clqiyga4o851i" path="res://scenes/facility_navigation.gd" id="2_0dq08"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ck758bnk61jcp" path="res://UI/energy-bar/energy-bar.tscn" id="11_mlgqr"]
 [ext_resource type="Script" uid="uid://dc46wrfcoudhl" path="res://scenes/win_screen.gd" id="12_gw3fx"]
 [ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
+[ext_resource type="PackedScene" uid="uid://dxcj8bws0tbwt" path="res://UI/gafur_stuff/day_scene.tscn" id="14_n1psn"]
 
 [sub_resource type="Resource" id="Resource_mlgqr"]
 script = ExtResource("6_blm8a")
@@ -213,6 +214,18 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_wslke")
 theme_override_font_sizes/font_size = 60
 text = "You Won"
+
+[node name="DayScene" parent="CanvasLayer" instance=ExtResource("14_n1psn")]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [editable path="rooms/corridor"]
 [editable path="rooms/corridor2"]

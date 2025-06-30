@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxcj8bws0tbwt"]
+
+[ext_resource type="Script" uid="uid://ces1uwne3s6ee" path="res://UI/gafur_stuff/day_scene.gd" id="1_iy2bo"]
+
+[node name="DayScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 39.0
+offset_bottom = 39.0
+script = ExtResource("1_iy2bo")
+
+[node name="FinishButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 371.0
+offset_top = 11.0
+offset_right = 487.0
+offset_bottom = 46.0
+text = "Finish the day"
+
+[node name="FinishMenu" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 270.0
+offset_right = 748.0
+offset_bottom = 427.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FinishMenu"]
+visible = false
+layout_mode = 2
+
+[node name="RestartDayButton" type="Button" parent="FinishMenu/VBoxContainer"]
+layout_mode = 2
+text = "Restart the day"
+
+[node name="NextDayButton" type="Button" parent="FinishMenu/VBoxContainer"]
+layout_mode = 2
+text = "Go to the next day"
