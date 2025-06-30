@@ -28,6 +28,7 @@ func transfer(agent: Agent, _previous_room):
 	agent._on_travel()
 	agent._on_chamber_arrival()
 	working_agent = agent
+	working_agent.working = true
 	begin_work(work_probability, agent.agent_res)
 
 func load_anomaly() -> void:
@@ -42,6 +43,7 @@ func begin_work(probability, _agent_res):
 	$Bar.work(probability)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
+	working_agent.working = false
 	working = false
 	anomaly.unique_pe += pe_box
 	

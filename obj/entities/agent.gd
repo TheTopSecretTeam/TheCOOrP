@@ -23,6 +23,7 @@ var flipped : bool = false:
 			$Skeleton.scale.x = 0.5
 			agent_res.current_sp = abs(agent_res.current_sp)
 		flipped = value
+var working = false
 
 func _ready() -> void:
 	$Name.text = agent_res.agent_name # change for $Name.text = agent_res.name
