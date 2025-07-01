@@ -7,9 +7,9 @@ var agent_sprite = preload("res://img/Player.png")
 @onready var agent_list = $Layout/Agents
 @onready var selection_display = $Layout/Display
 
-@export var weapons: Array[WeaponStats]
-@export var armors: Array[ArmorStats]
-@export var agents: Array[AgentStats]
+var weapons: Array[WeaponStats]
+var armors: Array[ArmorStats]
+var agents: Array[AgentStats]
 
 
 func populate_equipment_list(list: ItemList, items: Array) -> String:
