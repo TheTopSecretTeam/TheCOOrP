@@ -89,14 +89,13 @@ func _on_abno_name_button_down() -> void:
 func _on_work_button_down(action_res) -> void:
 	action(action_res)
 
-func action(action_res) -> bool:
-	if !working:
-		working = true
-		work_probability = action_res.probability
-		work_container.hide()
-		show_agents()
-		return true
-	return false
+func action(action_res) -> String:
+	if working: return "ALREADY_WORKING"
+	working = true
+	work_probability = action_res.probability
+	work_container.hide()
+	show_agents()
+	return "SUCCESS"
 
 func work_ready():
 	for action in actions:

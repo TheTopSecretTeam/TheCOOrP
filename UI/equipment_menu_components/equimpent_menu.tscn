@@ -1,0 +1,178 @@
+[gd_scene load_steps=18 format=3 uid="uid://bsold2gw5nlj6"]
+
+[ext_resource type="Script" uid="uid://bped5kxd4cjfq" path="res://UI/equipment_menu_components/equipment_menu.gd" id="1_tob5y"]
+[ext_resource type="Script" uid="uid://xljjjxxb412w" path="res://res/scripts/agent/WeaponStats.gd" id="2_g3qyo"]
+[ext_resource type="Script" uid="uid://dj6vym7wwqet2" path="res://res/scripts/agent/ArmorStats.gd" id="3_lg3o0"]
+[ext_resource type="Script" uid="uid://ucjxb53spu5r" path="res://res/scripts/agent/agent_res.gd" id="4_jk74u"]
+
+[sub_resource type="Resource" id="Resource_fg3rc"]
+script = ExtResource("2_g3qyo")
+name = "Basic Weapon"
+base_damage = 10
+damage_type = "physical"
+attack_speed = 10
+weapon_range = 10
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://xljjjxxb412w"
+
+[sub_resource type="Resource" id="Resource_mi8jb"]
+script = ExtResource("2_g3qyo")
+name = "Basic Weapon"
+base_damage = 10
+damage_type = "physical"
+attack_speed = 10
+weapon_range = 10
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://xljjjxxb412w"
+
+[sub_resource type="Resource" id="Resource_qftur"]
+script = ExtResource("2_g3qyo")
+name = "Basic Weapon"
+base_damage = 10
+damage_type = "physical"
+attack_speed = 10
+weapon_range = 10
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://xljjjxxb412w"
+
+[sub_resource type="Resource" id="Resource_rn13c"]
+script = ExtResource("2_g3qyo")
+name = "Basic Weapon"
+base_damage = 10
+damage_type = "physical"
+attack_speed = 10
+weapon_range = 10
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://xljjjxxb412w"
+
+[sub_resource type="Resource" id="Resource_dxk00"]
+script = ExtResource("2_g3qyo")
+name = "Basic Weapon"
+base_damage = 10
+damage_type = "physical"
+attack_speed = 10
+weapon_range = 10
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://xljjjxxb412w"
+
+[sub_resource type="Resource" id="Resource_orrd6"]
+script = ExtResource("3_lg3o0")
+name = "Basic Armor"
+physical_resistance = 1.0
+psychic_resistance = 1.0
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://dj6vym7wwqet2"
+
+[sub_resource type="Resource" id="Resource_hvs77"]
+script = ExtResource("3_lg3o0")
+name = "Basic Armor"
+physical_resistance = 1.0
+psychic_resistance = 1.0
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://dj6vym7wwqet2"
+
+[sub_resource type="Resource" id="Resource_4cfog"]
+script = ExtResource("3_lg3o0")
+name = "Basic Armor"
+physical_resistance = 1.0
+psychic_resistance = 1.0
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://dj6vym7wwqet2"
+
+[sub_resource type="Resource" id="Resource_jq8cs"]
+script = ExtResource("3_lg3o0")
+name = "Basic Armor"
+physical_resistance = 1.0
+psychic_resistance = 1.0
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://dj6vym7wwqet2"
+
+[sub_resource type="Resource" id="Resource_t3nb7"]
+script = ExtResource("4_jk74u")
+agent_name = "Bong Bong"
+max_hp = 100
+current_hp = 100
+max_sp = 50
+current_sp = 50
+current_room = NodePath("")
+path2d_progress = 0.0
+metadata/_custom_type_script = "uid://ucjxb53spu5r"
+
+[sub_resource type="Resource" id="Resource_f7sto"]
+script = ExtResource("4_jk74u")
+agent_name = "Bong Bong"
+max_hp = 100
+current_hp = 100
+max_sp = 50
+current_sp = 50
+current_room = NodePath("")
+path2d_progress = 0.0
+metadata/_custom_type_script = "uid://ucjxb53spu5r"
+
+[sub_resource type="Resource" id="Resource_4msw1"]
+script = ExtResource("4_jk74u")
+agent_name = "Bong Bong"
+max_hp = 100
+current_hp = 100
+max_sp = 50
+current_sp = 50
+current_room = NodePath("")
+path2d_progress = 0.0
+metadata/_custom_type_script = "uid://ucjxb53spu5r"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifl0f"]
+bg_color = Color(0.337255, 0.423529, 1, 0.294118)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.294118, 0.407843, 0.764706, 0.67451)
+
+[node name="equipment_menu" type="VBoxContainer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_tob5y")
+weapons = Array[ExtResource("2_g3qyo")]([SubResource("Resource_fg3rc"), SubResource("Resource_mi8jb"), SubResource("Resource_qftur"), SubResource("Resource_rn13c"), SubResource("Resource_dxk00")])
+armors = Array[ExtResource("3_lg3o0")]([SubResource("Resource_orrd6"), SubResource("Resource_hvs77"), SubResource("Resource_4cfog"), SubResource("Resource_jq8cs")])
+agents = Array[ExtResource("4_jk74u")]([SubResource("Resource_t3nb7"), SubResource("Resource_f7sto"), SubResource("Resource_4msw1")])
+
+[node name="Layout" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+
+[node name="Weapon" type="ItemList" parent="Layout/TabContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_tab_index = 0
+
+[node name="Armor" type="ItemList" parent="Layout/TabContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_tab_index = 1
+
+[node name="Display" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Agents" type="ItemList" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifl0f")
+text = "Exit
+"
+
+[connection signal="button_down" from="Exit" to="." method="_on_exit_button_down"]

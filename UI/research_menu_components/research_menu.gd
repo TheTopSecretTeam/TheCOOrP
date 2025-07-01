@@ -1,6 +1,6 @@
 extends TabContainer
 var anomaly : AbnormalityResource
-var equip_cost : int = 0
+var equip_cost : int
 
 func _on_open_weapon_button_down() -> void:
 	if anomaly.unique_pe < equip_cost: return
@@ -16,7 +16,6 @@ func _on_open_weapon_button_down() -> void:
 		counter+=1
 	$HBoxContainer/VBoxContainer3/BuyButtons/BuyWeapon.text = buttontext
 	$HBoxContainer/VBoxContainer3/BuyButtons/BuyWeapon.show()
-	
 
 func _on_open_armor_button_down() -> void:
 	if anomaly.unique_pe < equip_cost: return
@@ -62,13 +61,6 @@ func _on_open_work_4_button_down() -> void:
 	$HBoxContainer/VBoxContainer2/GridContainer/OpenWork4.hide()
 	$HBoxContainer/VBoxContainer2/GridContainer/work4.show()
 
-func _on_exit_button_down() -> void:
-	hide()
-	for child in $HBoxContainer/VBoxContainer/Resources.get_children():
-		child.get_parent().remove_child(child)
-	for child in $HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.get_children():
-		child.get_parent().remove_child(child)
-
 
 func _on_buy_weapon_button_down() -> void:
 	var counter = 0
@@ -79,7 +71,6 @@ func _on_buy_weapon_button_down() -> void:
 	$HBoxContainer/VBoxContainer3/BuyButtons/BuyWeapon.hide()
 	print("bought")
 
-
 func _on_buy_armor_button_down() -> void:
 	var counter = 0
 	for res in Global.resources:
@@ -88,6 +79,14 @@ func _on_buy_armor_button_down() -> void:
 		counter+=1
 	$HBoxContainer/VBoxContainer3/BuyButtons/BuyArmor.hide()
 	print("bought")
+
+
+func _on_exit_button_down() -> void:
+	hide()
+	for child in $HBoxContainer/VBoxContainer/Resources.get_children():
+		child.get_parent().remove_child(child)
+	for child in $HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.get_children():
+		child.get_parent().remove_child(child)
 
 func window_call(res: AbnormalityResource) -> void:
 	anomaly = res
