@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://blbldcq1ku414"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_of302"]
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_of302")
+text = "Purchase:"

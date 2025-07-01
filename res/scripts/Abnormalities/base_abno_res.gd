@@ -33,5 +33,9 @@ extends Resource
 @export var armor_cost: Array[int] = [0,0,0,0]
 var armor_open = false
 var weapon_open = false
+
 @export_multiline var mechanics_info : Array[String] = ["WOOOOOOOOOOOOOO", "WEEEEEEEEEEEEE", "WAAAAAAAAAAAAAAAAAaaa"]
+@export var mechanics_open : Array[bool] = []
+@export var mechanics_cost : Array[int] = []
+
 @export_multiline var lore: String = "Just nothing"

@@ -144,7 +144,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/normal = ExtResource("3_sj57j")
-text = "Open: "
+text = "Purchase: "
 
 [node name="work2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
 visible = false
@@ -187,7 +187,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/normal = ExtResource("3_sj57j")
-text = "Open: "
+text = "Purchase: "
 
 [node name="work3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
 visible = false
@@ -230,7 +230,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/normal = ExtResource("3_sj57j")
-text = "Open: "
+text = "Purchase: "
 
 [node name="work4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/GridContainer"]
 visible = false
@@ -273,7 +273,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/normal = ExtResource("3_sj57j")
-text = "Open: "
+text = "Purchase: "
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -286,7 +286,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.64
 theme_override_styles/normal = SubResource("StyleBoxFlat_7g6qr")
-text = "Open: "
+text = "Purchase: "
 
 [node name="EscapeStats" type="Label" parent="HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(0, 34)
@@ -309,7 +309,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_7g6qr")
-text = "Open: "
+text = "Purchase: "
 
 [node name="Weapon" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Shop"]
 visible = false
@@ -372,7 +372,7 @@ clip_text = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_7g6qr")
-text = "Open: "
+text = "Purchase: "
 
 [node name="Armor" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/Shop"]
 visible = false

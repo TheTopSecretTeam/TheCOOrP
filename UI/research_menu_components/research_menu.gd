@@ -79,7 +79,7 @@ func _on_buy_armor_button_down() -> void:
 		counter+=1
 	$HBoxContainer/VBoxContainer3/BuyButtons/BuyArmor.hide()
 	print("bought")
-
+	
 
 func _on_exit_button_down() -> void:
 	hide()
@@ -88,6 +88,18 @@ func _on_exit_button_down() -> void:
 	for child in $HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.get_children():
 		child.get_parent().remove_child(child)
 
+func _on_open_mechanics_button_down(index: int) -> void:
+	if index >= anomaly.mechanics_open.size() or anomaly.mechanics_open[index] or anomaly.unique_pe < anomaly.mechanics_cost[index]:
+		return
+	anomaly.unique_pe -= anomaly.mechanics_cost[index]
+	anomaly.mechanics_open[index] = true
+	
+	var container = $HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer
+	var button = container.get_node("MechButton%d" % index)
+	var info = container.get_node("MechInfo%d" % index)
+	button.hide()
+	info.show()
+	
 func window_call(res: AbnormalityResource) -> void:
 	anomaly = res
 	equip_cost = anomaly.threat_level
@@ -154,19 +166,34 @@ func window_call(res: AbnormalityResource) -> void:
 	$HBoxContainer/VBoxContainer2/GridContainer/work3/VBoxContainer/Label.text = anomaly.actions[2].action_name
 	$HBoxContainer/VBoxContainer2/GridContainer/work4/VBoxContainer/Label.text = anomaly.actions[3].action_name
 	
-	for info in anomaly.mechanics_info:
+	var mech_button_scene = preload("res://UI/research_menu_components/mech_button.tscn")
+	for i in range(anomaly.mechanics_info.size()):
 		var info_instance = info_scene.instantiate()
-		info_instance.text = info
+		info_instance.name = "MechInfo%d" % i
+		info_instance.text = anomaly.mechanics_info[i]
 		$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.add_child(info_instance)
+		
+		var button = mech_button_scene.instantiate()
+		button.name = "MechButton%d" % i
+		button.text = "Purchase: %d" % anomaly.mechanics_cost[i]
+		button.pressed.connect(_on_open_mechanics_button_down.bind(i))
+		$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.add_child(button)
+		
+		if anomaly.mechanics_open[i]:
+			button.hide()
+			info_instance.show()
+		else:
+			button.show()
+			info_instance.hide()
 	
-	$HBoxContainer/VBoxContainer3/EscapeStats.text = str(anomaly.damage_res_phys) + " " + str(anomaly.damage_res_ment)
+	# $HBoxContainer/VBcoxContainer3/EscapeStats.text = str(anomaly.damage_res_phys) + " " + str(anomaly.damage_res_ment)
 	
 	if anomaly.weapon_open:
 		$HBoxContainer/VBoxContainer3/Shop/OpenWeapon.hide()
 		$HBoxContainer/VBoxContainer3/Shop/Weapon.show()
 		$HBoxContainer/VBoxContainer3/BuyButtons/BuyWeapon.show()
 	else:
-		$HBoxContainer/VBoxContainer3/Shop/OpenWeapon.text = "Open: " + str(equip_cost)
+		$HBoxContainer/VBoxContainer3/Shop/OpenWeapon.text = "Purchase: " + str(equip_cost)
 		$HBoxContainer/VBoxContainer3/Shop/OpenWeapon.show()
 		$HBoxContainer/VBoxContainer3/Shop/Weapon.hide()
 		$HBoxContainer/VBoxContainer3/BuyButtons/BuyWeapon.hide()
@@ -176,7 +203,7 @@ func window_call(res: AbnormalityResource) -> void:
 		$HBoxContainer/VBoxContainer3/Shop/Armor.show()
 		$HBoxContainer/VBoxContainer3/BuyButtons/BuyArmor.show()
 	else:
-		$HBoxContainer/VBoxContainer3/Shop/OpenArmor.text = "Open: " + str(equip_cost)
+		$HBoxContainer/VBoxContainer3/Shop/OpenArmor.text = "Purchase: " + str(equip_cost)
 		$HBoxContainer/VBoxContainer3/Shop/OpenArmor.show()
 		$HBoxContainer/VBoxContainer3/Shop/Armor.hide()
 		$HBoxContainer/VBoxContainer3/BuyButtons/BuyArmor.hide()
