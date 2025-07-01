@@ -66,6 +66,9 @@ func _on_buy_weapon_button_down() -> void:
 	var counter = 0
 	for res in Global.resources:
 		if Global.resources[res] < anomaly.weapon_cost[counter]: return
+		counter+=1
+	counter = 0
+	for res in Global.resources:
 		Global.resources[res] -= anomaly.weapon_cost[counter]
 		counter+=1
 	$HBoxContainer/VBoxContainer3/BuyButtons/BuyWeapon.hide()
@@ -75,6 +78,9 @@ func _on_buy_armor_button_down() -> void:
 	var counter = 0
 	for res in Global.resources:
 		if Global.resources[res] < anomaly.armor_cost[counter]: return
+		counter+=1
+	counter = 0
+	for res in Global.resources:
 		Global.resources[res] -= anomaly.armor_cost[counter]
 		counter+=1
 	$HBoxContainer/VBoxContainer3/BuyButtons/BuyArmor.hide()

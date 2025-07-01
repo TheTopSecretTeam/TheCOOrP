@@ -36,6 +36,6 @@ weapon_cost = Array[int]([0, 0, 0, 0])
 armor_cost = Array[int]([0, 0, 0, 0])
 mechanics_info = Array[String](["Info1", "Info2", "Info3"])
 mechanics_open = Array[bool]([false, false, false])
-mechanics_cost = Array[int]([2, 3, 4])
+mechanics_cost = Array[int]([1, 1, 1])
 lore = ""
 metadata/_custom_type_script = "uid://bpdqcempefb6o"
