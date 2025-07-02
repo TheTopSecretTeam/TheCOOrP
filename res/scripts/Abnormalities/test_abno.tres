@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbnormalityResource" load_steps=7 format=3 uid="uid://b4uc1785bd3wc"]
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://b4uc1785bd3wc"]
 
 [ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/base_abno_res.gd" id="1_3gtmr"]
 [ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_t3s2q"]
@@ -38,9 +38,7 @@ display_name = "Entity"
 current_room = NodePath("")
 path2d_progress = 0.0
 team = 0
-max_hp = 200
 current_hp = 100
-travel_speed = 5
 base_damage_output = 5
 base_attack_speed = 3.0
 base_damage_type = "physical"

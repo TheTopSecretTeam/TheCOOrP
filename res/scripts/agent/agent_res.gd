@@ -1,6 +1,7 @@
 # agent_stats.gd
-class_name AgentStats
 extends EntityResource
+
+class_name AgentStats
 
 @export var agent_name: String = "PingPong"
 @export var max_sp: int = 50

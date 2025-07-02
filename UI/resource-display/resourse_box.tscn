@@ -1,17 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtn3am85byhpe"]
+[gd_scene load_steps=6 format=3 uid="uid://dtn3am85byhpe"]
 
 [ext_resource type="Script" uid="uid://cvtg11wkgibtw" path="res://UI/resource-display/resourse_box.gd" id="1_8jmiw"]
+[ext_resource type="Texture2D" uid="uid://b1w1lu37rx4ec" path="res://img/resources/materials.png" id="2_xgr34"]
+[ext_resource type="Texture2D" uid="uid://cfn8oymxdqb5g" path="res://img/resources/funds.png" id="3_s2ib2"]
+[ext_resource type="Texture2D" uid="uid://dydxc3ub1g7aq" path="res://img/resources/radiance.png" id="4_g2hgf"]
+[ext_resource type="Texture2D" uid="uid://wbtnubqy2m11" path="res://img/resources/blight.png" id="5_r518q"]
 
 [node name="ResourseBox" type="VBoxContainer"]
-offset_bottom = 12.0
+custom_minimum_size = Vector2(100, 300)
+offset_right = 5.0
+offset_bottom = 92.0
 script = ExtResource("1_8jmiw")
 
 [node name="ResourseSlot" type="HBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ResourseSlot"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-expand_mode = 3
+texture = ExtResource("2_xgr34")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="ResourseSlot"]
+layout_mode = 2
 
 [node name="Label" type="Label" parent="ResourseSlot"]
 layout_mode = 2
@@ -20,10 +31,15 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ResourseSlot2"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+texture = ExtResource("3_s2ib2")
 expand_mode = 3
 
 [node name="Label" type="Label" parent="ResourseSlot2"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="ResourseSlot2"]
 layout_mode = 2
 
 [node name="ResourseSlot3" type="HBoxContainer" parent="."]
@@ -31,9 +47,13 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ResourseSlot3"]
 layout_mode = 2
+texture = ExtResource("4_g2hgf")
 expand_mode = 3
 
 [node name="Label" type="Label" parent="ResourseSlot3"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="ResourseSlot3"]
 layout_mode = 2
 
 [node name="ResourseSlot4" type="HBoxContainer" parent="."]
@@ -41,7 +61,11 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ResourseSlot4"]
 layout_mode = 2
+texture = ExtResource("5_r518q")
 expand_mode = 3
 
 [node name="Label" type="Label" parent="ResourseSlot4"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="ResourseSlot4"]
 layout_mode = 2

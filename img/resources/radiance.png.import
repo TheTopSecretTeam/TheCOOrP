@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1w1lu37rx4ec"
-path="res://.godot/imported/materials.png-1cad61b487d0995b4c15b55d0ec41c2c.ctex"
+uid="uid://dydxc3ub1g7aq"
+path="res://.godot/imported/radiance.png-9737bbdfeca6288c605752697bbfa244.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/resource-display/materials.png"
-dest_files=["res://.godot/imported/materials.png-1cad61b487d0995b4c15b55d0ec41c2c.ctex"]
+source_file="res://img/resources/radiance.png"
+dest_files=["res://.godot/imported/radiance.png-9737bbdfeca6288c605752697bbfa244.ctex"]
 
 [params]
 

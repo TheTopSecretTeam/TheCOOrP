@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_epotb"]
 [ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/base_abno_res.gd" id="2_onv81"]
-[ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/anomaly_actions/WireBird/Instinct.tres" id="2_pvhib"]
-[ext_resource type="Resource" uid="uid://cxofh1d14d58r" path="res://res/anomaly_actions/WireBird/Insight.tres" id="3_pvhib"]
+[ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/Wirebird/actions/Instinct.tres" id="2_pvhib"]
+[ext_resource type="Resource" uid="uid://cxofh1d14d58r" path="res://res/Wirebird/actions/Insight.tres" id="3_pvhib"]
 [ext_resource type="Resource" uid="uid://dkbabudvihart" path="res://res/anomaly_actions/IceBox/WarmUp.tres" id="4_drq3t"]
 [ext_resource type="Resource" uid="uid://c0cd373dyw6pj" path="res://res/anomaly_actions/IceBox/Freeze.tres" id="5_uqxp2"]
 [ext_resource type="Texture2D" uid="uid://cq64quvrnj6tt" path="res://img/gibs/icebox/icebox_profile.png" id="6_uqxp2"]
@@ -24,7 +24,14 @@ metadata/_custom_type_script = "uid://dj6vym7wwqet2"
 script = ExtResource("2_onv81")
 code = "O-00-01"
 monster_name = "Ice Box"
+description = ""
 threat_level = 1
+hp = 200
+damage_type = "physical"
+damage_output = 5
+attack_speed = 3
+damage_res_phys = 0.0
+damage_res_ment = 0.0
 unique_pe = 5
 actions = Array[ExtResource("1_epotb")]([ExtResource("2_pvhib"), ExtResource("3_pvhib"), ExtResource("4_drq3t"), ExtResource("5_uqxp2")])
 actions_open = Array[bool]([false, false, false, false])
@@ -32,9 +39,13 @@ actions_cost = Array[int]([1, 1, 1, 1])
 sold_armor = SubResource("Resource_pq6pj")
 weapon_cost = Array[int]([0, 0, 0, 0])
 armor_cost = Array[int]([7, 3, 0, 0])
+main_open = false
+stats_open = false
+armor_open = false
+weapon_open = false
+mechanics_open = Array[bool]([false, false, false])
 profile = ExtResource("6_uqxp2")
 mechanics_info = Array[String](["Upon Freeze work completion agent's SP is fixed at 1% and cannot be changed. Effect lasts until next work", "Anomaly creates a freezing effect that has 3 stages. For every stage: -20% speed to enybody in a certain radius around the chamber", "Performing \"Warm Up\" work reduces the freezing stage by 1 stage. Performing \"Freeze\" work increases freezing stage by 1"])
-mechanics_open = Array[bool]([false, false, false])
 lore = "**Instruction Manual for the Model X Sealed Refrigeration Unit**
 
   
