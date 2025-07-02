@@ -21,8 +21,9 @@ func update_resources() -> void:
 
 
 func _on_open_weapon_button_down() -> void:
-	if anomaly.unique_pe < equip_open_cost: return
-	anomaly.unique_pe -= equip_open_cost
+	if anomaly.unique_pe < equip_cost: return
+	anomaly.unique_pe -= equip_cost
+	update_pe_display()
 	anomaly.weapon_open = true
 	$HBoxContainer/VBoxContainer3/Shop/OpenWeapon.hide()
 	$HBoxContainer/VBoxContainer3/Shop/Weapon.show()
@@ -38,8 +39,9 @@ func _on_open_weapon_button_down() -> void:
 	$HBoxContainer/VBoxContainer3/BuyButtons/WeaponButtCont/BuyWeapon.show()
 
 func _on_open_armor_button_down() -> void:
-	if anomaly.unique_pe < equip_open_cost: return
-	anomaly.unique_pe -= equip_open_cost
+	if anomaly.unique_pe < equip_cost: return
+	anomaly.unique_pe -= equip_cost
+	update_pe_display()
 	anomaly.armor_open = true
 	$HBoxContainer/VBoxContainer3/Shop/OpenArmor.hide()
 	$HBoxContainer/VBoxContainer3/Shop/Armor.show()
@@ -57,6 +59,7 @@ func _on_open_armor_button_down() -> void:
 func _on_open_work_1_button_down() -> void:
 	if anomaly.unique_pe < action_open_cost: return
 	anomaly.unique_pe -= action_open_cost
+	update_pe_display()
 	anomaly.actions_open[0] = true
 	$HBoxContainer/VBoxContainer2/GridContainer/OpenWork1.hide()
 	$HBoxContainer/VBoxContainer2/GridContainer/work1.show()
@@ -65,6 +68,7 @@ func _on_open_work_1_button_down() -> void:
 func _on_open_work_2_button_down() -> void:
 	if anomaly.unique_pe < action_open_cost: return
 	anomaly.unique_pe -= action_open_cost
+	update_pe_display()
 	anomaly.actions_open[1] = true
 	$HBoxContainer/VBoxContainer2/GridContainer/OpenWork2.hide()
 	$HBoxContainer/VBoxContainer2/GridContainer/work2.show()
@@ -73,6 +77,7 @@ func _on_open_work_2_button_down() -> void:
 func _on_open_work_3_button_down() -> void:
 	if anomaly.unique_pe < action_open_cost: return
 	anomaly.unique_pe -= action_open_cost
+	update_pe_display()
 	anomaly.actions_open[2] = true
 	$HBoxContainer/VBoxContainer2/GridContainer/OpenWork3.hide()
 	$HBoxContainer/VBoxContainer2/GridContainer/work3.show()
@@ -81,6 +86,7 @@ func _on_open_work_3_button_down() -> void:
 func _on_open_work_4_button_down() -> void:
 	if anomaly.unique_pe < action_open_cost: return
 	anomaly.unique_pe -= action_open_cost
+	update_pe_display()
 	anomaly.actions_open[3] = true
 	$HBoxContainer/VBoxContainer2/GridContainer/OpenWork4.hide()
 	$HBoxContainer/VBoxContainer2/GridContainer/work4.show()
@@ -143,6 +149,7 @@ func _on_open_mechanics_button_down(index: int) -> void:
 	if index >= anomaly.mechanics_open.size() or anomaly.mechanics_open[index] or anomaly.unique_pe < anomaly.mechanics_cost[index]:
 		return
 	anomaly.unique_pe -= anomaly.mechanics_cost[index]
+	update_pe_display()
 	anomaly.mechanics_open[index] = true
 	
 	var container = $HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer
@@ -150,6 +157,9 @@ func _on_open_mechanics_button_down(index: int) -> void:
 	var info = container.get_node("MechInfo%d" % index)
 	button.hide()
 	info.show()
+	
+func update_pe_display() -> void:
+	$HBoxContainer/VBoxContainer/Unique_PE.text = "PE: " + str(anomaly.unique_pe)
 	
 func window_call(res: AbnormalityResource) -> void:
 	anomaly = res
