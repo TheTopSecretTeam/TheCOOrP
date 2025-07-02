@@ -4,7 +4,7 @@ extends Entity
 @export var behavior_instance: GDScript
 
 var path : Array = []
-var state : int = WANDER
+var state : int = CHAMBER
 
 enum {
 	WANDER,
