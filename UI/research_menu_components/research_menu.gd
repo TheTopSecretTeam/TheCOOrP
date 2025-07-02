@@ -289,7 +289,7 @@ func window_call(res: AbnormalityResource) -> void:
 	$HBoxContainer/VBoxContainer2/GridContainer/work3/VBoxContainer/Label.text = anomaly.actions[2].action_name
 	$HBoxContainer/VBoxContainer2/GridContainer/work4/VBoxContainer/Label.text = anomaly.actions[3].action_name
 	
-	var mech_button_scene = preload("res://UI/research_menu_components/mech_button.tscn")
+	#var mech_button_scene = preload("res://UI/research_menu_components/mech_button.tscn")
 	#for i in range(anomaly.mechanics_info.size()):
 		#var info_instance = info_scene.instantiate()
 		#info_instance.name = "MechInfo%d" % i
