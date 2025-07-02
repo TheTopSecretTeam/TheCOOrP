@@ -4,9 +4,9 @@ class_name AnomalyLogic
 
 signal work_completed(pe_box)
 
-var MAX = 10
-var PROB = 0.6
-var TIME = 1
+@export var MAX = 10
+@export var PROB = 0.6
+@export var TIME = 1
 
 var pe_list : Array[TextureRect]
 var ne_list : Array[TextureRect]
@@ -16,33 +16,19 @@ var ne = 0
 
 var rng = RandomNumberGenerator.new()
 
-func _ready() -> void:
-	for child in pe_list_parent.get_children():
-		pe_list.append(child)
-		pe_list[-1].visible = false
-	for child in ne_list_parent.get_children():
-		ne_list.append(child)
-		ne_list[-1].visible = false
-
 func work(probability):
-	for child in pe_list_parent.get_children():
-		pe_list.append(child)
-		pe_list[-1].visible = false
-	for child in ne_list_parent.get_children():
-		ne_list.append(child)
-		ne_list[-1].visible = false
 	PROB = probability
 	pe = 0
 	ne = 0
 	rng.randomize()
-	$Timer.wait_time = TIME
-	$Timer.start()
+	#$Timer.wait_time = TIME
+	#$Timer.start()
 
 func _on_timer_timeout():
 	if ne + pe < MAX:
 		generate_cell(PROB)
 	else:
-		$Timer.stop()
+		#$Timer.stop()
 		work_completed.emit(pe)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:

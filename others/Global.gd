@@ -11,17 +11,7 @@ var resources : Dictionary[String, int] = {
 	"Funds" : 12, 
 	"Radiance" : 12, 
 	"Blight" : 12,
-	}:
-		set(value):
-			resources = value
-			resources_changed.emit(resources)
-		get:
-			return resources
-			
-var res1 = 12
-var res2 = 12
-var res3 = 12
-var res4 = 12
+	}
 
 var rng = RandomNumberGenerator.new()
 var energy_quota : int = 10

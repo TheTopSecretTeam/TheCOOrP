@@ -18,11 +18,12 @@ func update_resources() -> void:
 		$HBoxContainer/VBoxContainer/Resources.add_child(info_instance)
 		info_instance.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		info_instance.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	Global.resources_changed.emit(Global.resources)
 
 
 func _on_open_weapon_button_down() -> void:
-	if anomaly.unique_pe < equip_cost: return
-	anomaly.unique_pe -= equip_cost
+	if anomaly.unique_pe < anomaly.equip_cost: return
+	anomaly.unique_pe -= anomaly.equip_cost
 	update_pe_display()
 	anomaly.weapon_open = true
 	$HBoxContainer/VBoxContainer3/Shop/OpenWeapon.hide()
@@ -39,8 +40,8 @@ func _on_open_weapon_button_down() -> void:
 	$HBoxContainer/VBoxContainer3/BuyButtons/WeaponButtCont/BuyWeapon.show()
 
 func _on_open_armor_button_down() -> void:
-	if anomaly.unique_pe < equip_cost: return
-	anomaly.unique_pe -= equip_cost
+	if anomaly.unique_pe < anomaly.equip_cost: return
+	anomaly.unique_pe -= anomaly.equip_cost
 	update_pe_display()
 	anomaly.armor_open = true
 	$HBoxContainer/VBoxContainer3/Shop/OpenArmor.hide()
@@ -102,6 +103,7 @@ func _on_exit_button_down() -> void:
 func _on_info_open_button_down(info: int) -> void:
 	if anomaly.unique_pe < info_open_cost: return
 	anomaly.unique_pe -= info_open_cost
+	update_pe_display()
 	anomaly.mechanics_open[info]
 	$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.get_child(info * 2).show()
 	$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.get_child(info * 2 + 1).hide()
@@ -145,18 +147,18 @@ func _on_buy_armor_button_down() -> void:
 	$HBoxContainer/VBoxContainer3/BuyButtons/ArmorButtCont/BuyArmor.hide()
 	update_resources()
 
-func _on_open_mechanics_button_down(index: int) -> void:
-	if index >= anomaly.mechanics_open.size() or anomaly.mechanics_open[index] or anomaly.unique_pe < anomaly.mechanics_cost[index]:
-		return
-	anomaly.unique_pe -= anomaly.mechanics_cost[index]
-	update_pe_display()
-	anomaly.mechanics_open[index] = true
-	
-	var container = $HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer
-	var button = container.get_node("MechButton%d" % index)
-	var info = container.get_node("MechInfo%d" % index)
-	button.hide()
-	info.show()
+#func _on_open_mechanics_button_down(index: int) -> void:
+	#if index >= anomaly.mechanics_open.size() or anomaly.mechanics_open[index] or anomaly.unique_pe < anomaly.mechanics_cost[index]:
+		#return
+	#anomaly.unique_pe -= anomaly.mechanics_cost[index]
+	#update_pe_display()
+	#anomaly.mechanics_open[index] = true
+	#
+	#var container = $HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer
+	#var button = container.get_node("MechButton%d" % index)
+	#var info = container.get_node("MechInfo%d" % index)
+	#button.hide()
+	#info.show()
 	
 func update_pe_display() -> void:
 	$HBoxContainer/VBoxContainer/Unique_PE.text = "PE: " + str(anomaly.unique_pe)
@@ -288,24 +290,24 @@ func window_call(res: AbnormalityResource) -> void:
 	$HBoxContainer/VBoxContainer2/GridContainer/work4/VBoxContainer/Label.text = anomaly.actions[3].action_name
 	
 	var mech_button_scene = preload("res://UI/research_menu_components/mech_button.tscn")
-	for i in range(anomaly.mechanics_info.size()):
-		var info_instance = info_scene.instantiate()
-		info_instance.name = "MechInfo%d" % i
-		info_instance.text = anomaly.mechanics_info[i]
-		$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.add_child(info_instance)
-		
-		var button = mech_button_scene.instantiate()
-		button.name = "MechButton%d" % i
-		button.text = "Purchase: %d" % anomaly.mechanics_cost[i]
-		button.pressed.connect(_on_open_mechanics_button_down.bind(i))
-		$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.add_child(button)
-		
-		if anomaly.mechanics_open[i]:
-			button.hide()
-			info_instance.show()
-		else:
-			button.show()
-			info_instance.hide()
+	#for i in range(anomaly.mechanics_info.size()):
+		#var info_instance = info_scene.instantiate()
+		#info_instance.name = "MechInfo%d" % i
+		#info_instance.text = anomaly.mechanics_info[i]
+		#$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.add_child(info_instance)
+		#
+		#var button = mech_button_scene.instantiate()
+		#button.name = "MechButton%d" % i
+		#button.text = "Purchase: %d" % anomaly.mechanics_cost[i]
+		#button.pressed.connect(_on_open_mechanics_button_down.bind(i))
+		#$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.add_child(button)
+		#
+		#if anomaly.mechanics_open[i]:
+			#button.hide()
+			#info_instance.show()
+		#else:
+			#button.show()
+			#info_instance.hide()
 	
 	# $HBoxContainer/VBcoxContainer3/EscapeStats.text = str(anomaly.damage_res_phys) + " " + str(anomaly.damage_res_ment)
 	
