@@ -141,7 +141,11 @@ offset_bottom = -504.0
 anomaly = ExtResource("11_n1psn")
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(607.606, 660)
 leading_room = NodePath("../../../corridor")
+
+[node name="Anomaly" parent="rooms/chamber/room_path" index="1"]
+position = Vector2(164.124, 660)
 
 [node name="AgentContainer" parent="rooms/chamber/CanvasLayer/CenterContainer" index="1"]
 visible = true
