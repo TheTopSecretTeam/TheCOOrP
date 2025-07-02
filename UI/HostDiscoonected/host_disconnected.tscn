@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cge0ffaccuoj1"]
+
+[ext_resource type="Script" uid="uid://crgoq5mij0ewi" path="res://UI/HostDiscoonected/disconnect.gd" id="1_vfhdr"]
+
+[node name="HostDisconnected" type="Node2D"]
+script = ExtResource("1_vfhdr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 63.0
+offset_top = 22.0
+offset_right = 190.0
+offset_bottom = 42.0
+text = "host disconnected"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 50.0
+offset_top = 73.0
+offset_right = 200.0
+offset_bottom = 101.0
+text = "return to main menu
+"

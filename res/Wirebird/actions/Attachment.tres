@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AnomalyAction" load_steps=2 format=3 uid="uid://d162lu5dg3bhk"]
+
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_pogki"]
+
+[resource]
+script = ExtResource("1_pogki")
+action_name = "Attachment"
+probability = 0.3
+scripts = []
+metadata/_custom_type_script = "uid://bur3tdfovrpyd"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgri08yjtffep"]
+
+[ext_resource type="Script" uid="uid://dssrk3dg1i8ae" path="res://UI/tabMenu/tab_menu.gd" id="1_gdeg6"]
+
+[node name="TabMenu" type="Node2D"]
+script = ExtResource("1_gdeg6")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

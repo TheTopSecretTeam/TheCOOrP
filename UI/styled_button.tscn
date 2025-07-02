@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0qjiqpre7kcd"]
+
+[ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="1_pan8q"]
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("1_pan8q")
+theme_override_font_sizes/font_size = 60
