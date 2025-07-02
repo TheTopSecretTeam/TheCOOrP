@@ -1,5 +1,12 @@
 extends Control
 
+@export var web_disable_list: Array[Button] = []
+
+func _ready() -> void:
+	if OS.get_name() == "Web":
+		for btn in web_disable_list:
+			btn.disabled = true
+
 func _on_Main_NewGame_pressed():
 	_mok_jmp_to_map()
 	#$Main.hide()
