@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0qjiqpre7kcd"]
 
-[ext_resource type="Script" uid="uid://coe50mr4qfnpc" path="res://UI/styled_button.gd" id="1_pan8q"]
+[ext_resource type="Script" path="res://UI/styled_button.gd" id="1_pan8q"]
 [ext_resource type="Texture2D" uid="uid://2qnpk5yacsih" path="res://img/gibs/icebox/burning-passion.png" id="2_8ngy7"]
 
 [node name="Button" type="VBoxContainer"]

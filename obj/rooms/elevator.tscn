@@ -31,6 +31,3 @@ visible = false
 [node name="room_path" parent="." index="1"]
 position = Vector2(222, 473)
 curve = SubResource("Curve2D_mvprs")
-
-[node name="Anomaly" parent="room_path" index="0"]
-position = Vector2(-99, 0)
