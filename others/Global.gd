@@ -4,6 +4,8 @@ var Players = {}
 var color
 var agents : Array[Node] = []
 
+signal resources_changed(new_resources)
+
 var resources : Dictionary[String, int] = {
 	"Materials" : 12,
 	"Funds" : 12, 
@@ -12,6 +14,10 @@ var resources : Dictionary[String, int] = {
 	}:
 		set(value):
 			resources = value
+			resources_changed.emit(resources)
+		get:
+			return resources
+			
 var res1 = 12
 var res2 = 12
 var res3 = 12
