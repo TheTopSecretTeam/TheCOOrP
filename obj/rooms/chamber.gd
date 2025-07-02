@@ -110,11 +110,11 @@ func action(action_res) -> String:
 	return "SUCCESS"
 
 func work_ready():
-	for _action in actions:
+	for action in actions:
 		var work = btn.instantiate()
-		work.set_text(_action.action_name)
-		work.set_button_icon(_action.action_icon)
-		for script in _action.scripts:
+		work.set_text(action.action_name)
+		work.set_button_icon(action.action_icon)
+		for script in action.scripts:
 			work.set_script(script)
 		work.button_down.connect(_on_work_button_down.bind(action))
 		work_container.add_child(work)

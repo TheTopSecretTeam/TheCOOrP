@@ -129,11 +129,12 @@ visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="."]
+visible = false
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 410
 text = "0.0"
-horizontal_alignment = 1
+horizontal_alignment = 3
 
 [connection signal="timeout" from="EscapeTimer" to="." method="_on_escape_timer_timeout"]
 [connection signal="work_completed" from="Bar" to="." method="_on_bar_work_completed"]

@@ -13,6 +13,7 @@ var FP = 0
 
 var agent : AgentStats
 var action : AnomalyAction
+var chamber : AnomalyChamber
 
 var rng = RandomNumberGenerator.new()
 
