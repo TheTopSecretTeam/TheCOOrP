@@ -45,7 +45,7 @@ func _physics_process(_delta):
 func send_agent(agent_name, room_index: int) -> String :
 	var agent: Agent
 	for node in get_tree().get_nodes_in_group("Agent"):
-		if node.agent_res.agent_name == agent_name:
+		if node.entity_resource.agent_name == agent_name:
 			agent = node
 	if !agent: print("agent_not_found"); return "agent_not_found"
 	if agent.working: return "agent is working"

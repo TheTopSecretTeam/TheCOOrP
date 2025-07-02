@@ -22,14 +22,16 @@ func _ready() -> void:
 				waypoints[child.leading_room.get_index()] = child
 				#if self.get_index() == 0: print(child.leading_room.get_index())
 
-func transfer(agent: Agent, _previous_room):
-	agent.reparent($room_path)
-	agent.progress_ratio = 1.0
-	agent._on_travel()
-	agent._on_chamber_arrival()
-	working_agent = agent
-	working_agent.working = true
-	begin_work(work_probability, agent.agent_res)
+func transfer(entity: Entity, _previous_room):
+	entity.reparent($room_path)
+	entity._on_travel()
+	entity._on_chamber_arrival()
+	
+	if entity is Agent:
+		entity.progress_ratio = 1.0
+		working_agent = entity
+		working_agent.working = true
+		begin_work(work_probability, entity.entity_resource)
 
 func load_anomaly() -> void:
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
@@ -46,7 +48,7 @@ func _on_bar_work_completed(pe_box: Variant) -> void:
 	working_agent.working = false
 	working = false
 	anomaly.unique_pe += pe_box
-	
+	escape()
 	working_agent.path = [get_index(),$room_path/waypoint.leading_room.get_index()]
 	working_agent._on_travel()
 	working_agent = null
@@ -75,12 +77,22 @@ func show_agents():
 		option.queue_free()
 	for agent in Global.agents:
 		var option_inst = agent_option.instantiate()
-		option_inst.agent = agent.agent_res
+		option_inst.agent = agent.entity_resource
 		option_inst.agent_selected.connect(agent_selected)
 		$CanvasLayer/CenterContainer/AgentContainer.add_child(option_inst)
 	$CanvasLayer/CenterContainer/AgentContainer.show()
 	#$AgentContainer.global_position = get_global_mouse_position()
-	
+
+func escape():
+	$Label.show()
+	$EscapeTimer.start()
+	$EscapeTimer.started = true
+
+func _on_escape_timer_timeout() -> void:
+	$Label.hide()
+	$EscapeTimer.started = false
+	$room_path/Anomaly.path = [get_index(),$room_path/waypoint.leading_room.get_index()]
+	$room_path/Anomaly._on_travel()
 
 func _on_abno_name_button_down() -> void:
 	$CanvasLayer/ResearchMenu.window_call(anomaly)

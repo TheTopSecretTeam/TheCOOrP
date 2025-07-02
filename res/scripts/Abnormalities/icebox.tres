@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbnormalityResource" load_steps=11 format=3 uid="uid://bdoglf8dgwrlw"]
 
 [ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_epotb"]
-[ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/base_abno_res.gd" id="2_onv81"]
-[ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/Wirebird/actions/Instinct.tres" id="2_pvhib"]
-[ext_resource type="Resource" uid="uid://cxofh1d14d58r" path="res://res/Wirebird/actions/Insight.tres" id="3_pvhib"]
 [ext_resource type="Resource" uid="uid://dkbabudvihart" path="res://res/anomaly_actions/IceBox/WarmUp.tres" id="4_drq3t"]
+[ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/anomaly_actions/Wirebird/Instinct.tres" id="5_251ki"]
+[ext_resource type="Resource" uid="uid://vy75qjymj4o2" path="res://res/anomaly_actions/Wirebird/Repression.tres" id="5_mtkaj"]
+[ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/anomaly_resource.gd" id="5_okrjp"]
 [ext_resource type="Resource" uid="uid://c0cd373dyw6pj" path="res://res/anomaly_actions/IceBox/Freeze.tres" id="5_uqxp2"]
 [ext_resource type="Texture2D" uid="uid://cq64quvrnj6tt" path="res://img/gibs/icebox/icebox_profile.png" id="6_uqxp2"]
 [ext_resource type="Script" uid="uid://dj6vym7wwqet2" path="res://res/scripts/agent/ArmorStats.gd" id="8_mtkaj"]
@@ -21,7 +21,7 @@ effects = Array[GDScript]([])
 metadata/_custom_type_script = "uid://dj6vym7wwqet2"
 
 [resource]
-script = ExtResource("2_onv81")
+script = ExtResource("5_okrjp")
 code = "O-00-01"
 monster_name = "Ice Box"
 description = ""
@@ -33,7 +33,7 @@ attack_speed = 3
 damage_res_phys = 0.0
 damage_res_ment = 0.0
 unique_pe = 5
-actions = Array[ExtResource("1_epotb")]([ExtResource("2_pvhib"), ExtResource("3_pvhib"), ExtResource("4_drq3t"), ExtResource("5_uqxp2")])
+actions = Array[ExtResource("1_epotb")]([ExtResource("4_drq3t"), ExtResource("5_uqxp2"), ExtResource("5_251ki"), ExtResource("5_mtkaj")])
 actions_open = Array[bool]([false, false, false, false])
 actions_cost = Array[int]([1, 1, 1, 1])
 sold_armor = SubResource("Resource_pq6pj")

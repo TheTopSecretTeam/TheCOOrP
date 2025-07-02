@@ -4,11 +4,22 @@ extends PathFollow2D
 
 # Reference to the entity's resource data
 @export var entity_resource: EntityResource
-
+var path : Array = []
 var target: Entity = null
 var attack_cooldown: float = 0.0
 @export var current_room_path: Path2D
 var current_room: int
+var waypoint : Node2D
+
+var flipped : bool = false:
+	set(value):
+		if value:
+			$Skeleton.scale.x = -0.5
+			entity_resource.travel_speed = -1 * abs(entity_resource.travel_speed)
+		else:
+			$Skeleton.scale.x = 0.5
+			entity_resource.travel_speed = abs(entity_resource.travel_speed)
+		flipped = value
 
 func _ready() -> void:
 	if entity_resource:
@@ -22,6 +33,15 @@ func _process(delta: float) -> void:
 		attack_cooldown -= delta
 	if entity_resource.is_alive():
 		handle_combat(delta)
+
+func flip():
+	flipped = !flipped
+
+func _on_chamber_arrival():
+	pass
+
+func _on_travel():
+	pass
 
 func handle_combat(delta: float) -> void:
 	if not target or not target.entity_resource.is_alive() or target.current_room != current_room:

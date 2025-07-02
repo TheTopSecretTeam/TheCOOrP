@@ -15,7 +15,7 @@ func _ready() -> void:
 func get_waypoint(index : int) -> Node2D:
 	return waypoints[index]
 
-func transfer(agent: Agent, previous_room):
-	agent.reparent($room_path)
-	agent.progress = waypoints[previous_room].progress
-	agent._on_travel()
+func transfer(entity: Entity, previous_room):
+	entity.reparent($room_path)
+	entity.progress = waypoints[previous_room].progress
+	entity._on_travel()

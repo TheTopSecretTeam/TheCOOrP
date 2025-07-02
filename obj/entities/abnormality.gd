@@ -1,9 +1,5 @@
 extends Entity
 
-@export var anomaly_res: AbnormalityResource
-@export var behavior_instance: GDScript
-
-var path : Array = []
 var state : int = CHAMBER
 
 enum {
@@ -12,23 +8,8 @@ enum {
 	CHAMBER,
 	COMBAT
 }
-var waypoint : Node2D
-var flipped : bool = false:
-	set(value):
-		if value:
-			self.scale.x = -1
-			entity_resource.travel_speed = -1 * abs(entity_resource.travel_speed)
-		else:
-			self.scale.x = 1
-			entity_resource.travel_speed = abs(entity_resource.travel_speed)
-		flipped = value
-
 func _ready() -> void:
 	super._ready()
-
-func flip():
-	flipped = !flipped
-
 func _on_travel():
 	if path.is_empty(): 
 		state = WANDER 

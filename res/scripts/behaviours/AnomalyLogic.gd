@@ -2,45 +2,25 @@ extends Resource
 
 class_name AnomalyLogic
 
-signal work_completed(pe_box)
+signal work_completed(RP)
 
 @export var MAX = 10
-@export var PROB = 0.6
 @export var TIME = 1
+@export var anomaly_res : AbnormalityResource
+var PROB = 0.6
+var RP = 0
+var FP = 0
 
-var pe_list : Array[TextureRect]
-var ne_list : Array[TextureRect]
-
-var pe = 0
-var ne = 0
+var agent : AgentStats
+var action : AnomalyAction
 
 var rng = RandomNumberGenerator.new()
 
-func work(probability):
-	PROB = probability
-	pe = 0
-	ne = 0
-	rng.randomize()
-	#$Timer.wait_time = TIME
-	#$Timer.start()
+func start_work():
+	pass
 
-func _on_timer_timeout():
-	if ne + pe < MAX:
-		generate_cell(PROB)
-	else:
-		#$Timer.stop()
-		work_completed.emit(pe)
+func work_tick():
+	pass
 
-func _on_bar_work_completed(pe_box: Variant) -> void:
-	work_completed.emit(pe_box)
-
-func generate_cell(prob: float) -> void:
-	var success = [true, false]
-	var weights = PackedFloat32Array([prob, 1-prob])
-	if success[rng.rand_weighted(weights)]:
-		Global.current_energy += 1
-		pe += 1
-		pe_list[MAX - pe].visible = true
-	else:
-		ne += 1
-		ne_list[ne - 1].visible = true
+func work_end():
+	pass

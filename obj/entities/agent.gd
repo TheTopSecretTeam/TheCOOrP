@@ -2,9 +2,6 @@
 extends Entity
 class_name Agent
 
-@export var agent_res : AgentStats
-
-var path : Array = []
 var state : int = WANDER
 enum {
 	WANDER,
@@ -12,25 +9,11 @@ enum {
 	CHAMBER,
 	COMBAT
 }
-var waypoint : Node2D
-var flipped : bool = false:
-	set(value):
-		if value:
-			$Skeleton.scale.x = -0.5
-			agent_res.travel_speed = -1 * abs(agent_res.travel_speed)
-		else:
-			$Skeleton.scale.x = 0.5
-			agent_res.travel_speed = abs(agent_res.travel_speed)
-		flipped = value
 var working = false
 
 func _ready() -> void:
 	super._ready()
-	entity_resource = agent_res  # Connect the resource reference
-	$Name.text = agent_res.agent_name
-
-func flip():
-	flipped = !flipped
+	$Name.text = entity_resource.agent_name
 
 func get_global_rect():
 	return $ClickRect.get_global_rect()
@@ -63,13 +46,13 @@ func _process(delta: float) -> void:
 	match state:
 		WANDER:
 			var prev_prog = progress
-			progress += agent_res.travel_speed * delta
+			progress += entity_resource.travel_speed * delta
 			if progress == prev_prog:
 				flip()
 			super._process(delta)
 		GOTO:
 			progress = move_toward(
-				progress, waypoint.progress, abs(agent_res.travel_speed) * delta
+				progress, waypoint.progress, abs(entity_resource.travel_speed) * delta
 			)
 			if progress == waypoint.progress:
 				waypoint.leading_room.transfer(self, current_room)

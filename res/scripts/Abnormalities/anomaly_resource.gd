@@ -4,7 +4,7 @@ class_name AbnormalityResource
 
 @export var code: String = "O-00-00"
 @export var monster_name: String = "Nothing Here"
-@export_multiline var description: String = ""
+@export_multiline var lore: String = ""
 @export var texture : Texture2D
 
 @export var threat_level: int = 1
@@ -38,8 +38,6 @@ class_name AbnormalityResource
 @export var profile : Texture2D = load("res://UI/research_menu_components/placeholderart.jpg")
 @export var mechanics_info : Array[String] = ["WOOOOOOOOOOOOOO", "WEEEEEEEEEEEEE", "WAAAAAAAAAAAAAAAAAaaa"]
 @export var mechanics_cost : Array[int] = []
-
-@export var lore: String = "Just nothing"
 
 func _ready():
 	actions_open.resize(4)

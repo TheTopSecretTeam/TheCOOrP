@@ -104,7 +104,7 @@ func _on_info_open_button_down(info: int) -> void:
 	if anomaly.unique_pe < info_open_cost: return
 	anomaly.unique_pe -= info_open_cost
 	update_pe_display()
-	anomaly.mechanics_open[info]
+	anomaly.mechanics_open[info] = true
 	$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.get_child(info * 2).show()
 	$HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.get_child(info * 2 + 1).hide()
 
@@ -176,7 +176,7 @@ func window_call(res: AbnormalityResource) -> void:
 	$HBoxContainer/VBoxContainer/Unique_PE.text = "PE: " + str(anomaly.unique_pe)
 	$HBoxContainer/VBoxContainer/Name.text = anomaly.monster_name
 	$HBoxContainer/VBoxContainer/TextureRect.texture = anomaly.texture
-	$HBoxContainer/VBoxContainer/Description.text = anomaly.description
+	#$HBoxContainer/VBoxContainer/Description.text = anomaly.description
 	
 	$Lore/VBoxContainer/TextureRect.texture = anomaly.profile
 	$Lore/VBoxContainer/Name.text = anomaly.monster_name
