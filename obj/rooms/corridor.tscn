@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbpr2hgq0qrbw"]
+[gd_scene load_steps=6 format=3 uid="uid://bbpr2hgq0qrbw"]
 
 [ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/corridor.gd" id="1_uovvg"]
 [ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="2_nwxuc"]
 [ext_resource type="Texture2D" uid="uid://bcaff3cr2ogf2" path="res://img/layout/hall1.png" id="2_uovvg"]
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="4_mxo8b"]
-[ext_resource type="PackedScene" uid="uid://dtmwrlhgg2kgv" path="res://obj/entities/anomaly.tscn" id="5_mxo8b"]
 
 [sub_resource type="Curve2D" id="Curve2D_r14vu"]
 _data = {
@@ -44,6 +43,3 @@ texture = ExtResource("4_mxo8b")
 [node name="room_path" type="Path2D" parent="."]
 position = Vector2(392, 310.764)
 curve = SubResource("Curve2D_r14vu")
-
-[node name="Anomaly" parent="room_path" instance=ExtResource("5_mxo8b")]
-position = Vector2(1714.59, 6)

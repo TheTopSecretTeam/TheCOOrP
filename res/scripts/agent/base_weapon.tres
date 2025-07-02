@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://bcngxuftmyk46"]
+
+[ext_resource type="Script" uid="uid://xljjjxxb412w" path="res://res/scripts/agent/WeaponStats.gd" id="1_mexuf"]
+
+[resource]
+script = ExtResource("1_mexuf")
+name = "Basic Weapon"
+base_damage = 20
+damage_type = "physical"
+attack_speed = 2
+weapon_range = 200
+special_effects_text = ""
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://xljjjxxb412w"

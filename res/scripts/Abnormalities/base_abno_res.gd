@@ -1,31 +1,16 @@
 class_name AbnormalityResource
-extends Resource
+extends EntityResource
 
 @export var code: String = "O-00-00"
 @export var monster_name: String = "Nothing Here"
 @export var threat_level: int = 1
-@export var hp : int = 200
-@export var max_hp : int = 200
-@export var damage_type : String = "physical"
-@export var damage_output : int = 5
-@export var attack_speed : int = 3 #seconds
-@export var travel_speed : int = 5
-@export var texture : Texture2D
+@export var unique_pe: int = 0
 
-@export var unique_pe : int = 0
-
-@export var damage_res_phys : float
-@export var damage_res_ment : float
-
-@export var actions : Array[AnomalyAction] = []
-@export var actions_open : Array[bool] = []
-@export var actions_cost : Array[int] = []
+@export var actions: Array[AnomalyAction] = []
+@export var actions_open: Array[bool] = []
+@export var actions_cost: Array[int] = []
 
 @export var behaviour: GDScript
-
-@export var current_room: NodePath = NodePath()
-@export var path2d_progress: float = 0.0
-
 @export var sold_weapon: WeaponStats
 @export var sold_armor: ArmorStats
 @export var weapon_cost: Array[int] = [0,0,0,0]
@@ -34,6 +19,6 @@ extends Resource
 var armor_open = false
 var weapon_open = false
 
-@export var profile : Texture2D = load("res://UI/research_menu_components/placeholderart.jpg")
-@export var mechanics_info : Array[String] = ["WOOOOOOOOOOOOOO", "WEEEEEEEEEEEEE", "WAAAAAAAAAAAAAAAAAaaa"]
+@export var profile: Texture2D = load("res://UI/research_menu_components/placeholderart.jpg")
+@export var mechanics_info: Array[String] = ["Info1", "Info2", "Info3"]
 @export var lore: String = "Just nothing"
