@@ -70,10 +70,6 @@ position = Vector2(1292.53, 5.7905)
 progress = 422.057
 leading_room = NodePath("../../../chamber")
 
-[node name="Agent2" parent="rooms/corridor/room_path" index="2" instance=ExtResource("5_ogelb")]
-position = Vector2(1714.59, 6)
-agent_res = ExtResource("8_c00ee")
-
 [node name="corridor2" parent="rooms" instance=ExtResource("4_rclfu")]
 layout_mode = 1
 offset_left = -108.0
@@ -89,6 +85,13 @@ leading_room = NodePath("../../../elevator2")
 [node name="Agent2" parent="rooms/corridor2/room_path" index="1" instance=ExtResource("5_ogelb")]
 position = Vector2(1714.59, 6)
 agent_res = ExtResource("9_c00ee")
+entity_resource = ExtResource("9_c00ee")
+
+[node name="Agent3" parent="rooms/corridor2/room_path" index="2" instance=ExtResource("5_ogelb")]
+position = Vector2(513.289, 5.4037)
+progress = 1201.3
+agent_res = ExtResource("8_c00ee")
+entity_resource = ExtResource("8_c00ee")
 
 [node name="elevator" parent="rooms" instance=ExtResource("7_e3tq1")]
 layout_mode = 1
@@ -155,14 +158,6 @@ position = Vector2(164.124, 660)
 [node name="AgentContainer" parent="rooms/chamber/CanvasLayer/CenterContainer" index="1"]
 visible = true
 
-[node name="ResourseBox" parent="rooms/chamber/CanvasLayer" index="2" instance=ExtResource("11_c00ee")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -5.0
-offset_bottom = 92.0
-grow_horizontal = 0
-
 [node name="Camera" parent="." instance=ExtResource("9_be0no")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -211,6 +206,16 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ResourseBox" parent="CanvasLayer" instance=ExtResource("11_c00ee")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_top = 3.0
+offset_right = -19.0
+offset_bottom = 415.0
+grow_horizontal = 0
 
 [editable path="rooms/corridor"]
 [editable path="rooms/corridor2"]

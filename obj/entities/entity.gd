@@ -12,7 +12,7 @@ var current_room: int
 
 func _ready() -> void:
 	if entity_resource:
-		entity_resource.current_room_path = get_path_to(get_parent())
+		entity_resource.current_room = get_path_to(get_parent())
 	if get_parent() is Path2D:
 		current_room_path = get_parent()
 		print("X")

@@ -28,7 +28,7 @@ class_name AbnormalityResource
 @export var sold_armor: ArmorStats
 @export var weapon_cost: Array[int] = [0,0,0,0]
 @export var armor_cost: Array[int] = [0,0,0,0]
-
+@export var equip_cost: int = 0
 @export var main_open = false
 @export var stats_open = false
 @export var armor_open = false
@@ -37,6 +37,8 @@ class_name AbnormalityResource
 
 @export var profile : Texture2D = load("res://UI/research_menu_components/placeholderart.jpg")
 @export var mechanics_info : Array[String] = ["WOOOOOOOOOOOOOO", "WEEEEEEEEEEEEE", "WAAAAAAAAAAAAAAAAAaaa"]
+@export var mechanics_cost : Array[int] = []
+
 @export var lore: String = "Just nothing"
 
 func _ready():

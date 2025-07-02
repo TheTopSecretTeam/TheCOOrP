@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=3 uid="uid://b4uc1785bd3wc"]
+[gd_resource type="Resource" script_class="AbnormalityResource" load_steps=8 format=3 uid="uid://b4uc1785bd3wc"]
 
 [ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/base_abno_res.gd" id="1_3gtmr"]
 [ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_t3s2q"]
@@ -16,29 +16,36 @@ description = "Wirebirds are common anomalies that usually spawn in unkept serve
 At the first sight it may look that they are some kind of robot or artificial intelligence but they actually made out of flesh. Thats evident because they can bleed and lay flesh eggs, hence the name Wirebird.
 They are passive but can become dangerous during mating season if they grow too big.
 Due to their ability to convert matter via Radiance and their behaivior they are perfect for collecting samples."
+texture = ExtResource("7_mxbx8")
 threat_level = 1
 hp = 200
-max_hp = 200
 damage_type = "physical"
 damage_output = 5
 attack_speed = 3
-travel_speed = 5
-texture = ExtResource("7_mxbx8")
+damage_res_phys = 0.0
+damage_res_ment = 0.0
 unique_pe = 0
 actions = Array[ExtResource("1_t3s2q")]([ExtResource("2_mxbx8"), ExtResource("3_kh5fe"), ExtResource("4_3bsvi"), ExtResource("5_bgs1t")])
 actions_open = Array[bool]([false, false, false, false])
 actions_cost = Array[int]([1, 1, 1, 1])
 weapon_cost = Array[int]([0, 0, 0, 0])
 armor_cost = Array[int]([0, 0, 0, 0])
-mechanics_info = Array[String](["Info1", "Info2", "Info3"])
+equip_cost = 0
+main_open = false
+stats_open = false
+armor_open = false
+weapon_open = false
 mechanics_open = Array[bool]([false, false, false])
+mechanics_info = Array[String](["Info1", "Info2", "Info3"])
 mechanics_cost = Array[int]([1, 1, 1])
 lore = ""
 display_name = "Entity"
 current_room = NodePath("")
 path2d_progress = 0.0
 team = 0
+max_hp = 200
 current_hp = 100
+travel_speed = 5
 base_damage_output = 5
 base_attack_speed = 3.0
 base_damage_type = "physical"

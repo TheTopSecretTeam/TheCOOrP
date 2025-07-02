@@ -17,15 +17,14 @@ var flipped : bool = false:
 	set(value):
 		if value:
 			self.scale.x = -1
-			anomaly_res.travel_speed = -1 * abs(anomaly_res.travel_speed)
+			entity_resource.travel_speed = -1 * abs(entity_resource.travel_speed)
 		else:
 			self.scale.x = 1
-			anomaly_res.travel_speed = abs(anomaly_res.travel_speed)
+			entity_resource.travel_speed = abs(entity_resource.travel_speed)
 		flipped = value
 
 func _ready() -> void:
 	super._ready()
-	entity_resource = anomaly_res  # Connect the resource reference
 
 func flip():
 	flipped = !flipped
@@ -54,13 +53,13 @@ func _process(delta: float) -> void:
 	match state:
 		WANDER:
 			var prev_prog = progress
-			progress += anomaly_res.travel_speed * delta
+			progress += entity_resource.travel_speed * delta
 			if progress == prev_prog:
 				flip()
 			super._process(delta)
 		GOTO:
 			progress = move_toward(
-				progress, waypoint.progress, abs(anomaly_res.travel_speed) * delta
+				progress, waypoint.progress, abs(entity_resource.travel_speed) * delta
 			)
 			if progress == waypoint.progress:
 				waypoint.leading_room.transfer(self, current_room)
