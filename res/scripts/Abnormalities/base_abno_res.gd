@@ -1,5 +1,5 @@
 class_name AbnormalityResource
-extends Resource
+extends EntityResource
 
 @export var code: String = "O-00-00"
 @export var monster_name: String = "Nothing Here"
@@ -21,7 +21,10 @@ extends Resource
 @export var unique_pe : int = 0
 
 @export var actions : Array[AnomalyAction] = []
+@export var actions_open: Array[bool] = []
+@export var actions_cost: Array[int] = []
 
+@export var behaviour: GDScript
 @export var sold_weapon: WeaponStats
 @export var sold_armor: ArmorStats
 @export var weapon_cost: Array[int] = [0,0,0,0]

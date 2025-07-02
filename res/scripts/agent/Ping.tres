@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="AgentStats" load_steps=4 format=3 uid="uid://cfpu2ylk4q6qn"]
+
+[ext_resource type="Script" uid="uid://ucjxb53spu5r" path="res://res/scripts/agent/agent_res.gd" id="1_cqm17"]
+[ext_resource type="Resource" uid="uid://dlymot33kv5qk" path="res://res/scripts/agent/base_armor.tres" id="1_sq4qu"]
+[ext_resource type="Resource" uid="uid://bcngxuftmyk46" path="res://res/scripts/agent/base_weapon.tres" id="2_mexiv"]
+
+[resource]
+script = ExtResource("1_cqm17")
+agent_name = "Ping"
+max_sp = 500
+current_sp = 500
+current_armor = ExtResource("1_sq4qu")
+current_weapon = ExtResource("2_mexiv")
+display_name = "Entity"
+current_room = NodePath("..")
+path2d_progress = 0.0
+team = 0
+max_hp = 100
+current_hp = 100
+travel_speed = 200
+base_damage_output = 5
+base_attack_speed = 0.01
+base_damage_type = "physical"
+base_damage_res_phys = 1.0
+base_damage_res_ment = 1.0
+attack_range = 1000
+metadata/_custom_type_script = "uid://ucjxb53spu5r"

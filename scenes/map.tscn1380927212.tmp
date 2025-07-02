@@ -1,43 +1,30 @@
-[gd_scene load_steps=19 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=18 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://clqiyga4o851i" path="res://scenes/facility_navigation.gd" id="2_0dq08"]
 [ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://scenes/net_manager.gd" id="3_f22gk"]
 [ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="4_rclfu"]
 [ext_resource type="PackedScene" uid="uid://b85wfl7wt2xqw" path="res://obj/entities/agent.tscn" id="5_ogelb"]
+[ext_resource type="Script" uid="uid://ucjxb53spu5r" path="res://res/scripts/agent/agent_res.gd" id="6_blm8a"]
 [ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="6_hns3r"]
 [ext_resource type="PackedScene" uid="uid://ch7tbtciyxmbe" path="res://obj/rooms/elevator.tscn" id="7_e3tq1"]
-[ext_resource type="Resource" uid="uid://cfpu2ylk4q6qn" path="res://res/scripts/agent/Ping.tres" id="8_c00ee"]
 [ext_resource type="PackedScene" uid="uid://bx0u5ty4gc1o5" path="res://obj/rooms/chamber.tscn" id="8_fy0fe"]
 [ext_resource type="PackedScene" uid="uid://m7nkloxdq8qb" path="res://obj/modules/camera/camera.tscn" id="9_be0no"]
-[ext_resource type="PackedScene" uid="uid://dtn3am85byhpe" path="res://UI/resource-display/resourse_box.tscn" id="11_c00ee"]
-[ext_resource type="Resource" uid="uid://cso84xpj4vi1e" path="res://res/scripts/agent/Pong.tres" id="9_c00ee"]
 [ext_resource type="PackedScene" uid="uid://ck758bnk61jcp" path="res://UI/energy-bar/energy-bar.tscn" id="11_mlgqr"]
 [ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="11_n1psn"]
 [ext_resource type="Script" uid="uid://dc46wrfcoudhl" path="res://scenes/win_screen.gd" id="12_gw3fx"]
 [ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
-[ext_resource type="PackedScene" uid="uid://dxcj8bws0tbwt" path="res://UI/gafur_stuff/day_scene.tscn" id="14_n1psn"]
 
 [sub_resource type="Resource" id="Resource_mlgqr"]
 script = ExtResource("6_blm8a")
-agent_name = "Brad"
-max_hp = 100
-current_hp = 100
 max_sp = 200
 current_sp = 200
-current_room = NodePath("")
-path2d_progress = 0.0
 metadata/_custom_type_script = "uid://ucjxb53spu5r"
 
 [sub_resource type="Resource" id="Resource_blm8a"]
 script = ExtResource("6_blm8a")
-agent_name = "Anna"
-max_hp = 100
-current_hp = 100
 max_sp = 200
 current_sp = 200
-current_room = NodePath("")
-path2d_progress = 0.0
 metadata/_custom_type_script = "uid://ucjxb53spu5r"
 
 [sub_resource type="Curve2D" id="Curve2D_ueh1s"]
@@ -83,7 +70,7 @@ offset_right = 2035.0
 offset_bottom = -6.0
 
 [node name="waypoint" parent="rooms/corridor/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
-position = Vector2(-300, 5)
+position = Vector2(-299.998, 5)
 progress = 2014.59
 leading_room = NodePath("../../../elevator")
 
@@ -92,10 +79,9 @@ position = Vector2(1292.53, 5.7905)
 progress = 422.057
 leading_room = NodePath("../../../chamber")
 
-[node name="Agent" parent="rooms/corridor/room_path" index="2" instance=ExtResource("5_ogelb")]
-[node name="Agent" parent="rooms/corridor/room_path" index="2" instance=ExtResource("5_ogelb")]
+[node name="Agent" parent="rooms/corridor/room_path" index="3" instance=ExtResource("5_ogelb")]
 position = Vector2(1714.59, 6)
-agent_res = ExtResource("8_c00ee")
+agent_res = SubResource("Resource_mlgqr")
 
 [node name="corridor2" parent="rooms" instance=ExtResource("4_rclfu")]
 layout_mode = 1
@@ -111,7 +97,7 @@ leading_room = NodePath("../../../elevator2")
 
 [node name="Agent2" parent="rooms/corridor2/room_path" index="1" instance=ExtResource("5_ogelb")]
 position = Vector2(1714.59, 6)
-agent_res = ExtResource("9_c00ee")
+agent_res = SubResource("Resource_blm8a")
 
 [node name="elevator" parent="rooms" instance=ExtResource("7_e3tq1")]
 layout_mode = 1
@@ -135,6 +121,9 @@ leading_room = NodePath("../../../elevator2")
 visible = false
 position = Vector2(43, 0)
 leading_room = NodePath("../../../corridor")
+
+[node name="Anomaly" parent="rooms/elevator/room_path" index="2"]
+position = Vector2(43, 0)
 
 [node name="elevator2" parent="rooms" instance=ExtResource("7_e3tq1")]
 layout_mode = 1
@@ -160,6 +149,9 @@ visible = false
 position = Vector2(43, 0)
 leading_room = NodePath("../../../corridor2")
 
+[node name="Anomaly" parent="rooms/elevator2/room_path" index="2"]
+position = Vector2(43, 0)
+
 [node name="chamber" parent="rooms" instance=ExtResource("8_fy0fe")]
 layout_mode = 0
 offset_left = 955.0
@@ -169,22 +161,11 @@ offset_bottom = -504.0
 anomaly = ExtResource("11_n1psn")
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(607.606, 660)
 leading_room = NodePath("../../../corridor")
 
 [node name="Anomaly" parent="rooms/chamber/room_path" index="1"]
 position = Vector2(164.124, 660)
-
-[node name="ResourseBox" parent="rooms/chamber/CanvasLayer" index="2" instance=ExtResource("11_c00ee")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -5.0
-offset_bottom = 92.0
-grow_horizontal = 0
-anomaly_res = ExtResource("11_n1psn")
-
-[node name="AgentContainer" parent="rooms/chamber/CanvasLayer/CenterContainer" index="1"]
-visible = true
 
 [node name="Camera" parent="." instance=ExtResource("9_be0no")]
 
@@ -222,18 +203,6 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_wslke")
 theme_override_font_sizes/font_size = 60
 text = "You Won"
-
-[node name="DayScene" parent="CanvasLayer" instance=ExtResource("14_n1psn")]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [editable path="rooms/corridor"]
 [editable path="rooms/corridor2"]

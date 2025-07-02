@@ -25,20 +25,10 @@ script = ExtResource("2_onv81")
 code = "O-00-01"
 monster_name = "Ice Box"
 threat_level = 1
-hp = 200
-max_hp = 200
-damage_type = "mental"
-damage_output = 5
-attack_speed = 3
-travel_speed = 5
 unique_pe = 5
-damage_res_phys = 0.0
-damage_res_ment = 0.0
 actions = Array[ExtResource("1_epotb")]([ExtResource("2_pvhib"), ExtResource("3_pvhib"), ExtResource("4_drq3t"), ExtResource("5_uqxp2")])
 actions_open = Array[bool]([false, false, false, false])
 actions_cost = Array[int]([1, 1, 1, 1])
-current_room = NodePath("")
-path2d_progress = 0.0
 sold_armor = SubResource("Resource_pq6pj")
 weapon_cost = Array[int]([0, 0, 0, 0])
 armor_cost = Array[int]([7, 3, 0, 0])
@@ -103,4 +93,17 @@ This unit is covered under a [X]-year warranty against manufacturing defects. Fo
   
 **End of Manual**
   "
+display_name = "Entity"
+current_room = NodePath("")
+path2d_progress = 0.0
+team = -1
+max_hp = 400
+current_hp = 100
+travel_speed = 120
+base_damage_output = 1000
+base_attack_speed = 3.0
+base_damage_type = "physical"
+base_damage_res_phys = 1.0
+base_damage_res_ment = 1.0
+attack_range = 200
 metadata/_custom_type_script = "uid://bpdqcempefb6o"

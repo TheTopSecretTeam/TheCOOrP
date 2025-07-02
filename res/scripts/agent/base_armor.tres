@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ArmorStats" load_steps=2 format=3 uid="uid://dlymot33kv5qk"]
+
+[ext_resource type="Script" uid="uid://dj6vym7wwqet2" path="res://res/scripts/agent/ArmorStats.gd" id="1_wea4u"]
+
+[resource]
+script = ExtResource("1_wea4u")
+name = "Basic Armor"
+physical_resistance = 1.0
+mental_resistance = 1.0
+special_effects_text = ""
+effects = Array[GDScript]([])
+metadata/_custom_type_script = "uid://dj6vym7wwqet2"

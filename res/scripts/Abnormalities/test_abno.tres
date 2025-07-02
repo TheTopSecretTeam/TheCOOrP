@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbnormalityResource" load_steps=8 format=3 uid="uid://b4uc1785bd3wc"]
+[gd_resource type="Resource" script_class="AbnormalityResource" load_steps=7 format=3 uid="uid://b4uc1785bd3wc"]
 
 [ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/base_abno_res.gd" id="1_3gtmr"]
 [ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_t3s2q"]
@@ -25,17 +25,26 @@ attack_speed = 3
 travel_speed = 5
 texture = ExtResource("7_mxbx8")
 unique_pe = 0
-damage_res_phys = 1.0
-damage_res_ment = 2.0
 actions = Array[ExtResource("1_t3s2q")]([ExtResource("2_mxbx8"), ExtResource("3_kh5fe"), ExtResource("4_3bsvi"), ExtResource("5_bgs1t")])
 actions_open = Array[bool]([false, false, false, false])
 actions_cost = Array[int]([1, 1, 1, 1])
-current_room = NodePath("")
-path2d_progress = 0.0
 weapon_cost = Array[int]([0, 0, 0, 0])
 armor_cost = Array[int]([0, 0, 0, 0])
 mechanics_info = Array[String](["Info1", "Info2", "Info3"])
 mechanics_open = Array[bool]([false, false, false])
 mechanics_cost = Array[int]([1, 1, 1])
 lore = ""
+display_name = "Entity"
+current_room = NodePath("")
+path2d_progress = 0.0
+team = 0
+max_hp = 200
+current_hp = 100
+travel_speed = 5
+base_damage_output = 5
+base_attack_speed = 3.0
+base_damage_type = "physical"
+base_damage_res_phys = 1.0
+base_damage_res_ment = 1.0
+attack_range = 10
 metadata/_custom_type_script = "uid://bpdqcempefb6o"
