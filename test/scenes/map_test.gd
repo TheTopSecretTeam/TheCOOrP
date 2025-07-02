@@ -29,3 +29,4 @@ func test_send_agent() -> void:
 					assert_str(result).is_equal('success stand')
 				else:
 					assert_str(result).is_equal("success move")
+	tree.free()
