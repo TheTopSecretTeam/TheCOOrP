@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AnomalyAction" load_steps=3 format=3 uid="uid://dor8joedomxn8"]
 
 [ext_resource type="Texture2D" uid="uid://dp5o3k4h5jmhc" path="res://img/gibs/icebox/swallow.png" id="1_cfdni"]
-[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_snv3n"]
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_snv3n"]
 
 [resource]
 script = ExtResource("1_snv3n")

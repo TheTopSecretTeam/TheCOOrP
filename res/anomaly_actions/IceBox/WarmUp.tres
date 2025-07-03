@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AnomalyAction" load_steps=3 format=3 uid="uid://dkbabudvihart"]
 
 [ext_resource type="Texture2D" uid="uid://2qnpk5yacsih" path="res://img/gibs/icebox/burning-passion.png" id="1_02mjt"]
-[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_3x8mx"]
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_3x8mx"]
 
 [resource]
 script = ExtResource("1_3x8mx")

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbnormalityResource" load_steps=11 format=3 uid="uid://bdoglf8dgwrlw"]
 
-[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://obj/AnomalyAction.gd" id="1_epotb"]
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_epotb"]
 [ext_resource type="Resource" uid="uid://dkbabudvihart" path="res://res/anomaly_actions/IceBox/WarmUp.tres" id="4_drq3t"]
 [ext_resource type="Resource" uid="uid://cxofh1d14d58r" path="res://res/anomaly_actions/Wirebird/Insight.tres" id="4_mtkaj"]
 [ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/anomaly_actions/Wirebird/Instinct.tres" id="5_251ki"]
