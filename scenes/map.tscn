@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://clqiyga4o851i" path="res://scenes/facility_navigation.gd" id="2_0dq08"]
-[ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://scenes/net_manager.gd" id="3_f22gk"]
+[ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://scripts/net/net_manager.gd" id="3_f22gk"]
 [ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="4_rclfu"]
 [ext_resource type="PackedScene" uid="uid://b85wfl7wt2xqw" path="res://obj/entities/agent.tscn" id="5_ogelb"]
 [ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="6_hns3r"]
