@@ -19,3 +19,6 @@ func transfer(entity: Entity, previous_room):
 	entity.reparent($room_path)
 	entity.progress = waypoints[previous_room].progress
 	entity._on_travel()
+
+func highlight():
+	pass

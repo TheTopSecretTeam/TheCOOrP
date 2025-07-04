@@ -86,6 +86,10 @@ func move_toward_target(delta: float) -> void:
 	if direction == -1: $Skeleton.scale.x = -0.5
 	else: $Skeleton.scale.x = 0.5
 	progress += direction * entity_resource.travel_speed * delta
+	
+func set_outline_visibility(_visible: bool = true):
+	$Panel.visible = _visible
+
 # NET
 #func get_sync_data() -> Dictionary:
 	#print("Received data from server.")

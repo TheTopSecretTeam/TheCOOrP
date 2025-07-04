@@ -4,7 +4,7 @@ extends Control
 @onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
 var net_manager_instance: Node
 
-var selected_agents: Array = []  # Явное указание типа
+var selected_agents: Array[Agent] = []
 
 func _ready():
 	add_child(net_manager)
@@ -30,12 +30,15 @@ func _physics_process(_delta):
 		var selected_thing = get_thing_under_cursor(cursor_pos)
 		if !selected_thing: return
 		if selected_thing is Agent and !selected_thing.working:
+			if not selected_agents.is_empty():
+				selected_agents.pop_front().set_outline_visibility(false)
 			selected_agents = []
 			selected_agents.append(selected_thing)
+			selected_thing.set_outline_visibility(true)
 			#print("agent_selected")
 		elif selected_thing is Room and selected_thing is not AnomalyChamber:
 			#print("room_selected")
-			if selected_agents.size() != 0:
+			if not selected_agents.is_empty():
 				send_agent.rpc(selected_agents[0].entity_resource.agent_name, selected_thing.get_index())
 				print("Trying to redirect an Agent")
 		#elif !selected_thing.working:
