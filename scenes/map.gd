@@ -36,7 +36,7 @@ func _physics_process(_delta):
 		elif selected_thing is Room and selected_thing is not AnomalyChamber:
 			#print("room_selected")
 			if selected_agents.size() != 0:
-				send_agent.rpc(selected_agents[0].agent_res.agent_name, selected_thing.get_index())
+				send_agent.rpc(selected_agents[0].entity_resource.agent_name, selected_thing.get_index())
 				print("Trying to redirect an Agent")
 		#elif !selected_thing.working:
 			#selected_thing.show_work()

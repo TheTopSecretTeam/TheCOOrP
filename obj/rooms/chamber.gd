@@ -116,5 +116,5 @@ func work_ready():
 		work.set_button_icon(_action.action_icon)
 		for script in _action.scripts:
 			work.set_script(script)
-		work.button_down.connect(_on_work_button_down.bind(action))
+		work.button_down.connect(_on_work_button_down.bind(_action))
 		work_container.add_child(work)
