@@ -7,6 +7,11 @@ extends Control
 @onready var equipment_btn  : Button        = $MarginContainer/VBoxContainer/BottomButtons/EquipmentButton
 @onready var hire_btn       : Button        = $MarginContainer/VBoxContainer/BottomButtons/HireButton
 
+@export var agents : Array[AgentStats]
+@export var armors : Array[ArmorStats]
+@export var weapons: Array[WeaponStats]
+
+
 func _ready():
 	begin_btn.pressed.connect(_on_begin_pressed)
 	equipment_btn.pressed.connect(_on_equipment_pressed)
@@ -16,7 +21,7 @@ func _on_begin_pressed():
 	pass
 
 func _on_equipment_pressed():
-	pass
+	$CanvasLayer/EquipmentMenu.window_call(agents, armors, weapons)
 
 func _on_hire_pressed():
 	pass
