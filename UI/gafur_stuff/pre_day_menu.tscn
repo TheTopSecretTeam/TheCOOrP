@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ng7rda5ua20q"]
+[gd_scene load_steps=5 format=3 uid="uid://ng7rda5ua20q"]
 
 [ext_resource type="Script" uid="uid://kqpiktle7w25" path="res://UI/gafur_stuff/pre_day_menu.gd" id="1_hvl4m"]
+[ext_resource type="PackedScene" uid="uid://bsold2gw5nlj6" path="res://UI/equipment_menu_components/equimpent_menu.tscn" id="2_erk3b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvl4m"]
 bg_color = Color(0, 0, 0, 0)
@@ -40,6 +41,7 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
 alignment = 1
 
 [node name="BeginDayButton" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -90,3 +92,8 @@ text = "Equipment"
 [node name="HireButton" type="Button" parent="MarginContainer/VBoxContainer/BottomButtons"]
 layout_mode = 2
 text = "Hire"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EquipmentMenu" parent="CanvasLayer" instance=ExtResource("2_erk3b")]
+visible = false
