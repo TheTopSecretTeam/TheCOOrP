@@ -89,6 +89,10 @@ func move_toward_target(delta: float) -> void:
 	
 func set_outline_visibility(_visible: bool = true):
 	$Panel.visible = _visible
+	
+func die() -> void:
+	Global.agent_died.emit(self)
+	super.die()
 
 # NET
 #func get_sync_data() -> Dictionary:

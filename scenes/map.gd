@@ -11,6 +11,7 @@ func _ready():
 	add_child(sync_manager)
 	
 	Global.load_agents() #do this after adding agents!
+	Global.agent_died.connect(_on_agent_died)
 	Global.send_agent.connect(send_agent.rpc)
 	
 	if not is_instance_valid(net_manager):
@@ -60,6 +61,9 @@ func send_agent(agent_name, room_index: int) -> String :
 	agent.path = path
 	agent._on_travel()
 	return "success move"
+	
+func _on_agent_died(agent: Agent):
+	selected_agents.erase(agent)
 
 func get_thing_under_cursor(cursor_pos):
 	var containers = get_tree().get_nodes_in_group("Agent")
