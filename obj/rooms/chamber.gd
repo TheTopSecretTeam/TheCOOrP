@@ -84,6 +84,8 @@ func show_agents():
 	#$AgentContainer.global_position = get_global_mouse_position()
 
 func escape():
+	if get_node_or_null(^"room_path/Anomaly") == null:
+		return
 	$Label.show()
 	$EscapeTimer.start()
 	$EscapeTimer.started = true
