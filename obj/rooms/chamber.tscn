@@ -24,7 +24,7 @@ point_count = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rl70"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="chamber" type="CenterContainer" groups=["Room"]]
+[node name="chamber" type="CenterContainer" groups=["Room", "Sync"]]
 offset_right = 200.0
 offset_bottom = 130.0
 size_flags_horizontal = 0

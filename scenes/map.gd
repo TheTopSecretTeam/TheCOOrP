@@ -2,6 +2,9 @@ extends Control
 
 @onready var net_manager = preload("res://net/scripts/net_manager.gd").new()
 @onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
+@onready var tab_menu = preload("res://UI/tabMenu/TabMenu.tscn").instantiate()
+
+
 var net_manager_instance: Node
 
 var selected_agents: Array = []  # Явное указание типа
@@ -9,6 +12,8 @@ var selected_agents: Array = []  # Явное указание типа
 func _ready():
 	add_child(net_manager)
 	add_child(sync_manager)
+	add_child(tab_menu)
+	tab_menu.hide()
 	
 	Global.load_agents() #do this after adding agents!
 	Global.send_agent.connect(send_agent.rpc)
@@ -20,9 +25,6 @@ func _ready():
 	if not is_instance_valid(sync_manager):
 		push_error("Failed to initialize sync manager!")
 		return
-
-func get_cursor_node():
-	return $CanvasLayer
 
 func _physics_process(_delta):
 	var cursor_pos = get_global_mouse_position()

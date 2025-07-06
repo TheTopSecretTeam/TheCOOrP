@@ -13,20 +13,29 @@ func _ready() -> void:
 	is_local_player = player_id == multiplayer.get_unique_id()
 	set_process_input(is_local_player)
 	
-	# For local player, set system cursor
-	if is_local_player:
-		Input.set_custom_mouse_cursor(arrow_texture)
+	# For local player, set system cursor with centered hotspot
+	if is_local_player && arrow_texture:
+		var hotspot = Vector2(arrow_texture.get_width()/2, arrow_texture.get_height()/2)
+		Input.set_custom_mouse_cursor(arrow_texture, Input.CURSOR_ARROW, hotspot)
 	else:
 		# For remote players, create a visible sprite
-		var sprite = Sprite2D.new()
-		sprite.texture = arrow_texture
-		sprite.name = "CursorSprite"
-		add_child(sprite)
+		if arrow_texture:
+			var sprite = Sprite2D.new()
+			sprite.texture = arrow_texture
+			sprite.name = "CursorSprite"
+			sprite.centered = true
+			add_child(sprite)
 
+# На стороне отправителя
 func _input(event):
 	if event is InputEventMouseMotion:
-		update_position.rpc(event.global_position)
+		# Преобразуем экранные координаты в мировые
+		var world_pos = get_viewport().get_camera_2d().get_global_mouse_position()
+		update_position.rpc(world_pos)
 
+# На стороне получателя
 @rpc("unreliable", "any_peer")
-func update_position(pos: Vector2):
-	global_position = pos
+func update_position(world_pos: Vector2):
+	# Устанавливаем позицию напрямую в мировых координатах
+	# Спрайт уже центрирован, поэтому смещение не нужно
+	global_position = world_pos

@@ -22,7 +22,17 @@ func PlayerConnected(id):
 	if multiplayer.is_server():
 		startGame.rpc_id(id)  # Changed to call on all peers
 
+
 func PlayerDisconnected(id):
+	var SERVER_ID = 1
+	if id == SERVER_ID:
+		# Показываем сообщение о отключении хоста
+		# Создаем кнопку возврата в меню
+		# Замораживаем игру
+		var disconnected_scene = load("res://UI/HostDiscoonected/host_disconnected.tscn").instantiate()
+		get_tree().root.add_child(disconnected_scene)
+		get_tree().paused = true
+
 	print("Player: " + str(id) + " disconnected")
 
 func successful_connection():
@@ -43,6 +53,15 @@ func SendPlayerInformation(player_name: String, player_color: int, id: int):
 	if multiplayer.is_server():
 		for i in Global.Players:
 			SendPlayerInformation.rpc(Global.Players[i].name, player_color, i)
+
+func SendSeed():
+	if multiplayer.is_server():
+		Global.Seed = randi_range(-1000, 1000)
+		RecieveSeed.rpc(Global.Seed)
+
+@rpc("any_peer", "call_local")
+func RecieveSeed(seed: int):
+	Global.Seed = seed
 
 func SendPlayerColor(id: int):
 	if multiplayer.is_server():
@@ -72,6 +91,8 @@ func _on_host_button_down() -> void:
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
 
+	# send seed
+	SendSeed()
 	# Host gets their own color too
 	SendPlayerColor(multiplayer.get_unique_id())
 	startGame.rpc_id(1)

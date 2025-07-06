@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://b85wfl7wt2xqw"]
+[gd_scene load_steps=11 format=3 uid="uid://btgxa851vvqnl"]
 
-[ext_resource type="Script" uid="uid://cuc8mtkusmoxx" path="res://obj/entities/agent.gd" id="1_l35n4"]
+[ext_resource type="Script" uid="uid://cr876iy41tbrq" path="res://obj/entities/agent.gd" id="1_l35n4"]
 [ext_resource type="Texture2D" uid="uid://cq8aac2qq5cln" path="res://img/gibs/agent/agent_body.png" id="2_g3b03"]
 [ext_resource type="Texture2D" uid="uid://coam33sdg05rd" path="res://img/gibs/agent/agent_thigh.png" id="3_13mac"]
 [ext_resource type="Texture2D" uid="uid://bwkrd8igdcqwj" path="res://img/gibs/agent/agent_leg.png" id="4_6a263"]

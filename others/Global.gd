@@ -3,6 +3,7 @@ extends Node
 var Players = {}
 var color
 var agents : Array[Node] = []
+var Seed : int
 
 var resources : Dictionary[String, int] = {
 	"Materials" : 12,
@@ -31,4 +32,8 @@ signal quota_reached
 signal send_agent
 
 func load_agents():
-	agents = get_tree().get_nodes_in_group("Agent")
+	agents = get_tree().get_nodes_in_group("Agent")	
+	
+func _reset():
+	Players = {}
+	Seed = 0
