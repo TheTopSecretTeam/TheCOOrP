@@ -1,4 +1,5 @@
 extends Entity
+class_name Abnormality
 
 var state : int = CHAMBER
 
@@ -47,7 +48,7 @@ func _process(delta: float) -> void:
 		COMBAT:
 			super._process(delta)
 
-func handle_combat(delta: float) -> void:
+func handle_combat(delta: float) -> String:
 	if (not target or not target.entity_resource.is_alive()) and state != GOTO:
 		target = find_target()
 		if target:
@@ -58,12 +59,13 @@ func handle_combat(delta: float) -> void:
 			else: self.scale.x = 1
 		else:
 			state = WANDER
-		return
+		return "SUCCESS"
 	
 	if state != COMBAT:
 		state = COMBAT
 	
 	super.handle_combat(delta)
+	return "SUCCESS"
 
 func move_toward_target(delta: float) -> void:
 	if not target or not current_room_path:
@@ -73,5 +75,5 @@ func move_toward_target(delta: float) -> void:
 	var direction = sign(target_progress - progress)
 	if direction == -1: self.scale.x = -1
 	else: self.scale.x = 1
-	progress += direction * entity_resource.travel_speed * delta
+	progress += entity_resource.travel_speed * delta
 	

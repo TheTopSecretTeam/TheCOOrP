@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_mexuf")
 name = "Basic Weapon"
-base_damage = 20
+base_damage = 10
 damage_type = "physical"
 attack_speed = 2
 weapon_range = 200

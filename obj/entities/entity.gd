@@ -43,11 +43,11 @@ func _on_chamber_arrival():
 func _on_travel():
 	pass
 
-func handle_combat(delta: float) -> void:
+func handle_combat(delta: float) -> String:
 	if not target or not target.entity_resource.is_alive() or target.current_room != current_room:
 		target = find_target()
 		if not target:
-			return
+			return "NO_TARGET"
 	
 	var distance = global_position.distance_to(target.global_position)
 	
@@ -56,10 +56,15 @@ func handle_combat(delta: float) -> void:
 			print("MKKKKKKK")
 			entity_resource.attack(target)
 			print(str(target.entity_resource.current_hp), str(target.entity_resource.is_alive()))
-			if !target.entity_resource.is_alive(): target.die()
+			if !target.entity_resource.is_alive():
+				target.die()
+				return "SUCCESS_KILL"
 			attack_cooldown = 1.0 / entity_resource.get_attack_speed()
+			return"SUCCESS_CONTINUE"
+		return "WAIT"
 	else:
 		move_toward_target(delta)
+		return "MOVE"
 
 func move_toward_target(delta: float) -> void:
 	if not target or not current_room_path:
