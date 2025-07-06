@@ -1,20 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbrdb7uerms7d"]
+[gd_scene load_steps=2 format=3 uid="uid://dmy5r32cyw5w0"]
 
-[sub_resource type="GDScript" id="GDScript_h2467"]
-script/source = "extends Control
+[ext_resource type="Script" uid="uid://jhtq6n60pwls" path="res://UI/gafur_stuff/escape_menu.gd" id="1_mcamx"]
 
-# https://youtu.be/JEQR4ALlwVU
-# по видео это создал там показано как прикрутить к сцене main
-func _on_resume_pressed():
-	pass
-
-
-func _on_quit_pressed():
-	# пока quit можно поменять на сцену main menu
-	get_tree().quit()
-"
-
-[node name="Escape-menu" type="Control"]
+[node name="EscapeMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +13,7 @@ offset_right = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_h2467")
+script = ExtResource("1_mcamx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
