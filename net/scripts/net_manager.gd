@@ -26,8 +26,9 @@ func create_cursor(player_id):
 	cursor.player_id = player_id
 	cursor.name = "Cursor_%d" % player_id
 	cursors[player_id] = cursor
-	get_parent().get_cursor_node().add_child(cursor)
+	
+	add_child(cursor)
 	
 	# Set initial position for local player
 	if player_id == multiplayer.get_unique_id():
-		cursor.global_position = get_viewport().canvas_transform.origin +get_viewport().get_mouse_position()
+		cursor.global_position = get_global_mouse_position()

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="AbnormalityResource" load_steps=8 format=3 uid="uid://b4uc1785bd3wc"]
+
+[ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/base_abno_res.gd" id="1_3gtmr"]
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_t3s2q"]
+[ext_resource type="Resource" uid="uid://d162lu5dg3bhk" path="res://res/Wirebird/actions/Attachment.tres" id="2_mxbx8"]
+[ext_resource type="Resource" uid="uid://cxofh1d14d58r" path="res://res/Wirebird/actions/Insight.tres" id="3_kh5fe"]
+[ext_resource type="Resource" uid="uid://dor8joedomxn8" path="res://res/Wirebird/actions/Instinct.tres" id="4_3bsvi"]
+[ext_resource type="Resource" uid="uid://vy75qjymj4o2" path="res://res/Wirebird/actions/Repression.tres" id="5_bgs1t"]
+[ext_resource type="Texture2D" uid="uid://ckmns84yska28" path="res://img/portraits/server_room.jpg" id="7_mxbx8"]
+
+[resource]
+script = ExtResource("1_3gtmr")
+code = "O-00-00"
+monster_name = "Wirebird"
+description = "Wirebirds are common anomalies that usually spawn in unkept server rooms. They are growing by consuming nearby electronic devices and can grow up to 3 meters in height.
+At the first sight it may look that they are some kind of robot or artificial intelligence but they actually made out of flesh. Thats evident because they can bleed and lay flesh eggs, hence the name Wirebird.
+They are passive but can become dangerous during mating season if they grow too big.
+Due to their ability to convert matter via Radiance and their behaivior they are perfect for collecting samples."
+threat_level = 1
+hp = 200
+max_hp = 200
+damage_type = "physical"
+damage_output = 5
+attack_speed = 3
+travel_speed = 5
+texture = ExtResource("7_mxbx8")
+unique_pe = 0
+damage_res_phys = 1.0
+damage_res_ment = 2.0
+actions = Array[ExtResource("1_t3s2q")]([ExtResource("2_mxbx8"), ExtResource("3_kh5fe"), ExtResource("4_3bsvi"), ExtResource("5_bgs1t")])
+actions_open = Array[bool]([false, false, false, false])
+actions_cost = Array[int]([1, 1, 1, 1])
+current_room = NodePath("")
+path2d_progress = 0.0
+weapon_cost = Array[int]([0, 0, 0, 0])
+armor_cost = Array[int]([0, 0, 0, 0])
+mechanics_info = Array[String]([])
+lore = ""
+metadata/_custom_type_script = "uid://bpdqcempefb6o"

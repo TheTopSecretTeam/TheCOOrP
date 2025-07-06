@@ -38,16 +38,11 @@ jobs:
           mkdir -v -p ~/.config/
           mv /root/.config/godot ~/.config/godot
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Godot Import
-        continue-on-error: true
+      - name: Windows Build
         run: |
           mkdir -v -p build/windows
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --import
-      - name: Windows Build
-        run: |
-          EXPORT_DIR="$(readlink -f build)"
           godot --headless --verbose --export-release "PCWin" "$EXPORT_DIR/windows/$EXPORT_NAME.exe"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -69,16 +64,11 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Godot Import
-        continue-on-error: true
+      - name: Linux Build
         run: |
           mkdir -v -p build/linux
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --import
-      - name: Linux Build
-        run: |
-          EXPORT_DIR="$(readlink -f build)"
           godot --headless --verbose --export-release "PCLinux" "$EXPORT_DIR/linux/$EXPORT_NAME.x86_64"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -100,16 +90,11 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Godot Import
-        continue-on-error: true
+      - name: Web Build
         run: |
           mkdir -v -p build/web
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --import
-      - name: Web Build
-        run: |
-          EXPORT_DIR="$(readlink -f build)"
           godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -139,16 +124,11 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Godot Import
-        continue-on-error: true
+      - name: Mac Build
         run: |
           mkdir -v -p build/mac
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --import
-      - name: Mac Build
-        run: |
-          EXPORT_DIR="$(readlink -f build)"
           godot --headless --verbose --export-release "PCMac" "$EXPORT_DIR/mac/$EXPORT_NAME.app.zip"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4

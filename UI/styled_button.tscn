@@ -1,24 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0qjiqpre7kcd"]
+[gd_scene load_steps=2 format=3 uid="uid://b0qjiqpre7kcd"]
 
-[ext_resource type="Script" uid="uid://coe50mr4qfnpc" path="res://UI/styled_button.gd" id="1_pan8q"]
-[ext_resource type="Texture2D" uid="uid://2qnpk5yacsih" path="res://img/gibs/icebox/burning-passion.png" id="2_8ngy7"]
+[ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="1_pan8q"]
 
-[node name="Button" type="VBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+[node name="Button" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
-script = ExtResource("1_pan8q")
-
-[node name="TextureButton" type="TextureButton" parent="."]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture_normal = ExtResource("2_8ngy7")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-horizontal_alignment = 1
-
-[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
+theme_override_fonts/font = ExtResource("1_pan8q")
+theme_override_font_sizes/font_size = 60

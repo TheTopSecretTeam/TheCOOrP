@@ -1,21 +1,16 @@
 extends Control
 
-@export var web_disable_list: Array[Button] = []
-
-func _ready() -> void:
-	if OS.get_name() == "Web":
-		for btn in web_disable_list:
-			btn.disabled = true
-
 func _on_Main_NewGame_pressed():
 	_mok_jmp_to_map()
-	#$Main.hide()
-	#$NewGameMenu.show()
+	return
+	$Main.hide()
+	$NewGameMenu.show()
 
 func _on_Main_Load_pressed():
 	_mok_jmp_to_map()
-	#$Main.hide()
-	#$LoadMenu.show()
+	return
+	$Main.hide()
+	$LoadMenu.show()
 
 func _on_Main_Settings_pressed():
 	print("Settings are not implemented")
@@ -44,4 +39,4 @@ func _on_NG_Start_pressed():
 	pass
 
 func _mok_jmp_to_map():
-	get_tree().change_scene_to_file("res://scenes/multiplayer.tscn")
+	get_tree().change_scene_to_file("res://net/multiplayer.tscn")

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://7r8thl1a66as" path="res://img/Cell/NE.png" id="3_i0j7i"]
 [ext_resource type="Texture2D" uid="uid://c23srtrginir7" path="res://img/Cell/PE.png" id="4_m62ip"]
 
-[node name="Bar" type="Sprite2D"]
+[node name="Bar" type="Sprite2D" groups=["Sync"]]
 texture = ExtResource("1_4xpuq")
 script = ExtResource("2_bvpha")
 

@@ -3,15 +3,20 @@ extends Node
 var Players = {}
 var color
 var agents : Array[Node] = []
-
-signal resources_changed(new_resources)
+var Seed : int
 
 var resources : Dictionary[String, int] = {
 	"Materials" : 12,
 	"Funds" : 12, 
 	"Radiance" : 12, 
 	"Blight" : 12,
-	}
+	}:
+		set(value):
+			resources = value
+var res1 = 12
+var res2 = 12
+var res3 = 12
+var res4 = 12
 
 var rng = RandomNumberGenerator.new()
 var energy_quota : int = 10
@@ -25,11 +30,10 @@ var current_energy : int = 0:
 signal energy_changed
 signal quota_reached
 signal send_agent
-signal agent_died(agent: Agent)
-
-func _on_agent_died(agent: Agent):
-	agents.erase(agent)
 
 func load_agents():
-	agents = get_tree().get_nodes_in_group("Agent")
-	agent_died.connect(_on_agent_died)
+	agents = get_tree().get_nodes_in_group("Agent")	
+	
+func _reset():
+	Players = {}
+	Seed = 0

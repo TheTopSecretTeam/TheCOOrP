@@ -19,20 +19,12 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 Global="*res://others/Global.gd"
 
-[debug]
-
-gdscript/warnings/unused_signal=0
-
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
 display_server/driver.linuxbsd="wayland"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
 
 [global_group]
 
