@@ -7,6 +7,41 @@ Link to video explanations:
 
 ## Architecture
 
+### Static View
+
+#### Component Diagram
+![Component Diagram](docs/architecture/static-view/Static_View.png)
+
+#### Coupling and Cohesion
+- **Coupling**: Our system demonstrates loose coupling through well-defined interfaces, ensuring components interact without tight dependencies
+- **Cohesion**: Components exhibit high cohesion by grouping closely related functionality within single units.
+
+#### Maintainability
+Through high modularity of the code, maintaining TheCOOrP is rather simple
+
+### Dynamic View
+
+#### Sequence Diagram
+![Component Diagram](docs/architecture/dynamic-view/Dynamic_View.png)
+
+#### Performance Metrics
+In production environment, the illustrated scenario takes:
+- Average: 87 ms
+- Max: 121 ms
+
+### Deployment View
+
+#### Deployment Diagram
+![Component Diagram](docs/architecture/deployment-view/Deployment_View.png)
+
+#### Deployment Choices
+- Customer-side deployment options:
+  - itch.io: The game is automatically deployed on itch.io. So, playing the game only requires access to the game's page.
+    However, if you want to publish on your own itch.io account, you must follow these steps:
+    - 1. Set Up Your itch.io Project
+    - 2. Install Butler (itch.io’s CLI Tool)
+    - 3. Prepare Your Build for Deployment (Building via Godot)
+    - 4. Deploy via Git + Butler (Manual or Automated)
 
 
 ## Development
