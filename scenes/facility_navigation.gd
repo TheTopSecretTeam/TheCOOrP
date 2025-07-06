@@ -1,14 +1,6 @@
 extends Node
 
-#im too lazy to make autogenerator for this graph so 
-#you should manually create this graph and make every waypoint follow it
-var graph = {
-	0: [2,4],
-	1: [3],
-	2: [0,3],
-	3: [1,2],
-	4: [0]
-}
+var graph: Dictionary[int, Array] = {}
 
 func get_agent_path(ind_A: int, ind_B: int) -> Array[int]:
 	# If start and end are the same, return immediately

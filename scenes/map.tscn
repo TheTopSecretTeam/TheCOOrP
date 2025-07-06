@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=18 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
-[ext_resource type="Script" uid="uid://clqiyga4o851i" path="res://scenes/facility_navigation.gd" id="2_0dq08"]
 [ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://net/scripts/net_manager.gd" id="3_f22gk"]
 [ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="4_rclfu"]
 [ext_resource type="PackedScene" uid="uid://b85wfl7wt2xqw" path="res://obj/entities/agent.tscn" id="5_ogelb"]
@@ -29,9 +28,6 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_i0xy1")
 
-[node name="facility_navigation" type="Node" parent="."]
-script = ExtResource("2_0dq08")
-
 [node name="EnergyBar" parent="." instance=ExtResource("11_mlgqr")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -40,6 +36,7 @@ offset_left = -15526.0
 offset_top = -12254.0
 offset_right = 22337.0
 offset_bottom = 10113.0
+mouse_filter = 2
 color = Color(0.227521, 0.223744, 0.205711, 1)
 
 [node name="NetManager" type="Node2D" parent="."]

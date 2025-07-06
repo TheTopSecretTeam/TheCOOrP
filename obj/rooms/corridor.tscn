@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbpr2hgq0qrbw"]
 
-[ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/corridor.gd" id="1_uovvg"]
+[ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/room.gd" id="1_uovvg"]
 [ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="2_nwxuc"]
 [ext_resource type="Texture2D" uid="uid://bcaff3cr2ogf2" path="res://img/layout/hall1.png" id="2_uovvg"]
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="4_mxo8b"]

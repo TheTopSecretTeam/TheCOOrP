@@ -16,21 +16,18 @@ var working_agent : Agent
 func _ready() -> void:
 	if anomaly: load_anomaly()
 	work_ready()
-	for child in $room_path.get_children():
-		if child is Waypoint:
-			if child.leading_room:
-				waypoints[child.leading_room.get_index()] = child
-				#if self.get_index() == 0: print(child.leading_room.get_index())
+	super._ready() # Room setup
 
 func transfer(entity: Entity, _previous_room):
 	entity.reparent($room_path)
 	entity._on_travel()
 	entity._on_chamber_arrival()
 	
-	if entity is Agent:
+	if entity is Agent and not working:
 		entity.progress_ratio = 1.0
 		working_agent = entity
 		working_agent.working = true
+		working = true
 		begin_work(work_probability, entity.entity_resource)
 
 func load_anomaly() -> void:
@@ -83,11 +80,11 @@ func show_agents():
 	$CanvasLayer/CenterContainer/AgentContainer.show()
 	#$AgentContainer.global_position = get_global_mouse_position()
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("clickMouse") and (
 		$CanvasLayer/CenterContainer/AgentContainer.visible
 	):
-		$CanvasLayer/CenterContainer/AgentContainer.hide()
+		$CanvasLayer/CenterContainer/AgentContainer.call_deferred("hide")
 		working = false
 
 func escape():
@@ -112,7 +109,6 @@ func _on_work_button_down(action_res) -> void:
 
 func action(action_res) -> String:
 	if working: return "ALREADY_WORKING"
-	working = true
 	work_probability = action_res.probability
 	work_container.hide()
 	show_agents()
