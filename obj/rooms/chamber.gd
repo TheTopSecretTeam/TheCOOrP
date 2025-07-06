@@ -83,6 +83,13 @@ func show_agents():
 	$CanvasLayer/CenterContainer/AgentContainer.show()
 	#$AgentContainer.global_position = get_global_mouse_position()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("clickMouse") and (
+		$CanvasLayer/CenterContainer/AgentContainer.visible
+	):
+		$CanvasLayer/CenterContainer/AgentContainer.hide()
+		working = false
+
 func escape():
 	if get_node_or_null(^"room_path/Anomaly") == null:
 		return
