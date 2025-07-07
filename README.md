@@ -37,11 +37,11 @@ In production environment, the illustrated scenario takes:
 #### Deployment Choices
 - Customer-side deployment options:
   - itch.io: The game is automatically deployed on itch.io. So, playing the game only requires access to the game's page.
-    However, if you want to publish on your own itch.io account, you must follow these steps:
-    - 1. Set Up Your itch.io Project
-    - 2. Install Butler (itch.io’s CLI Tool)
-    - 3. Prepare Your Build for Deployment (Building via Godot)
-    - 4. Deploy via Git + Butler (Manual or Automated)
+	However, if you want to publish on your own itch.io account, you must follow these steps:
+	- 1. Set Up Your itch.io Project
+	- 2. Install Butler (itch.io’s CLI Tool)
+	- 3. Prepare Your Build for Deployment (Building via Godot)
+	- 4. Deploy via Git + Butler (Manual or Automated)
 
 
 ## Development
