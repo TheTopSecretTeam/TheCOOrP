@@ -4,14 +4,14 @@ extends PathFollow2D
 
 # Reference to the entity's resource data
 @export var entity_resource: EntityResource
-var path : Array = []
+var path: Array = []
 var target: Entity = null
 var attack_cooldown: float = 0.0
 @export var current_room_path: Path2D
 var current_room: int
-var waypoint : Node2D
+var waypoint: Node2D
 
-var flipped : bool = false:
+var flipped: bool = false:
 	set(value):
 		if value:
 			$Skeleton.scale.x = -0.5
@@ -43,28 +43,22 @@ func _on_chamber_arrival():
 func _on_travel():
 	pass
 
-func handle_combat(delta: float) -> String:
+func handle_combat(delta: float) -> void:
 	if not target or not target.entity_resource.is_alive() or target.current_room != current_room:
 		target = find_target()
 		if not target:
-			return "NO_TARGET"
+			return
 	
 	var distance = global_position.distance_to(target.global_position)
 	
 	if distance <= entity_resource.get_attack_range():
 		if attack_cooldown <= 0:
-			print("MKKKKKKK")
 			entity_resource.attack(target)
 			print(str(target.entity_resource.current_hp), str(target.entity_resource.is_alive()))
-			if !target.entity_resource.is_alive():
-				target.die()
-				return "SUCCESS_KILL"
+			if !target.entity_resource.is_alive(): target.die()
 			attack_cooldown = 1.0 / entity_resource.get_attack_speed()
-			return"SUCCESS_CONTINUE"
-		return "WAIT"
 	else:
 		move_toward_target(delta)
-		return "MOVE"
 
 func move_toward_target(delta: float) -> void:
 	if not target or not current_room_path:
@@ -87,7 +81,7 @@ func find_target() -> Entity:
 	
 	# Find the closest target
 	if not potential_targets.is_empty():
-		potential_targets.sort_custom(func(a, b): 
+		potential_targets.sort_custom(func(a, b):
 			return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position)
 		)
 		return potential_targets[0]

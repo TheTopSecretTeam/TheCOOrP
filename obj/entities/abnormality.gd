@@ -1,7 +1,7 @@
 extends Entity
 class_name Abnormality
 
-var state : int = CHAMBER
+var state: int = CHAMBER
 
 enum {
 	WANDER,
@@ -12,8 +12,8 @@ enum {
 func _ready() -> void:
 	super._ready()
 func _on_travel():
-	if path.is_empty(): 
-		state = WANDER 
+	if path.is_empty():
+		state = WANDER
 		return
 	current_room = path.pop_front()
 	if path.size() == 0:
@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 		COMBAT:
 			super._process(delta)
 
-func handle_combat(delta: float) -> String:
+func handle_combat(delta: float) -> void:
 	if (not target or not target.entity_resource.is_alive()) and state != GOTO:
 		target = find_target()
 		if target:
@@ -59,13 +59,12 @@ func handle_combat(delta: float) -> String:
 			else: self.scale.x = 1
 		else:
 			state = WANDER
-		return "SUCCESS"
+		return
 	
 	if state != COMBAT:
 		state = COMBAT
 	
 	super.handle_combat(delta)
-	return "SUCCESS"
 
 func move_toward_target(delta: float) -> void:
 	if not target or not current_room_path:
@@ -76,4 +75,3 @@ func move_toward_target(delta: float) -> void:
 	if direction == -1: self.scale.x = -1
 	else: self.scale.x = 1
 	progress += entity_resource.travel_speed * delta
-	

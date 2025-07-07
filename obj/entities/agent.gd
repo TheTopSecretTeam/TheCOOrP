@@ -2,7 +2,7 @@
 extends Entity
 class_name Agent
 
-var state : int = WANDER
+var state: int = WANDER
 enum {
 	WANDER,
 	GOTO,
@@ -21,8 +21,8 @@ func get_global_rect():
 func _on_travel():
 	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.play("walk")
-	if path.is_empty(): 
-		state = WANDER 
+	if path.is_empty():
+		state = WANDER
 		return
 	current_room = path.pop_front()
 	if path.size() == 0:
@@ -59,26 +59,25 @@ func _process(delta: float) -> void:
 		COMBAT:
 			super._process(delta)
 
-func handle_combat(delta: float) -> String:
-	if state != GOTO:
-		if (not target or not target.entity_resource.is_alive()):
-			target = find_target()
-			if target:
-				state = COMBAT
-				var target_progress = target.progress
-				var direction = sign(target_progress - progress)
-				if direction == -1: $Skeleton.scale.x = -0.5
-				else: $Skeleton.scale.x = 0.5
-			else:
-				state = WANDER
-			return "SUCCESS"
-		
-		if state != COMBAT:
+func handle_combat(delta: float) -> void:
+	if state == GOTO:
+		return
+	if (not target or not target.entity_resource.is_alive()):
+		target = find_target()
+		if target:
 			state = COMBAT
-		
-		super.handle_combat(delta)
-		return "SUCCESS"
-	return "GOTO_PRIORITY"
+			var target_progress = target.progress
+			var direction = sign(target_progress - progress)
+			if direction == -1: $Skeleton.scale.x = -0.5
+			else: $Skeleton.scale.x = 0.5
+		else:
+			state = WANDER
+		return
+	
+	if state != COMBAT:
+		state = COMBAT
+	
+	super.handle_combat(delta)
 
 func move_toward_target(delta: float) -> void:
 	if not target or not current_room_path:
