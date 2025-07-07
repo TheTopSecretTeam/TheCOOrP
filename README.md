@@ -17,7 +17,9 @@ Link to video explanations:
 - **Cohesion**: Components exhibit high cohesion by grouping closely related functionality within single units.
 
 #### Maintainability
-Through high modularity of the code, maintaining TheCOOrP is rather simple
+Through high modularity of the code, maintaining and analyzing TheCOOrP is rather simple. 
+Modifications to the project can be made without much effort. Most of the code is susceptible to testing.
+Although, the uniqueness of the project limits its reusability.
 
 ### Dynamic View
 
