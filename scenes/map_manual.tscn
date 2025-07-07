@@ -1,0 +1,219 @@
+[gd_scene load_steps=18 format=3 uid="uid://uc66usaub2fd"]
+
+[ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
+[ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://net/scripts/net_manager.gd" id="3_f22gk"]
+[ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="4_rclfu"]
+[ext_resource type="PackedScene" uid="uid://b85wfl7wt2xqw" path="res://obj/entities/agent.tscn" id="5_ogelb"]
+[ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="6_hns3r"]
+[ext_resource type="PackedScene" uid="uid://ch7tbtciyxmbe" path="res://obj/rooms/elevator.tscn" id="7_e3tq1"]
+[ext_resource type="Resource" uid="uid://cfpu2ylk4q6qn" path="res://res/scripts/agent/Ping.tres" id="8_c70he"]
+[ext_resource type="PackedScene" uid="uid://bx0u5ty4gc1o5" path="res://obj/rooms/chamber.tscn" id="8_fy0fe"]
+[ext_resource type="PackedScene" uid="uid://m7nkloxdq8qb" path="res://obj/modules/camera/camera.tscn" id="9_be0no"]
+[ext_resource type="Resource" uid="uid://cso84xpj4vi1e" path="res://res/scripts/agent/Pong.tres" id="9_c00ee"]
+[ext_resource type="PackedScene" uid="uid://dtn3am85byhpe" path="res://UI/resource-display/resourse_box.tscn" id="11_c00ee"]
+[ext_resource type="PackedScene" uid="uid://ck758bnk61jcp" path="res://UI/energy-bar/energy-bar.tscn" id="11_mlgqr"]
+[ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="11_n1psn"]
+[ext_resource type="Script" uid="uid://dc46wrfcoudhl" path="res://scenes/win_screen.gd" id="12_gw3fx"]
+[ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
+[ext_resource type="PackedScene" uid="uid://dxcj8bws0tbwt" path="res://UI/gafur_stuff/day_scene.tscn" id="14_n1psn"]
+
+[sub_resource type="Curve2D" id="Curve2D_ueh1s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 43, 0, 0, 0, 0, 0, -41, 0)
+}
+point_count = 2
+
+[node name="map" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_i0xy1")
+
+[node name="EnergyBar" parent="." instance=ExtResource("11_mlgqr")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -15526.0
+offset_top = -12254.0
+offset_right = 22337.0
+offset_bottom = 10113.0
+mouse_filter = 2
+color = Color(0.227521, 0.223744, 0.205711, 1)
+
+[node name="NetManager" type="Node2D" parent="."]
+script = ExtResource("3_f22gk")
+
+[node name="rooms" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="corridor" parent="rooms" instance=ExtResource("4_rclfu")]
+layout_mode = 1
+offset_left = -126.0
+offset_top = -396.0
+offset_right = 2035.0
+offset_bottom = -6.0
+
+[node name="waypoint" parent="rooms/corridor/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+position = Vector2(-299.998, 5)
+progress = 2014.59
+leading_room = NodePath("../../../elevator")
+
+[node name="waypoint2" parent="rooms/corridor/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+position = Vector2(1292.53, 5.7905)
+progress = 422.057
+leading_room = NodePath("../../../chamber")
+
+[node name="corridor2" parent="rooms" instance=ExtResource("4_rclfu")]
+layout_mode = 1
+offset_left = -108.0
+offset_top = 276.0
+offset_right = 2053.0
+offset_bottom = 666.0
+
+[node name="waypoint2" parent="rooms/corridor2/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+position = Vector2(-299.998, 5)
+progress = 2014.59
+leading_room = NodePath("../../../elevator2")
+
+[node name="Agent2" parent="rooms/corridor2/room_path" index="1" instance=ExtResource("5_ogelb")]
+position = Vector2(1714.59, 6)
+entity_resource = ExtResource("8_c70he")
+
+[node name="Agent3" parent="rooms/corridor2/room_path" index="2" instance=ExtResource("5_ogelb")]
+position = Vector2(759.672, 5.526)
+progress = 954.918
+entity_resource = ExtResource("9_c00ee")
+
+[node name="elevator" parent="rooms" instance=ExtResource("7_e3tq1")]
+layout_mode = 1
+offset_left = -571.0
+offset_top = -513.0
+offset_right = -122.0
+offset_bottom = 126.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="room_path" parent="rooms/elevator" index="1"]
+curve = SubResource("Curve2D_ueh1s")
+
+[node name="waypoint" parent="rooms/elevator/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+visible = false
+position = Vector2(-41, 0)
+progress = 84.0
+leading_room = NodePath("../../../elevator2")
+
+[node name="waypoint2" parent="rooms/elevator/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+visible = false
+position = Vector2(43, 0)
+leading_room = NodePath("../../../corridor")
+
+[node name="elevator2" parent="rooms" instance=ExtResource("7_e3tq1")]
+layout_mode = 1
+offset_left = -480.0
+offset_top = 272.0
+offset_right = -213.0
+offset_bottom = 652.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="room_path" parent="rooms/elevator2" index="1"]
+position = Vector2(128, 352)
+curve = SubResource("Curve2D_ueh1s")
+
+[node name="waypoint" parent="rooms/elevator2/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+visible = false
+position = Vector2(-41, 0)
+progress = 84.0
+leading_room = NodePath("../../../elevator")
+
+[node name="waypoint2" parent="rooms/elevator2/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+visible = false
+position = Vector2(43, 0)
+leading_room = NodePath("../../../corridor2")
+
+[node name="chamber" parent="rooms" instance=ExtResource("8_fy0fe")]
+layout_mode = 0
+offset_left = 955.0
+offset_top = -1151.0
+offset_right = 1813.0
+offset_bottom = -504.0
+anomaly = ExtResource("11_n1psn")
+
+[node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(607.606, 660)
+leading_room = NodePath("../../../corridor")
+
+[node name="Anomaly" parent="rooms/chamber/room_path" index="1"]
+position = Vector2(164.124, 660)
+
+[node name="AgentContainer" parent="rooms/chamber/CanvasLayer/CenterContainer" index="1"]
+visible = true
+
+[node name="Camera" parent="." instance=ExtResource("9_be0no")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="win_screen" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.5
+offset_top = -181.0
+offset_right = 281.5
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.306639, 0.319979, 0.369546, 1)
+script = ExtResource("12_gw3fx")
+
+[node name="Label" type="Label" parent="CanvasLayer/win_screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -36.0
+offset_right = 107.5
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_wslke")
+theme_override_font_sizes/font_size = 60
+text = "You Won"
+
+[node name="DayScene" parent="CanvasLayer" instance=ExtResource("14_n1psn")]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResourseBox" parent="CanvasLayer" instance=ExtResource("11_c00ee")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_top = 3.0
+offset_right = -19.0
+offset_bottom = 415.0
+grow_horizontal = 0
+
+[editable path="rooms/corridor"]
+[editable path="rooms/corridor2"]
+[editable path="rooms/elevator"]
+[editable path="rooms/elevator2"]
+[editable path="rooms/chamber"]

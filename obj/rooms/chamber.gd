@@ -13,6 +13,8 @@ var working_agent : Agent
 @export var agent_option : PackedScene
 @onready var btn = preload("res://UI/styled_button.tscn")
 
+static var chamber_pool: Array[AnomalyChamber] = []
+
 func _ready() -> void:
 	if anomaly: load_anomaly()
 	work_ready()

@@ -19,6 +19,8 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 Global="*res://others/Global.gd"
 FacilityNavigation="*res://scenes/facility_navigation.gd"
+RoomGen="*res://obj/rooms/RoomGen.gd"
+Type="*res://others/type.gd"
 
 [debug]
 

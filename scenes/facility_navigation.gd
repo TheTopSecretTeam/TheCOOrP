@@ -2,6 +2,9 @@ extends Node
 
 var graph: Dictionary[int, Array] = {}
 
+func _ready() -> void:
+	pass
+
 func get_agent_path(ind_A: int, ind_B: int) -> Array[int]:
 	# If start and end are the same, return immediately
 	if ind_A == ind_B:

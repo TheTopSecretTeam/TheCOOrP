@@ -1,25 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbpr2hgq0qrbw"]
+[gd_scene load_steps=8 format=3 uid="uid://bbpr2hgq0qrbw"]
 
 [ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/room.gd" id="1_uovvg"]
 [ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="2_nwxuc"]
 [ext_resource type="Texture2D" uid="uid://bcaff3cr2ogf2" path="res://img/layout/hall1.png" id="2_uovvg"]
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="4_mxo8b"]
+[ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="5_mxo8b"]
+[ext_resource type="Script" uid="uid://huowoavrnx7f" path="res://obj/rooms/connector.gd" id="6_72fwn"]
 
 [sub_resource type="Curve2D" id="Curve2D_r14vu"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1714.59, 6, 0, 0, 0, 0, -300, 5)
+"points": PackedVector2Array(0, 0, 0, 0, 1680, 6, 0, 0, 0, 0, -300, 5)
 }
 point_count = 2
 
 [node name="corridor" type="CenterContainer" groups=["Room"]]
 anchors_preset = -1
-anchor_right = 0.608
-anchor_bottom = 0.201
-offset_right = -0.416016
-offset_bottom = -0.248001
+anchor_right = 1.688
+anchor_bottom = 0.542
+offset_left = -0.00012207
+offset_top = -3.05176e-05
+offset_right = 1.36011
+offset_bottom = -0.240021
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uovvg")
+room_type = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -41,5 +46,54 @@ layout_mode = 2
 texture = ExtResource("4_mxo8b")
 
 [node name="room_path" type="Path2D" parent="."]
-position = Vector2(392, 310.764)
+position = Vector2(392, 310)
 curve = SubResource("Curve2D_r14vu")
+
+[node name="l" parent="room_path" instance=ExtResource("5_mxo8b")]
+position = Vector2(-299.998, 5)
+progress = 1980.0
+
+[node name="r" parent="room_path" instance=ExtResource("5_mxo8b")]
+position = Vector2(1680, 6)
+
+[node name="cl" parent="room_path" instance=ExtResource("5_mxo8b")]
+position = Vector2(359.932, 5.3333)
+progress = 1320.07
+
+[node name="cc" parent="room_path" instance=ExtResource("5_mxo8b")]
+position = Vector2(689.998, 5.5)
+progress = 990.002
+
+[node name="cr" parent="room_path" instance=ExtResource("5_mxo8b")]
+position = Vector2(1020.06, 5.6667)
+progress = 659.936
+
+[node name="connectors" type="Node" parent="."]
+
+[node name="l" type="Node2D" parent="connectors"]
+position = Vector2(-402, 0)
+script = ExtResource("6_72fwn")
+metadata/_custom_type_script = "uid://huowoavrnx7f"
+
+[node name="r" type="Node2D" parent="connectors"]
+position = Vector2(2296, 0)
+script = ExtResource("6_72fwn")
+metadata/_custom_type_script = "uid://huowoavrnx7f"
+
+[node name="cl" type="Node2D" parent="connectors"]
+position = Vector2(160, -913)
+script = ExtResource("6_72fwn")
+to_type = 2
+metadata/_custom_type_script = "uid://huowoavrnx7f"
+
+[node name="cc" type="Node2D" parent="connectors"]
+position = Vector2(651, -913)
+script = ExtResource("6_72fwn")
+to_type = 2
+metadata/_custom_type_script = "uid://huowoavrnx7f"
+
+[node name="cr" type="Node2D" parent="connectors"]
+position = Vector2(1302, -913)
+script = ExtResource("6_72fwn")
+to_type = 2
+metadata/_custom_type_script = "uid://huowoavrnx7f"

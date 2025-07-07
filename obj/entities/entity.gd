@@ -63,11 +63,12 @@ func handle_combat(delta: float) -> void:
 func move_toward_target(delta: float) -> void:
 	if not target or not current_room_path:
 		return
-	
-	var target_progress = target.progress
-	var direction = sign(target_progress - progress)
-	
-	progress += direction * entity_resource.travel_speed * delta
+	var progress_diff = target.progress - progress
+	var progress_delta = sign(progress_diff) * entity_resource.travel_speed * delta
+	if abs(progress_diff) < abs(progress_delta): # snap to target if close enough
+		progress = target.progress
+	else:
+		progress += progress_delta
 
 func find_target() -> Entity:
 	var potential_targets = []

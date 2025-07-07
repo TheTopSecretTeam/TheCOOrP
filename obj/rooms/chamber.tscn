@@ -33,6 +33,7 @@ size_flags_vertical = 0
 script = ExtResource("2_y0fo7")
 anomaly = ExtResource("2_xsyyv")
 agent_option = ExtResource("3_50w6m")
+room_type = 2
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_7jm6a")

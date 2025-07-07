@@ -21,6 +21,7 @@ var current_energy : int = 0:
 		energy_changed.emit(current_energy)
 		if energy_quota <= current_energy:
 			quota_reached.emit()
+var number_of_chambers = 2
 
 signal energy_changed
 signal quota_reached

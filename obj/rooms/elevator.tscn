@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch7tbtciyxmbe"]
+[gd_scene load_steps=8 format=3 uid="uid://ch7tbtciyxmbe"]
 
-[ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="1_mvprs"]
+[ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/room.gd" id="1_6rfbe"]
+[ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="2_au2sc"]
 [ext_resource type="Texture2D" uid="uid://bxyefd85ebue1" path="res://img/layout/elevator.png" id="2_tcxg3"]
+[ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="4_qw3lm"]
+[ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="5_dav0r"]
+[ext_resource type="Script" uid="uid://huowoavrnx7f" path="res://obj/rooms/connector.gd" id="6_au2sc"]
 
 [sub_resource type="Curve2D" id="Curve2D_mvprs"]
 _data = {
@@ -9,25 +13,87 @@ _data = {
 }
 point_count = 2
 
-[node name="elevator" instance=ExtResource("1_mvprs")]
-anchor_right = 0.113
-offset_left = -152.0
-offset_top = -247.0
-offset_right = 152.36
-offset_bottom = 247.28
+[node name="elevator" type="CenterContainer" groups=["Room"]]
+anchors_preset = -1
+anchor_right = 0.209
+anchor_bottom = 0.528
+offset_left = -0.00012207
+offset_top = -3.05176e-05
+offset_right = 0.47998
+offset_bottom = -0.160004
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6rfbe")
 
-[node name="TextureRect" parent="HBoxContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 visible = false
+layout_mode = 2
+texture = ExtResource("2_au2sc")
 
-[node name="ColorRect" parent="HBoxContainer" index="1"]
+[node name="ColorRect" type="TextureRect" parent="HBoxContainer"]
+texture_repeat = 2
 custom_minimum_size = Vector2(260, 380)
+layout_mode = 2
 texture = ExtResource("2_tcxg3")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="TextureRect2" parent="HBoxContainer" index="2"]
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
 visible = false
+layout_mode = 2
+texture = ExtResource("4_qw3lm")
 
-[node name="room_path" parent="." index="1"]
-position = Vector2(222, 473)
+[node name="room_path" type="Path2D" parent="."]
+position = Vector2(130, 360)
 curve = SubResource("Curve2D_mvprs")
+
+[node name="l" parent="room_path" instance=ExtResource("5_dav0r")]
+visible = false
+position = Vector2(-99, 0)
+
+[node name="r" parent="room_path" instance=ExtResource("5_dav0r")]
+visible = false
+position = Vector2(97, 0)
+progress = 196.0
+
+[node name="u" parent="room_path" instance=ExtResource("5_dav0r")]
+visible = false
+position = Vector2(-1, 0)
+progress = 98.0
+
+[node name="d" parent="room_path" instance=ExtResource("5_dav0r")]
+visible = false
+position = Vector2(-1, 0)
+progress = 98.0
+
+[node name="connectors" type="Node" parent="."]
+
+[node name="l" type="Node2D" parent="connectors"]
+position = Vector2(-2296, 0)
+script = ExtResource("6_au2sc")
+to_type = 1
+map_slot = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://huowoavrnx7f"
+
+[node name="r" type="Node2D" parent="connectors"]
+position = Vector2(402, 0)
+script = ExtResource("6_au2sc")
+to_type = 1
+map_slot = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://huowoavrnx7f"
+
+[node name="u" type="Node2D" parent="connectors"]
+position = Vector2(0, -1560)
+script = ExtResource("6_au2sc")
+map_slot = Vector2i(0, -1)
+metadata/_custom_type_script = "uid://huowoavrnx7f"
+
+[node name="d" type="Node2D" parent="connectors"]
+position = Vector2(0, 1560)
+script = ExtResource("6_au2sc")
+map_slot = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://huowoavrnx7f"
