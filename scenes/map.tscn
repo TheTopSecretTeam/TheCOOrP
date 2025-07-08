@@ -212,6 +212,9 @@ offset_right = -19.0
 offset_bottom = 415.0
 grow_horizontal = 0
 
+[connection signal="menu_close" from="rooms/chamber/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
+
 [editable path="rooms/corridor"]
 [editable path="rooms/corridor2"]
 [editable path="rooms/elevator"]

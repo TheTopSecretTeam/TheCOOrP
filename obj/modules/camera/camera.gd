@@ -8,6 +8,7 @@ extends Camera2D
 var _dragging := false
 var _drag_start_position := Vector2.ZERO
 var _camera_start_position := Vector2.ZERO
+var zoomable: bool = true
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -29,6 +30,13 @@ func _input(event: InputEvent) -> void:
 		position = _camera_start_position + drag_vector
 
 func zoom_camera(factor: float) -> void:
-	var new_zoom = zoom * factor
-	new_zoom = new_zoom.clamp(Vector2(min_zoom, min_zoom), Vector2(max_zoom, max_zoom))
-	zoom = new_zoom
+	if zoomable:
+		var new_zoom = zoom * factor
+		new_zoom = new_zoom.clamp(Vector2(min_zoom, min_zoom), Vector2(max_zoom, max_zoom))
+		zoom = new_zoom
+
+func _on_menu_open():
+	zoomable = false
+
+func _on_menu_close():
+	zoomable = true

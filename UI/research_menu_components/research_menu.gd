@@ -6,6 +6,9 @@ var info_open_cost = 0
 var stast_open_cost = 0
 var equip_open_cost = 0
 
+signal menu_open
+signal menu_close
+
 var resource_box: Control
 
 func _ready():
@@ -106,6 +109,7 @@ func _on_exit_button_down() -> void:
 		child.get_parent().remove_child(child)
 	for child in $HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer.get_children():
 		child.get_parent().remove_child(child)
+	menu_close.emit()
 
 func _on_info_open_button_down(info: int) -> void:
 	if anomaly.unique_pe < info_open_cost: return
@@ -171,6 +175,7 @@ func update_pe_display() -> void:
 	$HBoxContainer/VBoxContainer/Unique_PE.text = "PE: " + str(anomaly.unique_pe)
 	
 func window_call(res: AbnormalityResource) -> void:
+	menu_open.emit()
 	anomaly = res
 	main_open_cost = anomaly.threat_level
 	action_open_cost = anomaly.threat_level
