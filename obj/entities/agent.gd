@@ -11,9 +11,32 @@ enum {
 }
 var working = false
 
+@onready var health_bar: TextureProgressBar = $HealthBar/HealthBackground/HealthForeground
+@onready var mental_bar: TextureProgressBar = $MentalBar/MentalBackground/MentalForeground
+@onready var health_text: Label = $HealthBar/HealthText
+@onready var mental_text: Label = $MentalBar/MentalText
+
 func _ready() -> void:
 	super._ready()
 	$Name.text = entity_resource.agent_name
+	update_health_display()
+	
+func update_health_display() -> void:
+	if health_bar:
+		health_bar.max_value = entity_resource.max_hp
+		health_bar.value = entity_resource.current_hp
+	if mental_bar:
+		mental_bar.max_value = entity_resource.max_sp
+		mental_bar.value = entity_resource.current_sp
+		
+	if health_text:
+		health_text.text = "%d/%d HP" % [entity_resource.current_hp, entity_resource.max_hp]
+	if mental_text:
+		mental_text.text = "%d/%d SP" % [entity_resource.current_sp, entity_resource.max_sp]
+
+func take_damage(amount: int, type: String) -> void:
+	super.take_damage(amount, type)
+	update_health_display()
 
 func get_global_rect():
 	return $ClickRect.get_global_rect()
