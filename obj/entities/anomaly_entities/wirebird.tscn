@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://3hysti02x5o6"]
+[gd_scene load_steps=9 format=3 uid="uid://3hysti02x5o6"]
 
 [ext_resource type="Script" uid="uid://kprfmedgubl4" path="res://obj/entities/abnormality.gd" id="1_5t85r"]
 [ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="2_blsrn"]
 [ext_resource type="PackedScene" uid="uid://bu4i55evww21" path="res://obj/modules/skeleton.tscn" id="2_rjkgl"]
+[ext_resource type="Texture2D" uid="uid://g3r2y5n1ueml" path="res://UI/energy-bar/fill_texture.png" id="4_joxop"]
+[ext_resource type="Script" uid="uid://7wvji3japcx8" path="res://UI/energy-bar/texture_progress_bar.gd" id="5_v7v6g"]
 
 [sub_resource type="Animation" id="Animation_rjkgl"]
 length = 0.001
@@ -80,3 +82,27 @@ autoplay = "idle"
 
 [node name="Skeleton" parent="." instance=ExtResource("2_rjkgl")]
 position = Vector2(-107, -127)
+
+[node name="HealthBar" type="HBoxContainer" parent="."]
+offset_left = -108.0
+offset_top = 50.0
+offset_right = 110.0
+offset_bottom = 77.0
+
+[node name="HealthBackground" type="Panel" parent="HealthBar"]
+layout_mode = 2
+
+[node name="HealthForeground" type="TextureProgressBar" parent="HealthBar/HealthBackground"]
+z_index = 5
+offset_left = 86.0
+offset_top = -1.0
+offset_right = 219.0
+offset_bottom = 27.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("4_joxop")
+script = ExtResource("5_v7v6g")
+
+[node name="HealthText" type="Label" parent="HealthBar"]
+layout_mode = 2
+text = "0/100 HP"

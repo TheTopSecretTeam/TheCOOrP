@@ -1,6 +1,9 @@
 extends Entity
 class_name Abnormality
 
+@onready var health_bar: TextureProgressBar = $HealthBar/HealthBackground/HealthForeground
+@onready var health_text: Label = $HealthBar/HealthText
+
 var state: int = CHAMBER
 
 enum {
@@ -9,8 +12,22 @@ enum {
 	CHAMBER,
 	COMBAT
 }
+
 func _ready() -> void:
 	super._ready()
+	update_health_display()
+	
+func update_health_display() -> void:
+	if health_bar:
+		health_bar.max_value = entity_resource.max_hp
+		health_bar.value = entity_resource.current_hp
+		if health_text:
+			health_text.text = "%d/%d HP" % [entity_resource.current_hp, entity_resource.max_hp]
+
+func take_damage(amount: int, type: String) -> void:
+	super.take_damage(amount, type)
+	update_health_display()
+		
 func _on_travel():
 	if path.is_empty():
 		state = WANDER
