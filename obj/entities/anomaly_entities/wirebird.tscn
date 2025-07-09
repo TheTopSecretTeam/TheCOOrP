@@ -84,16 +84,17 @@ autoplay = "idle"
 position = Vector2(-107, -127)
 
 [node name="HealthBar" type="HBoxContainer" parent="."]
-offset_left = -108.0
-offset_top = 50.0
-offset_right = 110.0
-offset_bottom = 77.0
+offset_left = -66.0
+offset_top = -301.0
+offset_right = 152.0
+offset_bottom = -274.0
 
 [node name="HealthBackground" type="Panel" parent="HealthBar"]
 layout_mode = 2
 
 [node name="HealthForeground" type="TextureProgressBar" parent="HealthBar/HealthBackground"]
 z_index = 5
+layout_mode = 0
 offset_left = 86.0
 offset_top = -1.0
 offset_right = 219.0

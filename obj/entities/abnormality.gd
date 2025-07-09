@@ -1,6 +1,8 @@
 extends Entity
 class_name Abnormality
 
+@onready var skeleton: Node2D = $Skeleton
+@onready var health_container: HBoxContainer = $HealthBar
 @onready var health_bar: TextureProgressBar = $HealthBar/HealthBackground/HealthForeground
 @onready var health_text: Label = $HealthBar/HealthText
 
@@ -15,6 +17,7 @@ enum {
 
 func _ready() -> void:
 	super._ready()
+	health_container.scale.x = -1
 	update_health_display()
 	
 func update_health_display() -> void:
@@ -72,8 +75,8 @@ func handle_combat(delta: float) -> void:
 			state = COMBAT
 			var target_progress = target.progress
 			var direction = sign(target_progress - progress)
-			if direction == -1: self.scale.x = -1
-			else: self.scale.x = 1
+			if direction == -1: skeleton.scale.x = -1
+			else: skeleton.scale.x = 1
 		else:
 			state = WANDER
 		return
@@ -89,6 +92,6 @@ func move_toward_target(delta: float) -> void:
 	
 	var target_progress = target.progress
 	var direction = sign(target_progress - progress)
-	if direction == -1: self.scale.x = -1
-	else: self.scale.x = 1
+	if direction == -1: skeleton.scale.x = -1
+	else: skeleton.scale.x = 1
 	progress += entity_resource.travel_speed * delta
