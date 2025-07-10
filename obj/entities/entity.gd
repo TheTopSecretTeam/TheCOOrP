@@ -1,3 +1,4 @@
+
 # entity.gd
 class_name Entity
 extends PathFollow2D
@@ -14,10 +15,10 @@ var waypoint: Node2D
 @export var flipped: bool = false:
 	set(value):
 		if value:
-			$Skeleton.scale.x = -0.5
+			$Skeleton.scale.x = -abs($Skeleton.scale.x)
 			entity_resource.travel_speed = -1 * abs(entity_resource.travel_speed)
 		else:
-			$Skeleton.scale.x = 0.5
+			$Skeleton.scale.x = abs($Skeleton.scale.x)
 			entity_resource.travel_speed = abs(entity_resource.travel_speed)
 		flipped = value
 

@@ -2,6 +2,7 @@ extends Room
 class_name AnomalyChamber
 
 @export var anomaly : AbnormalityResource 
+@export var bar : AnomalyBar 
 #@onready var unique_pe_counter = $Unique_PE_Counter
 var wc_buttons : Array[Button]
 @export var stats: Array[Resource] = []
@@ -35,17 +36,15 @@ func load_anomaly() -> void:
 	$CanvasLayer/ResearchMenu.anomaly = anomaly
 	for _action in anomaly.actions:
 		actions.append(_action)
-#func _process(delta: float) -> void:      #THIS IS BAD
-	#unique_pe_counter.text = str(anomaly.unique_pe)
+
 func begin_work(probability, _agent_res):
 	#make math with player stats and action prob
-	$Bar.work(probability)
+	bar.work(probability)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
 	working_agent.working = false
 	working = false
 	anomaly.unique_pe += pe_box
-	escape()
 	working_agent.path = [get_index(),$room_path/waypoint.leading_room.get_index()]
 	working_agent._on_travel()
 	working_agent = null

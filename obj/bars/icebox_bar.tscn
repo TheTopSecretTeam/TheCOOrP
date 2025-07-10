@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bypwwbsq4gn2l"]
+
+[ext_resource type="PackedScene" uid="uid://dblm4m3puom7t" path="res://obj/rooms/Cell/ProgressBar.tscn" id="1_7ytpq"]
+[ext_resource type="Script" uid="uid://br3e8rsojjlpx" path="res://obj/bars/icebox_bar.gd" id="2_70a2k"]
+
+[node name="IceboxBar" instance=ExtResource("1_7ytpq")]
+script = ExtResource("2_70a2k")

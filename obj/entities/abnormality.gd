@@ -17,7 +17,6 @@ enum {
 
 func _ready() -> void:
 	super._ready()
-	health_container.scale.x = -1
 	update_health_display()
 	
 func update_health_display() -> void:

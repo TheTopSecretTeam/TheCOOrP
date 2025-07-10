@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://3hysti02x5o6"]
+[gd_scene load_steps=11 format=3 uid="uid://3hysti02x5o6"]
 
 [ext_resource type="Script" uid="uid://kprfmedgubl4" path="res://obj/entities/abnormality.gd" id="1_5t85r"]
 [ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="2_blsrn"]
 [ext_resource type="Texture2D" uid="uid://dstany56idvju" path="res://img/gibs/wirebird/wirebird_body.png" id="3_joxop"]
+[ext_resource type="Texture2D" uid="uid://g3r2y5n1ueml" path="res://UI/energy-bar/fill_texture.png" id="4_joxop"]
 [ext_resource type="Texture2D" uid="uid://cyd448h7frmo2" path="res://img/gibs/wirebird/wirebird_leg1.png" id="4_v7v6g"]
 [ext_resource type="Texture2D" uid="uid://btgeq2ypytuee" path="res://img/gibs/wirebird/wirebird_leg2.png" id="5_gfnxk"]
-[ext_resource type="Texture2D" uid="uid://g3r2y5n1ueml" path="res://UI/energy-bar/fill_texture.png" id="4_joxop"]
 [ext_resource type="Script" uid="uid://7wvji3japcx8" path="res://UI/energy-bar/texture_progress_bar.gd" id="5_v7v6g"]
 
 [sub_resource type="Animation" id="Animation_rjkgl"]
@@ -13,26 +13,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton/WirebirdBody:scale")
+tracks/0/path = NodePath("Skeleton/WirebirdBody:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(-35.8209, -119.403)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton/WirebirdBody:position")
+tracks/1/path = NodePath("Skeleton/WirebirdBody:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-32, -112)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_5t85r"]
@@ -60,7 +60,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-32, -112), Vector2(-32, -109)]
+"values": [Vector2(-35.821, -112), Vector2(-35.821, -109)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6a263"]
@@ -83,11 +83,11 @@ libraries = {
 autoplay = "idle"
 
 [node name="Skeleton" type="Node2D" parent="."]
-position = Vector2(-107, -127)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -104)
+scale = Vector2(0.335, 0.335)
 
 [node name="WirebirdBody" type="Sprite2D" parent="Skeleton"]
-position = Vector2(-32, -112)
+position = Vector2(-35.8209, -119.403)
 texture = ExtResource("3_joxop")
 
 [node name="WirebirdLeg1" type="Sprite2D" parent="Skeleton/WirebirdBody"]
@@ -100,15 +100,15 @@ position = Vector2(382.588, 194.353)
 texture = ExtResource("5_gfnxk")
 
 [node name="HealthBar" type="HBoxContainer" parent="."]
-offset_left = -66.0
-offset_top = -301.0
-offset_right = 152.0
-offset_bottom = -274.0
+offset_left = -115.0
+offset_top = -267.0
+offset_right = 103.0
+offset_bottom = -240.0
 
 [node name="HealthBackground" type="Panel" parent="HealthBar"]
 layout_mode = 2
 
-[node name="HealthForeground" type="TextureProgressBar" parent="HealthBar/HealthBackground"]
+[node name="HealthForeground" type="TextureProgressBar" parent="HealthBar/HealthBackground" node_paths=PackedStringArray("label")]
 z_index = 5
 layout_mode = 0
 offset_left = 86.0
@@ -119,6 +119,7 @@ value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("4_joxop")
 script = ExtResource("5_v7v6g")
+label = NodePath("../../HealthText")
 
 [node name="HealthText" type="Label" parent="HealthBar"]
 layout_mode = 2

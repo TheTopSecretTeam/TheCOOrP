@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://o1a0ginm5fp2" path="res://obj/modules/FSM/fsm.gd" id="3_7jm6a"]
 [ext_resource type="PackedScene" uid="uid://7xcia31pkmay" path="res://UI/agent_optiontscn.tscn" id="3_50w6m"]
 [ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="3_ckaer"]
-[ext_resource type="PackedScene" uid="uid://dblm4m3puom7t" path="res://obj/rooms/Cell/ProgressBar.tscn" id="3_k2ix4"]
 [ext_resource type="Texture2D" uid="uid://dsf87roce13ta" path="res://img/layout/chamber.png" id="3_mr62c"]
 [ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="3_ulrp8"]
 [ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="4_k2ix4"]
@@ -14,11 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="5_i8y48"]
 [ext_resource type="Script" uid="uid://4jvosnkh5sks" path="res://obj/rooms/escape_timer.gd" id="7_aeile"]
 [ext_resource type="PackedScene" uid="uid://gnrfrvcmqj0r" path="res://UI/research_menu_components/research_menu.tscn" id="7_i8y48"]
+[ext_resource type="PackedScene" uid="uid://bypwwbsq4gn2l" path="res://obj/bars/icebox_bar.tscn" id="8_aeile"]
 [ext_resource type="PackedScene" uid="uid://3hysti02x5o6" path="res://obj/entities/anomaly_entities/wirebird.tscn" id="13_wjttg"]
 
 [sub_resource type="Curve2D" id="Curve2D_y0fo7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 58, 660, 0, 0, 0, 0, 777, 660)
+"points": PackedVector2Array(0, 0, 0, 0, 171, 662, 0, 0, 0, 0, 664, 661)
 }
 point_count = 2
 
@@ -50,9 +50,9 @@ one_shot = true
 script = ExtResource("7_aeile")
 label = NodePath("../Label")
 
-[node name="Bar" parent="." instance=ExtResource("3_k2ix4")]
-position = Vector2(-85, 363)
-scale = Vector2(1.4901, 1.21379)
+[node name="IceboxBar" parent="." node_paths=PackedStringArray("chamber") instance=ExtResource("8_aeile")]
+position = Vector2(-66, 407)
+chamber = NodePath("..")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -91,13 +91,11 @@ texture = ExtResource("5_i8y48")
 curve = SubResource("Curve2D_y0fo7")
 
 [node name="waypoint" parent="room_path" instance=ExtResource("3_ckaer")]
-position = Vector2(607.606, 660)
+position = Vector2(664, 661)
 progress = 549.604
 
 [node name="Anomaly" parent="room_path" instance=ExtResource("13_wjttg")]
-position = Vector2(164.124, 660)
-scale = Vector2(-1, 1)
-progress = 106.124
+position = Vector2(171, 662)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -137,7 +135,7 @@ text = "0.0"
 horizontal_alignment = 3
 
 [connection signal="timeout" from="EscapeTimer" to="." method="_on_escape_timer_timeout"]
-[connection signal="work_completed" from="Bar" to="." method="_on_bar_work_completed"]
+[connection signal="work_completed" from="IceboxBar" to="." method="_on_bar_work_completed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="." method="_on_abno_name_button_down"]
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/HBoxContainer" to="." method="_on_h_box_container_gui_input"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/ColorRect" to="." method="_on_color_rect_pressed"]

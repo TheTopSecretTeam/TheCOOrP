@@ -1,10 +1,15 @@
 extends Sprite2D
+class_name AnomalyBar
 
 signal work_completed(pe_box)
+
+@export var chamber : AnomalyChamber
 
 var MAX = 10
 var PROB = 0.6
 var TIME = 1
+
+var anomaly_action : AnomalyAction
 
 var pe_list : Array[TextureRect]
 var ne_list : Array[TextureRect]
@@ -23,14 +28,15 @@ func _ready() -> void:
 		ne_list.append(child)
 		ne_list[-1].visible = false
 
-func work(probability):
+func work(action : AnomalyAction):
+	anomaly_action = action
 	for child in pe_list_parent.get_children():
 		pe_list.append(child)
 		pe_list[-1].visible = false
 	for child in ne_list_parent.get_children():
 		ne_list.append(child)
 		ne_list[-1].visible = false
-	PROB = probability
+	PROB = action.probability
 	pe = 0
 	ne = 0
 	rng.randomize()

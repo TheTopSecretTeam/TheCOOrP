@@ -396,7 +396,7 @@ offset_bottom = 27.0
 [node name="HealthBackground" type="Panel" parent="HealthBar"]
 layout_mode = 2
 
-[node name="HealthForeground" type="TextureProgressBar" parent="HealthBar/HealthBackground"]
+[node name="HealthForeground" type="TextureProgressBar" parent="HealthBar/HealthBackground" node_paths=PackedStringArray("label")]
 z_index = 5
 layout_mode = 0
 offset_left = 86.0
@@ -407,6 +407,7 @@ value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("7_6a263")
 script = ExtResource("8_t74kt")
+label = NodePath("../../HealthText")
 
 [node name="HealthText" type="Label" parent="HealthBar"]
 layout_mode = 2
@@ -421,7 +422,7 @@ offset_bottom = 58.0
 [node name="MentalBackground" type="Panel" parent="MentalBar"]
 layout_mode = 2
 
-[node name="MentalForeground" type="TextureProgressBar" parent="MentalBar/MentalBackground"]
+[node name="MentalForeground" type="TextureProgressBar" parent="MentalBar/MentalBackground" node_paths=PackedStringArray("label")]
 z_index = 5
 layout_mode = 0
 offset_left = 86.0
@@ -432,6 +433,7 @@ value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("7_6a263")
 script = ExtResource("8_t74kt")
+label = NodePath("../../MentalText")
 
 [node name="MentalText" type="Label" parent="MentalBar"]
 layout_mode = 2
