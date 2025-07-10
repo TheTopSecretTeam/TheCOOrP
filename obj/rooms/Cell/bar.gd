@@ -48,7 +48,7 @@ func _on_timer_timeout():
 		generate_cell(PROB)
 	else:
 		$Timer.stop()
-		work_completed.emit(pe)
+		_on_bar_work_completed(pe)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
 	work_completed.emit(pe_box)
