@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bx0u5ty4gc1o5"]
+[gd_scene load_steps=16 format=3 uid="uid://bx0u5ty4gc1o5"]
 
 [ext_resource type="Resource" uid="uid://b4uc1785bd3wc" path="res://res/scripts/Abnormalities/wirebird.tres" id="2_xsyyv"]
 [ext_resource type="Script" uid="uid://bmr10cm8vqb8o" path="res://obj/rooms/chamber.gd" id="2_y0fo7"]
@@ -13,8 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="5_i8y48"]
 [ext_resource type="Script" uid="uid://4jvosnkh5sks" path="res://obj/rooms/escape_timer.gd" id="7_aeile"]
 [ext_resource type="PackedScene" uid="uid://gnrfrvcmqj0r" path="res://UI/research_menu_components/research_menu.tscn" id="7_i8y48"]
-[ext_resource type="PackedScene" uid="uid://bypwwbsq4gn2l" path="res://obj/bars/icebox_bar.tscn" id="8_aeile"]
-[ext_resource type="PackedScene" uid="uid://3hysti02x5o6" path="res://obj/entities/anomaly_entities/wirebird.tscn" id="13_wjttg"]
 
 [sub_resource type="Curve2D" id="Curve2D_y0fo7"]
 _data = {
@@ -32,7 +30,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("2_y0fo7")
 anomaly = ExtResource("2_xsyyv")
-bar = NodePath("IceboxBar")
+bar = NodePath("")
 agent_option = ExtResource("3_50w6m")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -50,10 +48,6 @@ wait_time = 10.0
 one_shot = true
 script = ExtResource("7_aeile")
 label = NodePath("../Label")
-
-[node name="IceboxBar" parent="." node_paths=PackedStringArray("chamber") instance=ExtResource("8_aeile")]
-position = Vector2(-66, 407)
-chamber = NodePath("..")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -95,9 +89,6 @@ curve = SubResource("Curve2D_y0fo7")
 position = Vector2(664, 661)
 progress = 549.604
 
-[node name="Anomaly" parent="room_path" instance=ExtResource("13_wjttg")]
-position = Vector2(171, 662)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ResearchMenu" parent="CanvasLayer" instance=ExtResource("7_i8y48")]
@@ -136,7 +127,6 @@ text = "0.0"
 horizontal_alignment = 3
 
 [connection signal="timeout" from="EscapeTimer" to="." method="_on_escape_timer_timeout"]
-[connection signal="work_completed" from="IceboxBar" to="." method="_on_bar_work_completed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="." method="_on_abno_name_button_down"]
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/HBoxContainer" to="." method="_on_h_box_container_gui_input"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/ColorRect" to="." method="_on_color_rect_pressed"]

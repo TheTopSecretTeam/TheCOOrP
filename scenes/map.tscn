@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=20 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://net/scripts/net_manager.gd" id="3_f22gk"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://dc46wrfcoudhl" path="res://scenes/win_screen.gd" id="12_gw3fx"]
 [ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
 [ext_resource type="PackedScene" uid="uid://dxcj8bws0tbwt" path="res://UI/gafur_stuff/day_scene.tscn" id="14_n1psn"]
+[ext_resource type="PackedScene" uid="uid://bsold2gw5nlj6" path="res://UI/equipment_menu_components/equimpent_menu.tscn" id="17_c70he"]
+[ext_resource type="Script" uid="uid://4c5x3dvu4uwv" path="res://scenes/inventory_button.gd" id="18_mo32q"]
 
 [sub_resource type="Curve2D" id="Curve2D_ueh1s"]
 _data = {
@@ -152,6 +154,22 @@ flipped = true
 [node name="AgentContainer" parent="rooms/chamber/CanvasLayer/CenterContainer" index="1"]
 visible = true
 
+[node name="chamber2" parent="rooms" instance=ExtResource("8_fy0fe")]
+layout_mode = 0
+offset_left = -101.0
+offset_top = -1154.0
+offset_right = 757.0
+offset_bottom = -431.0
+
+[node name="waypoint" parent="rooms/chamber2/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+leading_room = NodePath("../../../corridor")
+
+[node name="Anomaly" parent="rooms/chamber2/room_path" index="1"]
+flipped = true
+
+[node name="AgentContainer" parent="rooms/chamber2/CanvasLayer/CenterContainer" index="1"]
+visible = true
+
 [node name="Camera" parent="." instance=ExtResource("9_be0no")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -211,11 +229,28 @@ offset_right = -19.0
 offset_bottom = 415.0
 grow_horizontal = 0
 
+[node name="InventoryButton" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("inventory")]
+offset_left = 22.0
+offset_top = 138.0
+offset_right = 157.0
+offset_bottom = 182.0
+theme_override_font_sizes/font_size = 30
+text = "Inventory"
+script = ExtResource("18_mo32q")
+inventory = NodePath("../equipment_menu")
+
+[node name="equipment_menu" parent="CanvasLayer" instance=ExtResource("17_c70he")]
+visible = false
+
 [connection signal="menu_close" from="rooms/chamber/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
 [connection signal="menu_open" from="rooms/chamber/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
+[connection signal="menu_close" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
+[connection signal="pressed" from="CanvasLayer/InventoryButton" to="CanvasLayer/InventoryButton" method="_on_pressed"]
 
 [editable path="rooms/corridor"]
 [editable path="rooms/corridor2"]
 [editable path="rooms/elevator"]
 [editable path="rooms/elevator2"]
 [editable path="rooms/chamber"]
+[editable path="rooms/chamber2"]

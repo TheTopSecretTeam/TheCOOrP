@@ -68,7 +68,7 @@ func move_toward_target(delta: float) -> void:
 	var target_progress = target.progress
 	var direction = sign(target_progress - progress)
 	flipped = direction == -1
-	print($Skeleton.scale, scale, entity_resource.travel_speed, name)
+	#print($Skeleton.scale, scale, entity_resource.travel_speed, name)
 	progress += entity_resource.travel_speed * delta
 
 func find_target() -> Entity:

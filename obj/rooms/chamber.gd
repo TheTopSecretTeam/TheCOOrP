@@ -6,8 +6,8 @@ class_name AnomalyChamber
 var anomaly_action : AnomalyAction
 #@onready var unique_pe_counter = $Unique_PE_Counter
 var wc_buttons : Array[Button]
-@export var stats: Array[Resource] = []
-@export var actions : Array[AnomalyAction] = []
+#@export var stats: Array[Resource] = []
+var actions : Array[AnomalyAction] = []
 var working : bool = false
 var working_agent : Agent
 @onready var work_container = $CanvasLayer/CenterContainer/WorkContainer
