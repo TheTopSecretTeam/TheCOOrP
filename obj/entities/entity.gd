@@ -11,7 +11,7 @@ var attack_cooldown: float = 0.0
 var current_room: int
 var waypoint: Node2D
 
-var flipped: bool = false:
+@export var flipped: bool = false:
 	set(value):
 		if value:
 			$Skeleton.scale.x = -0.5
@@ -66,8 +66,9 @@ func move_toward_target(delta: float) -> void:
 	
 	var target_progress = target.progress
 	var direction = sign(target_progress - progress)
-	
-	progress += direction * entity_resource.travel_speed * delta
+	flipped = direction == -1
+	print($Skeleton.scale, scale, entity_resource.travel_speed, name)
+	progress += entity_resource.travel_speed * delta
 
 func find_target() -> Entity:
 	var potential_targets = []

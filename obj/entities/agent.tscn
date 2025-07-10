@@ -398,6 +398,7 @@ layout_mode = 2
 
 [node name="HealthForeground" type="TextureProgressBar" parent="HealthBar/HealthBackground"]
 z_index = 5
+layout_mode = 0
 offset_left = 86.0
 offset_top = -1.0
 offset_right = 219.0
@@ -422,6 +423,7 @@ layout_mode = 2
 
 [node name="MentalForeground" type="TextureProgressBar" parent="MentalBar/MentalBackground"]
 z_index = 5
+layout_mode = 0
 offset_left = 86.0
 offset_top = -1.0
 offset_right = 219.0

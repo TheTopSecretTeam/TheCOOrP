@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://kprfmedgubl4" path="res://obj/entities/abnormality.gd" id="1_5t85r"]
 [ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="2_blsrn"]
-[ext_resource type="PackedScene" uid="uid://bu4i55evww21" path="res://obj/modules/skeleton.tscn" id="2_rjkgl"]
+[ext_resource type="Texture2D" uid="uid://dstany56idvju" path="res://img/gibs/wirebird/wirebird_body.png" id="3_joxop"]
+[ext_resource type="Texture2D" uid="uid://cyd448h7frmo2" path="res://img/gibs/wirebird/wirebird_leg1.png" id="4_v7v6g"]
+[ext_resource type="Texture2D" uid="uid://btgeq2ypytuee" path="res://img/gibs/wirebird/wirebird_leg2.png" id="5_gfnxk"]
 [ext_resource type="Texture2D" uid="uid://g3r2y5n1ueml" path="res://UI/energy-bar/fill_texture.png" id="4_joxop"]
 [ext_resource type="Script" uid="uid://7wvji3japcx8" path="res://UI/energy-bar/texture_progress_bar.gd" id="5_v7v6g"]
 
@@ -11,26 +13,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton:scale")
+tracks/0/path = NodePath("Skeleton/WirebirdBody:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.4, 0.4)]
+"values": [Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton:position")
+tracks/1/path = NodePath("Skeleton/WirebirdBody:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-107, -127)]
+"values": [Vector2(-32, -112)]
 }
 
 [sub_resource type="Animation" id="Animation_5t85r"]
@@ -39,26 +41,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton:scale")
+tracks/0/path = NodePath("Skeleton/WirebirdBody:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.50193),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.39)]
+"values": [Vector2(1, 1), Vector2(1, 0.99)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton:position")
+tracks/1/path = NodePath("Skeleton/WirebirdBody:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.50193),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-107, -127), Vector2(-107, -124)]
+"values": [Vector2(-32, -112), Vector2(-32, -109)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6a263"]
@@ -80,8 +82,22 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Skeleton" parent="." instance=ExtResource("2_rjkgl")]
+[node name="Skeleton" type="Node2D" parent="."]
 position = Vector2(-107, -127)
+scale = Vector2(0.5, 0.5)
+
+[node name="WirebirdBody" type="Sprite2D" parent="Skeleton"]
+position = Vector2(-32, -112)
+texture = ExtResource("3_joxop")
+
+[node name="WirebirdLeg1" type="Sprite2D" parent="Skeleton/WirebirdBody"]
+position = Vector2(366.118, 290.824)
+texture = ExtResource("4_v7v6g")
+
+[node name="WirebirdLeg2" type="Sprite2D" parent="Skeleton/WirebirdBody"]
+show_behind_parent = true
+position = Vector2(382.588, 194.353)
+texture = ExtResource("5_gfnxk")
 
 [node name="HealthBar" type="HBoxContainer" parent="."]
 offset_left = -66.0
