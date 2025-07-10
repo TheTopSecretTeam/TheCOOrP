@@ -28,6 +28,7 @@ unique_pe = 0
 actions = Array[ExtResource("1_wdanj")]([ExtResource("2_gdgh5"), ExtResource("3_5f7ca"), ExtResource("4_o318j"), ExtResource("5_g2dwq")])
 actions_open = Array[bool]([false, false, false, false])
 actions_cost = Array[int]([1, 1, 1, 1])
+entity = "res://obj/entities/anomaly_entities/wirebird.tscn"
 weapon_cost = Array[int]([0, 0, 0, 0])
 armor_cost = Array[int]([0, 0, 0, 0])
 equip_cost = 0

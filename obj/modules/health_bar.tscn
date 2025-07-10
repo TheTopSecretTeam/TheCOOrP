@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://docj30h4pnnnb"]
+
+[ext_resource type="Texture2D" uid="uid://g3r2y5n1ueml" path="res://UI/energy-bar/fill_texture.png" id="1_2tq1r"]
+[ext_resource type="Script" uid="uid://7wvji3japcx8" path="res://UI/energy-bar/texture_progress_bar.gd" id="2_b4jvn"]
+
+[node name="HealthBar" type="HBoxContainer"]
+offset_left = -115.0
+offset_top = -267.0
+offset_right = 103.0
+offset_bottom = -240.0
+
+[node name="HealthBackground" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="HealthForeground" type="TextureProgressBar" parent="HealthBackground" node_paths=PackedStringArray("label")]
+z_index = 5
+layout_mode = 0
+offset_left = 86.0
+offset_top = -1.0
+offset_right = 219.0
+offset_bottom = 27.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_2tq1r")
+script = ExtResource("2_b4jvn")
+label = NodePath("../../HealthText")
+
+[node name="HealthText" type="Label" parent="."]
+layout_mode = 2
+text = "0/100 HP"

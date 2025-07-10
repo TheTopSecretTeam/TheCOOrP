@@ -34,6 +34,9 @@ func transfer(entity: Entity, _previous_room):
 func load_anomaly() -> void:
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
 	$CanvasLayer/ResearchMenu.anomaly = anomaly
+	var anomaly_inst = load(anomaly.entity).instantiate()
+	$room_path.add_child(anomaly_inst)
+	anomaly_inst.flipped = true
 	for _action in anomaly.actions:
 		actions.append(_action)
 

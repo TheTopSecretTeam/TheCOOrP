@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://v6fa04wfro8q"]
+
+[ext_resource type="PackedScene" uid="uid://dblm4m3puom7t" path="res://obj/rooms/Cell/ProgressBar.tscn" id="1_gpvod"]
+[ext_resource type="Script" uid="uid://bkyfuryaief2q" path="res://obj/bars/wirebird_bar.gd" id="2_re5ry"]
+
+[node name="WirebirdBar" instance=ExtResource("1_gpvod")]
+script = ExtResource("2_re5ry")
