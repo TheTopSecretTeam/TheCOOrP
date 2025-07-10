@@ -3,12 +3,12 @@ class_name AnomalyChamber
 
 @export var anomaly : AbnormalityResource 
 @export var bar : AnomalyBar 
+var anomaly_action : AnomalyAction
 #@onready var unique_pe_counter = $Unique_PE_Counter
 var wc_buttons : Array[Button]
 @export var stats: Array[Resource] = []
 @export var actions : Array[AnomalyAction] = []
 var working : bool = false
-var work_probability : float
 var working_agent : Agent
 @onready var work_container = $CanvasLayer/CenterContainer/WorkContainer
 @export var agent_option : PackedScene
@@ -29,7 +29,7 @@ func transfer(entity: Entity, _previous_room):
 		working_agent = entity
 		working_agent.working = true
 		working = true
-		begin_work(work_probability, entity.entity_resource)
+		begin_work(anomaly_action, entity.entity_resource)
 
 func load_anomaly() -> void:
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
@@ -37,9 +37,9 @@ func load_anomaly() -> void:
 	for _action in anomaly.actions:
 		actions.append(_action)
 
-func begin_work(probability, _agent_res):
+func begin_work(action : AnomalyAction, _agent_res):
 	#make math with player stats and action prob
-	bar.work(probability)
+	bar.work(action)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
 	working_agent.working = false
@@ -108,7 +108,7 @@ func _on_work_button_down(action_res) -> void:
 
 func action(action_res) -> String:
 	if working: return "ALREADY_WORKING"
-	work_probability = action_res.probability
+	anomaly_action = action_res
 	work_container.hide()
 	show_agents()
 	return "SUCCESS"

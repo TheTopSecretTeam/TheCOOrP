@@ -25,13 +25,14 @@ point_count = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rl70"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="chamber" type="CenterContainer" groups=["Room"]]
+[node name="chamber" type="CenterContainer" node_paths=PackedStringArray("bar") groups=["Room"]]
 offset_right = 200.0
 offset_bottom = 130.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("2_y0fo7")
 anomaly = ExtResource("2_xsyyv")
+bar = NodePath("IceboxBar")
 agent_option = ExtResource("3_50w6m")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
