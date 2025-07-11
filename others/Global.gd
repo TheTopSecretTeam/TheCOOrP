@@ -4,6 +4,9 @@ var Players = {}
 var color
 var agents : Array[Node] = []
 
+var armor : Array[ArmorStats] = [preload("res://res/scripts/agent/base_armor.tres").duplicate()]
+var weapons : Array[WeaponStats] = [preload("res://res/scripts/agent/base_weapon.tres").duplicate()]
+
 signal resources_changed(new_resources)
 
 var resources : Dictionary[String, int] = {

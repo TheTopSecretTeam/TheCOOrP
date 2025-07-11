@@ -93,6 +93,7 @@ unique_pe = 5
 actions = Array[ExtResource("1_epotb")]([ExtResource("4_drq3t"), ExtResource("5_uqxp2"), ExtResource("4_mtkaj"), ExtResource("5_251ki")])
 actions_open = Array[bool]([false, false, false, false])
 actions_cost = Array[int]([1, 1, 1, 1])
+entity = "res://obj/entities/anomaly_entities/icebox.tscn"
 sold_armor = SubResource("Resource_pq6pj")
 weapon_cost = Array[int]([0, 0, 0, 0])
 armor_cost = Array[int]([7, 3, 0, 0])

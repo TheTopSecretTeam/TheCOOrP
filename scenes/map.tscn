@@ -1,21 +1,25 @@
-[gd_scene load_steps=18 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=22 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
-[ext_resource type="Script" uid="uid://clqiyga4o851i" path="res://scenes/facility_navigation.gd" id="2_0dq08"]
 [ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://net/scripts/net_manager.gd" id="3_f22gk"]
 [ext_resource type="PackedScene" uid="uid://bbpr2hgq0qrbw" path="res://obj/rooms/corridor.tscn" id="4_rclfu"]
 [ext_resource type="PackedScene" uid="uid://b85wfl7wt2xqw" path="res://obj/entities/agent.tscn" id="5_ogelb"]
 [ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="6_hns3r"]
 [ext_resource type="PackedScene" uid="uid://ch7tbtciyxmbe" path="res://obj/rooms/elevator.tscn" id="7_e3tq1"]
+[ext_resource type="Resource" uid="uid://cfpu2ylk4q6qn" path="res://res/scripts/agent/Ping.tres" id="8_c70he"]
 [ext_resource type="PackedScene" uid="uid://bx0u5ty4gc1o5" path="res://obj/rooms/chamber.tscn" id="8_fy0fe"]
 [ext_resource type="PackedScene" uid="uid://m7nkloxdq8qb" path="res://obj/modules/camera/camera.tscn" id="9_be0no"]
 [ext_resource type="Resource" uid="uid://cso84xpj4vi1e" path="res://res/scripts/agent/Pong.tres" id="9_c00ee"]
 [ext_resource type="PackedScene" uid="uid://dtn3am85byhpe" path="res://UI/resource-display/resourse_box.tscn" id="11_c00ee"]
 [ext_resource type="PackedScene" uid="uid://ck758bnk61jcp" path="res://UI/energy-bar/energy-bar.tscn" id="11_mlgqr"]
 [ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="11_n1psn"]
+[ext_resource type="PackedScene" uid="uid://bypwwbsq4gn2l" path="res://obj/bars/icebox_bar.tscn" id="12_6k6j1"]
 [ext_resource type="Script" uid="uid://dc46wrfcoudhl" path="res://scenes/win_screen.gd" id="12_gw3fx"]
 [ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
+[ext_resource type="PackedScene" uid="uid://v6fa04wfro8q" path="res://obj/bars/wirebird_bar.tscn" id="13_m335s"]
 [ext_resource type="PackedScene" uid="uid://dxcj8bws0tbwt" path="res://UI/gafur_stuff/day_scene.tscn" id="14_n1psn"]
+[ext_resource type="PackedScene" uid="uid://bsold2gw5nlj6" path="res://UI/equipment_menu_components/equimpent_menu.tscn" id="17_c70he"]
+[ext_resource type="Script" uid="uid://4c5x3dvu4uwv" path="res://scenes/inventory_button.gd" id="18_mo32q"]
 
 [sub_resource type="Curve2D" id="Curve2D_ueh1s"]
 _data = {
@@ -28,9 +32,6 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_i0xy1")
 
-[node name="facility_navigation" type="Node" parent="."]
-script = ExtResource("2_0dq08")
-
 [node name="EnergyBar" parent="." instance=ExtResource("11_mlgqr")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -39,6 +40,7 @@ offset_left = -15526.0
 offset_top = -12254.0
 offset_right = 22337.0
 offset_bottom = 10113.0
+mouse_filter = 2
 color = Color(0.227521, 0.223744, 0.205711, 1)
 
 [node name="NetManager" type="Node2D" parent="."]
@@ -69,6 +71,11 @@ position = Vector2(1292.53, 5.7905)
 progress = 422.057
 leading_room = NodePath("../../../chamber")
 
+[node name="waypoint3" parent="rooms/corridor/room_path" index="2" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+position = Vector2(305.182, 5.3004)
+progress = 1409.41
+leading_room = NodePath("../../../chamber2")
+
 [node name="corridor2" parent="rooms" instance=ExtResource("4_rclfu")]
 layout_mode = 1
 offset_left = -108.0
@@ -83,6 +90,11 @@ leading_room = NodePath("../../../elevator2")
 
 [node name="Agent2" parent="rooms/corridor2/room_path" index="1" instance=ExtResource("5_ogelb")]
 position = Vector2(1714.59, 6)
+entity_resource = ExtResource("8_c70he")
+
+[node name="Agent3" parent="rooms/corridor2/room_path" index="2" instance=ExtResource("5_ogelb")]
+position = Vector2(759.672, 5.526)
+progress = 954.918
 entity_resource = ExtResource("9_c00ee")
 
 [node name="elevator" parent="rooms" instance=ExtResource("7_e3tq1")]
@@ -132,23 +144,42 @@ visible = false
 position = Vector2(43, 0)
 leading_room = NodePath("../../../corridor2")
 
-[node name="chamber" parent="rooms" instance=ExtResource("8_fy0fe")]
+[node name="chamber" parent="rooms" node_paths=PackedStringArray("bar") instance=ExtResource("8_fy0fe")]
 layout_mode = 0
-offset_left = 955.0
+offset_left = 1023.0
 offset_top = -1151.0
-offset_right = 1813.0
-offset_bottom = -504.0
+offset_right = 1881.0
+offset_bottom = -428.0
 anomaly = ExtResource("11_n1psn")
+bar = NodePath("IceboxBar")
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
-position = Vector2(607.606, 660)
 leading_room = NodePath("../../../corridor")
-
-[node name="Anomaly" parent="rooms/chamber/room_path" index="1"]
-position = Vector2(164.124, 660)
 
 [node name="AgentContainer" parent="rooms/chamber/CanvasLayer/CenterContainer" index="1"]
 visible = true
+
+[node name="IceboxBar" parent="rooms/chamber" node_paths=PackedStringArray("chamber") instance=ExtResource("12_6k6j1")]
+position = Vector2(-71, 414)
+chamber = NodePath("..")
+
+[node name="chamber2" parent="rooms" node_paths=PackedStringArray("bar") instance=ExtResource("8_fy0fe")]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -1154.0
+offset_right = 770.0
+offset_bottom = -431.0
+bar = NodePath("WirebirdBar")
+
+[node name="waypoint" parent="rooms/chamber2/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+leading_room = NodePath("../../../corridor")
+
+[node name="AgentContainer" parent="rooms/chamber2/CanvasLayer/CenterContainer" index="1"]
+visible = true
+
+[node name="WirebirdBar" parent="rooms/chamber2" node_paths=PackedStringArray("chamber") instance=ExtResource("13_m335s")]
+position = Vector2(-87, 407)
+chamber = NodePath("..")
 
 [node name="Camera" parent="." instance=ExtResource("9_be0no")]
 
@@ -209,8 +240,30 @@ offset_right = -19.0
 offset_bottom = 415.0
 grow_horizontal = 0
 
+[node name="InventoryButton" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("inventory")]
+offset_left = 22.0
+offset_top = 138.0
+offset_right = 157.0
+offset_bottom = 182.0
+theme_override_font_sizes/font_size = 30
+text = "Inventory"
+script = ExtResource("18_mo32q")
+inventory = NodePath("../equipment_menu")
+
+[node name="equipment_menu" parent="CanvasLayer" instance=ExtResource("17_c70he")]
+visible = false
+
+[connection signal="menu_close" from="rooms/chamber/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
+[connection signal="work_completed" from="rooms/chamber/IceboxBar" to="rooms/chamber" method="_on_bar_work_completed"]
+[connection signal="menu_close" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
+[connection signal="work_completed" from="rooms/chamber2/WirebirdBar" to="rooms/chamber2" method="_on_bar_work_completed"]
+[connection signal="pressed" from="CanvasLayer/InventoryButton" to="CanvasLayer/InventoryButton" method="_on_pressed"]
+
 [editable path="rooms/corridor"]
 [editable path="rooms/corridor2"]
 [editable path="rooms/elevator"]
 [editable path="rooms/elevator2"]
 [editable path="rooms/chamber"]
+[editable path="rooms/chamber2"]

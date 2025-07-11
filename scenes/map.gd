@@ -56,7 +56,7 @@ func send_agent(agent_name, room_index: int) -> String :
 	print(multiplayer.get_unique_id(), agent.current_room)
 	sync_manager._on_timer_timeout()
 	while (agent.current_room == null): get_tree().get_frame()
-	var path = $facility_navigation.get_agent_path(agent.current_room, room_index)
+	var path = FacilityNavigation.get_agent_path(agent.current_room, room_index)
 	if path == []: return 'success stand'
 	agent.path = path
 	agent._on_travel()

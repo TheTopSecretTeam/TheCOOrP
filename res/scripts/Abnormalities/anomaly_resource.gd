@@ -22,7 +22,7 @@ class_name AbnormalityResource
 @export var actions : Array[AnomalyAction] = []
 @export var actions_open: Array[bool] = []
 @export var actions_cost: Array[int] = []
-
+@export var entity : String
 @export var behaviour: GDScript
 @export var sold_weapon: WeaponStats
 @export var sold_armor: ArmorStats

@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://qnu5tkebx8pu"]
+
+[ext_resource type="Script" uid="uid://kprfmedgubl4" path="res://obj/entities/abnormality.gd" id="1_l3lsy"]
+[ext_resource type="Texture2D" uid="uid://botq5kx4o2gkw" path="res://img/gibs/fridge/fridge.png" id="2_4ksei"]
+[ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="2_f1n3r"]
+[ext_resource type="PackedScene" uid="uid://docj30h4pnnnb" path="res://obj/modules/health_bar.tscn" id="4_2so0a"]
+
+[sub_resource type="Animation" id="Animation_jbkt0"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Fridge:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2.98507, 38.806)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Fridge:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.60837, 1.45355)]
+}
+
+[sub_resource type="Animation" id="Animation_3368k"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Fridge:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2.98507, 38.806), Vector2(-2.98507, 51.4925)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Fridge:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.60837, 1.45355), Vector2(1.60837, 1.40622)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6a263"]
+_data = {
+&"RESET": SubResource("Animation_jbkt0"),
+&"idle": SubResource("Animation_3368k")
+}
+
+[node name="Anomaly" type="PathFollow2D"]
+z_index = 1
+rotates = false
+loop = false
+script = ExtResource("1_l3lsy")
+entity_resource = ExtResource("2_f1n3r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6a263")
+}
+autoplay = "RESET"
+
+[node name="Skeleton" type="Node2D" parent="."]
+position = Vector2(0, -104)
+scale = Vector2(0.335, 0.335)
+
+[node name="Fridge" type="Sprite2D" parent="Skeleton"]
+position = Vector2(-2.98507, 38.806)
+scale = Vector2(1.60837, 1.45355)
+texture = ExtResource("2_4ksei")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_2so0a")]
+
+[editable path="HealthBar"]

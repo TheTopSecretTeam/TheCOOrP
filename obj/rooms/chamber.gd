@@ -2,12 +2,13 @@ extends Room
 class_name AnomalyChamber
 
 @export var anomaly : AbnormalityResource 
+@export var bar : AnomalyBar 
+var anomaly_action : AnomalyAction
 #@onready var unique_pe_counter = $Unique_PE_Counter
 var wc_buttons : Array[Button]
-@export var stats: Array[Resource] = []
-@export var actions : Array[AnomalyAction] = []
+#@export var stats: Array[Resource] = []
+var actions : Array[AnomalyAction] = []
 var working : bool = false
-var work_probability : float
 var working_agent : Agent
 @onready var work_container = $CanvasLayer/CenterContainer/WorkContainer
 @export var agent_option : PackedScene
@@ -16,39 +17,37 @@ var working_agent : Agent
 func _ready() -> void:
 	if anomaly: load_anomaly()
 	work_ready()
-	for child in $room_path.get_children():
-		if child is Waypoint:
-			if child.leading_room:
-				waypoints[child.leading_room.get_index()] = child
-				#if self.get_index() == 0: print(child.leading_room.get_index())
+	super._ready() # Room setup
 
 func transfer(entity: Entity, _previous_room):
 	entity.reparent($room_path)
 	entity._on_travel()
 	entity._on_chamber_arrival()
 	
-	if entity is Agent:
+	if entity is Agent and not working:
 		entity.progress_ratio = 1.0
 		working_agent = entity
 		working_agent.working = true
-		begin_work(work_probability, entity.entity_resource)
+		working = true
+		begin_work(anomaly_action, entity.entity_resource)
 
 func load_anomaly() -> void:
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
 	$CanvasLayer/ResearchMenu.anomaly = anomaly
+	var anomaly_inst = load(anomaly.entity).instantiate()
+	$room_path.add_child(anomaly_inst)
+	anomaly_inst.flipped = true
 	for _action in anomaly.actions:
 		actions.append(_action)
-#func _process(delta: float) -> void:      #THIS IS BAD
-	#unique_pe_counter.text = str(anomaly.unique_pe)
-func begin_work(probability, _agent_res):
+
+func begin_work(action : AnomalyAction, _agent_res):
 	#make math with player stats and action prob
-	$Bar.work(probability)
+	bar.work(action)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
 	working_agent.working = false
 	working = false
 	anomaly.unique_pe += pe_box
-	escape()
 	working_agent.path = [get_index(),$room_path/waypoint.leading_room.get_index()]
 	working_agent._on_travel()
 	working_agent = null
@@ -83,6 +82,13 @@ func show_agents():
 	$CanvasLayer/CenterContainer/AgentContainer.show()
 	#$AgentContainer.global_position = get_global_mouse_position()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("clickMouse") and (
+		$CanvasLayer/CenterContainer/AgentContainer.visible
+	):
+		$CanvasLayer/CenterContainer/AgentContainer.call_deferred("hide")
+		working = false
+
 func escape():
 	if get_node_or_null(^"room_path/Anomaly") == null:
 		return
@@ -105,8 +111,7 @@ func _on_work_button_down(action_res) -> void:
 
 func action(action_res) -> String:
 	if working: return "ALREADY_WORKING"
-	working = true
-	work_probability = action_res.probability
+	anomaly_action = action_res
 	work_container.hide()
 	show_agents()
 	return "SUCCESS"

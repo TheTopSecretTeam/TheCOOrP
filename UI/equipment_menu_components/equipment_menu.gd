@@ -11,6 +11,10 @@ var weapons: Array[WeaponStats]
 var armors: Array[ArmorStats]
 var agents: Array[AgentStats]
 
+func _ready() -> void:
+	weapon_list.item_selected.connect(_on_item_selected.bind(weapon_list))
+	armor_list.item_selected.connect(_on_item_selected.bind(armor_list))
+	agent_list.item_selected.connect(_on_item_selected.bind(agent_list))
 
 func populate_equipment_list(list: ItemList, items: Array) -> String:
 	for i in range(items.size()):
@@ -54,13 +58,14 @@ func update_selection_display() -> String:
 	return "SUCCESS"
 
 func display_selection(list: ItemList) -> String:
+	print(list)
 	var hbox = HBoxContainer.new()
 	hbox.add_theme_constant_override("separation", 10)
 	
 	var icon = TextureRect.new()
 	var label = Label.new()
 	
-	var selected_items = list.get_selected_items()
+	var selected_items : Array = list.get_selected_items()
 	if selected_items.size() > 0:
 		var idx = selected_items[0]
 		icon.texture = list.get_item_icon(idx)
@@ -93,7 +98,6 @@ func display_agent() -> String:
 		icon.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		
 		display_selection(weapon_list)
 		display_selection(armor_list)
 	return "SUCCESS"
@@ -107,9 +111,14 @@ func _on_exit_button_down() -> String:
 		child.queue_free()
 	return "SUCCESS"
 
+func clear():
+	weapon_list.clear()
+	armor_list.clear()
+	agent_list.clear()
 
-func window_call(agent_res:Array[AgentStats], armor_res:Array[ArmorStats],\
+func window_call(agent_res:Array[AgentStats], armor_res:Array[ArmorStats],
 				 weapon_res:Array[WeaponStats]) -> String:
+	clear()
 	agents = agent_res
 	armors = armor_res
 	weapons = weapon_res
@@ -117,10 +126,6 @@ func window_call(agent_res:Array[AgentStats], armor_res:Array[ArmorStats],\
 	populate_equipment_list(weapon_list, weapons)
 	populate_equipment_list(armor_list, armors)
 	populate_agent_list(agent_list, agents)
-	
-	weapon_list.item_selected.connect(_on_item_selected.bind(weapon_list))
-	armor_list.item_selected.connect(_on_item_selected.bind(armor_list))
-	agent_list.item_selected.connect(_on_item_selected.bind(agent_list))
 	
 	update_selection_display()
 	show()

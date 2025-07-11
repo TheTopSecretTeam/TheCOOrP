@@ -1,23 +1,24 @@
+
 # entity.gd
 class_name Entity
 extends PathFollow2D
 
 # Reference to the entity's resource data
 @export var entity_resource: EntityResource
-var path : Array = []
+var path: Array = []
 var target: Entity = null
 var attack_cooldown: float = 0.0
 @export var current_room_path: Path2D
 var current_room: int
-var waypoint : Node2D
+var waypoint: Node2D
 
-var flipped : bool = false:
+@export var flipped: bool = false:
 	set(value):
 		if value:
-			$Skeleton.scale.x = -0.5
-			entity_resource.travel_speed = -1 * abs(entity_resource.travel_speed)
+			$Skeleton.scale.x = -abs($Skeleton.scale.x)
+			entity_resource.travel_speed = -abs(entity_resource.travel_speed)
 		else:
-			$Skeleton.scale.x = 0.5
+			$Skeleton.scale.x = abs($Skeleton.scale.x)
 			entity_resource.travel_speed = abs(entity_resource.travel_speed)
 		flipped = value
 
@@ -53,7 +54,6 @@ func handle_combat(delta: float) -> void:
 	
 	if distance <= entity_resource.get_attack_range():
 		if attack_cooldown <= 0:
-			print("MKKKKKKK")
 			entity_resource.attack(target)
 			print(str(target.entity_resource.current_hp), str(target.entity_resource.is_alive()))
 			if !target.entity_resource.is_alive(): target.die()
@@ -65,10 +65,11 @@ func move_toward_target(delta: float) -> void:
 	if not target or not current_room_path:
 		return
 	
-	var target_progress = target.progress
-	var direction = sign(target_progress - progress)
-	
-	progress += direction * entity_resource.travel_speed * delta
+	var progress_delta = entity_resource.travel_speed * delta
+	if abs(target.progress - progress) < abs(progress_delta): # snap to target if close enough
+		progress = target.progress
+	else:
+		progress += progress_delta
 
 func find_target() -> Entity:
 	var potential_targets = []
@@ -82,7 +83,7 @@ func find_target() -> Entity:
 	
 	# Find the closest target
 	if not potential_targets.is_empty():
-		potential_targets.sort_custom(func(a, b): 
+		potential_targets.sort_custom(func(a, b):
 			return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position)
 		)
 		return potential_targets[0]
