@@ -16,7 +16,7 @@ var waypoint: Node2D
 	set(value):
 		if value:
 			$Skeleton.scale.x = -abs($Skeleton.scale.x)
-			entity_resource.travel_speed = -1 * abs(entity_resource.travel_speed)
+			entity_resource.travel_speed = -abs(entity_resource.travel_speed)
 		else:
 			$Skeleton.scale.x = abs($Skeleton.scale.x)
 			entity_resource.travel_speed = abs(entity_resource.travel_speed)
@@ -65,11 +65,11 @@ func move_toward_target(delta: float) -> void:
 	if not target or not current_room_path:
 		return
 	
-	var target_progress = target.progress
-	var direction = sign(target_progress - progress)
-	flipped = direction == -1
-	#print($Skeleton.scale, scale, entity_resource.travel_speed, name)
-	progress += entity_resource.travel_speed * delta
+	var progress_delta = entity_resource.travel_speed * delta
+	if abs(target.progress - progress) < abs(progress_delta): # snap to target if close enough
+		progress = target.progress
+	else:
+		progress += progress_delta
 
 func find_target() -> Entity:
 	var potential_targets = []
