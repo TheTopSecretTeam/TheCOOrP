@@ -103,6 +103,7 @@ func _on_open_work_4_button_down() -> void:
 
 func _on_exit_button_down() -> void:
 	hide()
+	$ExitButton/Exit.hide()
 	if resource_box:
 		resource_box.show() 
 	for child in $HBoxContainer/VBoxContainer/Resources.get_children():
@@ -176,6 +177,7 @@ func update_pe_display() -> void:
 	
 func window_call(res: AbnormalityResource) -> void:
 	menu_open.emit()
+	$ExitButton/Exit.show()
 	anomaly = res
 	main_open_cost = anomaly.threat_level
 	action_open_cost = anomaly.threat_level
