@@ -11,6 +11,8 @@ Lobotomy Corporation COOP project. Developing a game inspired by Lobotomy Corpor
 
 ### Project Context diagram
 
+![Project Contexy Diagram](docs/img/Diagram.jpeg)
+
 ### Feature roadmap
 
 ![Roadmap](docs/img/Roadmap.png)
@@ -26,10 +28,6 @@ Lobotomy Corporation COOP project. Developing a game inspired by Lobotomy Corpor
 ### Project installation
 
 You install zip folder from the Google disk, unpack it, and load exe file. 
-
-## Usage
-
-[Link to video explanations](https://drive.google.com/drive/folders/1pGh9TZ-6xcYVOox96Rov0pG2shFWNsGE?usp=drive_link) 
 
 ## Documentation
 
