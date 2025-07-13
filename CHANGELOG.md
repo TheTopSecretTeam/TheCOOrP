@@ -15,11 +15,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - Player behavior when host was disconected
 - Synchronization of data between players in multiplayer
 - Sorting agents in menu
+- Inventory menu
+- New anomaly Ice Box
 
 ### Changed
 
 - Choice of agents on LMB and choice of room on RMB
-- Free camera moving only on MMB
 
 ### Fixed
 
