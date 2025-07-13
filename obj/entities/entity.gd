@@ -1,5 +1,3 @@
-
-# entity.gd
 class_name Entity
 extends PathFollow2D
 

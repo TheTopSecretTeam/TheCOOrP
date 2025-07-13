@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bx0u5ty4gc1o5"]
+[gd_scene load_steps=18 format=3 uid="uid://bx0u5ty4gc1o5"]
 
 [ext_resource type="Resource" uid="uid://b4uc1785bd3wc" path="res://res/scripts/Abnormalities/wirebird.tres" id="2_xsyyv"]
 [ext_resource type="Script" uid="uid://bmr10cm8vqb8o" path="res://obj/rooms/chamber.gd" id="2_y0fo7"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="5_i8y48"]
 [ext_resource type="Script" uid="uid://4jvosnkh5sks" path="res://obj/rooms/escape_timer.gd" id="7_aeile"]
 [ext_resource type="PackedScene" uid="uid://gnrfrvcmqj0r" path="res://UI/research_menu_components/research_menu.tscn" id="7_i8y48"]
+[ext_resource type="Theme" uid="uid://deasi3jfl2oq1" path="res://others/highlight_border.tres" id="14_wjttg"]
+[ext_resource type="Script" uid="uid://bedadls6wd4yc" path="res://others/highlight.gd" id="15_aeile"]
 
 [sub_resource type="Curve2D" id="Curve2D_y0fo7"]
 _data = {
@@ -23,9 +25,12 @@ point_count = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rl70"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="chamber" type="CenterContainer" groups=["Room"]]
-offset_right = 200.0
-offset_bottom = 130.0
+[node name="chamber" type="PanelContainer" groups=["Room"]]
+anchors_preset = -1
+anchor_right = 0.67
+anchor_bottom = 1.004
+offset_right = 0.399963
+offset_bottom = 0.120056
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("2_y0fo7")
@@ -125,7 +130,13 @@ theme_override_font_sizes/font_size = 410
 text = "0.0"
 horizontal_alignment = 3
 
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("14_wjttg")
+script = ExtResource("15_aeile")
+
 [connection signal="timeout" from="EscapeTimer" to="." method="_on_escape_timer_timeout"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="." method="_on_abno_name_button_down"]
-[connection signal="gui_input" from="HBoxContainer/VBoxContainer/HBoxContainer" to="." method="_on_h_box_container_gui_input"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/ColorRect" to="." method="_on_color_rect_pressed"]

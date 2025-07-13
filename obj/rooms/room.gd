@@ -4,6 +4,9 @@ class_name Room
 var waypoints : Dictionary[int, PathFollow2D] = {}
 
 func _ready() -> void:
+	populate_nav_graph()
+
+func populate_nav_graph() -> void:
 	FacilityNavigation.graph[get_index()] = []
 	for child in $room_path.get_children():
 		if child is Waypoint:
@@ -20,6 +23,3 @@ func transfer(entity: Entity, previous_room):
 	entity.reparent($room_path)
 	entity.progress = waypoints[previous_room].progress
 	entity._on_travel()
-
-func highlight():
-	pass

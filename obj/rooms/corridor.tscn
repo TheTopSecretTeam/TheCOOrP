@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbpr2hgq0qrbw"]
+[gd_scene load_steps=8 format=3 uid="uid://bbpr2hgq0qrbw"]
 
 [ext_resource type="Script" uid="uid://pggseopt55io" path="res://obj/rooms/room.gd" id="1_uovvg"]
 [ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="2_nwxuc"]
 [ext_resource type="Texture2D" uid="uid://bcaff3cr2ogf2" path="res://img/layout/hall1.png" id="2_uovvg"]
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="4_mxo8b"]
+[ext_resource type="Theme" uid="uid://deasi3jfl2oq1" path="res://others/highlight_border.tres" id="5_mxo8b"]
+[ext_resource type="Script" uid="uid://bedadls6wd4yc" path="res://others/highlight.gd" id="6_72fwn"]
 
 [sub_resource type="Curve2D" id="Curve2D_r14vu"]
 _data = {
@@ -11,12 +13,12 @@ _data = {
 }
 point_count = 2
 
-[node name="corridor" type="CenterContainer" groups=["Room"]]
+[node name="corridor" type="PanelContainer" groups=["Room"]]
 anchors_preset = -1
-anchor_right = 0.608
-anchor_bottom = 0.201
-offset_right = -0.416016
-offset_bottom = -0.248001
+anchor_right = 1.688
+anchor_bottom = 0.542
+offset_right = 0.360107
+offset_bottom = -0.23999
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uovvg")
@@ -43,3 +45,10 @@ texture = ExtResource("4_mxo8b")
 [node name="room_path" type="Path2D" parent="."]
 position = Vector2(392, 310.764)
 curve = SubResource("Curve2D_r14vu")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("5_mxo8b")
+script = ExtResource("6_72fwn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b85wfl7wt2xqw"]
+[gd_scene load_steps=14 format=3 uid="uid://b85wfl7wt2xqw"]
 
 [ext_resource type="Script" uid="uid://cuc8mtkusmoxx" path="res://obj/entities/agent.gd" id="1_l35n4"]
 [ext_resource type="Texture2D" uid="uid://cq8aac2qq5cln" path="res://img/gibs/agent/agent_body.png" id="2_g3b03"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bvasvrv1m3okg" path="res://img/gibs/agent/agent_forearm.png" id="5_t74kt"]
 [ext_resource type="Texture2D" uid="uid://3fm05ki83g5g" path="res://img/gibs/agent/agent_arm.png" id="6_73koy"]
 [ext_resource type="Texture2D" uid="uid://g3r2y5n1ueml" path="res://UI/energy-bar/fill_texture.png" id="7_6a263"]
+[ext_resource type="Theme" uid="uid://deasi3jfl2oq1" path="res://others/highlight_border.tres" id="7_t74kt"]
 [ext_resource type="Script" uid="uid://7wvji3japcx8" path="res://UI/energy-bar/texture_progress_bar.gd" id="8_t74kt"]
 
 [sub_resource type="Animation" id="Animation_13mac"]
@@ -292,17 +293,6 @@ _data = {
 &"walk": SubResource("Animation_6a263")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3b03"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.627451, 0, 1)
-
-[sub_resource type="Theme" id="Theme_13mac"]
-Panel/styles/panel = SubResource("StyleBoxFlat_g3b03")
-
 [node name="Agent" type="PathFollow2D" groups=["Agent", "Sync"]]
 z_index = 1
 rotates = false
@@ -386,7 +376,7 @@ offset_left = -28.0
 offset_top = -139.0
 offset_right = 37.0
 offset_bottom = -11.0
-theme = SubResource("Theme_13mac")
+theme = ExtResource("7_t74kt")
 
 [node name="HealthBar" type="HBoxContainer" parent="."]
 offset_left = -109.0

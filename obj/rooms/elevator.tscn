@@ -5,16 +5,14 @@
 
 [sub_resource type="Curve2D" id="Curve2D_mvprs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -99, 0, 0, 0, 0, 0, 97, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 100, 0, 0, 0, 0, 0, -100, 0)
 }
 point_count = 2
 
 [node name="elevator" instance=ExtResource("1_mvprs")]
 anchor_right = 0.113
-offset_left = -152.0
-offset_top = -247.0
-offset_right = 152.36
-offset_bottom = 247.28
+offset_right = 122.36
+offset_bottom = -10.24
 
 [node name="TextureRect" parent="HBoxContainer" index="0"]
 visible = false
@@ -29,5 +27,5 @@ stretch_mode = 4
 visible = false
 
 [node name="room_path" parent="." index="1"]
-position = Vector2(222, 473)
+position = Vector2(133.5, 335)
 curve = SubResource("Curve2D_mvprs")

@@ -25,10 +25,11 @@ func _ready():
 func get_cursor_node():
 	return $CanvasLayer
 
-func _physics_process(_delta):
+func _process(_delta):
 	var cursor_pos = get_global_mouse_position()
-	if Input.is_action_just_pressed("clickMouse"):
-		var selected_thing = get_thing_under_cursor(cursor_pos)
+	var selected_thing
+	if Input.is_action_just_pressed("clickLeftMouse"):
+		selected_thing = get_thing_under_cursor(cursor_pos)
 		if !selected_thing: return
 		if selected_thing is Agent and !selected_thing.working:
 			if not selected_agents.is_empty():
@@ -37,13 +38,13 @@ func _physics_process(_delta):
 			selected_agents.append(selected_thing)
 			selected_thing.set_outline_visibility(true)
 			#print("agent_selected")
-		elif selected_thing is Room and selected_thing is not AnomalyChamber:
+	elif Input.is_action_just_pressed("clickRightMouse"):
+		selected_thing = get_thing_under_cursor(cursor_pos)
+		if selected_thing is Room and selected_thing is not AnomalyChamber:
 			#print("room_selected")
 			if not selected_agents.is_empty():
 				send_agent.rpc(selected_agents[0].entity_resource.agent_name, selected_thing.get_index())
 				print("Trying to redirect an Agent")
-		#elif !selected_thing.working:
-			#selected_thing.show_work()
 
 @rpc("any_peer", "call_local")
 func send_agent(agent_name, room_index: int) -> String :
