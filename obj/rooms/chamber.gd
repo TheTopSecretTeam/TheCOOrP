@@ -68,13 +68,13 @@ func show_work() -> bool:
 		return true
 
 func agent_selected(agent_name : String):
-	Global.send_agent.emit(agent_name, get_index())
+	Agents.send_agent.emit(agent_name, get_index())
 	$CanvasLayer/CenterContainer/AgentContainer.hide()
 
 func show_agents():
 	for option in $CanvasLayer/CenterContainer/AgentContainer.get_children():
 		option.queue_free()
-	for agent in Global.agents:
+	for agent in Agents.agents:
 		var option_inst = agent_option.instantiate()
 		option_inst.agent = agent.entity_resource
 		option_inst.agent_selected.connect(agent_selected)
@@ -83,7 +83,7 @@ func show_agents():
 	#$AgentContainer.global_position = get_global_mouse_position()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("clickMouse") and (
+	if event.is_action_pressed("clickLeftMouse") and (
 		$CanvasLayer/CenterContainer/AgentContainer.visible
 	):
 		$CanvasLayer/CenterContainer/AgentContainer.call_deferred("hide")

@@ -4,15 +4,13 @@ extends Control
 @onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
 var net_manager_instance: Node
 
-var selected_agents: Array[Agent] = []
-
 func _ready():
 	add_child(net_manager)
 	add_child(sync_manager)
 	
-	Global.load_agents() #do this after adding agents!
-	Global.agent_died.connect(_on_agent_died)
-	Global.send_agent.connect(send_agent.rpc)
+	Agents.load_agents() #do this after adding agents!
+	Agents.agent_died.connect(_on_agent_died)
+	Agents.send_agent.connect(send_agent.rpc)
 	
 	if not is_instance_valid(net_manager):
 		push_error("Failed to initialize net manager!")
@@ -28,43 +26,47 @@ func get_cursor_node():
 func _process(_delta):
 	var cursor_pos = get_global_mouse_position()
 	var selected_thing
-	if Input.is_action_just_pressed("clickLeftMouse"):
+	var multi_agent_button = Input.is_action_pressed("shift_lmb")
+	if multi_agent_button or Input.is_action_pressed("clickLeftMouse"):
 		selected_thing = get_thing_under_cursor(cursor_pos)
 		if !selected_thing: return
 		if selected_thing is Agent and !selected_thing.working:
-			if not selected_agents.is_empty():
-				selected_agents.pop_front().set_outline_visibility(false)
-			selected_agents = []
-			selected_agents.append(selected_thing)
+			if not multi_agent_button and not Agents.selected_agents.is_empty():
+				for a in Agents.selected_agents:
+					a.set_outline_visibility(false)
+				Agents.selected_agents.clear()
+			Agents.selected_agents.append(selected_thing)
 			selected_thing.set_outline_visibility(true)
-			#print("agent_selected")
 	elif Input.is_action_just_pressed("clickRightMouse"):
 		selected_thing = get_thing_under_cursor(cursor_pos)
 		if selected_thing is Room and selected_thing is not AnomalyChamber:
-			#print("room_selected")
-			if not selected_agents.is_empty():
-				send_agent.rpc(selected_agents[0].entity_resource.agent_name, selected_thing.get_index())
-				print("Trying to redirect an Agent")
+			if not Agents.selected_agents.is_empty():
+				for a in Agents.selected_agents:
+					send_agent.rpc(a.entity_resource.agent_name, selected_thing.get_index())
 
 @rpc("any_peer", "call_local")
-func send_agent(agent_name, room_index: int) -> String :
+func send_agent(agent_name, room_index: int) -> void:
 	var agent: Agent
 	for node in get_tree().get_nodes_in_group("Agent"):
 		if node.entity_resource.agent_name == agent_name:
 			agent = node
-	if !agent: print("agent_not_found"); return "agent_not_found"
-	if agent.working: return "agent is working"
+	if !agent:
+		print("agent_not_found");
+		return
+	if agent.working:
+		return
 	print(multiplayer.get_unique_id(), agent.current_room)
 	sync_manager._on_timer_timeout()
 	while (agent.current_room == null): get_tree().get_frame()
 	var path = FacilityNavigation.get_agent_path(agent.current_room, room_index)
-	if path == []: return 'success stand'
+	if path == []:
+		return
 	agent.path = path
 	agent._on_travel()
-	return "success move"
+	return
 	
 func _on_agent_died(agent: Agent):
-	selected_agents.erase(agent)
+	Agents.selected_agents.erase(agent)
 
 func get_thing_under_cursor(cursor_pos):
 	var containers = get_tree().get_nodes_in_group("Agent")
@@ -76,3 +78,10 @@ func get_thing_under_cursor(cursor_pos):
 		if c.get_global_rect().has_point(cursor_pos):
 			return c
 	return null
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not event.is_action("clickLeftMouse"):
+		return
+	for a in Agents.selected_agents:
+		a.set_outline_visibility(false)
+	Agents.selected_agents = []

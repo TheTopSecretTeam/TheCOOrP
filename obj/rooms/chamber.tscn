@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="5_i8y48"]
 [ext_resource type="Script" uid="uid://4jvosnkh5sks" path="res://obj/rooms/escape_timer.gd" id="7_aeile"]
 [ext_resource type="PackedScene" uid="uid://gnrfrvcmqj0r" path="res://UI/research_menu_components/research_menu.tscn" id="7_i8y48"]
-[ext_resource type="Theme" uid="uid://deasi3jfl2oq1" path="res://others/highlight_border.tres" id="14_wjttg"]
+[ext_resource type="Theme" uid="uid://fpagxkrlv8cw" path="res://others/highlight_border_trans.tres" id="14_wjttg"]
 [ext_resource type="Script" uid="uid://bedadls6wd4yc" path="res://others/highlight.gd" id="15_aeile"]
 
 [sub_resource type="Curve2D" id="Curve2D_y0fo7"]
@@ -131,7 +131,6 @@ text = "0.0"
 horizontal_alignment = 3
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("14_wjttg")

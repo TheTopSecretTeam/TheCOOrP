@@ -16,6 +16,9 @@ var working = false
 @onready var health_text: Label = $HealthBar/HealthText
 @onready var mental_text: Label = $MentalBar/MentalText
 
+@export var highlight_panel: Panel
+@export var highlight_panel_trans: Panel
+
 func _ready() -> void:
 	super._ready()
 	$Name.text = entity_resource.agent_name
@@ -66,6 +69,7 @@ func _on_chamber_arrival():
 	flipped = false
 
 func _process(delta: float) -> void:
+	highlight_panel_trans.visible = get_global_rect().has_point(get_global_mouse_position())
 	match state:
 		WANDER:
 			var prev_prog = progress
@@ -113,10 +117,10 @@ func move_toward_target(delta: float) -> void:
 	progress += entity_resource.travel_speed * delta
 	
 func set_outline_visibility(_visible: bool = true):
-	$Panel.visible = _visible
+	highlight_panel.visible = _visible
 	
 func die() -> void:
-	Global.agent_died.emit(self)
+	Agents.agent_died.emit(self)
 	super.die()
 
 # NET

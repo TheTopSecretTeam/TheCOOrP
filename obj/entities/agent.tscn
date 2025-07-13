@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b85wfl7wt2xqw"]
+[gd_scene load_steps=15 format=3 uid="uid://b85wfl7wt2xqw"]
 
 [ext_resource type="Script" uid="uid://cuc8mtkusmoxx" path="res://obj/entities/agent.gd" id="1_l35n4"]
 [ext_resource type="Texture2D" uid="uid://cq8aac2qq5cln" path="res://img/gibs/agent/agent_body.png" id="2_g3b03"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://3fm05ki83g5g" path="res://img/gibs/agent/agent_arm.png" id="6_73koy"]
 [ext_resource type="Texture2D" uid="uid://g3r2y5n1ueml" path="res://UI/energy-bar/fill_texture.png" id="7_6a263"]
 [ext_resource type="Theme" uid="uid://deasi3jfl2oq1" path="res://others/highlight_border.tres" id="7_t74kt"]
+[ext_resource type="Theme" uid="uid://fpagxkrlv8cw" path="res://others/highlight_border_trans.tres" id="8_73koy"]
 [ext_resource type="Script" uid="uid://7wvji3japcx8" path="res://UI/energy-bar/texture_progress_bar.gd" id="8_t74kt"]
 
 [sub_resource type="Animation" id="Animation_13mac"]
@@ -293,11 +294,13 @@ _data = {
 &"walk": SubResource("Animation_6a263")
 }
 
-[node name="Agent" type="PathFollow2D" groups=["Agent", "Sync"]]
+[node name="Agent" type="PathFollow2D" node_paths=PackedStringArray("highlight_panel", "highlight_panel_trans") groups=["Agent", "Sync"]]
 z_index = 1
 rotates = false
 loop = false
 script = ExtResource("1_l35n4")
+highlight_panel = NodePath("Panel")
+highlight_panel_trans = NodePath("PanelTr")
 
 [node name="Name" type="Label" parent="."]
 offset_left = -17.0
@@ -377,6 +380,14 @@ offset_top = -139.0
 offset_right = 37.0
 offset_bottom = -11.0
 theme = ExtResource("7_t74kt")
+
+[node name="PanelTr" type="Panel" parent="."]
+visible = false
+offset_left = -28.0
+offset_top = -139.0
+offset_right = 37.0
+offset_bottom = -11.0
+theme = ExtResource("8_73koy")
 
 [node name="HealthBar" type="HBoxContainer" parent="."]
 offset_left = -109.0
