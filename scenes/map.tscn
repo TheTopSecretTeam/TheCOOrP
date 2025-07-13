@@ -154,9 +154,6 @@ bar = NodePath("IceboxBar")
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
 leading_room = NodePath("../../../corridor")
 
-[node name="AgentContainer" parent="rooms/chamber/CanvasLayer/CenterContainer" index="1"]
-visible = true
-
 [node name="IceboxBar" parent="rooms/chamber" node_paths=PackedStringArray("chamber") instance=ExtResource("12_6k6j1")]
 position = Vector2(-71, 414)
 chamber = NodePath("..")

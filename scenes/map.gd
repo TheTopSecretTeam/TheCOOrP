@@ -30,7 +30,7 @@ func _process(_delta):
 	if multi_agent_button or Input.is_action_pressed("clickLeftMouse"):
 		selected_thing = get_thing_under_cursor(cursor_pos)
 		if !selected_thing: return
-		if selected_thing is Agent and !selected_thing.working:
+		if selected_thing is Agent and not selected_thing.working and not selected_thing in Agents.selected_agents:
 			if not multi_agent_button and not Agents.selected_agents.is_empty():
 				for a in Agents.selected_agents:
 					a.set_outline_visibility(false)
@@ -82,6 +82,7 @@ func get_thing_under_cursor(cursor_pos):
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action("clickLeftMouse"):
 		return
+	print("Deselecting the agents")
 	for a in Agents.selected_agents:
 		a.set_outline_visibility(false)
 	Agents.selected_agents = []

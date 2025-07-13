@@ -22,7 +22,8 @@ func _on_timer_timeout():
 	if not multiplayer.is_server():
 		return
 		
-	print("Server sync cycle started")
+	#print("Server sync cycle started")
+	@warning_ignore("unused_variable")
 	var sync_count = 0
 	
 	for node in get_tree().get_nodes_in_group("Sync"):
@@ -35,7 +36,7 @@ func _on_timer_timeout():
 				sync_node.rpc(node_path, node.get_sync_data())
 				sync_count += 1
 	
-	print("Server synchronized ", sync_count, " nodes")
+	#print("Server synchronized ", sync_count, " nodes")
 
 @rpc("any_peer", "reliable")
 func sync_node(node_path: NodePath, data: Dictionary):

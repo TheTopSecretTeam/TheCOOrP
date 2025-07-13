@@ -1,17 +1,18 @@
 extends Room
 class_name AnomalyChamber
 
-@export var anomaly : AbnormalityResource 
-@export var bar : AnomalyBar 
-var anomaly_action : AnomalyAction
+@export var anomaly: AbnormalityResource
+@export var bar: AnomalyBar
+var anomaly_action: AnomalyAction
 #@onready var unique_pe_counter = $Unique_PE_Counter
-var wc_buttons : Array[Button]
+var wc_buttons: Array[Button]
 #@export var stats: Array[Resource] = []
-var actions : Array[AnomalyAction] = []
-var working : bool = false
-var working_agent : Agent
+var actions: Array[AnomalyAction] = []
+var working: bool = false
+var working_agent: Agent
 @onready var work_container = $CanvasLayer/CenterContainer/WorkContainer
-@export var agent_option : PackedScene
+@export var agent_option: PackedScene
+@onready var agent_container = $CanvasLayer/CenterContainer/AgentContainer
 @onready var btn = preload("res://UI/styled_button.tscn")
 
 func _ready() -> void:
@@ -40,15 +41,15 @@ func load_anomaly() -> void:
 	for _action in anomaly.actions:
 		actions.append(_action)
 
-func begin_work(action : AnomalyAction, _agent_res):
+func begin_work(_action: AnomalyAction, _agent_res):
 	#make math with player stats and action prob
-	bar.work(action)
+	bar.work(_action)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
 	working_agent.working = false
 	working = false
 	anomaly.unique_pe += pe_box
-	working_agent.path = [get_index(),$room_path/waypoint.leading_room.get_index()]
+	working_agent.path = [get_index(), $room_path/waypoint.leading_room.get_index()]
 	working_agent._on_travel()
 	working_agent = null
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
@@ -56,37 +57,42 @@ func _on_bar_work_completed(pe_box: Variant) -> void:
 func _on_color_rect_pressed() -> void:
 	show_work()
 	
-func show_work() -> bool:
+func show_work() -> void:
 	if working:
-		return false
-	else:
-		if !work_container.visible:
-			work_container.show()
-		else:
-			work_container.hide()
-		#work_container.global_position = get_global_mouse_position()
-		return true
+		return
+	work_container.visible = not work_container.visible
+	agent_container.hide()
 
-func agent_selected(agent_name : String):
+
+func agent_selected(agent_name: String):
 	Agents.send_agent.emit(agent_name, get_index())
-	$CanvasLayer/CenterContainer/AgentContainer.hide()
+	agent_container.hide()
 
 func show_agents():
-	for option in $CanvasLayer/CenterContainer/AgentContainer.get_children():
+	for option in agent_container.get_children():
 		option.queue_free()
-	for agent in Agents.agents:
+	var avaliable_agents: Array[Agent] = []
+	for a in Agents.selected_agents:
+		if not a.working:
+			avaliable_agents.append(a)
+	for a in Agents.agents:
+		if not a.working and not a in Agents.selected_agents:
+			avaliable_agents.append(a)
+	if avaliable_agents.is_empty():
+		return
+	for a in avaliable_agents:
 		var option_inst = agent_option.instantiate()
-		option_inst.agent = agent.entity_resource
+		option_inst.agent = a.entity_resource
 		option_inst.agent_selected.connect(agent_selected)
-		$CanvasLayer/CenterContainer/AgentContainer.add_child(option_inst)
-	$CanvasLayer/CenterContainer/AgentContainer.show()
+		agent_container.add_child(option_inst)
+	agent_container.show()
 	#$AgentContainer.global_position = get_global_mouse_position()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("clickLeftMouse") and (
-		$CanvasLayer/CenterContainer/AgentContainer.visible
+		agent_container.visible
 	):
-		$CanvasLayer/CenterContainer/AgentContainer.call_deferred("hide")
+		agent_container.call_deferred("hide")
 		working = false
 
 func escape():
@@ -99,7 +105,7 @@ func escape():
 func _on_escape_timer_timeout() -> void:
 	$Label.hide()
 	$EscapeTimer.started = false
-	$room_path/Anomaly.path = [get_index(),$room_path/waypoint.leading_room.get_index()]
+	$room_path/Anomaly.path = [get_index(), $room_path/waypoint.leading_room.get_index()]
 	$room_path/Anomaly._on_travel()
 
 func _on_abno_name_button_down() -> void:
@@ -109,19 +115,18 @@ func _on_abno_name_button_down() -> void:
 func _on_work_button_down(action_res) -> void:
 	action(action_res)
 
-func action(action_res) -> String:
-	if working: return "ALREADY_WORKING"
+func action(action_res) -> void:
+	if working: return
 	anomaly_action = action_res
 	work_container.hide()
 	show_agents()
-	return "SUCCESS"
 
 func work_ready():
-	for _action in actions:
+	for act in actions:
 		var work = btn.instantiate()
-		work.set_text(_action.action_name)
-		work.set_button_icon(_action.action_icon)
-		for script in _action.scripts:
+		work.set_text(act.action_name)
+		work.set_button_icon(act.action_icon)
+		for script in act.scripts:
 			work.set_script(script)
-		work.button_down.connect(_on_work_button_down.bind(_action))
+		work.button_down.connect(_on_work_button_down.bind(act))
 		work_container.add_child(work)

@@ -1,6 +1,6 @@
 extends Node
 
-var agents : Array[Node] = []
+var agents : Array[Agent] = []
 var selected_agents: Array[Agent] = []
 
 var armor : Array[ArmorStats] = [preload("res://res/scripts/agent/base_armor.tres").duplicate()]
@@ -13,5 +13,5 @@ func _on_agent_died(agent: Agent):
 	agents.erase(agent)
 
 func load_agents():
-	agents = get_tree().get_nodes_in_group("Agent")
+	agents.assign(get_tree().get_nodes_in_group("Agent"))
 	agent_died.connect(_on_agent_died)
