@@ -1,5 +1,5 @@
 name: GdUnit4 Tests
-on: [push, pull_request]
+on: [push]
 
 jobs:
   test:
