@@ -1,4 +1,7 @@
 # TheCOOrP
+
+![The COOrP Logo](docs/img/Logo.jpg)
+
 Lobotomy Corporation COOP project. Developing a game inspired by Lobotomy Corporation.
 
 [Link to the up-to-date deployed version of our product](https://drive.google.com/drive/folders/1qRC9B3wtoQ-ucz8oC2EMupoSp4nI6Ttu?usp=drive_link)
@@ -8,6 +11,8 @@ Lobotomy Corporation COOP project. Developing a game inspired by Lobotomy Corpor
 ## Description
 
 ### Project goal and description
+
+The main goal of our project is creating a spiritual successor to Lobotomy Corporation. Although the original game provides an interesting and hard experience, the main gameplay philosophy makes it so most monsters are abandoned after 2-3 days of care. Changing this, as well as adding multiplayer - are our main priorities.
 
 ### Project Context diagram
 
