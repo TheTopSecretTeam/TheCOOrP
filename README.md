@@ -1,5 +1,4 @@
 # TheCOOrP
-
 Lobotomy Corporation COOP project. Developing a game inspired by Lobotomy Corporation.
 
 [Link to the up-to-date deployed version of our product](https://drive.google.com/drive/folders/1qRC9B3wtoQ-ucz8oC2EMupoSp4nI6Ttu?usp=drive_link)
@@ -26,20 +25,19 @@ Lobotomy Corporation COOP project. Developing a game inspired by Lobotomy Corpor
 
 ### Project installation
 
-You install zip folder from the Google disk, unpack it, and load exe file.
+You install zip folder from the Google disk, unpack it, and load exe file. 
 
 ## Usage
 
-[Link to video explanations](https://drive.google.com/drive/folders/1pGh9TZ-6xcYVOox96Rov0pG2shFWNsGE?usp=drive_link)
+[Link to video explanations](https://drive.google.com/drive/folders/1pGh9TZ-6xcYVOox96Rov0pG2shFWNsGE?usp=drive_link) 
 
-## Links to documentation
+## Documentation
 
-[Develoment](docs/CONTRIBUTING.md)
-
-[Quality attribute scenarious](docs/quality-attributes/quality-attribute-scenarios.md)
-
-[Quality assurance](docs/quality-assurance)
-
-[Build and deployment automation](docs/automation)
-
-[Architecture](docs/architecture)
+- [Contribution](docs/CONTRIBUTING.md)
+- [Quality attribute scenarious](docs/quality-attributes/quality-attribute-scenarios.md)
+- Quality assurance
+  - [Automated tests](docs/quality-assurance/automated-tests.md)
+  - [Quality attribute scenarios](docs/quality-assurance/quality-attribute-scenarios.md)
+  - [User acceptance tests](docs/quality-assurance/user-acceptance-tests.md)
+- [CI](docs/automation/CI.md)
+- [Architecture](docs/architecture.md)
