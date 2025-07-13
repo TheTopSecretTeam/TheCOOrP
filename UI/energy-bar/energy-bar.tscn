@@ -45,7 +45,7 @@ offset_top = 202.0
 offset_right = 280.0
 offset_bottom = 230.0
 theme_override_font_sizes/font_size = 30
-text = "0 / 100"
+text = "0 / 10"
 
 [node name="DayLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
