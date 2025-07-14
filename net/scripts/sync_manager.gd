@@ -7,9 +7,18 @@ func _ready():
 	pass
 	print("Sync manager initialized for peer: ", multiplayer.get_unique_id())
 	
+	# Connect to player changes
+	Global.players_changed.connect(_on_players_changed)
+	
 	if multiplayer.is_server():
 		setup_timer()
 		print("Server sync started with interval: ", sync_interval, "s")
+
+func _on_players_changed():
+	if multiplayer.is_server():
+		# Force immediate sync when players change
+		_on_timer_timeout()
+
 
 func setup_timer():
 	timer = Timer.new()
