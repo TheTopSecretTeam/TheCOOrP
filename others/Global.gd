@@ -4,8 +4,31 @@ var Players = {}
 var color
 
 signal resources_changed(new_resources)
+# Player management signals
+signal player_added(player_id, player_data)
+signal player_removed(player_id)
+signal player_updated(player_id, key, value)
+signal players_changed()  # General signal for any change
 
-var resources : Dictionary[String, int] = {
+func add_player(player_id: int, player_data: Dictionary):
+	Players[player_id] = player_data
+	player_added.emit(player_id, player_data)
+	players_changed.emit()
+
+func remove_player(player_id: int):
+	if Players.has(player_id):
+		Players.erase(player_id)
+		player_removed.emit(player_id)
+		players_changed.emit()
+
+func update_player(player_id: int, key: String, value):
+	if Players.has(player_id):
+		Players[player_id][key] = value
+		player_updated.emit(player_id, key, value)
+		players_changed.emit()
+
+
+var resources = {
 	"Materials" : 12,
 	"Funds" : 12, 
 	"Radiance" : 12, 

@@ -13,7 +13,7 @@ func _on_Main_NewGame_pressed():
 	#$NewGameMenu.show()
 
 func _on_Main_Load_pressed():
-	_mok_jmp_to_map()
+	get_tree().change_scene_to_file("res://UI/LoadSaving/LoadScene.tscn")
 	#$Main.hide()
 	#$LoadMenu.show()
 

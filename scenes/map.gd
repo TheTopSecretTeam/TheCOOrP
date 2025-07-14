@@ -2,11 +2,14 @@ extends Control
 
 @onready var net_manager = preload("res://net/scripts/net_manager.gd").new()
 @onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
+@onready var tab_menu = preload("res://UI/tabMenu/TabMenu.tscn").instantiate()
 var net_manager_instance: Node
 
 func _ready():
 	add_child(net_manager)
 	add_child(sync_manager)
+	add_child(tab_menu)
+	tab_menu.hide()
 	
 	Agents.load_agents() #do this after adding agents!
 	Agents.agent_died.connect(_on_agent_died)

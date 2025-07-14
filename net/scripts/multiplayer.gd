@@ -24,6 +24,7 @@ func PlayerConnected(id):
 
 func PlayerDisconnected(id):
 	print("Player: " + str(id) + " disconnected")
+	Global.remove_player(id)
 
 func successful_connection():
 	print("Successful connection to server")
@@ -31,18 +32,18 @@ func successful_connection():
 func failed_to_connect():
 	print("Couldn't connect")
 
-# Update SendPlayerInformation to include color
+
 @rpc("any_peer")
 func SendPlayerInformation(player_name: String, player_color: int, id: int):
 	if !Global.Players.has(id):
-		Global.Players[id] = {
-			"name": player_name,
-			"id": id,
-			"color": player_color  # Store the assigned color
-		}
+		Global.add_player(id, { "name": player_name, "color": player_color } )
 	if multiplayer.is_server():
-		for i in Global.Players:
-			SendPlayerInformation.rpc(Global.Players[i].name, player_color, i)
+		for player_id in Global.Players:
+			SendPlayerInformation.rpc(
+				Global.Players[player_id].name,
+				Global.Players[player_id].color,
+				player_id
+			)
 
 func SendPlayerColor(id: int):
 	if multiplayer.is_server():
