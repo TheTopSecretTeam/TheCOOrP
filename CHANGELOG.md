@@ -9,11 +9,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 ### Added
 
 - Displaying anomaly HP and agents HP & SP
-- Equipment menu
-- Layout generating
-- Menu to the start
-- Player behavior when host was disconected
-- Synchronization of data between players in multiplayer
 - Sorting agents in menu
 - Inventory menu
 - New anomaly Ice Box
