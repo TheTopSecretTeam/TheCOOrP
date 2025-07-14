@@ -56,12 +56,11 @@ func _generate_save_data() -> Dictionary:
 	}
 
 	# Save all agents
-	for agent in Global.agents:
+	for agent in Agents.agents:
 		if is_instance_valid(agent):
-			print(agent.state)
+			print(agent.entity_resource.agent_name, agent.current_room, agent.progress)
 			save_data["agents"].append({
 				"name": agent.entity_resource.agent_name,
-				"room": agent.current_room,
 				"progress": agent.progress,
 				"state": agent.state,
 				"working": agent.working,
@@ -130,9 +129,8 @@ func load_game(save_path: String) -> bool:
 
 	# Restore agents
 	for agent_data in save_data["agents"]:
-		for agent in Global.agents:
-			if agent.entity_resource.agent_name == agent_data["name"]:
-				agent.current_room = agent_data["room"]
+		for agent in Agents.agents:
+			if is_instance_valid(agent) and agent.entity_resource.agent_name == agent_data["name"]:
 				agent.progress = agent_data["progress"]
 				agent.state = agent_data["state"]
 				agent.working = agent_data["working"]
@@ -140,7 +138,7 @@ func load_game(save_path: String) -> bool:
 				agent.flipped = agent_data["flipped"]
 				agent.current_room = agent_data["current_room"]
 				agent.path = agent_data["path"]
-				agent.waypoint = get_node_or_null(agent_data["waypoint"])
+				agent.waypoint = Map.get_map_node(agent_data["waypoint"])
 				break
 
 	## Restore abnormalities

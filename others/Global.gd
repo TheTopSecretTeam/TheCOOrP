@@ -27,6 +27,15 @@ func update_player(player_id: int, key: String, value):
 		player_updated.emit(player_id, key, value)
 		players_changed.emit()
 
+var filepath : String
+
+func load_game() -> void:
+	var saving_system = preload("res://saving/saving.gd").new()
+	if saving_system.load_game(filepath):
+		print("Game loaded successfully from: ", filepath)
+	else:
+		print("Failed to load game from: ", filepath)
+
 
 var resources = {
 	"Materials" : 12,
