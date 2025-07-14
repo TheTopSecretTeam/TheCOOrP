@@ -10,6 +10,12 @@ signal player_removed(player_id)
 signal player_updated(player_id, key, value)
 signal players_changed()  # General signal for any change
 
+
+func _reset():
+	Players = {}
+	color = null
+	#Seed = 0
+
 func add_player(player_id: int, player_data: Dictionary):
 	Players[player_id] = player_data
 	player_added.emit(player_id, player_data)
