@@ -125,15 +125,30 @@ func die() -> void:
 	super.die()
 
 # NET
-#func get_sync_data() -> Dictionary:
-	#print("Received data from server.")
-	#var data = super.get_sync_data()
-	#data["state"] = state
-	#data["current_room"] = current_room
-	#return data
-#
-#func apply_sync_data(data: Dictionary) -> void:
-	#print("Applying synchronization...")
-	#super.apply_sync_data(data)
-	#state = data["state"]
-	#current_room = data["current_room"]
+func get_sync_data() -> Dictionary:
+	return {
+				"name": entity_resource.agent_name,
+				"progress": progress,
+				"state": state,
+				"working": working,
+				"health": entity_resource.current_hp,
+				"flipped": flipped,
+				"current_room": current_room,
+				"path": path,
+				"waypoint": (
+					^"" if waypoint == null else waypoint.get_path()
+				)
+			}
+
+func apply_sync_data(agent_data: Dictionary) -> void:
+	progress = agent_data["progress"]
+	state = agent_data["state"]
+	working = agent_data["working"]
+	entity_resource.current_hp = agent_data["health"]
+	flipped = agent_data["flipped"]
+	path = agent_data["path"]
+	if agent_data["waypoint"] != ^"": waypoint = get_tree().current_scene.get_node_or_null(agent_data["waypoint"])
+	if current_room != agent_data["current_room"]:
+		current_room = agent_data["current_room"]
+		waypoint.leading_room.transfer(self, current_room)
+		

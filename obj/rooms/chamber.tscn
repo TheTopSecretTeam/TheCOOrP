@@ -25,7 +25,7 @@ point_count = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rl70"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="chamber" type="PanelContainer" groups=["Room"]]
+[node name="chamber" type="PanelContainer" groups=["Room", "Sync"]]
 anchors_preset = -1
 anchor_right = 0.67
 anchor_bottom = 1.004

@@ -6,6 +6,13 @@ var waypoints : Dictionary[int, PathFollow2D] = {}
 func _ready() -> void:
 	populate_nav_graph()
 
+func _reset() -> void:
+	for child in $room_path.get_children():
+		if child is Agent:
+			remove_child(child)
+			child.queue_free()
+		
+
 func populate_nav_graph() -> void:
 	FacilityNavigation.graph[get_index()] = []
 	for child in $room_path.get_children():
@@ -19,8 +26,10 @@ func populate_nav_graph() -> void:
 func get_waypoint(index : int) -> PathFollow2D:
 	return waypoints[index]
 
+# return status
 func transfer(entity: Entity, previous_room) -> bool:
 	entity.reparent($room_path)
+	if (waypoints.get_or_add(previous_room, null) == null): return false
 	entity.progress = waypoints[previous_room].progress
 	entity._on_travel()
 	return true

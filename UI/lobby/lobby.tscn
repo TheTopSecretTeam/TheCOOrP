@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr0lxyf5dhoww"]
+
+[ext_resource type="Script" uid="uid://fyn184qssxqi" path="res://UI/lobby/lobby.gd" id="1_kihki"]
+
+[node name="Lobby" type="CanvasLayer"]
+script = ExtResource("1_kihki")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayersList" type="ItemList" parent="VBox"]
+layout_mode = 2
+auto_width = true
+auto_height = true
+item_count = 1
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="VBox/HBox"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+text = "Start"
+
+[node name="Exit" type="Button" parent="VBox/HBox"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+text = "Exit"
