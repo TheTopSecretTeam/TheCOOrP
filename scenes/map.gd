@@ -27,6 +27,7 @@ func _ready():
 	Global.load_game()
 
 func get_map_node(name):
+	if name == null: return null
 	return get_node_or_null(name)
 
 func get_cursor_node():
