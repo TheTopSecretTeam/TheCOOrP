@@ -51,30 +51,28 @@ func _on_timer_timeout():
 		generate_cell(PROB)
 	else:
 		$Timer.stop()
-		_on_bar_work_completed(pe)
-		rpc("_sync_work_completed", pe)
+		_on_bar_work_completed.rpc(pe)
 
-func _on_bar_work_completed(pe_box: Variant) -> void:
-	work_completed.emit(pe_box)
 
 func generate_cell(prob: float) -> void:
-	var success = [true, false]
-	var weights = PackedFloat32Array([prob, 1-prob])
-	if success[rng.rand_weighted(weights)]:
-		Global.current_energy += 1
-		pe += 1
-		pe_list[MAX - pe].visible = true
-	else:
-		ne += 1
-		ne_list[ne - 1].visible = true
+	if !multiplayer.has_multiplayer_peer() or multiplayer.is_server(): 
+		var success = [true, false]
+		var weights = PackedFloat32Array([prob, 1-prob])
+		if success[rng.rand_weighted(weights)]:
+			Global.current_energy += 1
+			pe += 1
+			pe_list[MAX - pe].visible = true
+		else:
+			ne += 1
+			ne_list[ne - 1].visible = true
 
 	
 # NET
 
-
 @rpc("any_peer", "call_local")
-func _sync_work_completed(pe_box: int) -> void:
+func _on_bar_work_completed(pe_box: Variant) -> void:
 	work_completed.emit(pe_box)
+
 
 
 func get_sync_data() -> Dictionary:
@@ -92,12 +90,19 @@ func get_sync_data() -> Dictionary:
 		"pe": pe,
 		"ne": ne,
 		"pe_visibility": pe_visibility,
-		"ne_visibility": ne_visibility
+		"ne_visibility": ne_visibility,
+		"global_energy": Global.current_energy,
+		"anomaly_action_path": null if anomaly_action == null else anomaly_action.resource_path
 	}
 
 func apply_sync_data(data: Dictionary) -> void:
 	pe = data["pe"]
 	ne = data["ne"]
+	Global.current_energy = data["global_energy"]
+	
+	var action = load(data["anomaly_action_path"])
+	if action != null:
+		anomaly_action = action
 	
 	# Restore visibility states
 	for i in range(min(data["pe_visibility"].size(), pe_list.size())):

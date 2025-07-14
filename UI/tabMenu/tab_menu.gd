@@ -1,14 +1,12 @@
 extends CanvasLayer
 
 @onready var item_container = $CenterContainer/VBoxContainer/PlayersList
-@onready var saving_system = preload("res://saving/saving.gd").new()
 @onready var save_button = $CenterContainer/VBoxContainer/Save
 
 func _ready():
 	# Connect to all player change signals
 	Global.players_changed.connect(update_player_list)
 	item_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	save_button.pressed.connect(_on_save_pressed)
 
 	
 func _input(event: InputEvent) -> void:
@@ -70,10 +68,3 @@ func player_kicked(player_id):
 	if Global.Players.has(player_id):
 		Global.Players.erase(player_id)
 	update_player_list()
-	
-	
-func _on_save_pressed():
-	if saving_system.save_game():
-		print("Game saved successfully!")
-	else:
-		print("Failed to save game!")

@@ -23,10 +23,8 @@ func _ready():
 	if not is_instance_valid(sync_manager):
 		push_error("Failed to initialize sync manager!")
 		return
-	
-	Global.load_game()
 
-func get_map_node(name):
+func get_map_node(name: String):
 	if name == null: return null
 	return get_node_or_null(name)
 
