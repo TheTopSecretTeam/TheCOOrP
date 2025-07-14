@@ -43,7 +43,7 @@ func create_cursor(player_id):
 	cursor.player_id = player_id
 	cursor.name = "Cursor_%d" % player_id
 	cursors[player_id] = cursor
-	get_parent().get_cursor_node().add_child(cursor)
+	Map.add_child(cursor)
 	
 	# Set initial position for local player
 	if player_id == multiplayer.get_unique_id():

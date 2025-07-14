@@ -123,16 +123,29 @@ func die() -> void:
 	Agents.agent_died.emit(self)
 	super.die()
 
-# NET
-#func get_sync_data() -> Dictionary:
-	#print("Received data from server.")
-	#var data = super.get_sync_data()
-	#data["state"] = state
-	#data["current_room"] = current_room
-	#return data
-#
-#func apply_sync_data(data: Dictionary) -> void:
-	#print("Applying synchronization...")
-	#super.apply_sync_data(data)
-	#state = data["state"]
-	#current_room = data["current_room"]
+# NET & saving
+func get_sync_data() -> Dictionary:
+	return {
+				"name": entity_resource.agent_name,
+				"progress": progress,
+				"state": state,
+				"working": working,
+				"health": entity_resource.current_hp,
+				"flipped": flipped,
+				"current_room": current_room,
+				"path": path,
+				"waypoint": (
+					null if waypoint == null or not waypoint.is_inside_tree()
+					else waypoint.get_path()
+				)
+			}
+
+func apply_sync_data(agent_data: Dictionary) -> void:
+	progress = agent_data["progress"]
+	state = agent_data["state"]
+	working = agent_data["working"]
+	entity_resource.current_hp = agent_data["health"]
+	flipped = agent_data["flipped"]
+	current_room = agent_data["current_room"]
+	path = agent_data["path"]
+	waypoint = Map.get_map_node(agent_data["waypoint"])

@@ -4,6 +4,7 @@ extends CanvasLayer
 const SAVE_DIR = "user://saves/"
 const SAVE_FILE_TEMPLATE = "save_{datetime}.save"
 
+
 # Called when the node enters the scene tree
 func _ready():
 	# Ensure save directory exists
@@ -38,58 +39,10 @@ func get_all_saves() -> Array:
 	
 	return saves
 
-# Generate save data structure
-func _generate_save_data() -> Dictionary:
-	var save_data := {
-		# Global game state
-		"global": {
-			"resources": Global.resources.duplicate(),
-			"energy": {
-				"quota": Global.energy_quota,
-				"current": Global.current_energy
-			}
-		},
-		# Agents
-		"agents": [],
-		# Abnormalities
-		"abnormalities": [],
-	}
-
-	# Save all agents
-	for agent in Agents.agents:
-		if is_instance_valid(agent):
-			print(agent.entity_resource.agent_name, agent.current_room, agent.progress)
-			save_data["agents"].append({
-				"name": agent.entity_resource.agent_name,
-				"progress": agent.progress,
-				"state": agent.state,
-				"working": agent.working,
-				"health": agent.entity_resource.current_hp,
-				"flipped": agent.flipped,
-				"current_room": agent.current_room,
-				"path": agent.path,
-				"waypoint": (
-					null if agent.waypoint == null or not agent.waypoint.is_inside_tree()
-					else agent.waypoint.get_path()
-				)
-			})
-
-	## Save abnormalities
-	#for ab in get_tree().get_nodes_in_group("Abnormality"):
-		#if is_instance_valid(ab):
-			#save_data["abnormalities"].append({
-				#"room": ab.current_room,
-				#"progress": ab.progress,
-				#"state": ab.state,
-				#"flipped": ab.flipped
-			#})
-
-
-	return save_data
-
 # Save game to file
 func save_game() -> bool:
-	var save_data = _generate_save_data()
+	var snapshot_generator = preload("res://saving/create_snapshot.gd").new()
+	var save_data = snapshot_generator._generate_save_data()
 	var datetime = _get_datetime_string()
 	var save_path = SAVE_DIR.path_join(SAVE_FILE_TEMPLATE.format({"datetime": datetime}))
 
@@ -131,14 +84,7 @@ func load_game(save_path: String) -> bool:
 	for agent_data in save_data["agents"]:
 		for agent in Agents.agents:
 			if is_instance_valid(agent) and agent.entity_resource.agent_name == agent_data["name"]:
-				agent.progress = agent_data["progress"]
-				agent.state = agent_data["state"]
-				agent.working = agent_data["working"]
-				agent.entity_resource.current_hp = agent_data["health"]
-				agent.flipped = agent_data["flipped"]
-				agent.current_room = agent_data["current_room"]
-				agent.path = agent_data["path"]
-				agent.waypoint = Map.get_map_node(agent_data["waypoint"])
+				agent.apply_sync_data(agent_data)
 				break
 
 	## Restore abnormalities
@@ -155,16 +101,6 @@ func load_game(save_path: String) -> bool:
 	print("Game loaded from: ", save_path)
 	return true
 
-
-# Quick save/load shortcuts
-func quick_save() -> bool:
-	return save_game()
-
-func quick_load() -> bool:
-	var latest_save = _get_latest_save()
-	if latest_save:
-		return load_game(latest_save)
-	return false
 
 # Get most recent save file
 func _get_latest_save() -> String:
