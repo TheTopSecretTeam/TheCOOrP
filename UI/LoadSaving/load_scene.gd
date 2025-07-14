@@ -2,8 +2,8 @@ extends Control
 
 
 @onready var saving_system = preload("res://saving/saving.gd").new()
-@onready var load_button = $VBoxContainer/Load
-@onready var option_button = $VBoxContainer/SaveSelector
+@onready var load_button = $CenterContainer/VBoxContainer/Load
+@onready var option_button = $CenterContainer/VBoxContainer/SaveSelector
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,9 +27,6 @@ func _on_load_pressed() -> void:
 		print("No save selected!")
 		return
 	
-	var save_path = option_button.get_item_metadata(idx)
-	if saving_system.load_game(save_path):
-		print("Game loaded successfully from: ", save_path)
-		get_tree().change_scene_to_file("res://scenes/map.tscn")
-	else:
-		print("Failed to load game from: ", save_path)
+	Global.filepath = option_button.get_item_metadata(idx)
+	get_tree().change_scene_to_file("res://scenes/map.tscn")
+	
