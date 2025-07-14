@@ -25,6 +25,9 @@ func PlayerConnected(id):
 func PlayerDisconnected(id):
 	print("Player: " + str(id) + " disconnected")
 	Global.remove_player(id)
+	var disconnected_scene = load("res://UI/HostDiscoonected/host_disconnected.tscn").instantiate()
+	get_tree().root.add_child(disconnected_scene)
+	get_tree().paused = true
 
 func successful_connection():
 	print("Successful connection to server")
