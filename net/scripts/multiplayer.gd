@@ -36,6 +36,17 @@ func failed_to_connect():
 	print("Couldn't connect")
 
 
+func SendSeed():
+	if multiplayer.is_server():
+		Global.Seed = randi_range(-1000, 1000)
+		RecieveSeed.rpc(Global.Seed)
+
+@rpc("any_peer", "call_local")
+func RecieveSeed(seed: int):
+	Global.Seed = seed
+
+
+
 @rpc("any_peer")
 func SendPlayerInformation(player_name: String, player_color: int, id: int):
 	if !Global.Players.has(id):
@@ -76,6 +87,8 @@ func _on_host_button_down() -> void:
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
 
+	# send seed
+	SendSeed()
 	# Host gets their own color too
 	SendPlayerColor(multiplayer.get_unique_id())
 	startGame.rpc_id(1)

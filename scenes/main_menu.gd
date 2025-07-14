@@ -13,7 +13,7 @@ func _on_Main_NewGame_pressed():
 	#$NewGameMenu.show()
 
 func _on_Main_Load_pressed():
-	get_tree().change_scene_to_file("res://UI/LoadSaving/LoadScene.tscn")
+	get_tree().change_scene_to_file("res://scenes/multiplayer.tscn")
 	#$Main.hide()
 	#$LoadMenu.show()
 

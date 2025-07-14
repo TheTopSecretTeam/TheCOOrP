@@ -1,6 +1,6 @@
 extends Node
 
-@export var sync_interval: float = 1.0
+@export var sync_interval: float = 0.5
 var timer: Timer
 
 func _ready():
@@ -40,29 +40,45 @@ func _on_timer_timeout():
 			continue
 			
 		if node.has_method("get_sync_data"):
-			var node_path = node.get_path()
-			if has_node(node_path):  # Проверка что узел существует
-				sync_node.rpc(node_path, node.get_sync_data())
+			var node_name = node.get_path()
+			if has_node(node_name):  # Check if node exists
+				sync_node.rpc(node.name, node.get_sync_data())
 				sync_count += 1
 	
 	#print("Server synchronized ", sync_count, " nodes")
 
 @rpc("any_peer", "reliable")
-func sync_node(node_path: NodePath, data: Dictionary):
-	if multiplayer.is_server():  # Серверу не нужно применять синхронизацию
+func sync_node(node_name: String, data: Dictionary):
+	if multiplayer.is_server():  # Server don't have to apply sync
 		return
 		
-	var node = get_node_or_null(node_path)
+	var node = find_node_by_name(node_name)
 	if node == null:
-		push_warning("Sync target not found: ", node_path)
+		push_warning("Sync target not found: ", node_name)
 		return
 		
 	if not is_instance_valid(node):
-		push_warning("Sync target invalid: ", node_path)
+		push_warning("Sync target invalid: ", node_name)
 		return
 		
 	if node.has_method("apply_sync_data"):
 		node.apply_sync_data(data)
 		print("Peer ", multiplayer.get_unique_id(), " applied sync for ", node.name)
 	else:
-		push_warning("Node missing apply_sync_data: ", node_path)
+		push_warning("Node missing apply_sync_data: ", node_name)
+
+
+func find_node_by_name(node_name: String) -> Node:
+	var root = get_tree().root
+	return _find_node_recursive(root, node_name)
+
+func _find_node_recursive(current_node: Node, target_name: String) -> Node:
+	if current_node.name == target_name and current_node.is_in_group("Sync"):
+		return current_node
+
+	for child in current_node.get_children():
+		var found_node = _find_node_recursive(child, target_name)
+		if found_node != null:
+			return found_node
+
+	return null
