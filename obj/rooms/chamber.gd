@@ -16,7 +16,7 @@ var working_agent: Agent
 @onready var btn = preload("res://UI/styled_button.tscn")
 
 func _ready() -> void:
-	if anomaly: load_anomaly()
+	if anomaly: load_anomaly.rpc()
 	work_ready()
 	super._ready() # Room setup
 
@@ -30,8 +30,9 @@ func transfer(entity: Entity, _previous_room):
 		working_agent = entity
 		working_agent.working = true
 		working = true
-		begin_work(anomaly_action, entity.entity_resource)
+		if anomaly_action != null: begin_work.rpc(anomaly_action.resource_path, entity.entity_resource)
 
+@rpc("any_peer", "call_local")
 func load_anomaly() -> void:
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
 	$CanvasLayer/ResearchMenu.anomaly = anomaly
@@ -41,17 +42,20 @@ func load_anomaly() -> void:
 	for _action in anomaly.actions:
 		actions.append(_action)
 
-func begin_work(_action: AnomalyAction, _agent_res):
+@rpc("any_peer", "call_local")	
+func begin_work(_action: String, _agent_res):
+	var action = load(_action) as AnomalyAction
 	#make math with player stats and action prob
-	bar.work(_action)
+	bar.work(action)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
-	working_agent.working = false
 	working = false
 	anomaly.unique_pe += pe_box
-	working_agent.path = [get_index(), $room_path/waypoint.leading_room.get_index()]
-	working_agent._on_travel()
-	working_agent = null
+	if working_agent != null: 
+		working_agent.working = false
+		working_agent.path = [get_index(), $room_path/waypoint.leading_room.get_index()]
+		working_agent._on_travel()
+		working_agent = null
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
 
 func _on_color_rect_pressed() -> void:
@@ -130,3 +134,24 @@ func work_ready():
 			work.set_script(script)
 		work.button_down.connect(_on_work_button_down.bind(act))
 		work_container.add_child(work)
+
+
+# NET
+func get_sync_data() -> Dictionary:
+	var agent_id = ""
+	if working_agent:
+		agent_id = working_agent.entity_resource.agent_name
+	return {
+		"working": working,
+		"working_agent_id": agent_id
+	}
+
+func apply_sync_data(data: Dictionary) -> void:
+	working = data["working"]
+	if data["working_agent_id"]:
+		for agent in Agents.agents:
+			if agent.entity_resource.agent_name == data["working_agent_id"]:
+				working_agent = agent
+				break
+	else:
+		working_agent = null
