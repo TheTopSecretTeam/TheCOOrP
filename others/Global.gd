@@ -2,6 +2,7 @@ extends Node
 
 var Players = {}
 var color
+var Seed : int
 
 signal resources_changed(new_resources)
 # Player management signals
@@ -14,7 +15,7 @@ signal players_changed()  # General signal for any change
 func _reset():
 	Players = {}
 	color = null
-	#Seed = 0
+	Seed = 0
 
 func add_player(player_id: int, player_data: Dictionary):
 	Players[player_id] = player_data
