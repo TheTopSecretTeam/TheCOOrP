@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="2_tnrfc"]
 [ext_resource type="PackedScene" uid="uid://docj30h4pnnnb" path="res://obj/modules/health_bar.tscn" id="3_4n8r5"]
 
-[node name="Anomaly" type="PathFollow2D"]
+[node name="Anomaly" type="PathFollow2D" groups=["Sync"]]
 z_index = 1
 rotates = false
 loop = false

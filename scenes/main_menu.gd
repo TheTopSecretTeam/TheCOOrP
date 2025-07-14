@@ -4,6 +4,8 @@ extends Control
 
 func _ready() -> void:
 	#$ExitDialog.add_theme_icon_override("close", ImageTexture.new())
+	# need when user press on exit or return to main menu, also for hist disconnected case
+	Input.set_custom_mouse_cursor(null)
 	if OS.get_name() == "Web":
 		for btn in web_disable_list:
 			btn.disabled = true
