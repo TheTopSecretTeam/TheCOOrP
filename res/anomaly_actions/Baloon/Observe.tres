@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AnomalyAction" load_steps=3 format=3 uid="uid://cisf2hxk3a72n"]
+
+[ext_resource type="Texture2D" uid="uid://b6iwtgvcj7pik" path="res://img/gibs/icebox/frontal-lobe.png" id="1_7oeob"]
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="2_amfwm"]
+
+[resource]
+script = ExtResource("2_amfwm")
+action_name = "Observe"
+action_icon = ExtResource("1_7oeob")
+probability = 0.5
+scripts = []
+metadata/_custom_type_script = "uid://bur3tdfovrpyd"

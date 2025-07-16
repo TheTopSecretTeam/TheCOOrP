@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2n814k11dxc2"]
+
+[ext_resource type="PackedScene" uid="uid://dblm4m3puom7t" path="res://obj/rooms/Cell/ProgressBar.tscn" id="1_cpdhw"]
+[ext_resource type="Script" uid="uid://br3e8rsojjlpx" path="res://obj/bars/icebox_bar.gd" id="2_nrsas"]
+
+[node name="BaloonBar" instance=ExtResource("1_cpdhw")]
+script = ExtResource("2_nrsas")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AnomalyAction" load_steps=3 format=3 uid="uid://3ttm5t5ujrun"]
+
+[ext_resource type="Texture2D" uid="uid://b6iwtgvcj7pik" path="res://img/gibs/icebox/frontal-lobe.png" id="1_42nbk"]
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="2_sq1cl"]
+
+[resource]
+script = ExtResource("2_sq1cl")
+action_name = "Pop"
+action_icon = ExtResource("1_42nbk")
+probability = 0.5
+scripts = []
+metadata/_custom_type_script = "uid://bur3tdfovrpyd"

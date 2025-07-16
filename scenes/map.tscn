@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=23 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://net/scripts/net_manager.gd" id="3_f22gk"]
@@ -17,7 +17,9 @@
 [ext_resource type="Script" uid="uid://dc46wrfcoudhl" path="res://scenes/win_screen.gd" id="12_gw3fx"]
 [ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
 [ext_resource type="PackedScene" uid="uid://v6fa04wfro8q" path="res://obj/bars/wirebird_bar.tscn" id="13_m335s"]
+[ext_resource type="Resource" uid="uid://cy58j33jam8ru" path="res://res/scripts/Abnormalities/baloon.tres" id="14_4b7dj"]
 [ext_resource type="PackedScene" uid="uid://dxcj8bws0tbwt" path="res://UI/gafur_stuff/day_scene.tscn" id="14_n1psn"]
+[ext_resource type="PackedScene" uid="uid://c2n814k11dxc2" path="res://obj/bars/baloon_bar.tscn" id="14_sq6bu"]
 [ext_resource type="PackedScene" uid="uid://bsold2gw5nlj6" path="res://UI/equipment_menu_components/equimpent_menu.tscn" id="17_c70he"]
 [ext_resource type="Script" uid="uid://4c5x3dvu4uwv" path="res://scenes/inventory_button.gd" id="18_mo32q"]
 
@@ -152,6 +154,7 @@ anomaly = ExtResource("11_n1psn")
 bar = NodePath("IceboxBar")
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor")
 
 [node name="IceboxBar" parent="rooms/chamber" node_paths=PackedStringArray("chamber") instance=ExtResource("12_6k6j1")]
@@ -170,6 +173,7 @@ offset_bottom = -196.0
 bar = NodePath("WirebirdBar")
 
 [node name="waypoint" parent="rooms/chamber2/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor")
 
 [node name="AgentContainer" parent="rooms/chamber2/CanvasLayer/CenterContainer" index="1"]
@@ -178,6 +182,25 @@ visible = true
 [node name="WirebirdBar" parent="rooms/chamber2" node_paths=PackedStringArray("chamber") instance=ExtResource("13_m335s")]
 position = Vector2(-87, 407)
 chamber = NodePath("..")
+
+[node name="chamber3" parent="rooms" node_paths=PackedStringArray("bar") instance=ExtResource("8_fy0fe")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -631.0
+offset_top = -919.0
+offset_right = 227.0
+offset_bottom = -196.0
+anomaly = ExtResource("14_4b7dj")
+bar = NodePath("BaloonBar")
+
+[node name="waypoint" parent="rooms/chamber3/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(664, 661)
+leading_room = NodePath("../../../corridor")
+
+[node name="BaloonBar" parent="rooms/chamber3" instance=ExtResource("14_sq6bu")]
+position = Vector2(-92, 396)
 
 [node name="Camera" parent="." instance=ExtResource("9_be0no")]
 
@@ -257,6 +280,8 @@ visible = false
 [connection signal="menu_close" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
 [connection signal="menu_open" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
 [connection signal="work_completed" from="rooms/chamber2/WirebirdBar" to="rooms/chamber2" method="_on_bar_work_completed"]
+[connection signal="menu_close" from="rooms/chamber3/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber3/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
 [connection signal="pressed" from="CanvasLayer/InventoryButton" to="CanvasLayer/InventoryButton" method="_on_pressed"]
 
 [editable path="rooms/corridor"]
@@ -265,3 +290,4 @@ visible = false
 [editable path="rooms/elevator2"]
 [editable path="rooms/chamber"]
 [editable path="rooms/chamber2"]
+[editable path="rooms/chamber3"]
