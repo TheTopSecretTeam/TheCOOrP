@@ -54,6 +54,7 @@ func _on_bar_work_completed(pe_box: Variant) -> void:
 	if working_agent != null: 
 		working_agent.working = false
 		working_agent.path = [get_index(), $room_path/waypoint.leading_room.get_index()]
+		Global.sync_manager._on_timer_timeout()
 		working_agent._on_travel()
 		working_agent = null
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
@@ -107,6 +108,10 @@ func escape():
 	$EscapeTimer.started = true
 
 func _on_escape_timer_timeout() -> void:
+	on_escape_timer_timeout.rpc()
+
+@rpc("any_peer", "call_local")
+func on_escape_timer_timeout() -> void:
 	$Label.hide()
 	$EscapeTimer.started = false
 	$room_path/Anomaly.path = [get_index(), $room_path/waypoint.leading_room.get_index()]
@@ -143,10 +148,25 @@ func get_sync_data() -> Dictionary:
 		agent_id = working_agent.entity_resource.agent_name
 	return {
 		"working": working,
-		"working_agent_id": agent_id
+		"working_agent_id": agent_id,
+		"waiting_time": $EscapeTimer.wait_time,
+		"remaining_time": $EscapeTimer.get_time_left()
 	}
 
 func apply_sync_data(data: Dictionary) -> void:
+	var remaining_time = data["remaining_time"]
+	var waiting_time = data["waiting_time"]
+	
+	if !$EscapeTimer.started and remaining_time != 0:
+		$EscapeTimer.wait_time = waiting_time
+		$Label.show()
+		$EscapeTimer.start(remaining_time)
+		$EscapeTimer.started = true
+	if remaining_time == 0:
+		$Label.hide()
+		$EscapeTimer.stop()
+		$EscapeTimer.started = false
+		
 	working = data["working"]
 	if data["working_agent_id"]:
 		for agent in Agents.agents:

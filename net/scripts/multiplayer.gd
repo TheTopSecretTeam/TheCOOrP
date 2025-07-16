@@ -24,10 +24,16 @@ func PlayerConnected(id):
 
 func PlayerDisconnected(id):
 	print("Player: " + str(id) + " disconnected")
-	Global.remove_player(id)
 	var disconnected_scene = load("res://UI/HostDiscoonected/host_disconnected.tscn").instantiate()
 	get_tree().root.add_child(disconnected_scene)
 	get_tree().paused = true
+
+# RPC to notify all clients of a player disconnection
+@rpc("authority", "call_local")
+func NotifyPlayerDisconnected(id: int):
+	if Global.Players.has(id):
+		Global.remove_player(id)
+	print("Client: Removed player ", id, " from Global.Players")
 
 func successful_connection():
 	print("Successful connection to server")
@@ -60,8 +66,8 @@ func SendPlayerInformation(player_name: String, player_color: int, id: int):
 			)
 
 func SendPlayerColor(id: int):
-	if multiplayer.is_server():
-		var assigned_color = color
+	if multiplayer.is_server():	
+		var assigned_color = Global.Players.size() + 1
 		color += 1
 		ReceivePlayerColor.rpc_id(id, assigned_color)
 

@@ -1,14 +1,13 @@
 extends Control
 
 @onready var net_manager = preload("res://net/scripts/net_manager.gd").new()
-@onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
 @onready var tab_menu = preload("res://UI/tabMenu/TabMenu.tscn").instantiate()
 
 var net_manager_instance: Node
 
 func _ready():
 	add_child(net_manager)
-	add_child(sync_manager)
+	#add_child(sync_manager)
 	add_child(tab_menu)
 	tab_menu.hide()
 	
@@ -20,9 +19,12 @@ func _ready():
 		push_error("Failed to initialize net manager!")
 		return
 	
-	if not is_instance_valid(sync_manager):
-		push_error("Failed to initialize sync manager!")
-		return
+func _reset() -> void:
+	remove_child(net_manager)
+	net_manager.queue_free()
+	net_manager = load("res://net/scripts/net_manager.gd").new()
+	add_child(net_manager)
+
 
 func get_map_node(name: String):
 	if name == null: return null
@@ -30,6 +32,7 @@ func get_map_node(name: String):
 
 func get_cursor_node():
 	return $CanvasLayer
+
 
 func _process(_delta):
 	var cursor_pos = get_global_mouse_position()
@@ -63,8 +66,7 @@ func send_agent(agent_name, room_index: int) -> void:
 		return
 	if agent.working:
 		return
-	print(multiplayer.get_unique_id(), agent.current_room)
-	sync_manager._on_timer_timeout()
+	Global.sync_manager._on_timer_timeout()
 	while (agent.current_room == null): get_tree().get_frame()
 	var path = FacilityNavigation.get_agent_path(agent.current_room, room_index)
 	if path == []:

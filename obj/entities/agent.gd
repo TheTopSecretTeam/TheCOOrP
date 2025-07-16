@@ -69,7 +69,6 @@ func _on_chamber_arrival():
 	flipped = false
 
 func _process(delta: float) -> void:
-	print(self.name, waypoint)
 	highlight_panel_trans.visible = get_global_rect().has_point(get_global_mouse_position())
 	match state:
 		WANDER:
@@ -124,7 +123,7 @@ func die() -> void:
 	Agents.agent_died.emit(self)
 	super.die()
 
-# NET & saving
+# NET
 func get_sync_data() -> Dictionary:
 	return {
 				"name": entity_resource.agent_name,
@@ -138,8 +137,7 @@ func get_sync_data() -> Dictionary:
 				"waypoint": (
 					null if waypoint == null or not waypoint.is_inside_tree()
 					else waypoint.get_path()
-				),
-				#"current_room_path": 
+				)
 			}
 
 func apply_sync_data(agent_data: Dictionary) -> void:
@@ -151,6 +149,6 @@ func apply_sync_data(agent_data: Dictionary) -> void:
 	path = agent_data["path"]
 	if agent_data["waypoint"] != null: waypoint = Map.get_map_node(agent_data["waypoint"])
 	if current_room != agent_data["current_room"]:
-		waypoint.leading_room.transfer(self, current_room)
 		current_room = agent_data["current_room"]
+		waypoint.leading_room.transfer(self, current_room)
 		
