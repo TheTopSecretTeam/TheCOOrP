@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="AbnormalityResource" load_steps=8 format=3 uid="uid://cy58j33jam8ru"]
+
+[ext_resource type="Script" uid="uid://bur3tdfovrpyd" path="res://res/scripts/AnomalyAction.gd" id="1_7plvx"]
+[ext_resource type="Resource" uid="uid://cpf52nsxpw7rw" path="res://res/anomaly_actions/Baloon/Pet.tres" id="2_7plvx"]
+[ext_resource type="Resource" uid="uid://3ttm5t5ujrun" path="res://res/anomaly_actions/Baloon/Pop.tres" id="3_hk8ip"]
+[ext_resource type="Resource" uid="uid://cisf2hxk3a72n" path="res://res/anomaly_actions/Baloon/Observe.tres" id="4_e7jvi"]
+[ext_resource type="Resource" uid="uid://hbxnjlndf2rj" path="res://res/anomaly_actions/Baloon/Compress.tres" id="5_kqh4c"]
+[ext_resource type="Script" uid="uid://bpdqcempefb6o" path="res://res/scripts/Abnormalities/anomaly_resource.gd" id="6_qcnlg"]
+[ext_resource type="Texture2D" uid="uid://ckmns84yska28" path="res://img/portraits/server_room.jpg" id="7_ekb85"]
+
+[resource]
+script = ExtResource("6_qcnlg")
+code = "O-00-02"
+monster_name = "Baloon"
+lore = "Wirebirds are common anomalies that usually spawn in unkept server rooms. They are growing by consuming nearby electronic devices and can grow up to 3 meters in height.
+At the first sight it may look that they are some kind of robot or artificial intelligence but they actually made out of flesh. Thats evident because they can bleed and lay flesh eggs, hence the name Wirebird.
+They are passive but can become dangerous during mating season if they grow too big.
+Due to their ability to convert matter via Radiance and their behaivior they are perfect for collecting samples."
+texture = ExtResource("7_ekb85")
+threat_level = 1
+hp = 200
+damage_type = "physical"
+damage_output = 5
+attack_speed = 3
+damage_res_phys = 0.0
+damage_res_ment = 0.0
+unique_pe = 0
+actions = Array[ExtResource("1_7plvx")]([ExtResource("2_7plvx"), ExtResource("3_hk8ip"), ExtResource("4_e7jvi"), ExtResource("5_kqh4c")])
+actions_open = Array[bool]([false, false, false, false])
+actions_cost = Array[int]([1, 1, 1, 1])
+entity = "res://obj/entities/anomaly_entities/baloon.tscn"
+weapon_cost = Array[int]([0, 0, 0, 0])
+armor_cost = Array[int]([0, 0, 0, 0])
+equip_cost = 0
+main_open = false
+stats_open = false
+armor_open = false
+weapon_open = false
+mechanics_open = Array[bool]([false, false, false])
+mechanics_info = Array[String](["Info1", "Info2", "Info3"])
+mechanics_cost = Array[int]([1, 1, 1])
+display_name = "Entity"
+current_room = NodePath("")
+path2d_progress = 0.0
+team = 0
+max_hp = 200
+current_hp = 100
+travel_speed = 5
+base_damage_output = 5
+base_attack_speed = 3.0
+base_damage_type = "physical"
+base_damage_res_phys = 1.0
+base_damage_res_ment = 1.0
+attack_range = 10
+metadata/_custom_type_script = "uid://bpdqcempefb6o"
