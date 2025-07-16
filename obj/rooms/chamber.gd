@@ -20,17 +20,19 @@ func _ready() -> void:
 	work_ready()
 	super._ready() # Room setup
 
-func transfer(entity: Entity, _previous_room):
+func transfer(entity: Entity, _previous_room) -> bool:
+	if working: return false
 	entity.reparent($room_path)
 	entity._on_travel()
 	entity._on_chamber_arrival()
 	
-	if entity is Agent and not working:
+	if entity is Agent:
 		entity.progress_ratio = 1.0
 		working_agent = entity
 		working_agent.working = true
 		working = true
 		begin_work(anomaly_action, entity.entity_resource)
+	return true
 
 func load_anomaly() -> void:
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
@@ -39,6 +41,7 @@ func load_anomaly() -> void:
 	$room_path.add_child(anomaly_inst)
 	anomaly_inst.flipped = true
 	for _action in anomaly.actions:
+		print(_action.action_name)
 		actions.append(_action)
 
 func begin_work(_action: AnomalyAction, _agent_res):

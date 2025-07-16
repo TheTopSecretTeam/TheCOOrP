@@ -63,6 +63,9 @@ func move_toward_target(delta: float) -> void:
 	if not target or not current_room_path:
 		return
 	
+	
+	var direction = sign(target.progress - progress)
+	flipped = sign(direction) == -1
 	var progress_delta = entity_resource.travel_speed * delta
 	if abs(target.progress - progress) < abs(progress_delta): # snap to target if close enough
 		progress = target.progress

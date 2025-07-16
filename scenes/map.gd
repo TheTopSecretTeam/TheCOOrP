@@ -27,7 +27,7 @@ func _process(_delta):
 	var cursor_pos = get_global_mouse_position()
 	var selected_thing
 	var multi_agent_button = Input.is_action_pressed("shift_lmb")
-	if multi_agent_button or Input.is_action_pressed("clickLeftMouse"):
+	if multi_agent_button or Input.is_action_just_pressed("clickLeftMouse"):
 		selected_thing = get_thing_under_cursor(cursor_pos)
 		if !selected_thing: return
 		if selected_thing is Agent and not selected_thing.working and not selected_thing in Agents.selected_agents:

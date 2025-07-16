@@ -19,7 +19,8 @@ func populate_nav_graph() -> void:
 func get_waypoint(index : int) -> PathFollow2D:
 	return waypoints[index]
 
-func transfer(entity: Entity, previous_room):
+func transfer(entity: Entity, previous_room) -> bool:
 	entity.reparent($room_path)
 	entity.progress = waypoints[previous_room].progress
 	entity._on_travel()
+	return true

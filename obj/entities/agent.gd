@@ -82,7 +82,8 @@ func _process(delta: float) -> void:
 				progress, waypoint.progress, abs(entity_resource.travel_speed) * delta
 			)
 			if progress == waypoint.progress:
-				waypoint.leading_room.transfer(self, current_room)
+				if !waypoint.leading_room.transfer(self, current_room):
+					state = WANDER
 		COMBAT:
 			super._process(delta)
 

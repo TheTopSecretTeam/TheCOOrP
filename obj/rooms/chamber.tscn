@@ -97,6 +97,7 @@ progress = 549.604
 
 [node name="ResearchMenu" parent="CanvasLayer" instance=ExtResource("7_i8y48")]
 visible = false
+z_index = 5
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
