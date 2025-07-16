@@ -34,6 +34,11 @@ vertical_alignment = 1
 layout_mode = 2
 text = "New Game"
 
+[node name="ConnectButton" type="Button" parent="Main/VBoxContainer"]
+layout_mode = 2
+text = "Connect
+"
+
 [node name="LoadButton" type="Button" parent="Main/VBoxContainer"]
 layout_mode = 2
 text = "Load"
@@ -169,6 +174,7 @@ layout_mode = 2
 text = "Start the game"
 
 [connection signal="pressed" from="Main/VBoxContainer/NewGameButton" to="." method="_on_Main_NewGame_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/ConnectButton" to="." method="_on_connect_button_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/LoadButton" to="." method="_on_Main_Load_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/JoinButton" to="." method="_on_Main_Join_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/SettingsButton" to="." method="_on_Main_Settings_pressed"]

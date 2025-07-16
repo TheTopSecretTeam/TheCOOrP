@@ -8,7 +8,8 @@ func _ready() -> void:
 			btn.disabled = true
 
 func _on_Main_NewGame_pressed():
-	_mok_jmp_to_map()
+	pass
+	#_mok_jmp_to_map()
 	#$Main.hide()
 	#$NewGameMenu.show()
 
@@ -45,3 +46,7 @@ func _on_NG_Start_pressed():
 
 func _mok_jmp_to_map():
 	get_tree().change_scene_to_file("res://scenes/multiplayer.tscn")
+
+
+func _on_connect_button_pressed() -> void:
+	_mok_jmp_to_map()
