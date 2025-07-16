@@ -5,3 +5,17 @@
 
 [node name="BaloonBar" instance=ExtResource("1_cpdhw")]
 script = ExtResource("2_nrsas")
+
+[node name="StateLabel" type="Label" parent="." index="4"]
+offset_left = -26.0
+offset_top = 289.0
+offset_right = 26.0
+offset_bottom = 309.0
+text = "normal"
+
+[node name="HistoryLabel" type="Label" parent="." index="5"]
+offset_left = -35.0
+offset_top = 320.0
+offset_right = 39.0
+offset_bottom = 389.0
+text = "History"
