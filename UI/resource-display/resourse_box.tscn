@@ -16,7 +16,7 @@ script = ExtResource("1_8jmiw")
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ResourseSlot"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("2_xgr34")
 expand_mode = 1
@@ -28,7 +28,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ResourseSlot2"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("3_s2ib2")
 expand_mode = 3
@@ -40,7 +40,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ResourseSlot3"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("4_g2hgf")
 expand_mode = 3
@@ -52,7 +52,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ResourseSlot4"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("5_r518q")
 expand_mode = 3
