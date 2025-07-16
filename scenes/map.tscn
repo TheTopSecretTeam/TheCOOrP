@@ -291,6 +291,7 @@ script = ExtResource("22_2cfcp")
 [connection signal="work_completed" from="rooms/chamber2/WirebirdBar" to="rooms/chamber2" method="_on_bar_work_completed"]
 [connection signal="menu_close" from="rooms/chamber3/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
 [connection signal="menu_open" from="rooms/chamber3/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
+[connection signal="work_completed" from="rooms/chamber3/BaloonBar" to="rooms/chamber3" method="_on_bar_work_completed"]
 [connection signal="pressed" from="CanvasLayer/InventoryButton" to="CanvasLayer/InventoryButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/EscapeMenu/Panel/VBoxContainer/Resume" to="EscMenuManager" method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/EscapeMenu/Panel/VBoxContainer/Quit" to="EscMenuManager" method="_on_quit_pressed"]
