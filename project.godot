@@ -46,6 +46,7 @@ ui/toolbar/run_overall=true
 Agent=""
 Room=""
 Sync="Nodes that need to be synchronized"
+Rooms="will be used for reset agents' positions"
 
 [gui]
 

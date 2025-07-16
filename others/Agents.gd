@@ -12,6 +12,14 @@ signal agent_died(agent: Agent)
 func _on_agent_died(agent: Agent):
 	agents.erase(agent)
 
+func _reset() -> void:
+	for agent in Agents.agents:
+			if is_instance_valid(agent):
+				agent.queue_free()
+	agents = []
+	selected_agents = []
+
+
 func load_agents():
 	agents.assign(get_tree().get_nodes_in_group("Agent"))
 	agent_died.connect(_on_agent_died)

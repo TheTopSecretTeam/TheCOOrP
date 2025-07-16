@@ -11,11 +11,31 @@ signal player_removed(player_id)
 signal player_updated(player_id, key, value)
 signal players_changed()  # General signal for any change
 
+@onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
+
+func _ready() -> void:
+	add_child(sync_manager)
+	if not is_instance_valid(sync_manager):
+		push_error("Failed to initialize sync manager!")
+		return
 
 func _reset():
 	Players = {}
 	color = null
 	Seed = 0
+	resources = {
+		"Materials": 12,
+		"Funds": 12, 
+		"Radiance": 12, 
+		"Blight": 12,
+	}
+	current_energy = 0
+	energy_quota = 10
+	resources_changed.emit(resources)
+	energy_changed.emit(current_energy)
+	print("Global: Reset all properties, peer: ", multiplayer.get_unique_id())
+	
+	
 
 func add_player(player_id: int, player_data: Dictionary):
 	Players[player_id] = player_data

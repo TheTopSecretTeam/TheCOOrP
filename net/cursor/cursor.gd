@@ -1,4 +1,6 @@
+class_name Cursor
 extends Node2D
+
 
 var arrow_texture
 var color
