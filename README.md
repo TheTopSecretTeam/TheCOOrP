@@ -1,14 +1,19 @@
 # TheCOOrP
 
 ![The COOrP Logo](docs/img/Logo.jpg)
+<!-- TODO Remake the logo, use png with palette encoding. -->
 
 Lobotomy Corporation COOP project. Developing a game inspired by Lobotomy Corporation.
 
-[Link to the up-to-date deployed version of our product](https://drive.google.com/drive/folders/1qRC9B3wtoQ-ucz8oC2EMupoSp4nI6Ttu?usp=drive_link)
+[<img height="64em" src="https://static.itch.io/images/badge-color.svg" alt="available on itch.io" />](https://localt0aster.itch.io/thecoorp)
 
-[Link to the Demo Video](https://drive.google.com/drive/folders/1pGh9TZ-6xcYVOox96Rov0pG2shFWNsGE?usp=drive_link)
+![Godot Engine](https://img.shields.io/badge/GODOT-%23FFFFFF.svg?style=for-the-badge&logo=godot-engine) ![GDScript](https://img.shields.io/badge/GDScript-%2374267B.svg?style=for-the-badge&logo=godotengine&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) ![Itch.io](https://img.shields.io/badge/Itch-%23FF0B34.svg?style=for-the-badge&logo=Itch.io&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
 
-[Link to video with customer](https://drive.google.com/drive/folders/1dG_BZbB0Pia2oZM1XE1AgbxNdWinBCYa?usp=sharing)
+## Links
+
+- [Link to the Demo Video](https://drive.google.com/drive/folders/1pGh9TZ-6xcYVOox96Rov0pG2shFWNsGE?usp=drive_link)
+- [Link to video with customer](https://drive.google.com/drive/folders/1dG_BZbB0Pia2oZM1XE1AgbxNdWinBCYa?usp=sharing)
 
 ## Description
 
@@ -27,14 +32,12 @@ The main goal of our project is creating a spiritual successor to Lobotomy Corpo
 ### Usage instractions
 
 1. In the start menu, you can familiarize yourself with the management and start a new lobby.
-
 2. In the complex, you can move agents, open the anomaly menu and work with it. The choice of job depends on obtaining energy and resources that can be exchanged for equipment in the anomaly menu.
-
 3. After completing the daily quota, you can either stay on the current day or move on to the next one.
 
 ### Project installation
 
-You install zip folder from the Google disk, unpack it, and load exe file. 
+Download the latest version from the Itch\.io, then unpack to desired location and launch.
 
 ## Documentation
 
