@@ -5,6 +5,9 @@ extends Control
 var peer
 var color = 1
 
+## Aliases for localhost. When hostname matches, Connect acts as Host button.
+const localhost_names: Array[String] = ["127.0.0.1", "localhost", "::1", ""]
+
 func _ready() -> void:
 	multiplayer.peer_connected.connect(PlayerConnected)
 	multiplayer.peer_disconnected.connect(PlayerDisconnected)
@@ -78,8 +81,11 @@ func _on_host_button_down() -> void:
 	SendPlayerInformation($name.text, Global.color, multiplayer.get_unique_id())
 
 func _on_connect_button_down() -> void:
+	if $hostname.text in localhost_names:
+		_on_host_button_down()
+		return
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client($name2.text, port)
+	peer.create_client($hostname.text, port)
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
 
