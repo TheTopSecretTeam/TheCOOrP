@@ -60,6 +60,7 @@ You can click on:
 
 [node name="ExitDialog" type="ConfirmationDialog" parent="."]
 title = ""
+position = Vector2i(0, 36)
 size = Vector2i(250, 100)
 ok_button_text = "Yes"
 dialog_text = "Are you sure you want to exit?"

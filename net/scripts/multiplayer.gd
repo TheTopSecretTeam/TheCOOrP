@@ -82,3 +82,6 @@ func _on_connect_button_down() -> void:
 	peer.create_client($name2.text, port)
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
+
+func _on_escape_button_down() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
