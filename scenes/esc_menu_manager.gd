@@ -4,7 +4,8 @@ extends Node
 @onready var esc_menu = $"../CanvasLayer/EscapeMenu"
 var game_paused: bool = false
 
-func _process(delta):
+@warning_ignore("unused_parameter")
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		game_paused = !game_paused
 

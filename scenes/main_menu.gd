@@ -3,8 +3,7 @@ extends Control
 @export var web_disable_list: Array[Button] = []
 
 func _ready() -> void:
-	$ExitDialog.add_theme_icon_override("close", Texture2D.new())
-
+	#$ExitDialog.add_theme_icon_override("close", ImageTexture.new())
 	if OS.get_name() == "Web":
 		for btn in web_disable_list:
 			btn.disabled = true
