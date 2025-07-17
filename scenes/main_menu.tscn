@@ -1,18 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5ecpebjg8xfe"]
+[gd_scene load_steps=2 format=3 uid="uid://b5ecpebjg8xfe"]
 
 [ext_resource type="Script" uid="uid://5730nmdpn0qm" path="res://scenes/main_menu.gd" id="1_06t4h"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_06t4h"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("web_disable_list")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 117.0
 offset_top = 70.0
-offset_right = 375.0
-offset_bottom = 255.0
+offset_right = 530.0
+offset_bottom = 292.0
 script = ExtResource("1_06t4h")
-web_disable_list = [NodePath("Main/VBoxContainer/NewGameButton"), NodePath("Main/VBoxContainer/LoadButton")]
+web_disable_list = [NodePath("Main/VBoxContainer/MultiplayerButton")]
 
 [node name="Main" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -30,22 +28,13 @@ text = "The COOrP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NewGameButton" type="Button" parent="Main/VBoxContainer"]
+[node name="MultiplayerButton" type="Button" parent="Main/VBoxContainer"]
 layout_mode = 2
-text = "New Game"
+text = "Multiplayer"
 
-[node name="ConnectButton" type="Button" parent="Main/VBoxContainer"]
+[node name="SingleplayerButton" type="Button" parent="Main/VBoxContainer"]
 layout_mode = 2
-text = "Connect
-"
-
-[node name="LoadButton" type="Button" parent="Main/VBoxContainer"]
-layout_mode = 2
-text = "Load"
-
-[node name="JoinButton" type="Button" parent="Main/VBoxContainer"]
-layout_mode = 2
-text = "Single Player"
+text = "Singleplayer"
 
 [node name="SettingsButton" type="Button" parent="Main/VBoxContainer"]
 layout_mode = 2
@@ -59,8 +48,11 @@ text = "Exit"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Controls:
- - MMB - Zoom, Move Camera
+ - Scroll - Zoom
+ - MMB - Move Camera
  - LMB - Select
+ - Shift + LMB - Multiselect
+ - RMB - Send Agent
 You can click on:
  - Anomaly Chamber
  - Anomaly Name
@@ -73,113 +65,8 @@ ok_button_text = "Yes"
 dialog_text = "Are you sure you want to exit?"
 cancel_button_text = "No"
 
-[node name="LoadMenu" type="Control" parent="."]
-visible = false
-layout_mode = 2
-anchors_preset = 0
-offset_left = 254.0
-offset_top = 58.0
-offset_right = 254.0
-offset_bottom = 207.0
-
-[node name="MarginContainer" type="MarginContainer" parent="LoadMenu"]
-layout_mode = 0
-offset_top = 71.0
-offset_right = 530.0
-offset_bottom = 334.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LoadMenu/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="NewWorldButton1" type="Button" parent="LoadMenu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-text = "Empty"
-
-[node name="NewWorldButton2" type="Button" parent="LoadMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Empty"
-
-[node name="NewWorldButton3" type="Button" parent="LoadMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Empty"
-
-[node name="NewWorldButton4" type="Button" parent="LoadMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Empty"
-
-[node name="NewWorldButton5" type="Button" parent="LoadMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Empty"
-
-[node name="BackButton" type="Button" parent="LoadMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Back to Main Menu"
-
-[node name="NewGameMenu" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 335.0
-offset_top = -39.0
-offset_right = 375.0
-offset_bottom = 1.0
-
-[node name="MarginContainer" type="MarginContainer" parent="NewGameMenu"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NewGameMenu/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="LineEdit" type="LineEdit" parent="NewGameMenu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "New game"
-placeholder_text = "New game"
-alignment = 1
-max_length = 300
-
-[node name="Label" type="Label" parent="NewGameMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "List of connected players:"
-
-[node name="PlayersContainer" type="PanelContainer" parent="NewGameMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_06t4h")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NewGameMenu/MarginContainer/VBoxContainer/PlayersContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="NewGameMenu/MarginContainer/VBoxContainer/PlayersContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="NewGameMenu/MarginContainer/VBoxContainer/PlayersContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Imaginary Player Name"
-
-[node name="Bottom" type="HBoxContainer" parent="NewGameMenu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-alignment = 1
-
-[node name="BackButton" type="Button" parent="NewGameMenu/MarginContainer/VBoxContainer/Bottom"]
-layout_mode = 2
-text = "Back to Main Menu"
-
-[node name="StartButton" type="Button" parent="NewGameMenu/MarginContainer/VBoxContainer/Bottom"]
-layout_mode = 2
-text = "Start the game"
-
-[connection signal="pressed" from="Main/VBoxContainer/NewGameButton" to="." method="_on_Main_NewGame_pressed"]
-[connection signal="pressed" from="Main/VBoxContainer/ConnectButton" to="." method="_on_connect_button_pressed"]
-[connection signal="pressed" from="Main/VBoxContainer/LoadButton" to="." method="_on_Main_Load_pressed"]
-[connection signal="pressed" from="Main/VBoxContainer/JoinButton" to="." method="_on_Main_Join_pressed"]
-[connection signal="pressed" from="Main/VBoxContainer/SettingsButton" to="." method="_on_Main_Settings_pressed"]
-[connection signal="pressed" from="Main/VBoxContainer/ExitButton" to="." method="_on_Main_Exit_pressed"]
-[connection signal="confirmed" from="ExitDialog" to="." method="_on_Main_Exit_confirmed"]
-[connection signal="pressed" from="LoadMenu/MarginContainer/VBoxContainer/BackButton" to="." method="_on_Load_Back_pressed"]
-[connection signal="pressed" from="NewGameMenu/MarginContainer/VBoxContainer/Bottom/BackButton" to="." method="_on_NG_Back_pressed"]
-[connection signal="pressed" from="NewGameMenu/MarginContainer/VBoxContainer/Bottom/StartButton" to="." method="_on_NG_Start_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/MultiplayerButton" to="." method="_on_Multiplayer_button_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/SingleplayerButton" to="." method="_on_Singleplayer_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/SettingsButton" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/ExitButton" to="." method="_on_Exit_pressed"]
+[connection signal="confirmed" from="ExitDialog" to="." method="_on_Exit_confirmed"]

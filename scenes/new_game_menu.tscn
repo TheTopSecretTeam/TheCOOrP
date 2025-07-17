@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://46jjftt8toe1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_06t4h"]
+
+[node name="NewGameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 335.0
+offset_top = -39.0
+offset_right = 375.0
+offset_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "New game"
+placeholder_text = "New game"
+alignment = 1
+max_length = 300
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "List of connected players:"
+
+[node name="PlayersContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_06t4h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PlayersContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PlayersContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PlayersContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Imaginary Player Name"
+
+[node name="Bottom" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/Bottom"]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/Bottom"]
+layout_mode = 2
+text = "Start the game"
