@@ -28,7 +28,7 @@ func populate_equipment_list(list: ItemList, items: Array) -> String:
 func populate_agent_list(list: ItemList, agent_stats: Array[AgentStats]) -> String:
 	var agent_icon = AtlasTexture.new()
 	agent_icon.atlas = agent_sprite
-	agent_icon.region = Rect2(0, 0, agent_sprite.get_width() / 3,\
+	agent_icon.region = Rect2(0, 0, agent_sprite.get_width() / 3.0,\
 									agent_sprite.get_height())
 	for i in range(agent_stats.size()):
 		list.add_item(agent_stats[i].agent_name, agent_icon)

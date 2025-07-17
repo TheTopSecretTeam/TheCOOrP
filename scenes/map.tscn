@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=23 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://net/scripts/net_manager.gd" id="3_f22gk"]
@@ -22,12 +22,6 @@
 [ext_resource type="Script" uid="uid://4c5x3dvu4uwv" path="res://scenes/inventory_button.gd" id="18_mo32q"]
 [ext_resource type="PackedScene" uid="uid://dmy5r32cyw5w0" path="res://UI/gafur_stuff/escape_menu.tscn" id="21_4b7dj"]
 [ext_resource type="Script" uid="uid://be1aysr58qvyh" path="res://scenes/esc_menu_manager.gd" id="22_2cfcp"]
-
-[sub_resource type="Curve2D" id="Curve2D_ueh1s"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 43, 0, 0, 0, 0, 0, -41, 0)
-}
-point_count = 2
 
 [node name="map" type="Control"]
 layout_mode = 3
