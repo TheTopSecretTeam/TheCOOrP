@@ -2,18 +2,24 @@
 
 [ext_resource type="Script" uid="uid://bped5kxd4cjfq" path="res://UI/equipment_menu_components/equipment_menu.gd" id="1_tob5y"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifl0f"]
-bg_color = Color(0.337255, 0.423529, 1, 0.294118)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dne6d"]
+bg_color = Color(0.44054, 0.00827069, 0.115605, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.294118, 0.407843, 0.764706, 0.67451)
+border_color = Color(0.698671, 0, 0.250641, 1)
 
 [node name="equipment_menu" type="VBoxContainer"]
 offset_right = 1280.0
 offset_bottom = 720.0
 script = ExtResource("1_tob5y")
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_dne6d")
+text = "  X  "
 
 [node name="Layout" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -45,13 +51,5 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Exit" type="Button" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_styles/normal = SubResource("StyleBoxFlat_ifl0f")
-text = "Exit
-"
 
 [connection signal="button_down" from="Exit" to="." method="_on_exit_button_down"]
