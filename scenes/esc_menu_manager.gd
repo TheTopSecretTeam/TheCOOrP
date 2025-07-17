@@ -20,6 +20,10 @@ func _on_resume_pressed():
 
 func _on_quit_pressed():
 	get_tree().paused = false
-	var current_scene = get_tree().root.get_child(get_tree().root.get_child_count() - 1)
-	current_scene.queue_free()
+	
+	if get_tree().current_scene.name == "map":
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		return
+	var true_current_scene = get_tree().root.get_child(get_tree().root.get_child_count() - 1)
+	true_current_scene.queue_free()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
