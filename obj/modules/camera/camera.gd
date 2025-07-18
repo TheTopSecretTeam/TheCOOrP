@@ -34,9 +34,3 @@ func zoom_camera(factor: float) -> void:
 		var new_zoom = zoom * factor
 		new_zoom = new_zoom.clamp(Vector2(min_zoom, min_zoom), Vector2(max_zoom, max_zoom))
 		zoom = new_zoom
-
-func _on_menu_open():
-	zoomable = false
-
-func _on_menu_close():
-	zoomable = true

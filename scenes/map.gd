@@ -2,6 +2,10 @@ extends Control
 
 @onready var net_manager = preload("res://net/scripts/net_manager.gd").new()
 @onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
+
+@onready var camera = $Camera
+@onready var inventory_button = $CanvasLayer/InventoryButton
+
 var net_manager_instance: Node
 
 func _ready():
@@ -86,3 +90,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	for a in Agents.selected_agents:
 		a.set_outline_visibility(false)
 	Agents.selected_agents = []
+
+
+func _on_menu_open() -> void:
+	camera.zoomable = false
+	inventory_button.visible = false
+
+func _on_menu_close() -> void:
+	camera.zoomable = true
+	inventory_button.visible = true
