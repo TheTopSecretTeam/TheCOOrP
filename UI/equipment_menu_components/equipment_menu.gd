@@ -119,8 +119,9 @@ func update_display():
 		return
 	
 	agent_icon.texture = agent_sprite
+	agent_icon.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	agent_icon.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	agent_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	agent_icon.custom_minimum_size = Vector2(32, 32)
 	agent_name_label.text = "Agent: " + selected_agent.agent_name
 	armor_name_label.text = "Armor: " + selected_agent.current_armor.name
 	weapon_name_label.text = "Weapon: " + selected_agent.current_weapon.name
