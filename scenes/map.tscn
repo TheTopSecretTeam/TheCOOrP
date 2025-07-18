@@ -18,10 +18,10 @@
 [ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
 [ext_resource type="PackedScene" uid="uid://v6fa04wfro8q" path="res://obj/bars/wirebird_bar.tscn" id="13_m335s"]
 [ext_resource type="PackedScene" uid="uid://dxcj8bws0tbwt" path="res://UI/gafur_stuff/day_scene.tscn" id="14_n1psn"]
-[ext_resource type="PackedScene" uid="uid://bsold2gw5nlj6" path="res://UI/equipment_menu_components/equimpent_menu.tscn" id="17_c70he"]
 [ext_resource type="Script" uid="uid://4c5x3dvu4uwv" path="res://scenes/inventory_button.gd" id="18_mo32q"]
 [ext_resource type="PackedScene" uid="uid://dmy5r32cyw5w0" path="res://UI/gafur_stuff/escape_menu.tscn" id="21_4b7dj"]
 [ext_resource type="Script" uid="uid://be1aysr58qvyh" path="res://scenes/esc_menu_manager.gd" id="22_2cfcp"]
+[ext_resource type="PackedScene" uid="uid://dds5duujyul3g" path="res://UI/equipment_menu_components/equimpent_menu.tscn" id="20_m335s"]
 
 [node name="map" type="Control"]
 layout_mode = 3
@@ -252,7 +252,7 @@ text = "Inventory"
 script = ExtResource("18_mo32q")
 inventory = NodePath("../equipment_menu")
 
-[node name="equipment_menu" parent="CanvasLayer" instance=ExtResource("17_c70he")]
+[node name="equipment_menu" parent="CanvasLayer" instance=ExtResource("20_m335s")]
 visible = false
 
 [node name="EscapeMenu" parent="CanvasLayer" instance=ExtResource("21_4b7dj")]
@@ -262,11 +262,11 @@ process_mode = 2
 process_mode = 3
 script = ExtResource("22_2cfcp")
 
-[connection signal="menu_close" from="rooms/chamber/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
-[connection signal="menu_open" from="rooms/chamber/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
+[connection signal="menu_close" from="rooms/chamber/CanvasLayer/ResearchMenu" to="." method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber/CanvasLayer/ResearchMenu" to="." method="_on_menu_open"]
 [connection signal="work_completed" from="rooms/chamber/IceboxBar" to="rooms/chamber" method="_on_bar_work_completed"]
-[connection signal="menu_close" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
-[connection signal="menu_open" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
+[connection signal="menu_close" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="." method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="." method="_on_menu_open"]
 [connection signal="work_completed" from="rooms/chamber2/WirebirdBar" to="rooms/chamber2" method="_on_bar_work_completed"]
 [connection signal="pressed" from="CanvasLayer/InventoryButton" to="CanvasLayer/InventoryButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/EscapeMenu/Panel/VBoxContainer/Resume" to="EscMenuManager" method="_on_resume_pressed"]

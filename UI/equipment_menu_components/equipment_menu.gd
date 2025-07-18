@@ -1,114 +1,162 @@
 extends VBoxContainer
 
-var agent_sprite = preload("res://img/Player.png")
+var agent_picture = preload("res://img/Player.png")
+var agent_sprite = null
 
-@onready var weapon_list = $Layout/TabContainer/Weapon
-@onready var armor_list = $Layout/TabContainer/Armor
-@onready var agent_list = $Layout/Agents
-@onready var selection_display = $Layout/Display
 
-var weapons: Array[WeaponStats]
-var armors: Array[ArmorStats]
-var agents: Array[AgentStats]
+@onready var weapon_list: ItemList =$Layout/TabContainer/Weapon
+@onready var armor_list: ItemList = $Layout/TabContainer/Armor
+@onready var agent_list: ItemList = $Layout/Layout/Layout/Agents
+@onready var selection_display = $Layout/Layout/Layout/Display
 
-func _ready() -> void:
-	weapon_list.item_selected.connect(_on_item_selected.bind(weapon_list))
-	armor_list.item_selected.connect(_on_item_selected.bind(armor_list))
-	agent_list.item_selected.connect(_on_item_selected.bind(agent_list))
+@onready var agent_icon: TextureRect = $Layout/Layout/Layout/Display/AgentSprite
+@onready var agent_name_label: Label = $Layout/Layout/Layout/Display/AgentName
+@onready var armor_name_label: Label = $Layout/Layout/Layout/Display/ArmorName
+@onready var weapon_name_label: Label = $Layout/Layout/Layout/Display/WeaponName
 
-func populate_equipment_list(list: ItemList, items: Array) -> String:
-	for i in range(items.size()):
-		var icon = items[i].sprite
-		if icon == null:
-			icon = create_missing_icon()
-		list.add_item(items[i].name, icon)
-		list.set_item_tooltip(i, items[i].name)
-	return "SUCCESS"
+var weapons: Array[WeaponStats] = []
+var armors: Array[ArmorStats] = []
+var agents: Array[AgentStats] = []
 
-func populate_agent_list(list: ItemList, agent_stats: Array[AgentStats]) -> String:
-	var agent_icon = AtlasTexture.new()
-	agent_icon.atlas = agent_sprite
-	agent_icon.region = Rect2(0, 0, agent_sprite.get_width() / 3.0,\
-									agent_sprite.get_height())
-	for i in range(agent_stats.size()):
-		list.add_item(agent_stats[i].agent_name, agent_icon)
-		list.set_item_tooltip(i, agent_stats[i].agent_name)
-	return "SUCCESS"
+var selected_agent: AgentStats = null
 
-func create_missing_icon() -> Texture2D:
-	# Create a placeholder icon if the real one fails to load
+func _ready():
+
+	populate_armor_list()
+	populate_weapon_list()
+	populate_agent_list()
+	
+	weapon_list.item_selected.connect(_on_weapon_selected)
+	armor_list.item_selected.connect(_on_armor_selected)
+	agent_list.item_selected.connect(_on_agent_selected)
+	
+	create_agent_sprite()
+	clear_display()
+
+func create_missing_icon():
 	var image = Image.create(32, 32, false, Image.FORMAT_RGBA8)
-	image.fill(Color(0, 0, 0, 0.0))  # Magenta error color
+	image.fill(Color(0, 0, 0, 0.0))
 	var texture = ImageTexture.create_from_image(image)
 	return texture
 
-func _on_item_selected(index: int, list: ItemList) -> String:
-	if agent_list.is_anything_selected() and list != agent_list:
-		if list == armor_list:
-			agents[agent_list.get_selected_items()[0]].current_armor = armors[index]
-		else:
-			agents[agent_list.get_selected_items()[0]].current_weapon = weapons[index]
-	update_selection_display()
-	return "SUCCESS"
+func create_agent_sprite():
+	agent_sprite = AtlasTexture.new()
+	agent_sprite.atlas = agent_picture
+	agent_sprite.region = Rect2(0, 0, agent_picture.get_width() / 3,\
+									agent_picture.get_height())
 
-func update_selection_display() -> String:
-	for child in selection_display.get_children():
-		child.queue_free()	
-	display_agent()	
-	return "SUCCESS"
+func populate_weapon_list():
+	weapon_list.clear()
+	for weapon in weapons:
+		var icon = weapon.sprite
+		if icon == null:
+			icon = create_missing_icon()
+		weapon_list.add_item(weapon.name, icon)
+		weapon_list.set_item_tooltip(-1, weapon.name)
 
-func display_selection(list: ItemList) -> String:
-	print(list)
-	var hbox = HBoxContainer.new()
-	hbox.add_theme_constant_override("separation", 10)
-	
-	var icon = TextureRect.new()
-	var label = Label.new()
-	
-	var selected_items : Array = list.get_selected_items()
-	if selected_items.size() > 0:
-		var idx = selected_items[0]
-		icon.texture = list.get_item_icon(idx)
-		label.text = list.get_item_text(idx)
-	else:
-		icon.texture = create_missing_icon()
-		label.text = "None selected"
-	
-	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icon.custom_minimum_size = Vector2(32, 32)
-	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	
-	hbox.add_child(icon)
-	hbox.add_child(label)
-	selection_display.add_child(hbox)
-	return "SUCCESS"
+func populate_armor_list():
+	armor_list.clear()
+	for armor in armors:
+		var icon = armor.sprite
+		if icon == null:
+			icon = create_missing_icon()
+		armor_list.add_item(armor.name, icon)
+		armor_list.set_item_tooltip(-1, armor.name)
 
-func display_agent() -> String:
-	var icon = TextureRect.new()
-	var label = Label.new()
-	var selected_items = agent_list.get_selected_items()
-	if selected_items.size() > 0:
-		var idx = selected_items[0]
-		selection_display.add_child(icon)
-		selection_display.add_child(label)
-		icon.texture = agent_list.get_item_icon(idx)
-		label.text = agent_list.get_item_text(idx)
-		icon.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		icon.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		display_selection(weapon_list)
-		display_selection(armor_list)
-	return "SUCCESS"
+func populate_agent_list():
+	agent_list.clear()
+	for agent in agents:
+		agent_list.add_item(agent.agent_name, agent_sprite)
+		agent_list.set_item_tooltip(-1, agent.agent_name)
 
-func _on_exit_button_down() -> String:
+func update_armor_list():
+	armor_list.clear()
+	for armor in armors:
+		var assigned_to = ""
+		for agent in agents:
+			if agent.current_armor == armor:
+				assigned_to = agent.agent_name
+				break
+		
+		var item_text = armor.name
+		if assigned_to != "":
+			item_text += " (%s)" % assigned_to
+		
+		armor_list.add_item(item_text, armor.sprite)
+		armor_list.set_item_tooltip(-1, armor.name)
+		
+		if assigned_to != "" and (selected_agent == null or selected_agent.current_armor != armor):
+			armor_list.set_item_disabled(-1, true)
+
+func update_weapon_list():
+	weapon_list.clear()
+	for weapon in weapons:
+		var assigned_to = ""
+		for agent in agents:
+			if agent.current_weapon == weapon:
+				assigned_to = agent.agent_name
+				break
+		
+		var item_text = weapon.name
+		if assigned_to != "":
+			item_text += " (%s)" % assigned_to
+		
+		weapon_list.add_item(item_text, weapon.sprite)
+		weapon_list.set_item_tooltip(-1, weapon.name)
+		
+		if assigned_to != "" and (selected_agent == null or selected_agent.current_weapon != weapon):
+			weapon_list.set_item_disabled(-1, true)
+
+func clear_display():
+	agent_icon.texture = null
+	agent_name_label.text = ""
+	armor_name_label.text = ""
+	weapon_name_label.text = ""
+
+func update_display():
+	if selected_agent == null:
+		clear_display()
+		return
+	
+	agent_icon.texture = agent_sprite
+	agent_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	agent_icon.custom_minimum_size = Vector2(32, 32)
+	agent_name_label.text = "Agent: " + selected_agent.agent_name
+	armor_name_label.text = "Armor: " + selected_agent.current_armor.name
+	weapon_name_label.text = "Weapon: " + selected_agent.current_weapon.name
+
+func _on_agent_selected(index: int):
+	selected_agent = agents[index]
+	update_display()
+	update_armor_list()
+	update_weapon_list()
+
+func _on_armor_selected(index: int):
+	if selected_agent == null:
+		return
+	
+	var armor_name = armors[index].name
+	selected_agent.current_armor = armors[index]
+	update_display()
+	update_armor_list()
+	update_weapon_list()
+
+func _on_weapon_selected(index: int):
+	if selected_agent == null:
+		return
+	
+	var weapon_name = weapons[index].name
+	selected_agent.current_weapon = weapons[index]
+	update_display()
+	update_armor_list()
+	update_weapon_list()
+
+func _on_exit_button_down():
 	hide()
 	agent_list.clear()
 	armor_list.clear()
 	weapon_list.clear()
-	for child in selection_display.get_children():
-		child.queue_free()
+	clear_display()
 	return "SUCCESS"
 
 func clear():
@@ -117,16 +165,15 @@ func clear():
 	agent_list.clear()
 
 func window_call(agent_res:Array[AgentStats], armor_res:Array[ArmorStats],
-				 weapon_res:Array[WeaponStats]) -> String:
+				 weapon_res:Array[WeaponStats]):
 	clear()
 	agents = agent_res
 	armors = armor_res
 	weapons = weapon_res
 	
-	populate_equipment_list(weapon_list, weapons)
-	populate_equipment_list(armor_list, armors)
-	populate_agent_list(agent_list, agents)
+	populate_armor_list()
+	populate_weapon_list()
+	populate_agent_list()
 	
-	update_selection_display()
+	clear_display()
 	show()
-	return "SUCCESS"
