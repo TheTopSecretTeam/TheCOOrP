@@ -1,6 +1,7 @@
 extends Node
 
 var Players = {}
+var cursors = {}
 var color
 var Seed : int
 
@@ -35,7 +36,35 @@ func _reset():
 	energy_changed.emit(current_energy)
 	print("Global: Reset all properties, peer: ", multiplayer.get_unique_id())
 	
+func clearCursors() -> void:
+	# clear from cursors
+	for child in Map.get_children():
+		if child is Cursor:
+			print(child.get_index(), child.name)
+			Map.remove_child(child)
+			child.queue_free()
 	
+func _process(_delta):
+	sync_players_with_peers()
+
+# RPC to notify all clients of a player disconnection
+@rpc("authority", "call_local")
+func NotifyPlayerDisconnected(id: int):
+	if Global.Players.has(id):
+		Global.remove_player(id)
+	print("Client: Removed player ", id, " from Global.Players")
+
+func sync_players_with_peers() -> void:
+	if multiplayer == null or !multiplayer.is_server(): return
+	
+	var current_peers = multiplayer.get_peers()
+	var players = Players.keys()
+	if current_peers.size() > players.size(): return
+	for peer_id in Players.keys():
+		if peer_id != 1 and peer_id not in current_peers:
+				NotifyPlayerDisconnected.rpc(peer_id)
+				remove_player(peer_id)
+
 
 func add_player(player_id: int, player_data: Dictionary):
 	Players[player_id] = player_data
@@ -44,6 +73,11 @@ func add_player(player_id: int, player_data: Dictionary):
 
 func remove_player(player_id: int):
 	if Players.has(player_id):
+		# Update color indices for players with higher indices
+		for pid in Global.Players:
+			if Global.Players[pid]["color"] > Global.Players[player_id]["color"]:
+				update_player(pid, "color", Global.Players[pid]["color"] - 1)
+
 		Players.erase(player_id)
 		player_removed.emit(player_id)
 		players_changed.emit()

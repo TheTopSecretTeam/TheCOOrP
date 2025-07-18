@@ -33,7 +33,6 @@ func get_map_node(name: String):
 func get_cursor_node():
 	return $CanvasLayer
 
-
 func _process(_delta):
 	var cursor_pos = get_global_mouse_position()
 	var selected_thing

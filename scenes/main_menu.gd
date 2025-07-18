@@ -3,6 +3,8 @@ extends Control
 @export var web_disable_list: Array[Button] = []
 
 func _ready() -> void:
+	# need when user press on exit or return to main menu, also for hist disconnected case
+	Input.set_custom_mouse_cursor(null)
 	if OS.get_name() == "Web":
 		for btn in web_disable_list:
 			btn.disabled = true

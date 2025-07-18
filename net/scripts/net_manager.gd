@@ -22,7 +22,7 @@ func _on_player_removed(player_id: int):
 
 func _on_player_updated(player_id: int, key: String, value):
 	if key == "color" and cursors.has(player_id):
-		cursors[player_id].color = value
+		cursors[player_id].update_color(value)
 		
 		
 func _process(_delta: float) -> void:

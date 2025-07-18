@@ -23,6 +23,13 @@ func PlayerConnected(id):
 		startGame.rpc_id(id)  # Changed to call on all peers
 
 func PlayerDisconnected(id):
+	# check if peer is not server and disconnected
+	# and others in Lobby then just ignore
+	if (id != 1): 
+		for i in get_tree().root.get_children():
+			if i is Lobby:
+				return
+				
 	print("Player: " + str(id) + " disconnected")
 	var disconnected_scene = load("res://UI/HostDiscoonected/host_disconnected.tscn").instantiate()
 	get_tree().root.add_child(disconnected_scene)
@@ -56,7 +63,7 @@ func RecieveSeed(seed: int):
 @rpc("any_peer")
 func SendPlayerInformation(player_name: String, player_color: int, id: int):
 	if !Global.Players.has(id):
-		Global.add_player(id, { "name": player_name, "color": player_color } )
+		Global.add_player(id, { "name": player_name, "color": player_color, } )
 	if multiplayer.is_server():
 		for player_id in Global.Players:
 			SendPlayerInformation.rpc(
@@ -78,11 +85,15 @@ func ReceivePlayerColor(received_color: int):
 
 @rpc("any_peer", "call_local")
 func startGame():
-	var scene = load("res://scenes/map.tscn").instantiate()
+	var scene = load("res://UI/lobby/lobby.tscn").instantiate()
 	get_tree().root.add_child(scene)
 	self.hide()
 
 func _on_host_button_down() -> void:
+	if $name.text == "":
+		$name.placeholder_text = "Field name must not be empty"
+		$name.grab_focus()  # Optional: put the cursor back in the field
+		return
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(port, 4)
 	if error != OK:
@@ -101,6 +112,10 @@ func _on_host_button_down() -> void:
 	SendPlayerInformation($name.text, Global.color, multiplayer.get_unique_id())
 
 func _on_connect_button_down() -> void:
+	if $name.text == "":
+		$name.placeholder_text = "Field name must not be empty"
+		$name.grab_focus()  # Optional: put the cursor back in the field
+		return
 	peer = ENetMultiplayerPeer.new()
 	peer.create_client($name2.text, port)
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)

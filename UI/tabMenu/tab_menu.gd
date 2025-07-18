@@ -23,7 +23,6 @@ func toggle_scene_visibility() -> void:
 
 
 func update_player_list():
-	print("Updated")
 	# Clear existing entries
 	for child in item_container.get_children():
 		child.queue_free()
@@ -34,7 +33,6 @@ func update_player_list():
 		create_player_entry(player_id, player_data)
 
 func create_player_entry(player_id: int, player_data: Dictionary):
-	print("Working")
 	var hbox = HBoxContainer.new()
 	hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hbox.custom_minimum_size = Vector2(0, 40)
