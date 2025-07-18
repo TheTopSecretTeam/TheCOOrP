@@ -12,7 +12,7 @@ Main steps:
 
 2. Scrum master assign issue to the correct team member, choose the type, priority, story points (after the Planning Poker), and milestone, and write acceptance criteria for each feature and task or bug report.
 
-3. For each feature we fetch amd pull the origin/dev (our Trunk-based). After, we work in local dev or create new branch from the origin/dev. If there are push commits, they have to be discard.
+3. For each feature we fetch aтd pull the origin/dev (our Trunk-based). After, we work in local dev or create new branch from the origin/dev. If there are push commits, they have to be discard.
 
 4. When the work was done, we create commit to the branch that was used for work (develop or feature branch). All commits must have name and description with changes.
 
