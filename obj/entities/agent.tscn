@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bvasvrv1m3okg" path="res://img/gibs/agent/agent_forearm.png" id="5_t74kt"]
 [ext_resource type="Texture2D" uid="uid://3fm05ki83g5g" path="res://img/gibs/agent/agent_arm.png" id="6_73koy"]
 [ext_resource type="Texture2D" uid="uid://g3r2y5n1ueml" path="res://UI/energy-bar/fill_texture.png" id="7_6a263"]
-[ext_resource type="Theme" uid="uid://deasi3jfl2oq1" path="res://others/highlight_border.tres" id="7_t74kt"]
-[ext_resource type="Theme" uid="uid://fpagxkrlv8cw" path="res://others/highlight_border_trans.tres" id="8_73koy"]
+[ext_resource type="Theme" uid="uid://caa06w6jbry47" path="res://others/highlight_border.tres" id="7_t74kt"]
+[ext_resource type="Theme" uid="uid://cibbxk5sxyf6l" path="res://others/highlight_border_trans.tres" id="8_73koy"]
 [ext_resource type="Script" uid="uid://7wvji3japcx8" path="res://UI/energy-bar/texture_progress_bar.gd" id="8_t74kt"]
 
 [sub_resource type="Animation" id="Animation_13mac"]

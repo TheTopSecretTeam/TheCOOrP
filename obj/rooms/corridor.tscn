@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="2_nwxuc"]
 [ext_resource type="Texture2D" uid="uid://bcaff3cr2ogf2" path="res://img/layout/hall1.png" id="2_uovvg"]
 [ext_resource type="Texture2D" uid="uid://d28baw1od4j33" path="res://img/layout/corridorend_right.png" id="4_mxo8b"]
-[ext_resource type="Theme" uid="uid://deasi3jfl2oq1" path="res://others/highlight_border.tres" id="5_mxo8b"]
+[ext_resource type="Theme" uid="uid://caa06w6jbry47" path="res://others/highlight_border.tres" id="5_mxo8b"]
 [ext_resource type="Script" uid="uid://jnr6j68okgwb" path="res://others/highlight_if_agent_sel.gd" id="6_72fwn"]
 
 [sub_resource type="Curve2D" id="Curve2D_r14vu"]

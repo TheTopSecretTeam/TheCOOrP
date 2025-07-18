@@ -25,6 +25,7 @@ func test_scene_compiles() -> void:
 
 
 ## Enters the tree and survives one frame
+@warning_ignore("unused_parameter")
 func test_scene_starts(timeout = 5000) -> void:
 	for scene in SCENES:
 		var runner := scene_runner(scene)

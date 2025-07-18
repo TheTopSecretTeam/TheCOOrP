@@ -2,6 +2,12 @@ extends Node
 
 var graph: Dictionary[int, Array] = {}
 
+func _ready() -> void:
+	Global.reset_globals.connect(reset)
+
+func reset() -> void:
+	graph.clear()
+
 func get_agent_path(ind_A: int, ind_B: int) -> Array[int]:
 	# If start and end are the same, return immediately
 	if ind_A == ind_B:
@@ -13,7 +19,7 @@ func get_agent_path(ind_A: int, ind_B: int) -> Array[int]:
 	
 	# Dictionary to record the path: key=node, value=parent node
 	var parent = {}
-	parent[ind_A] = -1  # Mark start node with no parent
+	parent[ind_A] = -1 # Mark start node with no parent
 	
 	# Set to track visited nodes
 	var visited = {}
