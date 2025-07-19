@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://dds5duujyul3g" path="res://UI/equipment_menu_components/equimpent_menu.tscn" id="20_m335s"]
 [ext_resource type="PackedScene" uid="uid://dmy5r32cyw5w0" path="res://UI/gafur_stuff/escape_menu.tscn" id="21_4b7dj"]
 [ext_resource type="Script" uid="uid://be1aysr58qvyh" path="res://scenes/esc_menu_manager.gd" id="22_2cfcp"]
+[ext_resource type="Script" uid="uid://bcwlufds52u1v" path="res://scenes/work_select_manager.gd" id="23_2cfcp"]
+[ext_resource type="PackedScene" uid="uid://7xcia31pkmay" path="res://UI/agent_optiontscn.tscn" id="24_y2ir2"]
 
 [node name="map" type="Control"]
 layout_mode = 3
@@ -164,7 +166,6 @@ anomaly = ExtResource("11_n1psn")
 bar = NodePath("IceboxBar")
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
-position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor")
 
 [node name="Anomaly" parent="rooms/chamber/room_path" index="1" instance=ExtResource("12_mkblt")]
@@ -192,9 +193,6 @@ flipped = true
 [node name="waypoint" parent="rooms/chamber2/room_path" index="1" node_paths=PackedStringArray("leading_room")]
 position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor")
-
-[node name="AgentContainer" parent="rooms/chamber2/CanvasLayer/CenterContainer" index="1"]
-visible = true
 
 [node name="WirebirdBar" parent="rooms/chamber2" node_paths=PackedStringArray("chamber") instance=ExtResource("13_m335s")]
 position = Vector2(-87, 407)

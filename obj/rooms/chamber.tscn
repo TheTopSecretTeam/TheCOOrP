@@ -107,22 +107,6 @@ grow_horizontal = 1
 grow_vertical = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_8rl70")
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="WorkContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
-visible = false
-layout_mode = 2
-
-[node name="AgentContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
-visible = false
-layout_mode = 2
-
 [node name="Label" type="Label" parent="."]
 visible = false
 custom_minimum_size = Vector2(800, 0)
