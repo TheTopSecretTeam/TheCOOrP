@@ -1,4 +1,5 @@
 extends Control
+class_name Map
 
 @onready var net_manager = preload("res://net/scripts/net_manager.gd").new()
 @onready var tab_menu = preload("res://UI/tabMenu/TabMenu.tscn").instantiate()
@@ -22,12 +23,6 @@ func _ready():
 	if not is_instance_valid(net_manager):
 		push_error("Failed to initialize net manager!")
 		return
-	
-func _reset() -> void:
-	remove_child(net_manager)
-	net_manager.queue_free()
-	net_manager = load("res://net/scripts/net_manager.gd").new()
-	add_child(net_manager)
 
 func get_cursor_node():
 	return $CanvasLayer
@@ -103,3 +98,19 @@ func _on_menu_open() -> void:
 func _on_menu_close() -> void:
 	camera.zoomable = true
 	inventory_button.visible = true
+
+## Gracefully leave the map
+func leave() -> void:
+	# Close multiplayer connection
+	if multiplayer.has_multiplayer_peer():
+		multiplayer.multiplayer_peer.close()
+		if multiplayer.is_server():
+			print("Disconnect: Closed multiplayer peer on server")
+		else:
+			print("Disconnect: Disconnected client, peer: ", multiplayer.get_unique_id())
+
+	Global.reset_globals.emit()
+	# Unpause and switch to main menu
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	print("Disconnect: Switched to main_menu.tscn")

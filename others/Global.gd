@@ -14,14 +14,14 @@ signal player_removed(player_id)
 signal player_updated(player_id, key, value)
 signal players_changed() # General signal for any change
 
-@onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
+#@onready var sync_manager = preload("res://net/scripts/sync_manager.gd").new()
 
 func _ready() -> void:
 	reset_globals.connect(reset)
-	add_child(sync_manager)
-	if not is_instance_valid(sync_manager):
-		push_error("Failed to initialize sync manager!")
-		return
+	#add_child(sync_manager)
+	#if not is_instance_valid(sync_manager):
+		#push_error("Failed to initialize sync manager!")
+		#return
 
 func reset():
 	if resources_changed.has_connections(): Helpers.disconnect_all(resources_changed)

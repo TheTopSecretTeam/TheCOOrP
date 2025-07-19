@@ -6,13 +6,6 @@ var waypoints : Dictionary[int, PathFollow2D] = {}
 func _ready() -> void:
 	populate_nav_graph()
 
-func _reset() -> void:
-	for child in $room_path.get_children():
-		if child is Agent:
-			remove_child(child)
-			child.queue_free()
-		
-
 func populate_nav_graph() -> void:
 	FacilityNavigation.graph[get_index()] = []
 	for child in $room_path.get_children():
