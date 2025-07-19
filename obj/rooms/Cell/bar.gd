@@ -83,7 +83,7 @@ func generate_cell(prob: float) -> void:
 		ne += 1
 	update_cells()
 	print("AnomalyBar: Generated cell, pe: ", pe, ", ne: ", ne)
-	Global.sync_manager._on_timer_timeout()
+	SyncManager._on_timer_timeout()
 
 func update_cells() -> void:
 	for i in range(pe_list.size()):
