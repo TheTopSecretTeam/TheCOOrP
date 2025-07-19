@@ -17,10 +17,10 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
-Helpers="*res://others/Helpers.gd"
 Global="*res://others/Global.gd"
 FacilityNavigation="*res://scenes/facility_navigation.gd"
 Agents="*res://others/Agents.gd"
+Helpers="*res://others/Helpers.gd"
 SyncManager="*res://net/scripts/sync_manager.gd"
 
 [debug]

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 func _on_return_button_pressed() -> void:
 	# Close multiplayer connection

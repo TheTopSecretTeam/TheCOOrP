@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var item_container = $CenterContainer/VBoxContainer/PlayersList
 #@onready var save_button = $CenterContainer/VBoxContainer/Save
