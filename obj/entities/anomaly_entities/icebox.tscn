@@ -66,7 +66,7 @@ _data = {
 &"idle": SubResource("Animation_3368k")
 }
 
-[node name="Anomaly" type="PathFollow2D"]
+[node name="Anomaly" type="PathFollow2D" groups=["Sync"]]
 z_index = 1
 rotates = false
 loop = false

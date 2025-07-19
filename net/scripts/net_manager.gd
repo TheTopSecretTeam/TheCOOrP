@@ -1,12 +1,31 @@
 extends Node2D
 
 var CursorScene = preload("res://net/cursor/cursor.tscn")
-var numberOfPlayers = Global.Players.size()
+var numberOfPlayers: int:
+	get:
+		return Global.Players.size()
 var cursors = {}
 
 func _ready():
 	if multiplayer.has_multiplayer_peer():
 		print("Multiplayer ready!")
+		# Connect to Global signals
+		Global.player_added.connect(_on_player_added)
+		Global.player_removed.connect(_on_player_removed)
+		Global.player_updated.connect(_on_player_updated)
+
+func _on_player_added(player_id: int, _player_data: Dictionary):
+	create_cursor(player_id)
+
+func _on_player_removed(player_id: int):
+	if cursors.has(player_id):
+		remove_child(cursors[player_id])
+		cursors.erase(player_id)
+
+func _on_player_updated(player_id: int, key: String, value):
+	if key == "color" and cursors.has(player_id):
+		cursors[player_id].update_color(value)
+		
 		
 func _process(_delta: float) -> void:
 	# Add new cursors

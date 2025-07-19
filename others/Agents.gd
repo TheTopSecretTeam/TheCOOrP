@@ -22,7 +22,6 @@ func reset() -> void:
 	agent_died.connect(_on_agent_died)
 	if send_agent.has_connections(): Helpers.disconnect_all(send_agent)
 
-
 func _on_agent_died(agent: Agent):
 	agents.erase(agent)
 

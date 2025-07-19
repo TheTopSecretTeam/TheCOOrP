@@ -84,6 +84,33 @@ func handle_combat(delta: float) -> void:
 		state = COMBAT
 	
 	super.handle_combat(delta)
+	
+	
+# NET
+func get_sync_data() -> Dictionary:
+	return {
+				"progress": progress,
+				"state": state,
+				"health": entity_resource.current_hp,
+				"flipped": flipped,
+				"current_room": current_room,
+				"path": path,
+				"waypoint": (
+					^"" if waypoint == null else waypoint.get_path()
+				)
+			}
+
+func apply_sync_data(data: Dictionary) -> void:
+	progress = data["progress"]
+	state = data["state"]
+	entity_resource.current_hp = data["health"]
+	flipped = data["flipped"]
+	path = data["path"]
+	if data["waypoint"] != ^"": waypoint = get_tree().current_scene.get_node_or_null(data["waypoint"])
+	if current_room != data["current_room"]:
+		current_room = data["current_room"]
+		waypoint.leading_room.transfer(self, current_room)
+
 
 #func move_toward_target(delta: float) -> void:
 	#if not target or not current_room_path:

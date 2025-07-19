@@ -1,9 +1,12 @@
+class_name Cursor
 extends Node2D
+
 
 var arrow_texture
 var color
 var player_id
 var is_local_player = false
+var sprite
 
 func _ready() -> void:
 	# Load the appropriate cursor texture
@@ -18,10 +21,25 @@ func _ready() -> void:
 		Input.set_custom_mouse_cursor(arrow_texture)
 	else:
 		# For remote players, create a visible sprite
-		var sprite = Sprite2D.new()
+		sprite = Sprite2D.new()
 		sprite.texture = arrow_texture
 		sprite.name = "CursorSprite"
 		add_child(sprite)
+
+func update_color(new_color) -> void:
+	color = new_color
+	# Load the appropriate cursor texture
+	arrow_texture = load("res://img/cursor_images/" + str(color) + ".png")
+	# For local player, set system cursor
+	if is_local_player:
+		Input.set_custom_mouse_cursor(arrow_texture)
+	else:
+		# For remote players, create a visible sprite
+		sprite = Sprite2D.new()
+		sprite.texture = arrow_texture
+		sprite.name = "CursorSprite"
+		add_child(sprite)
+		
 
 func _input(event):
 	if event is InputEventMouseMotion:
