@@ -34,10 +34,10 @@ script = ExtResource("1_i0xy1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -15526.0
-offset_top = -12254.0
-offset_right = 22337.0
-offset_bottom = 10113.0
+offset_left = -14482.0
+offset_top = -11335.0
+offset_right = 23381.0
+offset_bottom = 11032.0
 mouse_filter = 2
 color = Color(0.227521, 0.223744, 0.205711, 1)
 
@@ -85,11 +85,16 @@ position = Vector2(-299.998, 5)
 progress = 2014.59
 leading_room = NodePath("../../../elevator2")
 
-[node name="Agent2" parent="rooms/corridor2/room_path" index="1" instance=ExtResource("5_ogelb")]
+[node name="waypoint3" parent="rooms/corridor2/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("6_hns3r")]
+position = Vector2(305.182, 5.3004)
+progress = 1409.41
+leading_room = NodePath("../../../chamber3")
+
+[node name="Agent2" parent="rooms/corridor2/room_path" index="2" instance=ExtResource("5_ogelb")]
 position = Vector2(1714.59, 6)
 entity_resource = ExtResource("8_c70he")
 
-[node name="Agent3" parent="rooms/corridor2/room_path" index="2" instance=ExtResource("5_ogelb")]
+[node name="Agent3" parent="rooms/corridor2/room_path" index="3" instance=ExtResource("5_ogelb")]
 position = Vector2(759.672, 5.526)
 progress = 954.918
 entity_resource = ExtResource("9_c00ee")
@@ -190,16 +195,16 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -631.0
-offset_top = -919.0
-offset_right = 227.0
-offset_bottom = -196.0
+offset_left = 580.968
+offset_top = 1343.81
+offset_right = 1438.97
+offset_bottom = 2066.81
 anomaly = ExtResource("14_4b7dj")
 bar = NodePath("BaloonBar")
 
 [node name="waypoint" parent="rooms/chamber3/room_path" index="0" node_paths=PackedStringArray("leading_room")]
 position = Vector2(664, 661)
-leading_room = NodePath("../../../corridor")
+leading_room = NodePath("../../../corridor2")
 
 [node name="BaloonBar" parent="rooms/chamber3" instance=ExtResource("14_sq6bu")]
 position = Vector2(-92, 396)
