@@ -7,6 +7,7 @@ class_name Abnormality
 @onready var health_text: Label = $HealthBar/HealthText
 
 var state: int = CHAMBER
+var chamber_waypoint: Node2D
 
 enum {
 	WANDER,
@@ -18,6 +19,7 @@ enum {
 func _ready() -> void:
 	super._ready()
 	update_health_display()
+	chamber_waypoint = waypoint
 	
 func update_health_display() -> void:
 	if health_bar:
@@ -25,9 +27,20 @@ func update_health_display() -> void:
 		health_bar.value = entity_resource.current_hp
 		if health_text:
 			health_text.text = "%d/%d HP" % [entity_resource.current_hp, entity_resource.max_hp]
-
+		
 func take_damage(amount: int, type: String) -> void:
 	super.take_damage(amount, type)
+	update_health_display()
+	if entity_resource.current_hp <= 0:
+		return_to_chamber()
+		
+func return_to_chamber() -> void:
+	if state == CHAMBER:
+		return
+	path = []
+	state = GOTO
+	waypoint = chamber_waypoint
+	entity_resource.current_hp = entity_resource.max_hp
 	update_health_display()
 		
 func _on_travel():
