@@ -18,6 +18,7 @@ func _ready():
 	if not is_instance_valid(net_manager):
 		push_error("Failed to initialize net manager!")
 		return
+	SyncManager.setup_timer()
 
 func get_cursor_node():
 	return $CanvasLayer
@@ -84,19 +85,3 @@ func _unhandled_input(event: InputEvent) -> void:
 	for a in Agents.selected_agents:
 		a.set_outline_visibility(false)
 	Agents.selected_agents = []
-
-## Gracefully leave the map
-func leave() -> void:
-	# Close multiplayer connection
-	if multiplayer.has_multiplayer_peer():
-		multiplayer.multiplayer_peer.close()
-		if multiplayer.is_server():
-			print("Disconnect: Closed multiplayer peer on server")
-		else:
-			print("Disconnect: Disconnected client, peer: ", multiplayer.get_unique_id())
-
-	Global.reset_globals.emit()
-	# Unpause and switch to main menu
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-	print("Disconnect: Switched to main_menu.tscn")

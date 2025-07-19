@@ -20,4 +20,4 @@ func _on_resume_pressed():
 	game_paused = !game_paused
 
 func _on_quit_pressed():
-	get_tree().current_scene.leave()
+	SyncManager.leave_map()
