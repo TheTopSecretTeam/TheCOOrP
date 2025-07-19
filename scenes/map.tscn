@@ -166,6 +166,7 @@ anomaly = ExtResource("11_n1psn")
 bar = NodePath("IceboxBar")
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor")
 
 [node name="Anomaly" parent="rooms/chamber/room_path" index="1" instance=ExtResource("12_mkblt")]

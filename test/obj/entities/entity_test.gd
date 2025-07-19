@@ -11,7 +11,7 @@ func test_combat() -> void:
 	var runner := scene_runner(scene)
 	var chamber = runner.invoke("find_child", "chamber")
 	chamber.agent_selected("Pong")
-	await await_millis(3000)
+	await await_millis(1000)
 	scene.queue_free()
 
 func test_death() -> void:
@@ -22,7 +22,7 @@ func test_death() -> void:
 					#.find_child("room_path").find_child("Agent2")
 	chamber.action(chamber.actions[2])
 	chamber.agent_selected("Pong")
-	await await_millis(3000)
+	await await_millis(1000)
 	scene.queue_free()
 	
 func test_kill() -> void:
@@ -34,5 +34,5 @@ func test_kill() -> void:
 	pong.entity_resource.current_weapon.base_damage = 200
 	chamber.action(chamber.actions[2])
 	chamber.agent_selected("Pong")
-	await await_millis(3000)
+	await await_millis(1000)
 	scene.queue_free()
