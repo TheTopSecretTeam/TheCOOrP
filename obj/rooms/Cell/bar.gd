@@ -2,8 +2,11 @@ extends Sprite2D
 class_name AnomalyBar
 
 signal work_completed(pe_box)
+signal drop_work
 
 @export var chamber : AnomalyChamber
+
+var should_drop_work : bool = false
 
 var MAX = 10
 var PROB = 0.6
@@ -21,6 +24,7 @@ var rng = RandomNumberGenerator.new()
 @onready var pe_list_parent = $PE_list
 @onready var ne_list_parent = $NE_list
 func _ready() -> void:
+	drop_work.connect(_on_drop_work)
 	for child in pe_list_parent.get_children():
 		pe_list.append(child)
 		pe_list[-1].visible = false
@@ -44,11 +48,17 @@ func work(action : AnomalyAction):
 	$Timer.start()
 
 func _on_timer_timeout():
+	if should_drop_work:
+		should_drop_work = false
+		$Timer.stop()
+		_on_bar_work_completed(pe)
+		return
 	if ne + pe < MAX:
 		generate_cell(PROB)
 	else:
 		$Timer.stop()
 		_on_bar_work_completed(pe)
+		should_drop_work = false
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
 	work_completed.emit(pe_box)
@@ -63,3 +73,6 @@ func generate_cell(prob: float) -> void:
 	else:
 		ne += 1
 		ne_list[ne - 1].visible = true
+		
+func _on_drop_work():
+	should_drop_work = true

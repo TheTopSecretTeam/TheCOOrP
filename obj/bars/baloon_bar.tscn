@@ -1,20 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2n814k11dxc2"]
 
 [ext_resource type="PackedScene" uid="uid://dblm4m3puom7t" path="res://obj/rooms/Cell/ProgressBar.tscn" id="1_cpdhw"]
-[ext_resource type="Script" uid="uid://br3e8rsojjlpx" path="res://obj/bars/icebox_bar.gd" id="2_nrsas"]
+[ext_resource type="Script" uid="uid://dmi8dipfga61u" path="res://obj/bars/baloon_bar.gd" id="2_cpdhw"]
 
 [node name="BaloonBar" instance=ExtResource("1_cpdhw")]
-script = ExtResource("2_nrsas")
+script = ExtResource("2_cpdhw")
 
 [node name="StateLabel" type="Label" parent="." index="4"]
-offset_left = -26.0
+offset_left = -35.0
 offset_top = 289.0
-offset_right = 26.0
+offset_right = 41.0
 offset_bottom = 309.0
-text = "normal"
+text = "State"
 
 [node name="HistoryLabel" type="Label" parent="." index="5"]
-offset_left = -35.0
+offset_left = -36.0
 offset_top = 320.0
 offset_right = 39.0
 offset_bottom = 389.0

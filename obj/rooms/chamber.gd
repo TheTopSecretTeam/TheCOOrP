@@ -15,9 +15,12 @@ var working_agent: Agent
 @onready var agent_container = $CanvasLayer/CenterContainer/AgentContainer
 @onready var btn = preload("res://UI/styled_button.tscn")
 
+signal agent_kill_requested
+
 func _ready() -> void:
 	if anomaly: load_anomaly()
 	work_ready()
+	agent_kill_requested.connect(_on_kill_agent_requested)
 	super._ready() # Room setup
 
 func transfer(entity: Entity, _previous_room) -> bool:
@@ -49,12 +52,13 @@ func begin_work(_action: AnomalyAction, _agent_res):
 	bar.work(_action)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
-	working_agent.working = false
+	if working_agent:
+		working_agent.working = false
+		working_agent.path = [get_index(), $room_path/waypoint.leading_room.get_index()]
+		working_agent._on_travel()
+		working_agent = null
 	working = false
 	anomaly.unique_pe += pe_box
-	working_agent.path = [get_index(), $room_path/waypoint.leading_room.get_index()]
-	working_agent._on_travel()
-	working_agent = null
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
 
 func _on_color_rect_pressed() -> void:
@@ -133,3 +137,9 @@ func work_ready():
 			work.set_script(script)
 		work.button_down.connect(_on_work_button_down.bind(act))
 		work_container.add_child(work)
+		
+
+func _on_kill_agent_requested():
+	if working_agent and working:
+		bar.drop_work.emit()
+		working_agent.die()
