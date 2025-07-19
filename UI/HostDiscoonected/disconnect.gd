@@ -2,5 +2,5 @@ extends Control
 
 func _on_return_button_pressed() -> void:
 	# Close multiplayer connection
-	get_tree().current_scene.leave()
+	SyncManager.leave_map()
 	print("Disconnect: Switched to main_menu.tscn")
