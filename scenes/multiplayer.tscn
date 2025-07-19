@@ -15,7 +15,6 @@ grow_vertical = 2
 script = ExtResource("1_b0l6s")
 
 [node name="Host" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 104.0
 offset_top = 343.0

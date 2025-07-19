@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 class_name Lobby
 
 # Signals for game events (optional, for future expansion)
@@ -29,7 +29,7 @@ func update_players_list() -> void:
 
 # Called when the Start button is pressed
 func _on_start_button_pressed() -> void:
-	startGame()
+	startGame.rpc()
 	
 @rpc("authority", "call_local")
 func startGame() -> void:
