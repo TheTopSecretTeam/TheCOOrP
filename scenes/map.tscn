@@ -156,6 +156,7 @@ anomaly = ExtResource("11_n1psn")
 bar = NodePath("IceboxBar")
 
 [node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor")
 
 [node name="IceboxBar" parent="rooms/chamber" node_paths=PackedStringArray("chamber") instance=ExtResource("12_6k6j1")]
@@ -174,6 +175,7 @@ offset_bottom = -196.0
 bar = NodePath("WirebirdBar")
 
 [node name="waypoint" parent="rooms/chamber2/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor")
 
 [node name="WirebirdBar" parent="rooms/chamber2" node_paths=PackedStringArray("chamber") instance=ExtResource("13_m335s")]
