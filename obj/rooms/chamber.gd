@@ -4,20 +4,14 @@ class_name AnomalyChamber
 @export var anomaly: AbnormalityResource
 @export var bar: AnomalyBar
 var anomaly_action: AnomalyAction
-#@onready var unique_pe_counter = $Unique_PE_Counter
-var wc_buttons: Array[Button]
-#@export var stats: Array[Resource] = []
 var actions: Array[AnomalyAction] = []
 var working: bool = false
 var working_agent: Agent
-@onready var work_container = $CanvasLayer/CenterContainer/WorkContainer
-@export var agent_option: PackedScene
-@onready var agent_container = $CanvasLayer/CenterContainer/AgentContainer
-@onready var btn = preload("res://UI/styled_button.tscn")
+
+signal chamber_selected
 
 func _ready() -> void:
 	if anomaly: load_anomaly()
-	work_ready()
 	super._ready() # Room setup
 
 func transfer(entity: Entity, _previous_room) -> bool:
@@ -44,6 +38,9 @@ func load_anomaly() -> void:
 		print(_action.action_name)
 		actions.append(_action)
 
+func agent_selected(agent_name: String):
+	Agents.send_agent.emit(agent_name, get_index())
+
 func begin_work(_action: AnomalyAction, _agent_res):
 	#make math with player stats and action prob
 	bar.work(_action)
@@ -63,40 +60,7 @@ func _on_color_rect_pressed() -> void:
 func show_work() -> void:
 	if working:
 		return
-	work_container.visible = not work_container.visible
-	agent_container.hide()
-
-
-func agent_selected(agent_name: String):
-	Agents.send_agent.emit(agent_name, get_index())
-	agent_container.hide()
-
-func show_agents():
-	for option in agent_container.get_children():
-		option.queue_free()
-	var avaliable_agents: Array[Agent] = []
-	for a in Agents.selected_agents:
-		if not a.working:
-			avaliable_agents.append(a)
-	for a in Agents.agents:
-		if not a.working and not a in Agents.selected_agents:
-			avaliable_agents.append(a)
-	if avaliable_agents.is_empty():
-		return
-	for a in avaliable_agents:
-		var option_inst = agent_option.instantiate()
-		option_inst.agent = a.entity_resource
-		option_inst.agent_selected.connect(agent_selected)
-		agent_container.add_child(option_inst)
-	agent_container.show()
-	#$AgentContainer.global_position = get_global_mouse_position()
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("clickLeftMouse") and (
-		agent_container.visible
-	):
-		agent_container.call_deferred("hide")
-		working = false
+	chamber_selected.emit(self)
 
 func escape():
 	if get_node_or_null(^"room_path/Anomaly") == null:
@@ -114,22 +78,3 @@ func _on_escape_timer_timeout() -> void:
 func _on_abno_name_button_down() -> void:
 	$CanvasLayer/ResearchMenu.window_call(anomaly)
 	#research_window_instance.window_call(anomaly)
-
-func _on_work_button_down(action_res) -> void:
-	action(action_res)
-
-func action(action_res) -> void:
-	if working: return
-	anomaly_action = action_res
-	work_container.hide()
-	show_agents()
-
-func work_ready():
-	for act in actions:
-		var work = btn.instantiate()
-		work.set_text(act.action_name)
-		work.set_button_icon(act.action_icon)
-		for script in act.scripts:
-			work.set_script(script)
-		work.button_down.connect(_on_work_button_down.bind(act))
-		work_container.add_child(work)
