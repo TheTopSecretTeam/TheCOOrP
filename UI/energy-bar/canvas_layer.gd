@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export var step: int = 10
+@export var step: int = 1
 @export var anim_time: float = 0.3
 
 @onready var energy_bar = $Control/TextureProgressBar
