@@ -104,7 +104,7 @@ func get_sync_data() -> Dictionary:
 		"pe_visibility": pe_visibility,
 		"ne_visibility": ne_visibility,
 		"global_energy": Global.current_energy,
-		"anomaly_action_path": null if anomaly_action == null else anomaly_action.resource_path,
+		"anomaly_action_path": "" if anomaly_action == null else anomaly_action.resource_path,
 		"is_working": is_working
 	}
 
@@ -113,7 +113,7 @@ func apply_sync_data(data: Dictionary) -> void:
 	ne = data["ne"]
 	Global.current_energy = data["global_energy"]
 	is_working = data["is_working"]
-	if data["anomaly_action_path"] != null:
+	if data["anomaly_action_path"] != "":
 		var action = load(data["anomaly_action_path"])
 		if action != null:
 			anomaly_action = action

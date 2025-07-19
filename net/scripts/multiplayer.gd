@@ -23,7 +23,7 @@ func PlayerConnected(id):
 		await get_tree().process_frame
 	SendPlayerInformation.rpc_id(id, $name.text, Global.color, multiplayer.get_unique_id())
 	if multiplayer.is_server():
-		startGame.rpc_id(id)  # Changed to call on all peers
+		startGame.rpc_id(id) # Changed to call on all peers
 
 func PlayerDisconnected(id):
 	# check if peer is not server and disconnected
@@ -65,22 +65,19 @@ func successful_connection():
 func failed_to_connect():
 	print("Couldn't connect")
 
-
 func SendSeed():
 	if multiplayer.is_server():
 		Global.Seed = randi_range(-1000, 1000)
 		RecieveSeed.rpc(Global.Seed)
 
 @rpc("any_peer", "call_local")
-func RecieveSeed(seed: int):
-	Global.Seed = seed
-
-
+func RecieveSeed(_seed: int):
+	Global.Seed = _seed
 
 @rpc("any_peer")
 func SendPlayerInformation(player_name: String, player_color: int, id: int):
 	if !Global.Players.has(id):
-		Global.add_player(id, { "name": player_name, "color": player_color, } )
+		Global.add_player(id, {"name": player_name, "color": player_color, })
 	if multiplayer.is_server():
 		for player_id in Global.Players:
 			SendPlayerInformation.rpc(
@@ -90,7 +87,7 @@ func SendPlayerInformation(player_name: String, player_color: int, id: int):
 			)
 
 func SendPlayerColor(id: int):
-	if multiplayer.is_server():	
+	if multiplayer.is_server():
 		var assigned_color = Global.Players.size() + 1
 		color += 1
 		ReceivePlayerColor.rpc_id(id, assigned_color)
@@ -109,7 +106,7 @@ func startGame():
 func _on_host_button_down() -> void:
 	if $name.text == "":
 		$name.placeholder_text = "Field name must not be empty"
-		$name.grab_focus()  # Optional: put the cursor back in the field
+		$name.grab_focus() # Optional: put the cursor back in the field
 		return
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(port, 4)
@@ -131,7 +128,7 @@ func _on_host_button_down() -> void:
 func _on_connect_button_down() -> void:
 	if $name.text == "":
 		$name.placeholder_text = "Field name must not be empty"
-		$name.grab_focus()  # Optional: put the cursor back in the field
+		$name.grab_focus() # Optional: put the cursor back in the field
 		return
 	peer = ENetMultiplayerPeer.new()
 	peer.create_client($hostname.text, port)
@@ -139,4 +136,5 @@ func _on_connect_button_down() -> void:
 	multiplayer.set_multiplayer_peer(peer)
 
 func _on_escape_button_down() -> void:
+	multiplayer.multiplayer_peer.close()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

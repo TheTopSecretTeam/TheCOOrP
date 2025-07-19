@@ -22,17 +22,8 @@ func reset() -> void:
 	agent_died.connect(_on_agent_died)
 	if send_agent.has_connections(): Helpers.disconnect_all(send_agent)
 
-
 func _on_agent_died(agent: Agent):
 	agents.erase(agent)
-
-func _reset() -> void:
-	for agent in Agents.agents:
-			if is_instance_valid(agent):
-				agent.queue_free()
-	agents = []
-	selected_agents = []
-
 
 func load_agents():
 	agents.assign(get_tree().get_nodes_in_group("Agent"))

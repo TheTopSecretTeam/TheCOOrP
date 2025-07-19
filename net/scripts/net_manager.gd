@@ -1,7 +1,9 @@
 extends Node2D
 
 var CursorScene = preload("res://net/cursor/cursor.tscn")
-var numberOfPlayers = Global.Players.size()
+var numberOfPlayers: int:
+	get:
+		return Global.Players.size()
 var cursors = {}
 
 func _ready():

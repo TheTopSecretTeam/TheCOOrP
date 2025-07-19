@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var item_container = $CenterContainer/VBoxContainer/PlayersList
-@onready var save_button = $CenterContainer/VBoxContainer/Save
+#@onready var save_button = $CenterContainer/VBoxContainer/Save
 
 func _ready():
 	# Connect to all player change signals

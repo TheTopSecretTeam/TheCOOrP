@@ -46,10 +46,10 @@ func load_anomaly() -> void:
 		actions.append(_action)
 
 @rpc("any_peer", "call_local")	
-func begin_work(_action: String, _agent_res):
-	var action = load(_action) as AnomalyAction
+func begin_work(action_str: String, _agent_res):
+	var _action = load(action_str) as AnomalyAction
 	#make math with player stats and action prob
-	bar.work(action)
+	bar.work(_action)
 
 func _on_bar_work_completed(pe_box: Variant) -> void:
 	working = false
