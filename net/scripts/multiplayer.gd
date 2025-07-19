@@ -38,9 +38,6 @@ func PlayerDisconnected(id):
 	get_tree().root.add_child(disconnected_scene)
 	get_tree().paused = true
 
-func _process(_delta):
-	sync_players_with_peers()
-
 # RPC to notify all clients of a player disconnection
 @rpc("authority", "call_local")
 func NotifyPlayerDisconnected(id: int):
@@ -48,16 +45,15 @@ func NotifyPlayerDisconnected(id: int):
 		Global.remove_player(id)
 	print("Client: Removed player ", id, " from Global.Players")
 
-func sync_players_with_peers() -> void:
-	if multiplayer == null or !multiplayer.is_server(): return
-	
-	var current_peers = multiplayer.get_peers()
-	var players = Global.Players.keys()
-	if current_peers.size() > players.size(): return
-	for peer_id in Global.Players.keys():
-		if peer_id != 1 and peer_id not in current_peers:
-				NotifyPlayerDisconnected.rpc(peer_id)
-				Global.remove_player(peer_id)
+#func sync_players_with_peers() -> void:
+#	if multiplayer == null or !multiplayer.is_server(): return
+#	var current_peers = multiplayer.get_peers()
+#	var players = Global.Players.keys()
+#	if current_peers.size() > players.size(): return
+#	for peer_id in Global.Players.keys():
+#		if peer_id != 1 and peer_id not in current_peers:
+#				NotifyPlayerDisconnected.rpc(peer_id)
+#				Global.remove_player(peer_id)
 
 func successful_connection():
 	print("Successful connection to server")

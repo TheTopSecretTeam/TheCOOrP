@@ -283,6 +283,7 @@ visible = false
 
 [node name="EscapeMenu" parent="CanvasLayer" instance=ExtResource("21_4b7dj")]
 process_mode = 2
+visible = false
 
 [node name="EscMenuManager" type="Node" parent="."]
 process_mode = 3

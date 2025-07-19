@@ -60,7 +60,7 @@ func _on_bar_work_completed(pe_box: Variant) -> void:
 	if working_agent != null:
 		working_agent.working = false
 		working_agent.path = [get_index(), $room_path/waypoint.leading_room.get_index()]
-		Global.sync_manager._on_timer_timeout()
+		SyncManager._on_timer_timeout()
 		working_agent._on_travel()
 		working_agent = null
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"

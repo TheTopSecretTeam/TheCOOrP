@@ -12,7 +12,6 @@ var net_manager_instance: Node
 
 func _ready():
 	add_child(net_manager)
-	#add_child(sync_manager)
 	add_child(tab_menu)
 	tab_menu.hide()
 	
@@ -59,7 +58,7 @@ func send_agent(agent_name, room_index: int) -> void:
 		return
 	if agent.working:
 		return
-	Global.sync_manager._on_timer_timeout()
+	SyncManager._on_timer_timeout()
 	while (agent.current_room == null): get_tree().get_frame()
 	var path = FacilityNavigation.get_agent_path(agent.current_room, room_index)
 	if path == []:
