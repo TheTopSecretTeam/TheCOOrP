@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://pbhgsrmto6yu"]
+
+[ext_resource type="Script" uid="uid://biilgpolx1uxo" path="res://obj/entities/anomaly_entities/ice_aura.gd" id="1_5l711"]
+[ext_resource type="Texture2D" uid="uid://dayijxatc4usf" path="res://img/gibs/icebox/ice.png" id="1_nar5s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nar5s"]
+radius = 106.005
+
+[node name="IceAura" type="Node2D"]
+position = Vector2(207, 155)
+scale = Vector2(10, 10)
+script = ExtResource("1_5l711")
+
+[node name="Ice" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.152941)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_nar5s")
+
+[node name="Freeze_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Freeze_Area"]
+position = Vector2(3, 5)
+shape = SubResource("CircleShape2D_nar5s")
+
+[connection signal="tree_exiting" from="." to="." method="_on_self_deleted"]

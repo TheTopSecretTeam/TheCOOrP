@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b85wfl7wt2xqw"]
+[gd_scene load_steps=16 format=3 uid="uid://b85wfl7wt2xqw"]
 
 [ext_resource type="Script" uid="uid://cuc8mtkusmoxx" path="res://obj/entities/agent.gd" id="1_l35n4"]
 [ext_resource type="Texture2D" uid="uid://cq8aac2qq5cln" path="res://img/gibs/agent/agent_body.png" id="2_g3b03"]
@@ -294,6 +294,9 @@ _data = {
 &"walk": SubResource("Animation_6a263")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73koy"]
+size = Vector2(49, 126)
+
 [node name="Agent" type="PathFollow2D" node_paths=PackedStringArray("highlight_panel", "highlight_panel_trans") groups=["Agent", "Sync"]]
 z_index = 1
 rotates = false
@@ -439,3 +442,9 @@ label = NodePath("../../MentalText")
 [node name="MentalText" type="Label" parent="MentalBar"]
 layout_mode = 2
 text = "0/500 SP"
+
+[node name="CollisionBox" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="CollisionBox"]
+position = Vector2(7.5, -74)
+shape = SubResource("RectangleShape2D_73koy")

@@ -9,7 +9,7 @@ extends Resource
 
 @export var max_hp: int = 100
 @export var current_hp: int = 100
-@export var travel_speed: int = 5
+@export var travel_speed: float = 5
 
 @export var base_damage_output: int = 5
 @export var base_attack_speed: float = 3.0 # seconds between attacks

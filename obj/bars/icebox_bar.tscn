@@ -5,3 +5,9 @@
 
 [node name="IceboxBar" instance=ExtResource("1_7ytpq")]
 script = ExtResource("2_70a2k")
+
+[node name="FreezeTimer" type="Timer" parent="." index="4"]
+wait_time = 60.0
+autostart = true
+
+[connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]
