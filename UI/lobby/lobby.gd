@@ -16,6 +16,7 @@ func _ready() -> void:
 		start_button.visible = false
 		return
 	start_button.pressed.connect(_on_start_button_pressed)
+	update_players_list()
 
 
 func update_players_list() -> void:
