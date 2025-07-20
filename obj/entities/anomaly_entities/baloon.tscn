@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://y4gku6b2olyn"]
 
 [ext_resource type="Script" uid="uid://kprfmedgubl4" path="res://obj/entities/abnormality.gd" id="1_l3lsy"]
-[ext_resource type="Texture2D" uid="uid://botq5kx4o2gkw" path="res://img/gibs/fridge/fridge.png" id="2_4ksei"]
 [ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="2_f1n3r"]
+[ext_resource type="Texture2D" uid="uid://lgukudcntbyd" path="res://img/gibs/balloon/red-balloon.png" id="3_mlpfu"]
 [ext_resource type="PackedScene" uid="uid://docj30h4pnnnb" path="res://obj/modules/health_bar.tscn" id="4_2so0a"]
 
 [sub_resource type="Animation" id="Animation_jbkt0"]
@@ -86,7 +86,7 @@ scale = Vector2(0.335, 0.335)
 [node name="Fridge" type="Sprite2D" parent="Skeleton"]
 position = Vector2(-2.98507, 38.806)
 scale = Vector2(1.60837, 1.45355)
-texture = ExtResource("2_4ksei")
+texture = ExtResource("3_mlpfu")
 
 [node name="HealthBar" parent="." instance=ExtResource("4_2so0a")]
 
