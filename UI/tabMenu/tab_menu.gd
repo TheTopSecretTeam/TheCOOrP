@@ -44,7 +44,7 @@ func create_player_entry(player_id: int, player_data: Dictionary):
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 
 	# Kick button (server only)
-	if multiplayer != null && multiplayer.is_server():
+	if multiplayer != null && multiplayer.is_server() && player_id != 1:
 		var btn_kick = Button.new()
 		btn_kick.text = "Kick"
 		btn_kick.pressed.connect(_on_kick_pressed.bind(player_id))
