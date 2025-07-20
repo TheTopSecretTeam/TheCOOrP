@@ -20,3 +20,11 @@ func _on_restart_pressed():
 
 func _on_next_day_pressed():
 	pass
+
+
+func _on_restart_day_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_next_day_button_pressed() -> void:
+	pass # Replace with function body.

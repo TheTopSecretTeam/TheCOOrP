@@ -1,0 +1,916 @@
+[gd_scene load_steps=61 format=3]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_grifs"]
+[ext_resource type="PackedScene" path="res://UI/energy-bar/energy-bar.tscn" id="2_jij3h"]
+[ext_resource type="Script" path="res://net/scripts/net_manager.gd" id="3_ldpdo"]
+[ext_resource type="PackedScene" path="res://obj/rooms/corridor.tscn" id="4_ng26e"]
+[ext_resource type="Script" path="res://obj/rooms/room.gd" id="5_grifs"]
+[ext_resource type="Texture2D" path="res://img/layout/corridorend_left.png" id="6_jij3h"]
+[ext_resource type="Texture2D" path="res://img/layout/hall1.png" id="7_ldpdo"]
+[ext_resource type="Texture2D" path="res://img/layout/corridorend_right.png" id="8_ng26e"]
+[ext_resource type="PackedScene" path="res://obj/rooms/waypoint.tscn" id="9_p70qv"]
+[ext_resource type="Script" path="res://obj/rooms/waypoint.gd" id="10_2ohyl"]
+[ext_resource type="Script" path="res://obj/entities/agent.gd" id="12_gox4b"]
+[ext_resource type="PackedScene" path="res://obj/entities/agent.tscn" id="13_6xetv"]
+[ext_resource type="Resource" path="res://res/scripts/agent/Ping.tres" id="15_0x7h3"]
+[ext_resource type="Theme" path="res://others/highlight_border.tres" id="15_2vpme"]
+[ext_resource type="Script" path="res://others/highlight_if_agent_sel.gd" id="16_tu32o"]
+[ext_resource type="Resource" path="res://res/scripts/agent/Pong.tres" id="16_vajni"]
+[ext_resource type="PackedScene" path="res://obj/rooms/elevator.tscn" id="17_6a221"]
+[ext_resource type="Texture2D" path="res://img/layout/elevator.png" id="18_p70qv"]
+[ext_resource type="PackedScene" path="res://obj/rooms/chamber.tscn" id="19_far53"]
+[ext_resource type="Script" path="res://obj/rooms/chamber.gd" id="20_60ixs"]
+[ext_resource type="Resource" path="res://res/scripts/Abnormalities/icebox.tres" id="21_ijmka"]
+[ext_resource type="PackedScene" path="res://UI/agent_optiontscn.tscn" id="22_h43ho"]
+[ext_resource type="Script" path="res://obj/modules/FSM/fsm.gd" id="23_hnpag"]
+[ext_resource type="Script" path="res://obj/rooms/awaiting.gd" id="24_6xetv"]
+[ext_resource type="Script" path="res://obj/rooms/working.gd" id="25_ok8y2"]
+[ext_resource type="Script" path="res://obj/rooms/escape_timer.gd" id="26_0x7h3"]
+[ext_resource type="FontFile" path="res://others/style/fonts/norwester.otf" id="27_7mrqq"]
+[ext_resource type="Texture2D" path="res://img/layout/chamber.png" id="28_vajni"]
+[ext_resource type="PackedScene" path="res://obj/entities/anomaly_entities/icebox.tscn" id="29_leve8"]
+[ext_resource type="Script" path="res://obj/entities/abnormality.gd" id="30_6a221"]
+[ext_resource type="Script" path="res://UI/research_menu_components/research_menu.gd" id="31_63ly6"]
+[ext_resource type="Theme" path="res://others/highlight_border_trans.tres" id="32_far53"]
+[ext_resource type="Script" path="res://others/highlight.gd" id="33_2ede1"]
+[ext_resource type="PackedScene" path="res://obj/bars/icebox_bar.tscn" id="34_3ea3w"]
+[ext_resource type="Texture2D" path="res://img/Cell/bar.png" id="35_ijmka"]
+[ext_resource type="Script" path="res://obj/bars/icebox_bar.gd" id="36_7p564"]
+[ext_resource type="Resource" path="res://res/scripts/Abnormalities/wirebird.tres" id="37_lhe2s"]
+[ext_resource type="PackedScene" path="res://obj/entities/anomaly_entities/wirebird.tscn" id="38_ve42i"]
+[ext_resource type="PackedScene" path="res://obj/bars/wirebird_bar.tscn" id="39_fkfac"]
+[ext_resource type="Script" path="res://obj/bars/wirebird_bar.gd" id="40_tmh88"]
+[ext_resource type="Resource" path="res://res/scripts/Abnormalities/baloon.tres" id="41_lqlme"]
+[ext_resource type="PackedScene" path="res://obj/entities/anomaly_entities/baloon.tscn" id="42_mtx1a"]
+[ext_resource type="PackedScene" path="res://obj/bars/baloon_bar.tscn" id="43_6n7a7"]
+[ext_resource type="Script" path="res://obj/bars/baloon_bar.gd" id="44_ftsi8"]
+[ext_resource type="PackedScene" path="res://obj/modules/camera/camera.tscn" id="45_a4qq0"]
+[ext_resource type="Script" path="res://obj/modules/camera/camera.gd" id="46_akh0v"]
+[ext_resource type="Script" path="res://scenes/win_screen.gd" id="47_ckfer"]
+[ext_resource type="PackedScene" path="res://UI/gafur_stuff/day_scene.tscn" id="48_ymqlc"]
+[ext_resource type="Script" path="res://UI/gafur_stuff/day_scene.gd" id="49_7mrqq"]
+[ext_resource type="PackedScene" path="res://UI/resource-display/resourse_box.tscn" id="50_pwl6i"]
+[ext_resource type="Script" path="res://UI/resource-display/resourse_box.gd" id="51_tmvjf"]
+[ext_resource type="Script" path="res://scenes/inventory_button.gd" id="52_6kleb"]
+[ext_resource type="PackedScene" path="res://UI/equipment_menu_components/equimpent_menu.tscn" id="53_lfd47"]
+[ext_resource type="Script" path="res://UI/equipment_menu_components/equipment_menu.gd" id="54_leve8"]
+[ext_resource type="PackedScene" path="res://UI/gafur_stuff/escape_menu.tscn" id="55_s23h4"]
+[ext_resource type="Script" path="res://scenes/esc_menu_manager.gd" id="56_uq64m"]
+
+[sub_resource type="Curve2D" id="Curve2D_r14vu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1714.59, 6, 0, 0, 0, 0, -300, 5)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_mvprs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 100, 0, 0, 0, 0, 0, -100, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_y0fo7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 171, 662, 0, 0, 0, 0, 664, 661)
+}
+point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rl70"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="map" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_grifs")
+
+[node name="EnergyBar" type="Node" parent="." instance=ExtResource("2_jij3h")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -14482.0
+offset_top = -11335.0
+offset_right = 23381.0
+offset_bottom = 11032.0
+mouse_filter = 2
+color = Color(0.227521, 0.223744, 0.205711, 1)
+
+[node name="NetManager" type="Node2D" parent="."]
+script = ExtResource("3_ldpdo")
+
+[node name="rooms" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="corridor" parent="rooms" groups=["Room"] instance=ExtResource("4_ng26e")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.688
+anchor_bottom = 0.542
+offset_left = 402.0
+offset_right = 2563.0
+offset_bottom = 390.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_grifs")
+
+[node name="HBoxContainer" parent="rooms/corridor" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" parent="rooms/corridor/HBoxContainer" index="0"]
+layout_mode = 2
+texture = ExtResource("6_jij3h")
+
+[node name="ColorRect" parent="rooms/corridor/HBoxContainer" index="1"]
+texture_repeat = 2
+custom_minimum_size = Vector2(2000, 130)
+layout_mode = 2
+texture = ExtResource("7_ldpdo")
+stretch_mode = 1
+
+[node name="TextureRect2" parent="rooms/corridor/HBoxContainer" index="2"]
+layout_mode = 2
+texture = ExtResource("8_ng26e")
+
+[node name="room_path" parent="rooms/corridor" index="1"]
+position = Vector2(392, 310.764)
+curve = SubResource("Curve2D_r14vu")
+
+[node name="waypoint" type="PathFollow2D" parent="rooms/corridor/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("9_p70qv")]
+position = Vector2(-299.998, 5)
+progress = 2014.59
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../elevator")
+
+[node name="waypoint2" type="PathFollow2D" parent="rooms/corridor/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("9_p70qv")]
+position = Vector2(1292.53, 5.7905)
+progress = 422.057
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../chamber")
+
+[node name="waypoint3" type="PathFollow2D" parent="rooms/corridor/room_path" index="2" node_paths=PackedStringArray("leading_room") instance=ExtResource("9_p70qv")]
+position = Vector2(305.182, 5.3004)
+progress = 1409.41
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../chamber2")
+
+[node name="Agent3" type="PathFollow2D" parent="rooms/corridor/room_path" index="3" node_paths=PackedStringArray("highlight_panel", "highlight_panel_trans", "current_room_path") groups=["Agent", "Sync"] instance=ExtResource("13_6xetv")]
+z_index = 1
+position = Vector2(1215.51, 5.75227)
+progress = 499.08
+rotates = false
+loop = false
+script = ExtResource("12_gox4b")
+highlight_panel = NodePath("Panel")
+highlight_panel_trans = NodePath("PanelTr")
+entity_resource = ExtResource("16_vajni")
+current_room_path = NodePath("..")
+flipped = true
+
+[node name="Agent2" type="PathFollow2D" parent="rooms/corridor/room_path" index="4" node_paths=PackedStringArray("highlight_panel", "highlight_panel_trans", "current_room_path") groups=["Agent", "Sync"] instance=ExtResource("13_6xetv")]
+z_index = 1
+position = Vector2(-221.688, 5.03887)
+progress = 1936.37
+rotates = false
+loop = false
+script = ExtResource("12_gox4b")
+highlight_panel = NodePath("Panel")
+highlight_panel_trans = NodePath("PanelTr")
+entity_resource = ExtResource("15_0x7h3")
+current_room_path = NodePath("../../../corridor2/room_path")
+flipped = true
+
+[node name="Panel" parent="rooms/corridor" index="2"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("15_2vpme")
+script = ExtResource("16_tu32o")
+
+[node name="corridor2" parent="rooms" groups=["Room"] instance=ExtResource("4_ng26e")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.688
+anchor_bottom = 0.542
+offset_left = 402.0
+offset_top = 780.0
+offset_right = 2563.0
+offset_bottom = 1170.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_grifs")
+
+[node name="HBoxContainer" parent="rooms/corridor2" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" parent="rooms/corridor2/HBoxContainer" index="0"]
+layout_mode = 2
+texture = ExtResource("6_jij3h")
+
+[node name="ColorRect" parent="rooms/corridor2/HBoxContainer" index="1"]
+texture_repeat = 2
+custom_minimum_size = Vector2(2000, 130)
+layout_mode = 2
+texture = ExtResource("7_ldpdo")
+stretch_mode = 1
+
+[node name="TextureRect2" parent="rooms/corridor2/HBoxContainer" index="2"]
+layout_mode = 2
+texture = ExtResource("8_ng26e")
+
+[node name="room_path" parent="rooms/corridor2" index="1"]
+position = Vector2(392, 310.764)
+curve = SubResource("Curve2D_r14vu")
+
+[node name="waypoint2" type="PathFollow2D" parent="rooms/corridor2/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("9_p70qv")]
+position = Vector2(-299.998, 5)
+progress = 2014.59
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../elevator2")
+
+[node name="waypoint3" type="PathFollow2D" parent="rooms/corridor2/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("9_p70qv")]
+position = Vector2(305.182, 5.3004)
+progress = 1409.41
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../chamber3")
+
+[node name="Panel" parent="rooms/corridor2" index="2"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("15_2vpme")
+script = ExtResource("16_tu32o")
+
+[node name="elevator" parent="rooms" groups=["Room"] instance=ExtResource("17_6a221")]
+layout_mode = 0
+offset_right = 267.0
+offset_bottom = 380.0
+script = ExtResource("5_grifs")
+
+[node name="HBoxContainer" parent="rooms/elevator" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" parent="rooms/elevator/HBoxContainer" index="0"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_jij3h")
+
+[node name="ColorRect" parent="rooms/elevator/HBoxContainer" index="1"]
+texture_repeat = 2
+custom_minimum_size = Vector2(260, 380)
+layout_mode = 2
+texture = ExtResource("18_p70qv")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect2" parent="rooms/elevator/HBoxContainer" index="2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_ng26e")
+
+[node name="room_path" parent="rooms/elevator" index="1"]
+position = Vector2(133.5, 335)
+curve = SubResource("Curve2D_mvprs")
+
+[node name="waypoint" type="PathFollow2D" parent="rooms/elevator/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("9_p70qv")]
+visible = false
+position = Vector2(-100, 0)
+progress = 200.0
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../elevator2")
+
+[node name="waypoint2" type="PathFollow2D" parent="rooms/elevator/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("9_p70qv")]
+visible = false
+position = Vector2(100, 0)
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../corridor")
+
+[node name="Panel" parent="rooms/elevator" index="2"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("15_2vpme")
+script = ExtResource("16_tu32o")
+
+[node name="elevator2" parent="rooms" groups=["Room"] instance=ExtResource("17_6a221")]
+layout_mode = 0
+offset_top = 780.0
+offset_right = 267.0
+offset_bottom = 1160.0
+script = ExtResource("5_grifs")
+
+[node name="HBoxContainer" parent="rooms/elevator2" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" parent="rooms/elevator2/HBoxContainer" index="0"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_jij3h")
+
+[node name="ColorRect" parent="rooms/elevator2/HBoxContainer" index="1"]
+texture_repeat = 2
+custom_minimum_size = Vector2(260, 380)
+layout_mode = 2
+texture = ExtResource("18_p70qv")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect2" parent="rooms/elevator2/HBoxContainer" index="2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_ng26e")
+
+[node name="room_path" parent="rooms/elevator2" index="1"]
+position = Vector2(133.5, 335)
+curve = SubResource("Curve2D_mvprs")
+
+[node name="waypoint" type="PathFollow2D" parent="rooms/elevator2/room_path" index="0" node_paths=PackedStringArray("leading_room") instance=ExtResource("9_p70qv")]
+visible = false
+position = Vector2(-100, 0)
+progress = 200.0
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../elevator")
+
+[node name="waypoint2" type="PathFollow2D" parent="rooms/elevator2/room_path" index="1" node_paths=PackedStringArray("leading_room") instance=ExtResource("9_p70qv")]
+visible = false
+position = Vector2(100, 0)
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../corridor2")
+
+[node name="Panel" parent="rooms/elevator2" index="2"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("15_2vpme")
+script = ExtResource("16_tu32o")
+
+[node name="chamber" parent="rooms" node_paths=PackedStringArray("bar") groups=["Room", "Sync"] instance=ExtResource("19_far53")]
+layout_mode = 0
+offset_left = 1690.0
+offset_top = -919.0
+offset_right = 2548.0
+offset_bottom = -196.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("20_60ixs")
+anomaly = ExtResource("21_ijmka")
+bar = NodePath("IceboxBar")
+agent_option = ExtResource("22_h43ho")
+
+[node name="FSM" parent="rooms/chamber" index="0" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("23_hnpag")
+initial_state = NodePath("Awaiting")
+
+[node name="Awaiting" parent="rooms/chamber/FSM" index="0"]
+script = ExtResource("24_6xetv")
+
+[node name="Working" parent="rooms/chamber/FSM" index="1"]
+script = ExtResource("25_ok8y2")
+
+[node name="EscapeTimer" parent="rooms/chamber" index="1" node_paths=PackedStringArray("label")]
+wait_time = 10.0
+one_shot = true
+script = ExtResource("26_0x7h3")
+label = NodePath("../Label")
+
+[node name="HBoxContainer" parent="rooms/chamber" index="2"]
+layout_mode = 2
+
+[node name="VBoxContainer" parent="rooms/chamber/HBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="LinkButton" parent="rooms/chamber/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("27_7mrqq")
+theme_override_font_sizes/font_size = 60
+text = "Ice Box (5)"
+underline = 2
+
+[node name="HBoxContainer" parent="rooms/chamber/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" parent="rooms/chamber/HBoxContainer/VBoxContainer/HBoxContainer" index="0"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_jij3h")
+
+[node name="ColorRect" parent="rooms/chamber/HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
+texture_repeat = 2
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+texture_normal = ExtResource("28_vajni")
+
+[node name="TextureRect2" parent="rooms/chamber/HBoxContainer/VBoxContainer/HBoxContainer" index="2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_ng26e")
+
+[node name="room_path" parent="rooms/chamber" index="3"]
+curve = SubResource("Curve2D_y0fo7")
+
+[node name="waypoint" parent="rooms/chamber/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+position = Vector2(664, 661)
+progress = 549.604
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../corridor")
+
+[node name="Anomaly" type="PathFollow2D" parent="rooms/chamber/room_path" index="1" node_paths=PackedStringArray("current_room_path") groups=["Sync"] instance=ExtResource("29_leve8")]
+z_index = 1
+position = Vector2(171, 662)
+rotates = false
+loop = false
+script = ExtResource("30_6a221")
+entity_resource = ExtResource("21_ijmka")
+current_room_path = NodePath("..")
+
+[node name="ResearchMenu" parent="rooms/chamber/CanvasLayer" index="0"]
+visible = false
+z_index = 5
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8rl70")
+current_tab = 0
+script = ExtResource("31_63ly6")
+
+[node name="CenterContainer" parent="rooms/chamber/CanvasLayer" index="1"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WorkContainer" parent="rooms/chamber/CanvasLayer/CenterContainer" index="0"]
+visible = false
+layout_mode = 2
+
+[node name="AgentContainer" parent="rooms/chamber/CanvasLayer/CenterContainer" index="1"]
+visible = false
+layout_mode = 2
+
+[node name="Label" parent="rooms/chamber" index="5"]
+visible = false
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 410
+text = "0.0"
+horizontal_alignment = 3
+
+[node name="Panel" parent="rooms/chamber" index="6"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("32_far53")
+script = ExtResource("33_2ede1")
+
+[node name="IceboxBar" type="Sprite2D" parent="rooms/chamber" node_paths=PackedStringArray("chamber") groups=["Sync"] instance=ExtResource("34_3ea3w")]
+position = Vector2(-71, 414)
+texture = ExtResource("35_ijmka")
+script = ExtResource("36_7p564")
+chamber = NodePath("..")
+
+[node name="chamber2" parent="rooms" node_paths=PackedStringArray("bar") groups=["Room", "Sync"] instance=ExtResource("19_far53")]
+layout_mode = 0
+offset_left = 540.0
+offset_top = -919.0
+offset_right = 1398.0
+offset_bottom = -196.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("20_60ixs")
+anomaly = ExtResource("37_lhe2s")
+bar = NodePath("WirebirdBar")
+agent_option = ExtResource("22_h43ho")
+
+[node name="FSM" parent="rooms/chamber2" index="0" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("23_hnpag")
+initial_state = NodePath("Awaiting")
+
+[node name="Awaiting" parent="rooms/chamber2/FSM" index="0"]
+script = ExtResource("24_6xetv")
+
+[node name="Working" parent="rooms/chamber2/FSM" index="1"]
+script = ExtResource("25_ok8y2")
+
+[node name="EscapeTimer" parent="rooms/chamber2" index="1" node_paths=PackedStringArray("label")]
+wait_time = 10.0
+one_shot = true
+script = ExtResource("26_0x7h3")
+label = NodePath("../Label")
+
+[node name="HBoxContainer" parent="rooms/chamber2" index="2"]
+layout_mode = 2
+
+[node name="VBoxContainer" parent="rooms/chamber2/HBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="LinkButton" parent="rooms/chamber2/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("27_7mrqq")
+theme_override_font_sizes/font_size = 60
+text = "Wirebird (0)"
+underline = 2
+
+[node name="HBoxContainer" parent="rooms/chamber2/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" parent="rooms/chamber2/HBoxContainer/VBoxContainer/HBoxContainer" index="0"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_jij3h")
+
+[node name="ColorRect" parent="rooms/chamber2/HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
+texture_repeat = 2
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+texture_normal = ExtResource("28_vajni")
+
+[node name="TextureRect2" parent="rooms/chamber2/HBoxContainer/VBoxContainer/HBoxContainer" index="2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_ng26e")
+
+[node name="room_path" parent="rooms/chamber2" index="3"]
+curve = SubResource("Curve2D_y0fo7")
+
+[node name="Anomaly" type="PathFollow2D" parent="rooms/chamber2/room_path" index="0" node_paths=PackedStringArray("current_room_path") instance=ExtResource("38_ve42i")]
+z_index = 1
+position = Vector2(171, 662)
+rotates = false
+loop = false
+script = ExtResource("30_6a221")
+entity_resource = ExtResource("21_ijmka")
+current_room_path = NodePath("..")
+flipped = true
+
+[node name="waypoint" parent="rooms/chamber2/room_path" index="1" node_paths=PackedStringArray("leading_room")]
+position = Vector2(664, 661)
+progress = 549.604
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../corridor")
+
+[node name="ResearchMenu" parent="rooms/chamber2/CanvasLayer" index="0"]
+visible = false
+z_index = 5
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8rl70")
+current_tab = 0
+script = ExtResource("31_63ly6")
+
+[node name="CenterContainer" parent="rooms/chamber2/CanvasLayer" index="1"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WorkContainer" parent="rooms/chamber2/CanvasLayer/CenterContainer" index="0"]
+visible = false
+layout_mode = 2
+
+[node name="AgentContainer" parent="rooms/chamber2/CanvasLayer/CenterContainer" index="1"]
+visible = false
+layout_mode = 2
+
+[node name="Label" parent="rooms/chamber2" index="5"]
+visible = false
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 410
+text = "0.0"
+horizontal_alignment = 3
+
+[node name="Panel" parent="rooms/chamber2" index="6"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("32_far53")
+script = ExtResource("33_2ede1")
+
+[node name="WirebirdBar" type="Sprite2D" parent="rooms/chamber2" node_paths=PackedStringArray("chamber") groups=["Sync"] instance=ExtResource("39_fkfac")]
+position = Vector2(-87, 407)
+texture = ExtResource("35_ijmka")
+script = ExtResource("40_tmh88")
+chamber = NodePath("..")
+
+[node name="chamber3" parent="rooms" node_paths=PackedStringArray("bar") groups=["Room", "Sync"] instance=ExtResource("19_far53")]
+layout_mode = 0
+offset_left = 580.968
+offset_top = 1343.81
+offset_right = 1438.97
+offset_bottom = 2066.81
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("20_60ixs")
+anomaly = ExtResource("41_lqlme")
+bar = NodePath("BaloonBar")
+agent_option = ExtResource("22_h43ho")
+
+[node name="FSM" parent="rooms/chamber3" index="0" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("23_hnpag")
+initial_state = NodePath("Awaiting")
+
+[node name="Awaiting" parent="rooms/chamber3/FSM" index="0"]
+script = ExtResource("24_6xetv")
+
+[node name="Working" parent="rooms/chamber3/FSM" index="1"]
+script = ExtResource("25_ok8y2")
+
+[node name="EscapeTimer" parent="rooms/chamber3" index="1" node_paths=PackedStringArray("label")]
+wait_time = 10.0
+one_shot = true
+script = ExtResource("26_0x7h3")
+label = NodePath("../Label")
+
+[node name="HBoxContainer" parent="rooms/chamber3" index="2"]
+layout_mode = 2
+
+[node name="VBoxContainer" parent="rooms/chamber3/HBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="LinkButton" parent="rooms/chamber3/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("27_7mrqq")
+theme_override_font_sizes/font_size = 60
+text = "Baloon (0)"
+underline = 2
+
+[node name="HBoxContainer" parent="rooms/chamber3/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" parent="rooms/chamber3/HBoxContainer/VBoxContainer/HBoxContainer" index="0"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_jij3h")
+
+[node name="ColorRect" parent="rooms/chamber3/HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
+texture_repeat = 2
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+texture_normal = ExtResource("28_vajni")
+
+[node name="TextureRect2" parent="rooms/chamber3/HBoxContainer/VBoxContainer/HBoxContainer" index="2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_ng26e")
+
+[node name="room_path" parent="rooms/chamber3" index="3"]
+curve = SubResource("Curve2D_y0fo7")
+
+[node name="Anomaly" type="PathFollow2D" parent="rooms/chamber3/room_path" index="0" node_paths=PackedStringArray("current_room_path") instance=ExtResource("42_mtx1a")]
+z_index = 1
+position = Vector2(171, 662)
+rotates = false
+loop = false
+script = ExtResource("30_6a221")
+entity_resource = ExtResource("21_ijmka")
+current_room_path = NodePath("..")
+
+[node name="waypoint" parent="rooms/chamber3/room_path" index="1" node_paths=PackedStringArray("leading_room")]
+position = Vector2(664, 661)
+progress = 549.604
+rotates = false
+script = ExtResource("10_2ohyl")
+leading_room = NodePath("../../../corridor2")
+
+[node name="ResearchMenu" parent="rooms/chamber3/CanvasLayer" index="0"]
+visible = false
+z_index = 5
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8rl70")
+current_tab = 0
+script = ExtResource("31_63ly6")
+
+[node name="CenterContainer" parent="rooms/chamber3/CanvasLayer" index="1"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WorkContainer" parent="rooms/chamber3/CanvasLayer/CenterContainer" index="0"]
+visible = false
+layout_mode = 2
+
+[node name="AgentContainer" parent="rooms/chamber3/CanvasLayer/CenterContainer" index="1"]
+visible = false
+layout_mode = 2
+
+[node name="Label" parent="rooms/chamber3" index="5"]
+visible = false
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 410
+text = "0.0"
+horizontal_alignment = 3
+
+[node name="Panel" parent="rooms/chamber3" index="6"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("32_far53")
+script = ExtResource("33_2ede1")
+
+[node name="BaloonBar" type="Sprite2D" parent="rooms/chamber3" groups=["Sync"] instance=ExtResource("43_6n7a7")]
+position = Vector2(-92, 396)
+texture = ExtResource("35_ijmka")
+script = ExtResource("44_ftsi8")
+
+[node name="Camera" type="Camera2D" parent="." instance=ExtResource("45_a4qq0")]
+position = Vector2(1190.93, 383.192)
+zoom = Vector2(0.278092, 0.278092)
+script = ExtResource("46_akh0v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="win_screen" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.5
+offset_top = -181.0
+offset_right = 281.5
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.306639, 0.319979, 0.369546, 1)
+script = ExtResource("47_ckfer")
+
+[node name="Label" type="Label" parent="CanvasLayer/win_screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -36.0
+offset_right = 107.5
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("27_7mrqq")
+theme_override_font_sizes/font_size = 60
+text = "You Won"
+
+[node name="DayScene" type="Control" parent="CanvasLayer" instance=ExtResource("48_ymqlc")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("49_7mrqq")
+
+[node name="ResourseBox" type="VBoxContainer" parent="CanvasLayer" instance=ExtResource("50_pwl6i")]
+custom_minimum_size = Vector2(100, 300)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_top = 3.0
+offset_right = -19.0
+offset_bottom = 415.0
+grow_horizontal = 0
+script = ExtResource("51_tmvjf")
+
+[node name="InventoryButton" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("inventory")]
+offset_left = 22.0
+offset_top = 138.0
+offset_right = 157.0
+offset_bottom = 182.0
+theme_override_font_sizes/font_size = 30
+text = "Inventory"
+script = ExtResource("52_6kleb")
+inventory = NodePath("../equipment_menu")
+
+[node name="equipment_menu" type="VBoxContainer" parent="CanvasLayer" instance=ExtResource("53_lfd47")]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("54_leve8")
+
+[node name="EscapeMenu" parent="CanvasLayer" instance=ExtResource("55_s23h4")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" parent="CanvasLayer/EscapeMenu" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -96.0
+offset_right = 161.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" parent="CanvasLayer/EscapeMenu/Panel" index="0"]
+layout_mode = 2
+offset_left = 23.0
+offset_top = 66.0
+offset_right = 299.0
+offset_bottom = 126.0
+
+[node name="Resume" parent="CanvasLayer/EscapeMenu/Panel/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Quit" parent="CanvasLayer/EscapeMenu/Panel/VBoxContainer" index="1"]
+layout_mode = 2
+button_pressed = true
+text = "Quit"
+
+[node name="Label" parent="CanvasLayer/EscapeMenu/Panel" index="1"]
+layout_mode = 1
+offset_left = 144.0
+offset_top = 18.0
+offset_right = 180.0
+offset_bottom = 61.0
+text = "Menu
+"
+
+[node name="EscMenuManager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("56_uq64m")
+
+[connection signal="timeout" from="rooms/chamber/EscapeTimer" to="rooms/chamber" method="_on_escape_timer_timeout"]
+[connection signal="pressed" from="rooms/chamber/HBoxContainer/VBoxContainer/LinkButton" to="rooms/chamber" method="_on_abno_name_button_down"]
+[connection signal="pressed" from="rooms/chamber/HBoxContainer/VBoxContainer/HBoxContainer/ColorRect" to="rooms/chamber" method="_on_color_rect_pressed"]
+[connection signal="menu_close" from="rooms/chamber/CanvasLayer/ResearchMenu" to="." method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber/CanvasLayer/ResearchMenu" to="." method="_on_menu_open"]
+[connection signal="work_completed" from="rooms/chamber/IceboxBar" to="rooms/chamber" method="_on_bar_work_completed"]
+[connection signal="timeout" from="rooms/chamber2/EscapeTimer" to="rooms/chamber2" method="_on_escape_timer_timeout"]
+[connection signal="pressed" from="rooms/chamber2/HBoxContainer/VBoxContainer/LinkButton" to="rooms/chamber2" method="_on_abno_name_button_down"]
+[connection signal="pressed" from="rooms/chamber2/HBoxContainer/VBoxContainer/HBoxContainer/ColorRect" to="rooms/chamber2" method="_on_color_rect_pressed"]
+[connection signal="menu_close" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="." method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="." method="_on_menu_open"]
+[connection signal="work_completed" from="rooms/chamber2/WirebirdBar" to="rooms/chamber2" method="_on_bar_work_completed"]
+[connection signal="timeout" from="rooms/chamber3/EscapeTimer" to="rooms/chamber3" method="_on_escape_timer_timeout"]
+[connection signal="pressed" from="rooms/chamber3/HBoxContainer/VBoxContainer/LinkButton" to="rooms/chamber3" method="_on_abno_name_button_down"]
+[connection signal="pressed" from="rooms/chamber3/HBoxContainer/VBoxContainer/HBoxContainer/ColorRect" to="rooms/chamber3" method="_on_color_rect_pressed"]
+[connection signal="menu_close" from="rooms/chamber3/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
+[connection signal="menu_open" from="rooms/chamber3/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
+[connection signal="work_completed" from="rooms/chamber3/BaloonBar" to="rooms/chamber3" method="_on_bar_work_completed"]
+[connection signal="pressed" from="CanvasLayer/InventoryButton" to="CanvasLayer/InventoryButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/EscapeMenu/Panel/VBoxContainer/Resume" to="EscMenuManager" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/EscapeMenu/Panel/VBoxContainer/Quit" to="EscMenuManager" method="_on_quit_pressed"]
+
+[editable path="rooms/corridor"]
+[editable path="rooms/corridor2"]
+[editable path="rooms/elevator"]
+[editable path="rooms/elevator2"]
+[editable path="rooms/chamber"]
+[editable path="rooms/chamber2"]
+[editable path="rooms/chamber3"]
+[editable path="CanvasLayer/EscapeMenu"]

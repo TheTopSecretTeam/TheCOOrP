@@ -6,7 +6,7 @@ class_name Abnormality
 @onready var health_bar: TextureProgressBar = $HealthBar/HealthBackground/HealthForeground
 @onready var health_text: Label = $HealthBar/HealthText
 
-var state: int = CHAMBER
+@export var state: int = CHAMBER
 var chamber_waypoint: Node2D
 
 enum {

@@ -5,6 +5,7 @@ class_name Lobby
 signal start_game
 signal join_game
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.players_changed.connect(update_players_list)
@@ -30,11 +31,20 @@ func update_players_list() -> void:
 
 # Called when the Start button is pressed
 func _on_start_button_pressed() -> void:
+	#var saved_scene = ResourceLoader.load("res://save1.tscn").instantiate()
 	startGame.rpc()
-	
+
 @rpc("authority", "call_local")
 func startGame() -> void:
-	get_tree().change_scene_to_file("res://scenes/map.tscn")
+	if multiplayer.is_server():
+		if Global.loading:
+			get_tree().change_scene_to_file(Global.save_file_path)
+		else:
+			get_tree().change_scene_to_file("res://scenes/map.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/map.tscn")
+	#if !is_instance_valid(saved_scene): print("error"); return
+	#get_tree().change_scene_to_file("res://scenes/map.tscn")
 
 # Called when the Exit button is pressed
 func _on_exit_button_pressed() -> void:

@@ -2,6 +2,11 @@ extends Node
 
 signal reset_globals
 
+
+var save_file_path : String = "res://save1.tscn"
+var loading : bool = false #tells lobby to load existing savefile
+var hosting : bool = true
+var singleplayer : bool = true
 var Players = {}
 var cursors = {}
 var color

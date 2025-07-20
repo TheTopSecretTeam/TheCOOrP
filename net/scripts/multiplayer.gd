@@ -4,7 +4,11 @@ extends Control
 const localhost_names: Array[String] = ["127.0.0.1", "localhost", "::1", ""]
 
 func _ready() -> void:
-	pass
+	if Global.hosting:
+		$Connect.hide()
+		$hostname.hide()
+	else:
+		$Host.hide()
 
 func _on_host_button_down() -> void:
 	if $name.text == "":

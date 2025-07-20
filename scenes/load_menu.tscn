@@ -1,4 +1,6 @@
-[gd_scene load_steps=0 format=3 uid="uid://d0byn4o8mux4n"]
+[gd_scene load_steps=2 format=3 uid="uid://d0byn4o8mux4n"]
+
+[ext_resource type="Script" uid="uid://dmroou2q7r0ho" path="res://scenes/load_menu.gd" id="1_rvg4c"]
 
 [node name="LoadMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ offset_left = 254.0
 offset_top = 58.0
 offset_right = 254.0
 offset_bottom = 207.0
+script = ExtResource("1_rvg4c")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -18,27 +21,29 @@ offset_bottom = 334.0
 layout_mode = 2
 alignment = 1
 
-[node name="NewWorldButton1" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="save0" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "Empty"
 
-[node name="NewWorldButton2" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="save1" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Empty"
 
-[node name="NewWorldButton3" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="save2" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Empty"
 
-[node name="NewWorldButton4" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Empty"
-
-[node name="NewWorldButton5" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="save3" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Empty"
 
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back to Main Menu"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/save0" to="." method="_on_save_pressed" binds= [0]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/save1" to="." method="_on_save_pressed" binds= [1]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/save2" to="." method="_on_save_pressed" binds= [2]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/save3" to="." method="_on_save_pressed" binds= [3]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -2,7 +2,7 @@ extends TextureProgressBar
 
 @export var max_energy: int = 10
 
-@onready var label = $"../Label"
+@export var label : Label
 
 func _ready() -> void:
 	max_value = max_energy

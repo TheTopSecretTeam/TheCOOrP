@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=28 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://net/scripts/net_manager.gd" id="3_f22gk"]
@@ -15,11 +15,14 @@
 [ext_resource type="Resource" uid="uid://bdoglf8dgwrlw" path="res://res/scripts/Abnormalities/icebox.tres" id="11_n1psn"]
 [ext_resource type="PackedScene" uid="uid://bypwwbsq4gn2l" path="res://obj/bars/icebox_bar.tscn" id="12_6k6j1"]
 [ext_resource type="Script" uid="uid://dc46wrfcoudhl" path="res://scenes/win_screen.gd" id="12_gw3fx"]
+[ext_resource type="PackedScene" uid="uid://qnu5tkebx8pu" path="res://obj/entities/anomaly_entities/icebox.tscn" id="12_mkblt"]
 [ext_resource type="FontFile" uid="uid://gwqdy37jl0s" path="res://others/style/fonts/norwester.otf" id="12_wslke"]
 [ext_resource type="PackedScene" uid="uid://v6fa04wfro8q" path="res://obj/bars/wirebird_bar.tscn" id="13_m335s"]
 [ext_resource type="Resource" uid="uid://cy58j33jam8ru" path="res://res/scripts/Abnormalities/baloon.tres" id="14_4b7dj"]
+[ext_resource type="PackedScene" uid="uid://3hysti02x5o6" path="res://obj/entities/anomaly_entities/wirebird.tscn" id="14_4o3w1"]
 [ext_resource type="PackedScene" uid="uid://dxcj8bws0tbwt" path="res://UI/gafur_stuff/day_scene.tscn" id="14_n1psn"]
 [ext_resource type="PackedScene" uid="uid://c2n814k11dxc2" path="res://obj/bars/baloon_bar.tscn" id="14_sq6bu"]
+[ext_resource type="PackedScene" uid="uid://y4gku6b2olyn" path="res://obj/entities/anomaly_entities/baloon.tscn" id="17_6ek7f"]
 [ext_resource type="Script" uid="uid://4c5x3dvu4uwv" path="res://scenes/inventory_button.gd" id="18_mo32q"]
 [ext_resource type="PackedScene" uid="uid://dds5duujyul3g" path="res://UI/equipment_menu_components/equimpent_menu.tscn" id="20_m335s"]
 [ext_resource type="PackedScene" uid="uid://dmy5r32cyw5w0" path="res://UI/gafur_stuff/escape_menu.tscn" id="21_4b7dj"]
@@ -164,6 +167,9 @@ bar = NodePath("IceboxBar")
 position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor")
 
+[node name="Anomaly" parent="rooms/chamber/room_path" index="1" instance=ExtResource("12_mkblt")]
+position = Vector2(171, 662)
+
 [node name="IceboxBar" parent="rooms/chamber" node_paths=PackedStringArray("chamber") instance=ExtResource("12_6k6j1")]
 position = Vector2(-71, 414)
 chamber = NodePath("..")
@@ -179,7 +185,11 @@ offset_right = 1398.0
 offset_bottom = -196.0
 bar = NodePath("WirebirdBar")
 
-[node name="waypoint" parent="rooms/chamber2/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+[node name="Anomaly" parent="rooms/chamber2/room_path" index="0" instance=ExtResource("14_4o3w1")]
+position = Vector2(171, 662)
+flipped = true
+
+[node name="waypoint" parent="rooms/chamber2/room_path" index="1" node_paths=PackedStringArray("leading_room")]
 position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor")
 
@@ -202,7 +212,10 @@ offset_bottom = 2066.81
 anomaly = ExtResource("14_4b7dj")
 bar = NodePath("BaloonBar")
 
-[node name="waypoint" parent="rooms/chamber3/room_path" index="0" node_paths=PackedStringArray("leading_room")]
+[node name="Anomaly" parent="rooms/chamber3/room_path" index="0" instance=ExtResource("17_6ek7f")]
+position = Vector2(171, 662)
+
+[node name="waypoint" parent="rooms/chamber3/room_path" index="1" node_paths=PackedStringArray("leading_room")]
 position = Vector2(664, 661)
 leading_room = NodePath("../../../corridor2")
 

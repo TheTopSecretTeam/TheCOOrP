@@ -41,9 +41,9 @@ func transfer(entity: Entity, _previous_room) -> bool:
 func load_anomaly() -> void:
 	$HBoxContainer/VBoxContainer/LinkButton.text = anomaly.monster_name + " (" + str(anomaly.unique_pe) + ")"
 	$CanvasLayer/ResearchMenu.anomaly = anomaly
-	var anomaly_inst = load(anomaly.entity).instantiate()
-	$room_path.add_child(anomaly_inst)
-	anomaly_inst.flipped = true
+	#var anomaly_inst = load(anomaly.entity).instantiate()
+	#$room_path.add_child(anomaly_inst)
+	#anomaly_inst.flipped = true
 	for _action in anomaly.actions:
 		print(_action.action_name)
 		actions.append(_action)
@@ -156,7 +156,8 @@ func get_sync_data() -> Dictionary:
 		"working": working,
 		"working_agent_id": agent_id,
 		"waiting_time": $EscapeTimer.wait_time,
-		"remaining_time": $EscapeTimer.get_time_left()
+		"remaining_time": $EscapeTimer.get_time_left(),
+		"visible": visible
 	}
 
 func apply_sync_data(data: Dictionary) -> void:
@@ -172,7 +173,7 @@ func apply_sync_data(data: Dictionary) -> void:
 		$Label.hide()
 		$EscapeTimer.stop()
 		$EscapeTimer.started = false
-		
+	visible = data["visible"]
 	working = data["working"]
 	if data["working_agent_id"]:
 		for agent in Agents.agents:

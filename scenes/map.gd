@@ -1,5 +1,5 @@
 extends Control
-class_name Map
+#class_name Map
 
 @onready var net_manager = preload("res://net/scripts/net_manager.gd").new()
 @onready var tab_menu = preload("res://UI/tabMenu/TabMenu.tscn").instantiate()

@@ -188,8 +188,18 @@ func ConnectToLobby(_playername: String, hostname: String):
 func startGame():
 	get_tree().change_scene_to_file("res://UI/lobby/lobby.tscn")
 
+func save_game():
+	var node = get_tree().current_scene
+	var scene = PackedScene.new()
+	scene.pack(node)
+	ResourceSaver.save(scene,Global.save_file_path)
+
 ## Gracefully leave the map
 func leave_map() -> void:
+	
+	if multiplayer.is_server():  # save game if host
+		save_game()
+	
 	# Close multiplayer connection
 	#if multiplayer.has_multiplayer_peer():
 		#if multiplayer.is_server():
