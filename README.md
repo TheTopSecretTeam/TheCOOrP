@@ -12,7 +12,7 @@ Lobotomy Corporation COOP project. Developing a game inspired by Lobotomy Corpor
 
 ## Links
 
-- [Link to the Demo Video](https://drive.google.com/drive/folders/1pGh9TZ-6xcYVOox96Rov0pG2shFWNsGE?usp=drive_link)
+- [Link to the Demo Video](https://drive.google.com/drive/folders/1jkC9AMyfr0wK26wWsfe0GJbxMCdyF_19?usp=drive_link)
 - [Link to video with customer](https://drive.google.com/drive/folders/1dG_BZbB0Pia2oZM1XE1AgbxNdWinBCYa?usp=sharing)
 
 ## Description
