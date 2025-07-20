@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://crgoq5mij0ewi" path="res://UI/HostDiscoonected/disconnect.gd" id="1_vfhdr"]
 
 [node name="HostDisconnected" type="Control"]
+process_mode = 3
+z_index = 99
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -27,3 +29,5 @@ layout_mode = 2
 text = "return to main menu
 "
 script = ExtResource("1_vfhdr")
+
+[connection signal="pressed" from="VBoxContainer/Return" to="VBoxContainer/Return" method="_on_return_button_pressed"]

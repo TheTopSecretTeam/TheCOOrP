@@ -16,6 +16,7 @@ func _ready() -> void:
 	multiplayer.peer_connected.connect(PlayerConnected)
 	multiplayer.peer_disconnected.connect(PlayerDisconnected)
 	multiplayer.connected_to_server.connect(successful_connection)
+	multiplayer.server_disconnected.connect(HostDisconnected)
 	multiplayer.connection_failed.connect(failed_to_connect)
 
 func reset() -> void:
@@ -86,13 +87,19 @@ func PlayerDisconnected(id):
 	# check if peer is not server and disconnected
 	# and others in Lobby then just ignore
 	sync_players_with_peers()
-	if (id != 1):
-		if get_tree().current_scene.name == "Lobby":
-			return
+	if (id != 1) and get_tree().current_scene.name == "Lobby":
+		return
 
-	print("Player: " + str(id) + " disconnected")
+	#print("Player: " + str(id) + " disconnected")
+	#var disconnected_scene = load("res://UI/HostDiscoonected/host_disconnected.tscn").instantiate()
+	#get_tree().root.add_child(disconnected_scene)
+	#get_tree().paused = true
+
+func HostDisconnected():
+	print("Host disconnected")
 	var disconnected_scene = load("res://UI/HostDiscoonected/host_disconnected.tscn").instantiate()
 	get_tree().root.add_child(disconnected_scene)
+	Global.reset_globals.emit()
 	get_tree().paused = true
 
 # RPC to notify all clients of a player disconnection
@@ -116,6 +123,7 @@ func successful_connection():
 	print("Successful connection to server")
 
 func failed_to_connect():
+	multiplayer.multiplayer_peer.close()
 	print("Couldn't connect")
 
 func SendSeed():
@@ -183,13 +191,13 @@ func startGame():
 ## Gracefully leave the map
 func leave_map() -> void:
 	# Close multiplayer connection
-	if multiplayer.has_multiplayer_peer():
-		if multiplayer.is_server():
-			print("Disconnect: Closed multiplayer peer on server")
-		else:
-			print("Disconnect: Disconnected client, peer: ", multiplayer.get_unique_id())
-		multiplayer.multiplayer_peer.close()
-
+	#if multiplayer.has_multiplayer_peer():
+		#if multiplayer.is_server():
+			#print("Disconnect: Closed multiplayer peer on server")
+		#else:
+			#print("Disconnect: Disconnected client, peer: ", multiplayer.get_unique_id())
+	multiplayer.multiplayer_peer.close()
+	
 	Global.reset_globals.emit()
 	# Unpause and switch to main menu
 	get_tree().paused = false
