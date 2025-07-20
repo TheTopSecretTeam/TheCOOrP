@@ -2,7 +2,7 @@ class_name Entity
 extends PathFollow2D
 
 # Reference to the entity's resource data
-@export var entity_resource: EntityResource
+@export var entity_resource: EntityResource = EntityResource.new()
 var path: Array = []
 var target: Entity = null
 var attack_cooldown: float = 0.0
