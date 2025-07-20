@@ -21,13 +21,11 @@ Lobotomy Corporation COOP project. Developing a game inspired by Lobotomy Corpor
 
 The main goal of our project is creating a spiritual successor to Lobotomy Corporation. Although the original game provides an interesting and hard experience, the main gameplay philosophy makes it so most monsters are abandoned after 2-3 days of care. Changing this, as well as adding multiplayer - are our main priorities.
 
-### Project Context diagram
+### Wiki (for customer)
 
-![Project Contexy Diagram](docs/img/Diagram.jpeg)
+It`s important to keep README clean and structurally clear.
 
-### Feature roadmap
-
-![Roadmap](docs/img/Roadmap.png)
+[Wiki link](https://github.com/TheTopSecretTeam/TheCOOrP/wiki)
 
 ### Usage instractions
 
@@ -38,6 +36,32 @@ The main goal of our project is creating a spiritual successor to Lobotomy Corpo
 ### Project installation
 
 Download the latest version from the Itch\.io, then unpack to desired location and launch.
+
+### Project structure clarification (for customer)
+
+It`s important for developers to understand the structure of our repository.
+
+1) **.github**: templates and CI pipeline are stored here.
+
+2) **UI**: external configuration of our UI.
+
+3) **addons**: there is GdUnit4 that we use for unit tests.
+
+4) **docs**: all documentation including images for README and .md files.
+
+5) **img**: there are all sprites for game.
+
+6) **net**: main files connected with multiplayer.
+
+7) **obj**: all objects in game with their functionallity.
+
+8) **others**: everything that doesn't fit the previous folders is stored here. These are mostly global things and the internals of our UI, and the font of our game is also stored.
+
+9) **res**: there is all information about entities stats.
+
+10) **scenes**: there is our map with all scenes.
+
+11) **tests**: there are all unit tests.
 
 ## Documentation
 
