@@ -71,10 +71,10 @@ ok_button_text = "Yes"
 dialog_text = "Are you sure you want to exit?"
 cancel_button_text = "No"
 
-[connection signal="pressed" from="Main/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/Host" to="." method="_on_Multiplayer_button_pressed"]
-[connection signal="pressed" from="Main/VBoxContainer/Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/Connect" to="." method="_on_Multiplayer_button_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/SingleplayerButton" to="." method="_on_Singleplayer_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/SettingsButton" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/ExitButton" to="." method="_on_Exit_pressed"]

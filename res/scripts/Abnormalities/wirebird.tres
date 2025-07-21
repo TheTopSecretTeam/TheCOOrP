@@ -18,7 +18,7 @@ They are passive but can become dangerous during mating season if they grow too 
 Due to their ability to convert matter via Radiance and their behaivior they are perfect for collecting samples."
 texture = ExtResource("7_yxm2n")
 threat_level = 1
-hp = 200
+hp = 400
 damage_type = "physical"
 damage_output = 5
 attack_speed = 3
@@ -45,7 +45,7 @@ path2d_progress = 0.0
 team = 0
 max_hp = 200
 current_hp = 100
-travel_speed = 5
+travel_speed = 5.0
 base_damage_output = 5
 base_attack_speed = 3.0
 base_damage_type = "physical"
