@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bx0u5ty4gc1o5"]
+[gd_scene load_steps=17 format=3 uid="uid://bx0u5ty4gc1o5"]
 
 [ext_resource type="Resource" uid="uid://b4uc1785bd3wc" path="res://res/scripts/Abnormalities/wirebird.tres" id="2_xsyyv"]
 [ext_resource type="Script" uid="uid://bmr10cm8vqb8o" path="res://obj/rooms/chamber.gd" id="2_y0fo7"]
 [ext_resource type="Script" uid="uid://o1a0ginm5fp2" path="res://obj/modules/FSM/fsm.gd" id="3_7jm6a"]
-[ext_resource type="PackedScene" uid="uid://7xcia31pkmay" path="res://UI/agent_optiontscn.tscn" id="3_50w6m"]
 [ext_resource type="PackedScene" uid="uid://dui8l2o3osfd5" path="res://obj/rooms/waypoint.tscn" id="3_ckaer"]
 [ext_resource type="Texture2D" uid="uid://dsf87roce13ta" path="res://img/layout/chamber.png" id="3_mr62c"]
 [ext_resource type="Texture2D" uid="uid://b5afowghl7bv2" path="res://img/layout/corridorend_left.png" id="3_ulrp8"]
@@ -35,7 +34,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("2_y0fo7")
 anomaly = ExtResource("2_xsyyv")
-agent_option = ExtResource("3_50w6m")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_7jm6a")
