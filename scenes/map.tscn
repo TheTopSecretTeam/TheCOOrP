@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b42xk6gfhn38y"]
+[gd_scene load_steps=30 format=3 uid="uid://b42xk6gfhn38y"]
 
 [ext_resource type="Script" uid="uid://tfxo6opgnmin" path="res://scenes/map.gd" id="1_i0xy1"]
 [ext_resource type="Script" uid="uid://b2tof5ts66fui" path="res://net/scripts/net_manager.gd" id="3_f22gk"]
@@ -297,16 +297,42 @@ visible = false
 process_mode = 2
 visible = false
 
+[node name="WorkSelectMenu" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layout" type="HBoxContainer" parent="CanvasLayer/WorkSelectMenu"]
+layout_mode = 2
+
+[node name="WorkContainer" type="VBoxContainer" parent="CanvasLayer/WorkSelectMenu/Layout"]
+visible = false
+layout_mode = 2
+
+[node name="AgentContainer" type="VBoxContainer" parent="CanvasLayer/WorkSelectMenu/Layout"]
+visible = false
+layout_mode = 2
+
 [node name="EscMenuManager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("22_2cfcp")
 
+[node name="WorkSelectManager" type="Node" parent="."]
+script = ExtResource("23_2cfcp")
+agent_option = ExtResource("24_y2ir2")
+
+[connection signal="chamber_selected" from="rooms/chamber" to="WorkSelectManager" method="_on_chamber_selected"]
 [connection signal="menu_close" from="rooms/chamber/CanvasLayer/ResearchMenu" to="." method="_on_menu_close"]
 [connection signal="menu_open" from="rooms/chamber/CanvasLayer/ResearchMenu" to="." method="_on_menu_open"]
 [connection signal="work_completed" from="rooms/chamber/IceboxBar" to="rooms/chamber" method="_on_bar_work_completed"]
+[connection signal="chamber_selected" from="rooms/chamber2" to="WorkSelectManager" method="_on_chamber_selected"]
 [connection signal="menu_close" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="." method="_on_menu_close"]
 [connection signal="menu_open" from="rooms/chamber2/CanvasLayer/ResearchMenu" to="." method="_on_menu_open"]
 [connection signal="work_completed" from="rooms/chamber2/WirebirdBar" to="rooms/chamber2" method="_on_bar_work_completed"]
+[connection signal="chamber_selected" from="rooms/chamber3" to="WorkSelectManager" method="_on_chamber_selected"]
 [connection signal="menu_close" from="rooms/chamber3/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_close"]
 [connection signal="menu_open" from="rooms/chamber3/CanvasLayer/ResearchMenu" to="Camera" method="_on_menu_open"]
 [connection signal="work_completed" from="rooms/chamber3/BaloonBar" to="rooms/chamber3" method="_on_bar_work_completed"]
